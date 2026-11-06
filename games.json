@@ -1,326 +1,454 @@
 {
- "source": "https://www.rasasoccer.ca/leagues/front_pagePro.cfm?clientID=6369&leagueID=27680",
+ "source": "https://www.rasasoccer.ca/leagues/schedules.cfm?clientid=6369&leagueID=27680",
  "season": "Winter 2026-27",
- "updatedAt": "2026-11-06T16:40:11Z",
+ "updatedAt": "2026-11-06T23:16:09Z",
  "games": [
   {
    "date": "2026-09-10",
    "time": "21:00",
    "home": "GLORY FC",
    "away": "RICHMOND ATHLE.",
-   "venue": "",
+   "venue": "Hugh Boyd - Red",
    "homeScore": 2,
    "awayScore": 3,
-   "officials": [],
-   "number": ""
+   "number": "m-1-1",
+   "gameId": "2564684",
+   "status": "Final",
+   "officials": [
+    "Harry Rahiman"
+   ]
   },
   {
    "date": "2026-09-10",
    "time": "21:00",
    "home": "RICHMOND OLD B.",
    "away": "RAIN CITY GUNN.",
-   "venue": "",
+   "venue": "Hugh Boyd - Blue",
    "homeScore": 7,
    "awayScore": 1,
-   "officials": [],
-   "number": ""
-  },
-  {
-   "date": "2026-09-11",
-   "time": "21:00",
-   "home": "UNITED FC",
-   "away": "AC RICHMOND",
-   "venue": "",
-   "homeScore": 0,
-   "awayScore": 1,
-   "officials": [],
-   "number": ""
-  },
-  {
-   "date": "2026-09-11",
-   "time": "21:00",
-   "home": "UNICORN FC",
-   "away": "RICHMOND ALL B.",
-   "venue": "",
-   "homeScore": 1,
-   "awayScore": 6,
-   "officials": [],
-   "number": ""
+   "number": "m-1-2",
+   "gameId": "2564685",
+   "status": "Final",
+   "officials": [
+    "Bruce Yung"
+   ]
   },
   {
    "date": "2026-09-11",
    "time": "21:00",
    "home": "RANGERS FC",
    "away": "FREEBIRD FC",
-   "venue": "",
+   "venue": "Hugh Boyd - Red",
    "homeScore": 0,
    "awayScore": 0,
-   "officials": [],
-   "number": ""
+   "number": "d1-1-1",
+   "gameId": "2567505",
+   "status": "Final",
+   "officials": [
+    "Kanwal Sangha"
+   ]
+  },
+  {
+   "date": "2026-09-11",
+   "time": "21:00",
+   "home": "UNITED FC",
+   "away": "AC RICHMOND",
+   "venue": "Hugh Boyd - Blue",
+   "homeScore": 0,
+   "awayScore": 1,
+   "number": "d1-1-2",
+   "gameId": "2565174",
+   "status": "Final",
+   "officials": [
+    "Conor Niemi",
+    "Peter Klausner",
+    "Jon Lee"
+   ]
+  },
+  {
+   "date": "2026-09-11",
+   "time": "21:00",
+   "home": "UNICORN FC",
+   "away": "RICHMOND ALL B.",
+   "venue": "Minoru Oval",
+   "homeScore": 1,
+   "awayScore": 6,
+   "number": "d1-1-3",
+   "gameId": "2565175",
+   "status": "Final",
+   "officials": [
+    "Dusko Jovic",
+    "Mike Lynch",
+    "Aghaei Alireza"
+   ]
   },
   {
    "date": "2026-09-13",
    "time": "11:00",
    "home": "RFC HIBS",
    "away": "HEATHERBRAE",
-   "venue": "",
+   "venue": "MacNeil South",
    "homeScore": 3,
    "awayScore": 0,
-   "officials": [],
-   "number": ""
+   "number": "d1-1-4",
+   "gameId": "2565176",
+   "status": "Final",
+   "officials": [
+    "Sean Davies",
+    "Mike Lynch",
+    "Ella Lynch"
+   ]
   },
   {
    "date": "2026-09-13",
    "time": "11:00",
    "home": "RICHLADS FC",
    "away": "MAINLAND UNITE.",
-   "venue": "",
+   "venue": "MacNeil - North",
    "homeScore": 6,
    "awayScore": 0,
-   "officials": [],
-   "number": ""
+   "number": "d2-1-1",
+   "gameId": "2564726",
+   "status": "Final",
+   "officials": [
+    "Lothar Chan"
+   ]
   },
   {
    "date": "2026-09-13",
    "time": "11:00",
    "home": "EPFC LIONS",
    "away": "HAMMERS FC",
-   "venue": "",
+   "venue": "McNair",
    "homeScore": 3,
    "awayScore": 0,
-   "officials": [],
-   "number": ""
+   "number": "d2-1-2",
+   "gameId": "2564727",
+   "status": "Final",
+   "officials": [
+    "Bruce Yung"
+   ]
   },
   {
    "date": "2026-09-13",
    "time": "13:00",
    "home": "RUFC GRADUATES",
    "away": "LION ROCK",
-   "venue": "",
+   "venue": "McNair",
    "homeScore": 3,
    "awayScore": 4,
-   "officials": [],
-   "number": ""
+   "number": "d2-1-3",
+   "gameId": "2564729",
+   "status": "Final",
+   "officials": [
+    "Philip Leung"
+   ]
   },
   {
    "date": "2026-09-17",
    "time": "21:00",
    "home": "RICHMOND ATHLE.",
    "away": "RICHMOND OLD B.",
-   "venue": "",
+   "venue": "Hugh Boyd - Red",
    "homeScore": 3,
    "awayScore": 1,
-   "officials": [],
-   "number": ""
+   "number": "m-2-3",
+   "gameId": "2564686",
+   "status": "Final",
+   "officials": [
+    "Ernesto De Marco"
+   ]
   },
   {
    "date": "2026-09-17",
    "time": "21:00",
    "home": "RAIN CITY GUNN.",
    "away": "GLORY FC",
-   "venue": "",
+   "venue": "Hugh Boyd - Blue",
    "homeScore": 7,
    "awayScore": 1,
-   "officials": [],
-   "number": ""
-  },
-  {
-   "date": "2026-09-20",
-   "time": "11:00",
-   "home": "AC RICHMOND",
-   "away": "UNICORN FC",
-   "venue": "",
-   "homeScore": 5,
-   "awayScore": 1,
-   "officials": [],
-   "number": ""
+   "number": "m-2-4",
+   "gameId": "2564687",
+   "status": "Final",
+   "officials": [
+    "Emre Ogutcen"
+   ]
   },
   {
    "date": "2026-09-20",
    "time": "11:00",
    "home": "RFC HIBS",
    "away": "UNITED FC",
-   "venue": "",
+   "venue": "South Arm 4",
    "homeScore": 3,
    "awayScore": 2,
-   "officials": [],
-   "number": ""
+   "number": "d1-2-5",
+   "gameId": "2565178",
+   "status": "Final",
+   "officials": [
+    "Conor Niemi",
+    "Aghaei Alireza",
+    "Gavin Laing"
+   ]
+  },
+  {
+   "date": "2026-09-20",
+   "time": "11:00",
+   "home": "AC RICHMOND",
+   "away": "UNICORN FC",
+   "venue": "South Arm 1",
+   "homeScore": 5,
+   "awayScore": 1,
+   "number": "d1-2-6",
+   "gameId": "2565177",
+   "status": "Final",
+   "officials": [
+    "billy Cheng",
+    "Mike Lynch",
+    "Ella Lynch"
+   ]
   },
   {
    "date": "2026-09-20",
    "time": "11:00",
    "home": "RICHLADS FC",
    "away": "EPFC LIONS",
-   "venue": "",
+   "venue": "South Arm 3",
    "homeScore": 4,
    "awayScore": 2,
-   "officials": [],
-   "number": ""
+   "number": "d2-2-5",
+   "gameId": "2564741",
+   "status": "Final",
+   "officials": []
   },
   {
    "date": "2026-09-20",
    "time": "13:00",
    "home": "RICHMOND ALL B.",
    "away": "RANGERS FC",
-   "venue": "",
+   "venue": "South Arm 1",
    "homeScore": 6,
    "awayScore": 0,
-   "officials": [],
-   "number": ""
-  },
-  {
-   "date": "2026-09-20",
-   "time": "13:00",
-   "home": "HAMMERS FC",
-   "away": "RUFC GRADUATES",
-   "venue": "",
-   "homeScore": 1,
-   "awayScore": 1,
-   "officials": [],
-   "number": ""
+   "number": "d1-2-7",
+   "gameId": "2567506",
+   "status": "Final",
+   "officials": [
+    "bob briza"
+   ]
   },
   {
    "date": "2026-09-20",
    "time": "13:00",
    "home": "MAINLAND UNITE.",
    "away": "WEST COAST CUR.",
-   "venue": "",
+   "venue": "South Arm 3",
    "homeScore": 5,
    "awayScore": 1,
-   "officials": [],
-   "number": ""
+   "number": "d2-2-6",
+   "gameId": "2564742",
+   "status": "Final",
+   "officials": [
+    "Peter Klausner"
+   ]
+  },
+  {
+   "date": "2026-09-20",
+   "time": "13:00",
+   "home": "HAMMERS FC",
+   "away": "RUFC GRADUATES",
+   "venue": "South Arm 4",
+   "homeScore": 1,
+   "awayScore": 1,
+   "number": "d2-2-7",
+   "gameId": "2564740",
+   "status": "Final",
+   "officials": [
+    "Bruce Yung"
+   ]
   },
   {
    "date": "2026-09-20",
    "time": "15:00",
    "home": "HEATHERBRAE",
    "away": "FREEBIRD FC",
-   "venue": "",
+   "venue": "South Arm 4",
    "homeScore": 1,
    "awayScore": 1,
-   "officials": [],
-   "number": ""
+   "number": "d1-2-8",
+   "gameId": "2565180",
+   "status": "Final",
+   "officials": [
+    "Harry Rahiman",
+    "Mike Lynch",
+    "Aghaei Alireza"
+   ]
   },
   {
    "date": "2026-09-20",
    "time": "15:00",
    "home": "LION ROCK",
    "away": "CLUB IRELAND R.",
-   "venue": "",
+   "venue": "South Arm 1",
    "homeScore": 2,
    "awayScore": 0,
-   "officials": [],
-   "number": ""
+   "number": "d2-2-8",
+   "gameId": "2564739",
+   "status": "Final",
+   "officials": [
+    "Sean Davies"
+   ]
   },
   {
    "date": "2026-09-24",
    "time": "21:00",
    "home": "RAIN CITY GUNN.",
    "away": "RICHMOND ATHLE.",
-   "venue": "",
+   "venue": "Hugh Boyd - Red",
    "homeScore": 2,
    "awayScore": 4,
-   "officials": [],
-   "number": ""
+   "number": "m-3-5",
+   "gameId": "2564688",
+   "status": "Final",
+   "officials": []
   },
   {
    "date": "2026-09-24",
    "time": "21:00",
    "home": "RICHMOND OLD B.",
    "away": "GLORY FC",
-   "venue": "",
+   "venue": "Hugh Boyd - Blue",
    "homeScore": 8,
    "awayScore": 2,
-   "officials": [],
-   "number": ""
-  },
-  {
-   "date": "2026-09-25",
-   "time": "21:00",
-   "home": "UNICORN FC",
-   "away": "RFC HIBS",
-   "venue": "",
-   "homeScore": 1,
-   "awayScore": 2,
-   "officials": [],
-   "number": ""
-  },
-  {
-   "date": "2026-09-25",
-   "time": "21:00",
-   "home": "FREEBIRD FC",
-   "away": "RICHMOND ALL B.",
-   "venue": "",
-   "homeScore": 3,
-   "awayScore": 5,
-   "officials": [],
-   "number": ""
+   "number": "m-3-6",
+   "gameId": "2564689",
+   "status": "Final",
+   "officials": []
   },
   {
    "date": "2026-09-25",
    "time": "21:00",
    "home": "RANGERS FC",
    "away": "AC RICHMOND",
-   "venue": "",
+   "venue": "Hugh Boyd - Blue",
    "homeScore": 0,
    "awayScore": 6,
-   "officials": [],
-   "number": ""
+   "number": "d1-3-10",
+   "gameId": "2567507",
+   "status": "Final",
+   "officials": [
+    "bob briza"
+   ]
+  },
+  {
+   "date": "2026-09-25",
+   "time": "21:00",
+   "home": "FREEBIRD FC",
+   "away": "RICHMOND ALL B.",
+   "venue": "Minoru Oval",
+   "homeScore": 3,
+   "awayScore": 5,
+   "number": "d1-3-11",
+   "gameId": "2565183",
+   "status": "Final",
+   "officials": [
+    "Kanwal Sangha",
+    "Darman Nair",
+    "Dheeran Nair"
+   ]
+  },
+  {
+   "date": "2026-09-25",
+   "time": "21:00",
+   "home": "UNICORN FC",
+   "away": "RFC HIBS",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": 1,
+   "awayScore": 2,
+   "number": "d1-3-9",
+   "gameId": "2565181",
+   "status": "Final",
+   "officials": [
+    "Mike Laing",
+    "Don Taylor",
+    "Spencer Brown"
+   ]
   },
   {
    "date": "2026-09-27",
    "time": "11:00",
    "home": "UNITED FC",
    "away": "HEATHERBRAE",
-   "venue": "",
+   "venue": "MacNeil South",
    "homeScore": 5,
    "awayScore": 1,
-   "officials": [],
-   "number": ""
-  },
-  {
-   "date": "2026-09-27",
-   "time": "11:00",
-   "home": "EPFC LIONS",
-   "away": "LION ROCK",
-   "venue": "",
-   "homeScore": 1,
-   "awayScore": 1,
-   "officials": [],
-   "number": ""
+   "number": "d1-3-12",
+   "gameId": "2565184",
+   "status": "Final",
+   "officials": [
+    "Dusko Jovic",
+    "Mike Lynch",
+    "Ella Lynch"
+   ]
   },
   {
    "date": "2026-09-27",
    "time": "11:00",
    "home": "HAMMERS FC",
    "away": "MAINLAND UNITE.",
-   "venue": "",
+   "venue": "McNair",
    "homeScore": 5,
    "awayScore": 3,
-   "officials": [],
-   "number": ""
+   "number": "d2-3-10",
+   "gameId": "2572277",
+   "status": "Final",
+   "officials": [
+    "Bruce Yung"
+   ]
+  },
+  {
+   "date": "2026-09-27",
+   "time": "11:00",
+   "home": "EPFC LIONS",
+   "away": "LION ROCK",
+   "venue": "MacNeil - North",
+   "homeScore": 1,
+   "awayScore": 1,
+   "number": "d2-3-9",
+   "gameId": "2572276",
+   "status": "Final",
+   "officials": [
+    "Lothar Chan"
+   ]
   },
   {
    "date": "2026-09-27",
    "time": "13:00",
    "home": "WEST COAST CUR.",
    "away": "RICHLADS FC",
-   "venue": "",
+   "venue": "MacNeil - North",
    "homeScore": 0,
    "awayScore": 9,
-   "officials": [],
-   "number": ""
+   "number": "d2-3-11",
+   "gameId": "2572278",
+   "status": "Final",
+   "officials": [
+    "Harry Rahiman"
+   ]
   },
   {
    "date": "2026-09-27",
    "time": "13:00",
    "home": "CLUB IRELAND R.",
    "away": "RUFC GRADUATES",
-   "venue": "",
+   "venue": "McNair",
    "homeScore": 1,
    "awayScore": 1,
-   "officials": [],
-   "number": ""
+   "number": "d2-3-12",
+   "gameId": "2572279",
+   "status": "Final",
+   "officials": [
+    "Philip Leung"
+   ]
   },
   {
    "date": "2026-10-01",
@@ -330,10 +458,12 @@
    "venue": "Hugh Boyd - Red",
    "homeScore": 6,
    "awayScore": 0,
+   "number": "m-4-7",
+   "gameId": "2564690",
+   "status": "Final",
    "officials": [
     "Bruce Yung"
-   ],
-   "number": ""
+   ]
   },
   {
    "date": "2026-10-01",
@@ -343,10 +473,12 @@
    "venue": "Hugh Boyd - Blue",
    "homeScore": 2,
    "awayScore": 2,
+   "number": "m-4-8",
+   "gameId": "2564691",
+   "status": "Final",
    "officials": [
     "Ernesto De Marco"
-   ],
-   "number": ""
+   ]
   },
   {
    "date": "2026-10-02",
@@ -356,12 +488,14 @@
    "venue": "Hugh Boyd - Red",
    "homeScore": 2,
    "awayScore": 1,
+   "number": "d1-4-13",
+   "gameId": "2565185",
+   "status": "Final",
    "officials": [
     "Conor Niemi",
     "Darman Nair",
     "Dheeran Nair"
-   ],
-   "number": ""
+   ]
   },
   {
    "date": "2026-10-02",
@@ -371,12 +505,14 @@
    "venue": "Hugh Boyd - Blue",
    "homeScore": 2,
    "awayScore": 11,
+   "number": "d1-4-14",
+   "gameId": "2565186",
+   "status": "Final",
    "officials": [
     "Sean Davies",
     "Mike Lynch",
     "Ella Lynch"
-   ],
-   "number": ""
+   ]
   },
   {
    "date": "2026-10-02",
@@ -386,12 +522,14 @@
    "venue": "Minoru Oval",
    "homeScore": 1,
    "awayScore": 4,
+   "number": "d1-4-15",
+   "gameId": "2565187",
+   "status": "Final",
    "officials": [
     "billy Cheng",
     "Harry Rahiman",
     "Jon Lee"
-   ],
-   "number": ""
+   ]
   },
   {
    "date": "2026-10-04",
@@ -401,10 +539,12 @@
    "venue": "MacNeil North",
    "homeScore": 2,
    "awayScore": 4,
+   "number": "d2-4-13",
+   "gameId": "2572280",
+   "status": "Final",
    "officials": [
     "Harry Rahiman"
-   ],
-   "number": ""
+   ]
   },
   {
    "date": "2026-10-04",
@@ -414,10 +554,12 @@
    "venue": "MacNeil South",
    "homeScore": 11,
    "awayScore": 1,
+   "number": "d2-4-14",
+   "gameId": "2572281",
+   "status": "Final",
    "officials": [
     "Peter Klausner"
-   ],
-   "number": ""
+   ]
   },
   {
    "date": "2026-10-04",
@@ -427,10 +569,12 @@
    "venue": "McNair",
    "homeScore": 3,
    "awayScore": 3,
+   "number": "d2-4-15",
+   "gameId": "2572282",
+   "status": "Final",
    "officials": [
     "Kanwal Sangha"
-   ],
-   "number": ""
+   ]
   },
   {
    "date": "2026-10-04",
@@ -440,10 +584,12 @@
    "venue": "McNair",
    "homeScore": 0,
    "awayScore": 2,
+   "number": "d1-4-16",
+   "gameId": "2567508",
+   "status": "Final",
    "officials": [
     "Dusko Jovic"
-   ],
-   "number": ""
+   ]
   },
   {
    "date": "2026-10-04",
@@ -453,10 +599,12 @@
    "venue": "MacNeil North",
    "homeScore": 0,
    "awayScore": 0,
+   "number": "d2-4-16",
+   "gameId": "2572283",
+   "status": "Final",
    "officials": [
     "Emre Ogutcen"
-   ],
-   "number": ""
+   ]
   },
   {
    "date": "2026-10-07",
@@ -466,8 +614,10 @@
    "venue": "Hugh Boyd - Red",
    "homeScore": 2,
    "awayScore": 5,
-   "officials": [],
-   "number": ""
+   "number": "LC1",
+   "gameId": "2565111",
+   "status": "Final",
+   "officials": []
   },
   {
    "date": "2026-10-07",
@@ -477,19 +627,10 @@
    "venue": "Hugh Boyd - Blue",
    "homeScore": 3,
    "awayScore": 1,
-   "officials": [],
-   "number": ""
-  },
-  {
-   "date": "2026-10-08",
-   "time": "21:00",
-   "home": "RICHMOND OLD B.",
-   "away": "RICHMOND ATHLE.",
-   "venue": "Hugh Boyd - Red",
-   "homeScore": 1,
-   "awayScore": 3,
-   "officials": [],
-   "number": ""
+   "number": "LC2",
+   "gameId": "2565112",
+   "status": "Final",
+   "officials": []
   },
   {
    "date": "2026-10-08",
@@ -499,8 +640,23 @@
    "venue": "Hugh Boyd - Blue",
    "homeScore": 1,
    "awayScore": 6,
-   "officials": [],
-   "number": ""
+   "number": "m-5-10",
+   "gameId": "2564693",
+   "status": "Final",
+   "officials": []
+  },
+  {
+   "date": "2026-10-08",
+   "time": "21:00",
+   "home": "RICHMOND OLD B.",
+   "away": "RICHMOND ATHLE.",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": 1,
+   "awayScore": 3,
+   "number": "m-5-9",
+   "gameId": "2564692",
+   "status": "Final",
+   "officials": []
   },
   {
    "date": "2026-10-09",
@@ -510,19 +666,10 @@
    "venue": "Hugh Boyd - Red",
    "homeScore": 0,
    "awayScore": 5,
-   "officials": [],
-   "number": ""
-  },
-  {
-   "date": "2026-10-09",
-   "time": "21:00",
-   "home": "HEATHERBRAE",
-   "away": "AC RICHMOND",
-   "venue": "Minoru Oval",
-   "homeScore": 0,
-   "awayScore": 6,
-   "officials": [],
-   "number": ""
+   "number": "d1-5-17",
+   "gameId": "2565189",
+   "status": "Final",
+   "officials": []
   },
   {
    "date": "2026-10-09",
@@ -532,8 +679,23 @@
    "venue": "Hugh Boyd - Blue",
    "homeScore": 0,
    "awayScore": 7,
-   "officials": [],
-   "number": ""
+   "number": "d1-5-18",
+   "gameId": "2567509",
+   "status": "Final",
+   "officials": []
+  },
+  {
+   "date": "2026-10-09",
+   "time": "21:00",
+   "home": "HEATHERBRAE",
+   "away": "AC RICHMOND",
+   "venue": "Minoru Oval",
+   "homeScore": 0,
+   "awayScore": 6,
+   "number": "d1-5-19",
+   "gameId": "2565191",
+   "status": "Final",
+   "officials": []
   },
   {
    "date": "2026-10-13",
@@ -543,12 +705,14 @@
    "venue": "Hugh Boyd - Blue",
    "homeScore": 4,
    "awayScore": 1,
+   "number": "d1-5-20",
+   "gameId": "2565192",
+   "status": "Final",
    "officials": [
     "Kanwal Sangha",
     "Don Taylor",
     "Jon Lee"
-   ],
-   "number": ""
+   ]
   },
   {
    "date": "2026-10-15",
@@ -558,10 +722,12 @@
    "venue": "Hugh Boyd - Red",
    "homeScore": 0,
    "awayScore": 8,
+   "number": "m-6-11/2-4-13",
+   "gameId": "2564694",
+   "status": "Final",
    "officials": [
     "Ernesto De Marco"
-   ],
-   "number": ""
+   ]
   },
   {
    "date": "2026-10-15",
@@ -571,10 +737,12 @@
    "venue": "Hugh Boyd - Blue",
    "homeScore": 1,
    "awayScore": 2,
+   "number": "m-6-12/2-4-14",
+   "gameId": "2564695",
+   "status": "Final",
    "officials": [
     "Sean Davies"
-   ],
-   "number": ""
+   ]
   },
   {
    "date": "2026-10-15",
@@ -584,10 +752,12 @@
    "venue": "Richmond High",
    "homeScore": 2,
    "awayScore": 7,
+   "number": "m-6-13/2-4-15",
+   "gameId": "2564696",
+   "status": "Final",
    "officials": [
     "Peter Klausner"
-   ],
-   "number": ""
+   ]
   },
   {
    "date": "2026-10-16",
@@ -597,12 +767,14 @@
    "venue": "Hugh Boyd - Red",
    "homeScore": 0,
    "awayScore": 8,
+   "number": "d1-6-21",
+   "gameId": "2565193",
+   "status": "Final",
    "officials": [
     "bob briza",
     "Mike Lynch",
     "Don Taylor"
-   ],
-   "number": ""
+   ]
   },
   {
    "date": "2026-10-18",
@@ -612,10 +784,12 @@
    "venue": "MacNeil North",
    "homeScore": 0,
    "awayScore": 7,
+   "number": "d2-5-17",
+   "gameId": "2572284",
+   "status": "Final",
    "officials": [
     "Bruce Yung"
-   ],
-   "number": ""
+   ]
   },
   {
    "date": "2026-10-18",
@@ -625,10 +799,12 @@
    "venue": "MacNeil South",
    "homeScore": 2,
    "awayScore": 3,
+   "number": "d2-5-18",
+   "gameId": "2572285",
+   "status": "Final",
    "officials": [
     "billy Cheng"
-   ],
-   "number": ""
+   ]
   },
   {
    "date": "2026-10-18",
@@ -638,10 +814,12 @@
    "venue": "McNair",
    "homeScore": 2,
    "awayScore": 2,
+   "number": "d2-5-19",
+   "gameId": "2572286",
+   "status": "Final",
    "officials": [
     "Kanwal Sangha"
-   ],
-   "number": ""
+   ]
   },
   {
    "date": "2026-10-18",
@@ -651,12 +829,14 @@
    "venue": "Minoru 3",
    "homeScore": 2,
    "awayScore": 4,
+   "number": "d1-6-23",
+   "gameId": "2565196",
+   "status": "Final",
    "officials": [
     "Conor Niemi",
     "Darman Nair",
     "Dheeran Nair"
-   ],
-   "number": ""
+   ]
   },
   {
    "date": "2026-10-18",
@@ -666,10 +846,12 @@
    "venue": "Hugh Boyd Oval",
    "homeScore": 1,
    "awayScore": 0,
+   "number": "d1-6-24",
+   "gameId": "2567510",
+   "status": "Final",
    "officials": [
     "Dusko Jovic"
-   ],
-   "number": ""
+   ]
   },
   {
    "date": "2026-10-18",
@@ -679,10 +861,12 @@
    "venue": "MacNeil North",
    "homeScore": 2,
    "awayScore": 2,
+   "number": "d2-5-20",
+   "gameId": "2572287",
+   "status": "Final",
    "officials": [
     "Mike Laing"
-   ],
-   "number": ""
+   ]
   },
   {
    "date": "2026-10-20",
@@ -692,8 +876,10 @@
    "venue": "Hugh Boyd - Red",
    "homeScore": 7,
    "awayScore": 1,
-   "officials": [],
-   "number": ""
+   "number": "LC16",
+   "gameId": "2565129",
+   "status": "Final",
+   "officials": []
   },
   {
    "date": "2026-10-21",
@@ -703,8 +889,10 @@
    "venue": "Hugh Boyd - Red",
    "homeScore": 2,
    "awayScore": 3,
-   "officials": [],
-   "number": ""
+   "number": "LC4",
+   "gameId": "2565114",
+   "status": "Final",
+   "officials": []
   },
   {
    "date": "2026-10-22",
@@ -714,8 +902,10 @@
    "venue": "Hugh Boyd - Red",
    "homeScore": 4,
    "awayScore": 1,
-   "officials": [],
-   "number": ""
+   "number": "m-7-15/2-6-",
+   "gameId": "2564698",
+   "status": "Final",
+   "officials": []
   },
   {
    "date": "2026-10-22",
@@ -725,8 +915,10 @@
    "venue": "Hugh Boyd - Blue",
    "homeScore": 0,
    "awayScore": 3,
-   "officials": [],
-   "number": ""
+   "number": "m-7-16/2-6-",
+   "gameId": "2564699",
+   "status": "Final",
+   "officials": []
   },
   {
    "date": "2026-10-22",
@@ -736,8 +928,10 @@
    "venue": "Richmond High",
    "homeScore": 2,
    "awayScore": 2,
-   "officials": [],
-   "number": ""
+   "number": "m-7-18/2-6-",
+   "gameId": "2564701",
+   "status": "Final",
+   "officials": []
   },
   {
    "date": "2026-10-23",
@@ -747,12 +941,14 @@
    "venue": "Hugh Boyd - Red",
    "homeScore": 1,
    "awayScore": 7,
+   "number": "d1-7-25",
+   "gameId": "2565197",
+   "status": "Final",
    "officials": [
     "Mike Laing",
     "Gavin Laing",
     "Spencer Brown"
-   ],
-   "number": ""
+   ]
   },
   {
    "date": "2026-10-23",
@@ -762,12 +958,14 @@
    "venue": "Hugh Boyd - Blue",
    "homeScore": 1,
    "awayScore": 1,
+   "number": "d1-7-26",
+   "gameId": "2565198",
+   "status": "Final",
    "officials": [
     "billy Cheng",
     "Don Taylor",
     "Jon Lee"
-   ],
-   "number": ""
+   ]
   },
   {
    "date": "2026-10-25",
@@ -777,10 +975,12 @@
    "venue": "MacNeil North",
    "homeScore": 2,
    "awayScore": 5,
+   "number": "d2-6-21",
+   "gameId": "2572288",
+   "status": "Final",
    "officials": [
     "Lothar Chan"
-   ],
-   "number": ""
+   ]
   },
   {
    "date": "2026-10-25",
@@ -790,36 +990,12 @@
    "venue": "McNair",
    "homeScore": 1,
    "awayScore": 4,
+   "number": "d2-6-23",
+   "gameId": "2572290",
+   "status": "Final",
    "officials": [
     "Harry Rahiman"
-   ],
-   "number": ""
-  },
-  {
-   "date": "2026-10-25",
-   "time": "13:00",
-   "home": "CLUB IRELAND R.",
-   "away": "EPFC LIONS",
-   "venue": "McNair",
-   "homeScore": 2,
-   "awayScore": 0,
-   "officials": [
-    "Conor Niemi"
-   ],
-   "number": ""
-  },
-  {
-   "date": "2026-10-25",
-   "time": "13:00",
-   "home": "WEST COAST CUR.",
-   "away": "LION ROCK",
-   "venue": "MacNeil North",
-   "homeScore": 0,
-   "awayScore": 7,
-   "officials": [
-    "Peter Klausner"
-   ],
-   "number": ""
+   ]
   },
   {
    "date": "2026-10-25",
@@ -829,12 +1005,14 @@
    "venue": "Hugh Boyd - South",
    "homeScore": 0,
    "awayScore": 6,
+   "number": "d1-7-27",
+   "gameId": "2565199",
+   "status": "Final",
    "officials": [
     "Kanwal Sangha",
     "Mike Lynch",
     "Dheeran Nair"
-   ],
-   "number": ""
+   ]
   },
   {
    "date": "2026-10-25",
@@ -844,10 +1022,42 @@
    "venue": "Hugh Boyd Oval",
    "homeScore": 3,
    "awayScore": 2,
+   "number": "d1-7-28",
+   "gameId": "2567511",
+   "status": "Final",
    "officials": [
     "Ernesto De Marco"
-   ],
-   "number": ""
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "time": "13:00",
+   "home": "CLUB IRELAND R.",
+   "away": "EPFC LIONS",
+   "venue": "McNair",
+   "homeScore": 2,
+   "awayScore": 0,
+   "number": "d2-6-22",
+   "gameId": "2572289",
+   "status": "Final",
+   "officials": [
+    "Conor Niemi"
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "time": "13:00",
+   "home": "WEST COAST CUR.",
+   "away": "LION ROCK",
+   "venue": "MacNeil North",
+   "homeScore": 0,
+   "awayScore": 7,
+   "number": "d2-6-24",
+   "gameId": "2572291",
+   "status": "Final",
+   "officials": [
+    "Peter Klausner"
+   ]
   },
   {
    "date": "2026-10-27",
@@ -857,12 +1067,14 @@
    "venue": "Hugh Boyd - Blue",
    "homeScore": 3,
    "awayScore": 0,
+   "number": "d1-6-22",
+   "gameId": "2565194",
+   "status": "Final",
    "officials": [
     "bob briza",
     "Don Taylor",
     "Harry Rahiman"
-   ],
-   "number": ""
+   ]
   },
   {
    "date": "2026-10-28",
@@ -872,10 +1084,12 @@
    "venue": "Hugh Boyd - Red",
    "homeScore": 0,
    "awayScore": 4,
+   "number": "LC3",
+   "gameId": "2565113",
+   "status": "Final",
    "officials": [
     "Lothar Chan"
-   ],
-   "number": ""
+   ]
   },
   {
    "date": "2026-10-29",
@@ -885,10 +1099,12 @@
    "venue": "Hugh Boyd - Red",
    "homeScore": 5,
    "awayScore": 1,
+   "number": "m-8-19",
+   "gameId": "2564702",
+   "status": "Final",
    "officials": [
     "Ernesto De Marco"
-   ],
-   "number": ""
+   ]
   },
   {
    "date": "2026-10-29",
@@ -898,10 +1114,12 @@
    "venue": "Hugh Boyd - Blue",
    "homeScore": 0,
    "awayScore": 8,
+   "number": "m-8-20",
+   "gameId": "2564703",
+   "status": "Final",
    "officials": [
     "Harry Rahiman"
-   ],
-   "number": ""
+   ]
   },
   {
    "date": "2026-10-30",
@@ -911,12 +1129,14 @@
    "venue": "Hugh Boyd - Red",
    "homeScore": 1,
    "awayScore": 3,
+   "number": "d1-8-29",
+   "gameId": "2579583",
+   "status": "Final",
    "officials": [
     "billy Cheng",
     "Darman Nair",
     "Dheeran Nair"
-   ],
-   "number": ""
+   ]
   },
   {
    "date": "2026-11-01",
@@ -926,10 +1146,12 @@
    "venue": "MacNeil North",
    "homeScore": 3,
    "awayScore": 3,
+   "number": "d2-7-25",
+   "gameId": "2572292",
+   "status": "Final",
    "officials": [
     "Kanwal Sangha"
-   ],
-   "number": "d2-7-25"
+   ]
   },
   {
    "date": "2026-11-01",
@@ -939,36 +1161,12 @@
    "venue": "McNair",
    "homeScore": 4,
    "awayScore": 3,
+   "number": "d2-7-27",
+   "gameId": "2572294",
+   "status": "Final",
    "officials": [
     "Sean Davies"
-   ],
-   "number": "d2-7-27"
-  },
-  {
-   "date": "2026-11-01",
-   "time": "13:00",
-   "home": "EPFC LIONS",
-   "away": "WEST COAST CUR.",
-   "venue": "Hugh Boyd - South",
-   "homeScore": 7,
-   "awayScore": 1,
-   "officials": [
-    "Emre Ogutcen"
-   ],
-   "number": "d2-7-26"
-  },
-  {
-   "date": "2026-11-01",
-   "time": "13:00",
-   "home": "LION ROCK",
-   "away": "MAINLAND UNITE.",
-   "venue": "MacNeil North",
-   "homeScore": 1,
-   "awayScore": 1,
-   "officials": [
-    "Philip Leung"
-   ],
-   "number": "d2-7-28"
+   ]
   },
   {
    "date": "2026-11-01",
@@ -978,12 +1176,14 @@
    "venue": "McNair",
    "homeScore": 2,
    "awayScore": 3,
+   "number": "d1-8-30",
+   "gameId": "2579584",
+   "status": "Final",
    "officials": [
     "Dusko Jovic",
     "Darman Nair",
     "Dheeran Nair"
-   ],
-   "number": "d1-8-30"
+   ]
   },
   {
    "date": "2026-11-01",
@@ -993,10 +1193,12 @@
    "venue": "Hugh Boyd Oval",
    "homeScore": 2,
    "awayScore": 0,
+   "number": "d1-8-31",
+   "gameId": "2579585",
+   "status": "Final",
    "officials": [
     "Conor Niemi"
-   ],
-   "number": "d1-8-31"
+   ]
   },
   {
    "date": "2026-11-01",
@@ -1006,12 +1208,44 @@
    "venue": "Hugh Boyd - Red",
    "homeScore": null,
    "awayScore": null,
+   "number": "d1-8-32",
+   "gameId": "2579586",
+   "status": "-",
    "officials": [
     "Mike Laing",
     "Don Taylor",
     "Harry Rahiman"
-   ],
-   "number": "d1-8-32"
+   ]
+  },
+  {
+   "date": "2026-11-01",
+   "time": "13:00",
+   "home": "EPFC LIONS",
+   "away": "WEST COAST CUR.",
+   "venue": "Hugh Boyd - South",
+   "homeScore": 7,
+   "awayScore": 1,
+   "number": "d2-7-26",
+   "gameId": "2572293",
+   "status": "Final",
+   "officials": [
+    "Emre Ogutcen"
+   ]
+  },
+  {
+   "date": "2026-11-01",
+   "time": "13:00",
+   "home": "LION ROCK",
+   "away": "MAINLAND UNITE.",
+   "venue": "MacNeil North",
+   "homeScore": 1,
+   "awayScore": 1,
+   "number": "d2-7-28",
+   "gameId": "2572295",
+   "status": "Final",
+   "officials": [
+    "Philip Leung"
+   ]
   },
   {
    "date": "2026-11-03",
@@ -1021,10 +1255,12 @@
    "venue": "Hugh Boyd - Red",
    "homeScore": null,
    "awayScore": null,
+   "number": "LC8",
+   "gameId": "2565116",
+   "status": "-",
    "officials": [
     "Ernesto De Marco"
-   ],
-   "number": "LC8"
+   ]
   },
   {
    "date": "2026-11-05",
@@ -1034,10 +1270,12 @@
    "venue": "Minoru 3",
    "homeScore": null,
    "awayScore": null,
+   "number": "m-9-21",
+   "gameId": "2580352",
+   "status": "-",
    "officials": [
     "Dusko Jovic"
-   ],
-   "number": "m-9-21"
+   ]
   },
   {
    "date": "2026-11-05",
@@ -1047,10 +1285,12 @@
    "venue": "Hugh Boyd - Red",
    "homeScore": null,
    "awayScore": null,
+   "number": "m-9-22 / 2-8-C9",
+   "gameId": "2580353",
+   "status": "-",
    "officials": [
     "Emre Ogutcen"
-   ],
-   "number": "m-9-22 / 2-8-C9"
+   ]
   },
   {
    "date": "2026-11-05",
@@ -1060,10 +1300,12 @@
    "venue": "Hugh Boyd - Blue",
    "homeScore": null,
    "awayScore": null,
+   "number": "m-9-23 / 2-8-C10",
+   "gameId": "2580354",
+   "status": "-",
    "officials": [
     "bob briza"
-   ],
-   "number": "m-9-23 / 2-8-C10"
+   ]
   },
   {
    "date": "2026-11-06",
@@ -1073,12 +1315,14 @@
    "venue": "Minoru Oval",
    "homeScore": null,
    "awayScore": null,
+   "number": "d1-9-33",
+   "gameId": "2579587",
+   "status": "",
    "officials": [
     "billy Cheng",
     "Darman Nair",
     "Dheeran Nair"
-   ],
-   "number": "d1-9-33"
+   ]
   },
   {
    "date": "2026-11-06",
@@ -1088,12 +1332,14 @@
    "venue": "Hugh Boyd - Red",
    "homeScore": null,
    "awayScore": null,
+   "number": "d1-9-34",
+   "gameId": "2579588",
+   "status": "",
    "officials": [
     "Mike Laing",
     "Gavin Laing",
     "Mike Lynch"
-   ],
-   "number": "d1-9-34"
+   ]
   },
   {
    "date": "2026-11-06",
@@ -1103,10 +1349,12 @@
    "venue": "Hugh Boyd - Blue",
    "homeScore": null,
    "awayScore": null,
+   "number": "d1-9-35",
+   "gameId": "2579589",
+   "status": "",
    "officials": [
     "Sean Davies"
-   ],
-   "number": "d1-9-35"
+   ]
   },
   {
    "date": "2026-11-08",
@@ -1116,12 +1364,14 @@
    "venue": "MacNeil - North",
    "homeScore": null,
    "awayScore": null,
+   "number": "d1-9-36",
+   "gameId": "2579590",
+   "status": "",
    "officials": [
     "Kanwal Sangha",
     "Mike Lynch",
     "Ella Lynch"
-   ],
-   "number": "d1-9-36"
+   ]
   },
   {
    "date": "2026-11-08",
@@ -1131,10 +1381,12 @@
    "venue": "McNair",
    "homeScore": null,
    "awayScore": null,
+   "number": "d2-8-30",
+   "gameId": "2579615",
+   "status": "",
    "officials": [
     "Peter Klausner"
-   ],
-   "number": "d2-8-30"
+   ]
   },
   {
    "date": "2026-11-08",
@@ -1144,10 +1396,12 @@
    "venue": "Hugh Boyd Oval",
    "homeScore": null,
    "awayScore": null,
+   "number": "d2-8-29",
+   "gameId": "2579614",
+   "status": "",
    "officials": [
     "Harry Rahiman"
-   ],
-   "number": "d2-8-29"
+   ]
   },
   {
    "date": "2026-11-08",
@@ -1157,10 +1411,12 @@
    "venue": "Hugh Boyd - South",
    "homeScore": null,
    "awayScore": null,
+   "number": "d2-8-32",
+   "gameId": "2579617",
+   "status": "",
    "officials": [
     "Conor Niemi"
-   ],
-   "number": "d2-8-32"
+   ]
   },
   {
    "date": "2026-11-10",
@@ -1170,8 +1426,10 @@
    "venue": "Hugh Boyd - Red",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "LC5"
+   "number": "LC5",
+   "gameId": "2565117",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-10",
@@ -1181,8 +1439,10 @@
    "venue": "Hugh Boyd - Blue",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "LC6"
+   "number": "LC6",
+   "gameId": "2565118",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-12",
@@ -1192,8 +1452,10 @@
    "venue": "Hugh Boyd - Blue",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "m-10-24"
+   "number": "m-10-24",
+   "gameId": "2580355",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-12",
@@ -1203,8 +1465,10 @@
    "venue": "Hugh Boyd - Red",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "m-10-25 / 2-9-C11"
+   "number": "m-10-25 / 2-9-C11",
+   "gameId": "2580356",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-13",
@@ -1214,8 +1478,10 @@
    "venue": "Hugh Boyd - Red",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "d1-10-37"
+   "number": "d1-10-37",
+   "gameId": "2579591",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-13",
@@ -1225,30 +1491,36 @@
    "venue": "Hugh Boyd - Blue",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "d1-10-38"
+   "number": "d1-10-38",
+   "gameId": "2579592",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-15",
    "time": "11:00",
    "home": "HEATHERBRAE",
    "away": "UNITED FC",
-   "venue": "MacNeil - North",
+   "venue": "MacNeil North",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "d1-10-39"
+   "number": "d1-10-39",
+   "gameId": "2579593",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-15",
    "time": "11:00",
    "home": "EPFC LIONS",
    "away": "RICHLADS FC",
-   "venue": "MacNeil - South",
+   "venue": "MacNeil South",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "d2-9-33"
+   "number": "d2-9-33",
+   "gameId": "2579618",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-15",
@@ -1258,8 +1530,10 @@
    "venue": "McNair",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "d2-9-34"
+   "number": "d2-9-34",
+   "gameId": "2579619",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-15",
@@ -1269,8 +1543,10 @@
    "venue": "McNair",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "d1-10-40"
+   "number": "d1-10-40",
+   "gameId": "2579594",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-15",
@@ -1280,8 +1556,10 @@
    "venue": "MacNeil - North",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "d2-9-35"
+   "number": "d2-9-35",
+   "gameId": "2579620",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-15",
@@ -1291,8 +1569,10 @@
    "venue": "MacNeil - South",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "d2-9-36"
+   "number": "d2-9-36",
+   "gameId": "2579621",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-17",
@@ -1302,8 +1582,10 @@
    "venue": "Hugh Boyd - Red",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "LC10"
+   "number": "LC10",
+   "gameId": "2565120",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-19",
@@ -1313,8 +1595,10 @@
    "venue": "Minoru 3",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "m-11-27"
+   "number": "m-11-27",
+   "gameId": "2580358",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-19",
@@ -1324,8 +1608,10 @@
    "venue": "Hugh Boyd - Red",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "m-11-28 / 2-10-C13"
+   "number": "m-11-28 / 2-10-C13",
+   "gameId": "2580359",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-19",
@@ -1335,8 +1621,10 @@
    "venue": "Hugh Boyd - Blue",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "m-11-29 / 2-10-C14"
+   "number": "m-11-29 / 2-10-C14",
+   "gameId": "2580360",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-20",
@@ -1346,8 +1634,10 @@
    "venue": "Hugh Boyd - Red",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "d1-11-41"
+   "number": "d1-11-41",
+   "gameId": "2579595",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-22",
@@ -1357,19 +1647,23 @@
    "venue": "McNair",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "d1-11-42"
+   "number": "d1-11-42",
+   "gameId": "2579596",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-22",
    "time": "11:00",
    "home": "LION ROCK",
    "away": "EPFC LIONS",
-   "venue": "MacNeil - North",
+   "venue": "MacNeil North",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "d2-10-37"
+   "number": "d2-10-37",
+   "gameId": "2579622",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-22",
@@ -1379,8 +1673,10 @@
    "venue": "McNair",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "d1-11-43"
+   "number": "d1-11-43",
+   "gameId": "2579597",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-22",
@@ -1390,19 +1686,23 @@
    "venue": "Richmond High",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "d1-11-44"
+   "number": "d1-11-44",
+   "gameId": "2579598",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-22",
    "time": "13:00",
    "home": "MAINLAND UNITE.",
    "away": "HAMMERS FC",
-   "venue": "MacNeil - North",
+   "venue": "MacNeil North",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "d2-10-38"
+   "number": "d2-10-38",
+   "gameId": "2579623",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-22",
@@ -1412,8 +1712,10 @@
    "venue": "Hugh Boyd Oval",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "d2-10-39"
+   "number": "d2-10-39",
+   "gameId": "2579624",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-22",
@@ -1423,8 +1725,10 @@
    "venue": "Hugh Boyd - South",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "d2-10-40"
+   "number": "d2-10-40",
+   "gameId": "2579625",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-24",
@@ -1434,8 +1738,10 @@
    "venue": "Hugh Boyd - Red",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "LC9"
+   "number": "LC9",
+   "gameId": "2565119",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-25",
@@ -1445,8 +1751,10 @@
    "venue": "Hugh Boyd - Blue",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "d2-8-31"
+   "number": "d2-8-31",
+   "gameId": "2579616",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-26",
@@ -1456,8 +1764,10 @@
    "venue": "Minoru 3",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "m-12-30"
+   "number": "m-12-30",
+   "gameId": "2580361",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-26",
@@ -1467,8 +1777,10 @@
    "venue": "Hugh Boyd - Red",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "m-12-31 / 2-11-C15"
+   "number": "m-12-31 / 2-11-C15",
+   "gameId": "2580362",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-26",
@@ -1478,8 +1790,10 @@
    "venue": "Hugh Boyd - Blue",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "m-12-32 / 2-11-C16"
+   "number": "m-12-32 / 2-11-C16",
+   "gameId": "2580363",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-29",
@@ -1489,30 +1803,36 @@
    "venue": "McNair",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "d1-12-45"
+   "number": "d1-12-45",
+   "gameId": "2579599",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-29",
    "time": "11:00",
    "home": "WEST COAST CUR.",
    "away": "HAMMERS FC",
-   "venue": "MacNeil - North",
+   "venue": "MacNeil North",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "d2-11-41"
+   "number": "d2-11-41",
+   "gameId": "2579626",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-29",
    "time": "11:00",
    "home": "RUFC GRADUATES",
    "away": "EPFC LIONS",
-   "venue": "MacNeil - South",
+   "venue": "MacNeil South",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "d2-11-42"
+   "number": "d2-11-42",
+   "gameId": "2579627",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-29",
@@ -1522,8 +1842,10 @@
    "venue": "Hugh Boyd Oval",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "d1-12-46"
+   "number": "d1-12-46",
+   "gameId": "2579600",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-29",
@@ -1533,8 +1855,10 @@
    "venue": "McNair",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "d1-12-47"
+   "number": "d1-12-47",
+   "gameId": "2579601",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-29",
@@ -1544,8 +1868,10 @@
    "venue": "Richmond High",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "d1-12-48"
+   "number": "d1-12-48",
+   "gameId": "2579602",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-29",
@@ -1555,19 +1881,23 @@
    "venue": "Hugh Boyd - South",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "d2-11-43"
+   "number": "d2-11-43",
+   "gameId": "2579628",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-11-29",
    "time": "13:00",
    "home": "RICHLADS FC",
    "away": "LION ROCK",
-   "venue": "MacNeil - South",
+   "venue": "MacNeil South",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": "d2-11-44"
+   "number": "d2-11-44",
+   "gameId": "2579629",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-12-03",
@@ -1577,8 +1907,10 @@
    "venue": "Richmond High",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "m-13-33",
+   "gameId": "2580364",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-12-03",
@@ -1588,8 +1920,10 @@
    "venue": "Hugh Boyd - Red",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "m-13-34 / 2-12-C17",
+   "gameId": "2580365",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-12-03",
@@ -1599,8 +1933,10 @@
    "venue": "Hugh Boyd - Blue",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "m-13-35 / 2-12-C18",
+   "gameId": "2580366",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-12-04",
@@ -1610,30 +1946,36 @@
    "venue": "Hugh Boyd - Red",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "d1-13-49",
+   "gameId": "2579603",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-12-06",
    "time": "11:00",
    "home": "RANGERS FC",
    "away": "UNITED FC",
-   "venue": "MacNeil - North",
+   "venue": "MacNeil North",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "d1-13-50",
+   "gameId": "2579604",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-12-06",
    "time": "11:00",
    "home": "RUFC GRADUATES",
    "away": "WEST COAST CUR.",
-   "venue": "MacNeil - South",
+   "venue": "MacNeil South",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "d2-12-45",
+   "gameId": "2579630",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-12-06",
@@ -1643,8 +1985,10 @@
    "venue": "McNair",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "d2-12-46",
+   "gameId": "2579631",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-12-06",
@@ -1654,8 +1998,10 @@
    "venue": "Hugh Boyd Oval",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "d1-13-51",
+   "gameId": "2579605",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-12-06",
@@ -1665,8 +2011,10 @@
    "venue": "Richmond High",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "d1-13-52",
+   "gameId": "2579606",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-12-06",
@@ -1676,8 +2024,10 @@
    "venue": "McNair",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "d2-12-47",
+   "gameId": "2579632",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-12-06",
@@ -1687,8 +2037,10 @@
    "venue": "Hugh Boyd - South",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "d2-12-48",
+   "gameId": "2579633",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-12-10",
@@ -1698,8 +2050,10 @@
    "venue": "Richmond High",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "m-14-36",
+   "gameId": "2580367",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-12-10",
@@ -1709,8 +2063,10 @@
    "venue": "Hugh Boyd - Red",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "m-14-37 / 2-13-C19",
+   "gameId": "2580368",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-12-10",
@@ -1720,8 +2076,10 @@
    "venue": "Hugh Boyd - Blue",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "m-14-38 / 2-13-C20",
+   "gameId": "2580369",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-12-11",
@@ -1731,8 +2089,10 @@
    "venue": "Hugh Boyd - Red",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "d1-14-53",
+   "gameId": "2579607",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-12-13",
@@ -1742,8 +2102,10 @@
    "venue": "McNair",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "d1-14-54",
+   "gameId": "2579608",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-12-13",
@@ -1753,8 +2115,10 @@
    "venue": "Richmond High",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "d1-14-55",
+   "gameId": "2579609",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-12-13",
@@ -1764,19 +2128,23 @@
    "venue": "McNair",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "d1-14-56",
+   "gameId": "2579610",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-12-13",
    "time": "13:00",
    "home": "MAINLAND UNITE.",
    "away": "RUFC GRADUATES",
-   "venue": "MacNeil - North",
+   "venue": "MacNeil North",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "d2-13-49",
+   "gameId": "2579634",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-12-13",
@@ -1786,8 +2154,10 @@
    "venue": "MacNeil - South",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "d2-13-50",
+   "gameId": "2579635",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-12-13",
@@ -1797,8 +2167,10 @@
    "venue": "Hugh Boyd Oval",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "d2-13-51",
+   "gameId": "2579636",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-12-13",
@@ -1808,8 +2180,10 @@
    "venue": "Hugh Boyd - South",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "d2-13-52",
+   "gameId": "2579637",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-12-16",
@@ -1819,8 +2193,10 @@
    "venue": "Hugh Boyd - Red",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "m-6-14/2-4-16",
+   "gameId": "2564697",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-12-16",
@@ -1830,8 +2206,10 @@
    "venue": "Hugh Boyd - Blue",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "m-7-17/2-6-",
+   "gameId": "2564700",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-12-17",
@@ -1841,19 +2219,10 @@
    "venue": "Hugh Boyd - Red",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
-  },
-  {
-   "date": "2026-12-17",
-   "time": "21:00",
-   "home": "LION ROCK",
-   "away": "RAIN CITY GUNN.",
-   "venue": "Richmond High",
-   "homeScore": null,
-   "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "LC7",
+   "gameId": "2567504",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2026-12-17",
@@ -1863,8 +2232,23 @@
    "venue": "Hugh Boyd - Blue",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "d2-1-4",
+   "gameId": "2579645",
+   "status": "",
+   "officials": []
+  },
+  {
+   "date": "2026-12-17",
+   "time": "21:00",
+   "home": "LION ROCK",
+   "away": "RAIN CITY GUNN.",
+   "venue": "Richmond High",
+   "homeScore": null,
+   "awayScore": null,
+   "number": "m-10-26 / 2-9-C12",
+   "gameId": "2580357",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2027-01-14",
@@ -1874,8 +2258,10 @@
    "venue": "TBD",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "m-15-39 / 2-14-C21",
+   "gameId": "2580370",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2027-01-14",
@@ -1885,8 +2271,10 @@
    "venue": "TBD",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "m-15-40 / 2-14-C22",
+   "gameId": "2580371",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2027-01-14",
@@ -1896,8 +2284,10 @@
    "venue": "TBD",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "m-15-41 / 2-14-C23",
+   "gameId": "2580372",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2027-01-20",
@@ -1907,8 +2297,10 @@
    "venue": "Hugh Boyd - Red",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "LC11",
+   "gameId": "2565121",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2027-01-20",
@@ -1918,8 +2310,10 @@
    "venue": "King George",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "LC12",
+   "gameId": "",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2027-01-21",
@@ -1929,8 +2323,10 @@
    "venue": "TBD",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "m-16-42 / 2-15-C24",
+   "gameId": "2580373",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2027-01-21",
@@ -1940,8 +2336,10 @@
    "venue": "TBD",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "m-16-43 / 2-15-C25",
+   "gameId": "2580374",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2027-01-21",
@@ -1951,8 +2349,10 @@
    "venue": "TBD",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "m-16-44 / 2-15-C26",
+   "gameId": "2580375",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2027-01-26",
@@ -1962,8 +2362,10 @@
    "venue": "Hugh Boyd - Red",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "LC13",
+   "gameId": "2565123",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2027-01-26",
@@ -1973,8 +2375,10 @@
    "venue": "King George",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "LC14",
+   "gameId": "",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2027-01-28",
@@ -1984,8 +2388,10 @@
    "venue": "TBD",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "m-17-45 / 2-16-C27",
+   "gameId": "2580376",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2027-01-28",
@@ -1995,8 +2401,10 @@
    "venue": "TBD",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "m-17-46 / 2-16-C28",
+   "gameId": "2580377",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2027-01-28",
@@ -2006,8 +2414,10 @@
    "venue": "TBD",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "m-17-47 / 2-16-C29",
+   "gameId": "2580378",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2027-02-04",
@@ -2017,8 +2427,10 @@
    "venue": "TBD",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "m-18-48 / 2-17-C30",
+   "gameId": "2580379",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2027-02-04",
@@ -2028,8 +2440,10 @@
    "venue": "TBD",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "m-18-49 / 2-17-C31",
+   "gameId": "2580380",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2027-02-04",
@@ -2039,8 +2453,10 @@
    "venue": "TBD",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "m-18-50 / 2-17-C32",
+   "gameId": "2580381",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2027-02-09",
@@ -2050,8 +2466,10 @@
    "venue": "TBA",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "LC-SF1",
+   "gameId": "",
+   "status": "",
+   "officials": []
   },
   {
    "date": "2027-02-09",
@@ -2061,8 +2479,23 @@
    "venue": "King George",
    "homeScore": null,
    "awayScore": null,
-   "officials": [],
-   "number": ""
+   "number": "LC-SF2",
+   "gameId": "",
+   "status": "",
+   "officials": []
+  },
+  {
+   "date": "2027-03-07",
+   "time": "13:00",
+   "home": "WINNER LC-SF2",
+   "away": "WINNER LC-SF1",
+   "venue": "Minoru Oval",
+   "homeScore": null,
+   "awayScore": null,
+   "number": "LC-Final",
+   "gameId": "",
+   "status": "",
+   "officials": []
   }
  ]
 }

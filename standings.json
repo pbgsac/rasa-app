@@ -1,7 +1,7 @@
 {
- "source": "https://www.rasasoccer.ca/leagues/standings.cfm?leagueid=27680&clientid=6369",
+ "source": "https://www.rasasoccer.ca/leagues/standings.cfm?clientid=6369&leagueID=27680",
  "season": "Winter 2026-27",
- "updatedAt": "2026-11-05T01:55:00Z",
+ "updatedAt": "2026-11-06T23:16:09Z",
  "divisions": [
   {
    "name": "Division 1",
