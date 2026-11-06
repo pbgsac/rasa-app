@@ -1,9 +1,23 @@
 {
- "updatedAt": "2026-11-06T23:16:09Z",
+ "updatedAt": "2026-11-06T23:40:08Z",
  "teams": {
   "AC RICHMOND": {
    "name": "AC Richmond",
    "source": "https://www.rasasoccer.ca/leagues/stats_1team.cfm?clientid=6369&leagueID=27680&teamID=684068",
+   "staff": [
+    {
+     "name": "Evan",
+     "role": "Manager"
+    },
+    {
+     "name": "Mani",
+     "role": "Manager"
+    },
+    {
+     "name": "Amrit",
+     "role": "Manager"
+    }
+   ],
    "players": [
     {
      "name": "Rylan Sangha",
@@ -346,6 +360,16 @@
   "CLUB IRELAND R.": {
    "name": "Club Ireland Rovers",
    "source": "https://www.rasasoccer.ca/leagues/stats_1team.cfm?clientid=6369&leagueID=27680&teamID=683790",
+   "staff": [
+    {
+     "name": "Patrick",
+     "role": "Coach"
+    },
+    {
+     "name": "jim",
+     "role": "Chef de Mission"
+    }
+   ],
    "players": [
     {
      "name": "Mathiew Estepho",
@@ -676,6 +700,7 @@
   "EPFC LIONS": {
    "name": "EPFC Lions",
    "source": "https://www.rasasoccer.ca/leagues/stats_1team.cfm?clientid=6369&leagueID=27680&teamID=684698",
+   "staff": [],
    "players": [
     {
      "name": "Alistair Beck",
@@ -958,6 +983,12 @@
   "FREEBIRD FC": {
    "name": "Freebird FC",
    "source": "https://www.rasasoccer.ca/leagues/stats_1team.cfm?clientid=6369&leagueID=27680&teamID=684207",
+   "staff": [
+    {
+     "name": "Sunny",
+     "role": "Manager"
+    }
+   ],
    "players": [
     {
      "name": "Laixuan An",
@@ -1348,6 +1379,36 @@
   "GLORY FC": {
    "name": "Glory FC",
    "source": "https://www.rasasoccer.ca/leagues/stats_1team.cfm?clientid=6369&leagueID=27680&teamID=684502",
+   "staff": [
+    {
+     "name": "KA KI",
+     "role": "Manager"
+    },
+    {
+     "name": "Kai Hin",
+     "role": "Equipment Manager"
+    },
+    {
+     "name": "KA KI",
+     "role": "Equipment Manager"
+    },
+    {
+     "name": "Alan",
+     "role": "Coach"
+    },
+    {
+     "name": "Herman",
+     "role": "Asst. Coach"
+    },
+    {
+     "name": "SHUN WANG STEPHEN",
+     "role": "Asst. Coach"
+    },
+    {
+     "name": "Aaron Dun Yin",
+     "role": "Asst. Coach"
+    }
+   ],
    "players": [
     {
      "name": "Aaron Dun Yin Wong",
@@ -1690,6 +1751,12 @@
   "HAMMERS FC": {
    "name": "Hammers FC",
    "source": "https://www.rasasoccer.ca/leagues/stats_1team.cfm?clientid=6369&leagueID=27680&teamID=684170",
+   "staff": [
+    {
+     "name": "Hassan",
+     "role": "Manager"
+    }
+   ],
    "players": [
     {
      "name": "Youssouf Konate",
@@ -2008,6 +2075,12 @@
   "HEATHERBRAE": {
    "name": "Heatherbrae",
    "source": "https://www.rasasoccer.ca/leagues/stats_1team.cfm?clientid=6369&leagueID=27680&teamID=684169",
+   "staff": [
+    {
+     "name": "Carl",
+     "role": "Manager"
+    }
+   ],
    "players": [
     {
      "name": "Bobby Bertram",
@@ -2422,6 +2495,7 @@
   "LION ROCK": {
    "name": "Lion Rock",
    "source": "https://www.rasasoccer.ca/leagues/stats_1team.cfm?clientid=6369&leagueID=27680&teamID=684702",
+   "staff": [],
    "players": [
     {
      "name": "Kai On Barnabas YAM",
@@ -2740,6 +2814,20 @@
   "MAINLAND UNITE.": {
    "name": "Mainland United",
    "source": "https://www.rasasoccer.ca/leagues/stats_1team.cfm?clientid=6369&leagueID=27680&teamID=684822",
+   "staff": [
+    {
+     "name": "Hayden",
+     "role": "Manager"
+    },
+    {
+     "name": "Saajan",
+     "role": "Asst. Coach"
+    },
+    {
+     "name": "Colton",
+     "role": "Asst. Coach"
+    }
+   ],
    "players": [
     {
      "name": "Tej Sarai",
@@ -3070,6 +3158,24 @@
   "RFC HIBS": {
    "name": "RFC HIBS",
    "source": "https://www.rasasoccer.ca/leagues/stats_1team.cfm?clientid=6369&leagueID=27680&teamID=684163",
+   "staff": [
+    {
+     "name": "Jonah",
+     "role": "Physiotherapist"
+    },
+    {
+     "name": "Brad",
+     "role": "Manager"
+    },
+    {
+     "name": "Devon",
+     "role": "Chef de Mission"
+    },
+    {
+     "name": "Alexander",
+     "role": "Asst. Coach"
+    }
+   ],
    "players": [
     {
      "name": "Nathan Fong",
@@ -3496,6 +3602,24 @@
   "RUFC GRADUATES": {
    "name": "RUFC Graduates",
    "source": "https://www.rasasoccer.ca/leagues/stats_1team.cfm?clientid=6369&leagueID=27680&teamID=684176",
+   "staff": [
+    {
+     "name": "David",
+     "role": "Other"
+    },
+    {
+     "name": "Carlie",
+     "role": "Manager"
+    },
+    {
+     "name": "Jordan",
+     "role": "Coach"
+    },
+    {
+     "name": "Derek",
+     "role": "Coach"
+    }
+   ],
    "players": [
     {
      "name": "Ben Ruus",
@@ -3826,6 +3950,16 @@
   "RAIN CITY GUNN.": {
    "name": "Rain City Gunners",
    "source": "https://www.rasasoccer.ca/leagues/stats_1team.cfm?clientid=6369&leagueID=27680&teamID=684175",
+   "staff": [
+    {
+     "name": "Farouk",
+     "role": "Manager"
+    },
+    {
+     "name": "Farouk",
+     "role": "Manager"
+    }
+   ],
    "players": [
     {
      "name": "Farouk Karim",
@@ -4096,6 +4230,12 @@
   "RANGERS FC": {
    "name": "Rangers FC",
    "source": "https://www.rasasoccer.ca/leagues/stats_1team.cfm?clientid=6369&leagueID=27680&teamID=685455",
+   "staff": [
+    {
+     "name": "Bob",
+     "role": "Manager"
+    }
+   ],
    "players": [
     {
      "name": "Daniel Adom",
@@ -4438,6 +4578,16 @@
   "RICHLADS FC": {
    "name": "Richlads FC",
    "source": "https://www.rasasoccer.ca/leagues/stats_1team.cfm?clientid=6369&leagueID=27680&teamID=684171",
+   "staff": [
+    {
+     "name": "Matthew",
+     "role": "Manager"
+    },
+    {
+     "name": "Gary",
+     "role": "Manager"
+    }
+   ],
    "players": [
     {
      "name": "Morten Skriver",
@@ -4792,6 +4942,16 @@
   "RICHMOND ALL B.": {
    "name": "Richmond All Blacks",
    "source": "https://www.rasasoccer.ca/leagues/stats_1team.cfm?clientid=6369&leagueID=27680&teamID=684139",
+   "staff": [
+    {
+     "name": "Kyle",
+     "role": "Manager"
+    },
+    {
+     "name": "Dave",
+     "role": "Asst. Coach"
+    }
+   ],
    "players": [
     {
      "name": "Sachan Sidhu",
@@ -5098,6 +5258,24 @@
   "RICHMOND ATHLE.": {
    "name": "Richmond Athletics FC",
    "source": "https://www.rasasoccer.ca/leagues/stats_1team.cfm?clientid=6369&leagueID=27680&teamID=684357",
+   "staff": [
+    {
+     "name": "Michael",
+     "role": "Manager"
+    },
+    {
+     "name": "Kevin",
+     "role": "Asst. Coach"
+    },
+    {
+     "name": "Kevin",
+     "role": "Manager"
+    },
+    {
+     "name": "Steven",
+     "role": "Asst. Coach"
+    }
+   ],
    "players": [
     {
      "name": "Matteo Serka",
@@ -5440,6 +5618,16 @@
   "RICHMOND OLD B.": {
    "name": "Richmond Old Blacks",
    "source": "https://www.rasasoccer.ca/leagues/stats_1team.cfm?clientid=6369&leagueID=27680&teamID=684140",
+   "staff": [
+    {
+     "name": "Kyle",
+     "role": "Manager"
+    },
+    {
+     "name": "Zac",
+     "role": "Asst. Coach"
+    }
+   ],
    "players": [
     {
      "name": "Robert Brennan",
@@ -5806,6 +5994,16 @@
   "UNICORN FC": {
    "name": "Unicorn FC",
    "source": "https://www.rasasoccer.ca/leagues/stats_1team.cfm?clientid=6369&leagueID=27680&teamID=684165",
+   "staff": [
+    {
+     "name": "Derek",
+     "role": "Coach"
+    },
+    {
+     "name": "Jordan",
+     "role": "Manager"
+    }
+   ],
    "players": [
     {
      "name": "Connor Brodie",
@@ -6124,6 +6322,20 @@
   "UNITED FC": {
    "name": "United FC",
    "source": "https://www.rasasoccer.ca/leagues/stats_1team.cfm?clientid=6369&leagueID=27680&teamID=684172",
+   "staff": [
+    {
+     "name": "Alix",
+     "role": "Manager"
+    },
+    {
+     "name": "Terran",
+     "role": "Manager"
+    },
+    {
+     "name": "Alix",
+     "role": "Manager"
+    }
+   ],
    "players": [
     {
      "name": "Kevin Wong",
@@ -6502,6 +6714,12 @@
   "WEST COAST CUR.": {
    "name": "West Coast Current",
    "source": "https://www.rasasoccer.ca/leagues/stats_1team.cfm?clientid=6369&leagueID=27680&teamID=683562",
+   "staff": [
+    {
+     "name": "Mohkam",
+     "role": "Manager"
+    }
+   ],
    "players": [
     {
      "name": "Jagjit Mann",
