@@ -20,7 +20,7 @@
   --ink:#141a15;
   --muted:#5b675d;
   --line:#d7ded8;
-  --surface-2:#e6ece7;
+  --surface-2:#d9e3db;
   --brand:#4a504b;
   --pitch:#0f6b06;
   --accent:#13780b;
@@ -34,7 +34,7 @@
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#0b0e0c; --surface:#151a16; --surface-2:#1f2721; --ink:#e8eee9; --muted:#9ba89d; --line:#273029;
+    --bg:#0b0e0c; --surface:#151a16; --surface-2:#253128; --ink:#e8eee9; --muted:#9ba89d; --line:#273029;
     --brand:#2c312d; --pitch:#2f9a26; --accent:#5cc75f; --accent-ink:#07110a;
     --d1:#6f97ff; --d2:#4cc3d9; --ms:#c58ae6; --cup:#f0a838; --xo:#f07aa0;
     --good:#4cc982; --warn:#f2c230; --warn-bg:#3a3014; --bad:#ff7a7a;
@@ -42,7 +42,7 @@
   }
 }
 :root[data-theme="dark"]{
-  --bg:#0b0e0c; --surface:#151a16; --surface-2:#1f2721; --ink:#e8eee9; --muted:#9ba89d; --line:#273029;
+  --bg:#0b0e0c; --surface:#151a16; --surface-2:#253128; --ink:#e8eee9; --muted:#9ba89d; --line:#273029;
   --brand:#2c312d; --pitch:#2f9a26; --accent:#5cc75f; --accent-ink:#07110a;
   --d1:#6f97ff; --d2:#4cc3d9; --ms:#c58ae6; --cup:#f0a838; --xo:#f07aa0;
   --good:#4cc982; --warn:#f2c230; --warn-bg:#3a3014; --bad:#ff7a7a;
@@ -317,7 +317,8 @@ dl.view{margin:0;display:flex;flex-direction:column;border-top:1px solid var(--l
 .podium{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px 10px;border-bottom:1px solid var(--line)}
 .pod{display:flex;flex-direction:column;align-items:center;text-align:center;gap:3px;min-width:0}
 .pod-photo{position:relative;width:76px;height:76px;border-radius:50%;background:var(--surface-2);display:grid;place-items:center;font-family:var(--font-display);font-size:26px;color:var(--muted);border:3px solid var(--ring);margin-bottom:4px}
-.pod-photo img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.pod-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%}
+.pod-photo .medal{z-index:1}
 .pod.p1 .pod-photo{width:90px;height:90px;font-size:30px}
 .pod.p1{--ring:#d4a017} .pod.p2{--ring:#a7b0b8} .pod.p3{--ring:#b87333}
 .medal{position:absolute;bottom:-4px;right:-4px;width:26px;height:26px;border-radius:50%;background:var(--ring);color:#141a15;font-family:var(--font-body);font-size:13px;font-weight:800;display:grid;place-items:center;border:2px solid var(--surface)}
@@ -370,6 +371,7 @@ dl.view{margin:0;display:flex;flex-direction:column;border-top:1px solid var(--l
 .std .fill{width:100%;padding:0}
 @media (min-width:601px){ .std .tlink{white-space:nowrap} }
 .std td.pts{font-weight:700;font-size:16px;padding-left:10px}
+.std tbody tr:nth-child(even) td{background:var(--surface-2)}
 .std tr.mine td{background:color-mix(in srgb,var(--card-yellow) 22%,transparent)}
 .tlink{background:none;border:0;padding:0;font-weight:600;cursor:pointer;color:var(--ink);text-align:left;white-space:normal}
 .tlink:hover{color:var(--accent);text-decoration:underline}
@@ -878,7 +880,7 @@ function renderLeaders(){
   if(!rosters || !rosters.teams){ body.innerHTML = `<div class="empty">Player stats couldn’t be loaded. Check your connection and reload the page.</div>`; return; }
   const inScope = (div, team)=> div==="ALL" || (div==="TEAM" ? team===myTeam : (TEAMS[team] && TEAMS[team].d===div));
   const playersIn = div=>{ const out=[]; Object.entries(rosters.teams).forEach(([team,t])=>{ if(!inScope(div,team)) return;
-    (t.players||[]).forEach(p=>out.push({name:p.name, team, gp:p.gp||0, g:p.g||0, a:p.a||0})); }); return out; };
+    (t.players||[]).forEach(p=>out.push({name:p.name, team, gp:p.gp||0, g:p.g||0, a:p.a||0, photo:p.photo||""})); }); return out; };
   const chips = cat=>`<div class="ld-chips" role="group" aria-label="Filter ${cat==="g"?"goals":cat==="a"?"assists":"goalkeepers"}">${
     [["ALL","All"],["D1","Div 1"],["D2","Div 2"],["MS","Masters"]].map(([k,n])=>`<button class="chip sm" data-ldcat="${cat}" data-lddiv="${k}" aria-pressed="${F[cat]===k}">${k!=="ALL"?`<span class="dot" style="background:var(${COMPS[k].v})"></span>`:""}${n}</button>`).join("")
     }${myTeam?`<button class="chip sm mine-chip" data-ldcat="${cat}" data-lddiv="TEAM" aria-pressed="${F[cat]==="TEAM"}">★ My team</button>`:""}</div>`;
@@ -888,10 +890,10 @@ function renderLeaders(){
   // Ties: goals are separated by assists, assists by goals (as on rasasoccer.ca), then fewer games played.
   const goals = rankRows(playersIn(F.g).filter(p=>p.g>0), "g", (a,b)=>b.a-a.a || a.gp-b.gp).slice(0,LD_TOP);
   const assists = rankRows(playersIn(F.a).filter(p=>p.a>0), "a", (a,b)=>b.g-a.g || a.gp-b.gp).slice(0,LD_TOP);
-  // Top three get a photo card. Photos aren't on rasasoccer.ca, so the card shows initials until players add one.
+  // Top three get a photo card, using the player's photo from their rasasoccer.ca roster card (initials if there's none).
   const podium = (rows, unit, val)=>`<div class="podium">${rows.slice(0,3).map((r,i)=>`
     <div class="pod p${i+1}">
-      <div class="pod-photo" aria-hidden="true">${r.photo?`<img src="${esc(r.photo)}" alt="">`:esc(initialsOf(r.name))}<span class="medal">${r.rank}</span></div>
+      <div class="pod-photo" aria-hidden="true"><span class="ini">${esc(initialsOf(r.name))}</span>${r.photo?`<img src="${esc(r.photo)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">`:""}<span class="medal">${r.rank}</span></div>
       <b class="pod-name">${esc(r.name)}</b>${teamCell(r.team)}
       <span class="pod-val"><b>${val(r)}</b> ${unit==="G"?(val(r)===1?"goal":"goals"):(val(r)===1?"assist":"assists")}</span>
       <span class="muted small">${r.gp} GP</span>
