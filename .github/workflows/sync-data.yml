@@ -1,0 +1,43 @@
+name: Sync data from rasasoccer.ca
+on:
+  schedule:
+    - cron: "17 */2 * * *"   # every 2 hours
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: sync-data
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install beautifulsoup4==4.12.3
+      - name: Pull schedule, scores, officials, standings, rosters
+        run: python3 tools/sync.py --out .
+      - name: Commit changes
+        id: commit
+        run: |
+          if git diff --quiet -- games.json standings.json rosters.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"; echo "No changes."
+          else
+            git config user.name "rasa-data-bot"
+            git config user.email "rasa-data-bot@users.noreply.github.com"
+            git add games.json standings.json rosters.json
+            git commit -m "Data sync $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+      # Pushes made by this workflow don't start other workflows, so deploy to Azure here.
+      - name: Deploy to Azure Static Web Apps
+        if: steps.commit.outputs.changed == 'true'
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_ASHY_WATER_0E8BEF90F }}
+          action: "upload"
+          app_location: "/"
+          api_location: ""
+          output_location: "."
+          skip_app_build: true
