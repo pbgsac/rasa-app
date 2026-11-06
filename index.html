@@ -20,6 +20,7 @@
   --ink:#141a15;
   --muted:#5b675d;
   --line:#d7ded8;
+  --surface-2:#e6ece7;
   --brand:#4a504b;
   --pitch:#0f6b06;
   --accent:#13780b;
@@ -33,7 +34,7 @@
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#0b0e0c; --surface:#151a16; --ink:#e8eee9; --muted:#9ba89d; --line:#273029;
+    --bg:#0b0e0c; --surface:#151a16; --surface-2:#1f2721; --ink:#e8eee9; --muted:#9ba89d; --line:#273029;
     --brand:#2c312d; --pitch:#2f9a26; --accent:#5cc75f; --accent-ink:#07110a;
     --d1:#6f97ff; --d2:#4cc3d9; --ms:#c58ae6; --cup:#f0a838; --xo:#f07aa0;
     --good:#4cc982; --warn:#f2c230; --warn-bg:#3a3014; --bad:#ff7a7a;
@@ -41,7 +42,7 @@
   }
 }
 :root[data-theme="dark"]{
-  --bg:#0b0e0c; --surface:#151a16; --ink:#e8eee9; --muted:#9ba89d; --line:#273029;
+  --bg:#0b0e0c; --surface:#151a16; --surface-2:#1f2721; --ink:#e8eee9; --muted:#9ba89d; --line:#273029;
   --brand:#2c312d; --pitch:#2f9a26; --accent:#5cc75f; --accent-ink:#07110a;
   --d1:#6f97ff; --d2:#4cc3d9; --ms:#c58ae6; --cup:#f0a838; --xo:#f07aa0;
   --good:#4cc982; --warn:#f2c230; --warn-bg:#3a3014; --bad:#ff7a7a;
@@ -104,6 +105,7 @@ main{max-width:820px;margin:0 auto;padding:16px 16px 48px;display:flex;flex-dire
 .day-h{display:flex;align-items:baseline;gap:10px;padding:6px 2px 0}
 .day-h h2{font-size:20px;text-transform:uppercase}
 .tag{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:2px 8px;border-radius:999px;background:var(--card-yellow);color:#141a15}
+.match.shade{background:var(--surface-2)}
 .match{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--c);border-radius:10px;padding:10px 14px;display:grid;grid-template-columns:64px 1fr auto;gap:4px 14px;align-items:center}
 .m-time{font-family:var(--font-display);font-size:20px;font-variant-numeric:tabular-nums;line-height:1}
 .m-time small{display:block;font-family:var(--font-body);font-size:12px;color:var(--muted);margin-top:3px}
@@ -310,6 +312,20 @@ dl.view{margin:0;display:flex;flex-direction:column;border-top:1px solid var(--l
 .gp-teams{flex:1;display:flex;flex-direction:column;gap:2px}
 .gp-teams small{color:var(--muted)}
 .preview-mail pre{white-space:pre-wrap;font-size:12px;background:var(--bg);border-radius:8px;padding:10px;max-height:240px;overflow:auto}
+
+/* Leaders podium */
+.podium{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px 10px;border-bottom:1px solid var(--line)}
+.pod{display:flex;flex-direction:column;align-items:center;text-align:center;gap:3px;min-width:0}
+.pod-photo{position:relative;width:76px;height:76px;border-radius:50%;background:var(--surface-2);display:grid;place-items:center;font-family:var(--font-display);font-size:26px;color:var(--muted);border:3px solid var(--ring);margin-bottom:4px}
+.pod-photo img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.pod.p1 .pod-photo{width:90px;height:90px;font-size:30px}
+.pod.p1{--ring:#d4a017} .pod.p2{--ring:#a7b0b8} .pod.p3{--ring:#b87333}
+.medal{position:absolute;bottom:-4px;right:-4px;width:26px;height:26px;border-radius:50%;background:var(--ring);color:#141a15;font-family:var(--font-body);font-size:13px;font-weight:800;display:grid;place-items:center;border:2px solid var(--surface)}
+.pod-name{font-size:14px;line-height:1.2;overflow-wrap:anywhere}
+.pod .ld-team{font-size:12px;justify-content:center}
+.pod-val{font-size:14px}
+.pod-val b{font-family:var(--font-display);font-size:22px}
+.podium{align-items:end}
 
 .preview-tag{font-style:normal;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;background:var(--card-yellow);color:#141a15;border-radius:4px;padding:1px 5px;margin-left:4px;vertical-align:1px}
 
@@ -692,7 +708,10 @@ function dayTag(s){
 function toast(msg){const t=$("#toast"); t.textContent=msg; t.hidden=false; clearTimeout(toast._t); toast._t=setTimeout(()=>t.hidden=true,2600);}
 
 /* ---------- State ---------- */
-const state = { view:"schedule", mode:"up", comp:"ALL", team:"ALL", user:null, upMonths:1, resMonths:1, refView:"Kanwal Sangha", teamMode:"up", adminWeeks:2, refMode:"up", adminFilter:null, adminMode:"games", ldF:{g:"ALL",a:"ALL",k:"ALL"} };
+// Lookup-only mode for now: Schedule, Standings and Leaders. Sign-in and Game Report are switched off
+// (their code stays, ready to turn back on with the back end).
+const FEATURES = {accounts:false, gameReport:false};
+const state = { view:"schedule", mode:"up", comp:"ALL", team:"ALL", user:null, upWeeks:2, resWeeks:2, refView:"Kanwal Sangha", teamMode:"up", adminWeeks:2, refMode:"up", adminFilter:null, adminMode:"games", ldF:{g:"ALL",a:"ALL",k:"ALL"} };
 
 /* ---------- Match card ---------- */
 function matchCard(g, opts={}){
@@ -733,30 +752,31 @@ function renderSchedule(){
   if(state.comp!=="ALL") list = list.filter(g=>g.comp===state.comp);
   if(state.team!=="ALL") list = list.filter(g=>g.h===state.team || g.a===state.team);
   list.sort((x,y)=> (x.date+x.time).localeCompare(y.date+y.time) * (state.mode==="up"?1:-1));
-  // Month window: Upcoming shows up to N months ahead, Results N months back. "See more" adds a month.
+  // Two-week window: Upcoming shows the next 2 weeks, Results the last 2 weeks. "See more" adds 2 weeks.
   const up = state.mode==="up";
-  const months = up ? state.upMonths : state.resMonths;
-  const edge = new Date(today); edge.setMonth(edge.getMonth() + (up ? months : -months));
+  const weeks = up ? state.upWeeks : state.resWeeks;
+  const edge = new Date(today); edge.setDate(edge.getDate() + (up ? 7*weeks : -7*weeks));
   const inWin = g => up ? parseD(g.date) < edge : parseD(g.date) >= edge;
   const shown = list.filter(inWin), hidden = list.length - shown.length;
   const edgeLabel = (up ? new Date(edge.getTime()-864e5) : edge).toLocaleDateString("en-CA",{month:"short",day:"numeric"});
   $("#count").textContent = `${shown.length} ${shown.length===1?"game":"games"} ${up?"through":"since"} ${edgeLabel}`;
   let html = "";
   if(!shown.length){
-    html = `<div class="empty">${list.length ? (up?"No games in the next ":"No results in the last ")+(months===1?"month":months+" months")+" for these filters." : "No games match these filters. Try “All games” or another team."}</div>`;
+    html = `<div class="empty">${list.length ? (up?"No games in the next ":"No results in the last ")+weeks+" weeks for these filters." : "No games match these filters. Try “All games” or another team."}</div>`;
   }
   const byDay = new Map();
   shown.forEach(g=>{ if(!byDay.has(g.date)) byDay.set(g.date,[]); byDay.get(g.date).push(g); });
+  let n = 0;   // alternate card shades so neighbouring games are easy to tell apart
   byDay.forEach((gs,d)=>{
     const tag = dayTag(d);
-    html += `<div class="day"><div class="day-h"><h2>${esc(fmtDay(d))}</h2>${tag?`<span class="tag">${tag}</span>`:""}</div>${gs.map(g=>matchCard(g)).join("")}</div>`;
+    html += `<div class="day"><div class="day-h"><h2>${esc(fmtDay(d))}</h2>${tag?`<span class="tag">${tag}</span>`:""}</div>${gs.map(g=>matchCard(g).replace('<article class="match"', `<article class="match${(n++)%2?" shade":""}"`)).join("")}</div>`;
   });
   if(hidden){
-    html += `<button class="btn btn-ghost more" id="seeMore">${up?"See next month":"See earlier month"} <span class="count">· ${hidden} more ${hidden===1?"game":"games"}</span></button>`;
+    html += `<button class="btn btn-ghost more" id="seeMore">${up?"See next 2 weeks":"See earlier 2 weeks"} <span class="count">· ${hidden} more ${hidden===1?"game":"games"}</span></button>`;
   }
   $("#list").innerHTML = html;
   const more = $("#seeMore");
-  if(more) more.onclick = ()=>{ if(up) state.upMonths++; else state.resMonths++; renderSchedule(); };
+  if(more) more.onclick = ()=>{ if(up) state.upWeeks += 2; else state.resWeeks += 2; renderSchedule(); };
 }
 
 /* ---------- Standings view ---------- */
@@ -868,11 +888,19 @@ function renderLeaders(){
   // Ties: goals are separated by assists, assists by goals (as on rasasoccer.ca), then fewer games played.
   const goals = rankRows(playersIn(F.g).filter(p=>p.g>0), "g", (a,b)=>b.a-a.a || a.gp-b.gp).slice(0,LD_TOP);
   const assists = rankRows(playersIn(F.a).filter(p=>p.a>0), "a", (a,b)=>b.g-a.g || a.gp-b.gp).slice(0,LD_TOP);
+  // Top three get a photo card. Photos aren't on rasasoccer.ca, so the card shows initials until players add one.
+  const podium = (rows, unit, val)=>`<div class="podium">${rows.slice(0,3).map((r,i)=>`
+    <div class="pod p${i+1}">
+      <div class="pod-photo" aria-hidden="true">${r.photo?`<img src="${esc(r.photo)}" alt="">`:esc(initialsOf(r.name))}<span class="medal">${r.rank}</span></div>
+      <b class="pod-name">${esc(r.name)}</b>${teamCell(r.team)}
+      <span class="pod-val"><b>${val(r)}</b> ${unit==="G"?(val(r)===1?"goal":"goals"):(val(r)===1?"assist":"assists")}</span>
+      <span class="muted small">${r.gp} GP</span>
+    </div>`).join("")}</div>`;
   const board = (title, cat, unit, rows, val)=>`
     <div class="std ld" id="ld-${cat}">${head(title, cat)}
-      ${rows.length ? `<table><thead><tr><th scope="col">#</th><th scope="col" class="tm">Player</th><th scope="col">GP</th><th scope="col">${unit}</th></tr></thead><tbody>
-      ${rows.map(r=>`<tr class="${r.rank===1?"top":""}"><td>${r.rank}</td><td class="tm"><b>${esc(r.name)}</b>${teamCell(r.team)}</td><td>${r.gp}</td><td class="pts">${val(r)}</td></tr>`).join("")}
-      </tbody></table>` : `<div class="empty">No ${unit==="G"?"goals":"assists"} recorded yet${scopeText(F[cat])}.</div>`}</div>`;
+      ${rows.length ? `${podium(rows, unit, val)}${rows.length>3?`<table><thead><tr><th scope="col">#</th><th scope="col" class="tm">Player</th><th scope="col">GP</th><th scope="col">${unit}</th></tr></thead><tbody>
+      ${rows.slice(3).map(r=>`<tr><td>${r.rank}</td><td class="tm"><b>${esc(r.name)}</b>${teamCell(r.team)}</td><td>${r.gp}</td><td class="pts">${val(r)}</td></tr>`).join("")}
+      </tbody></table>`:""}` : `<div class="empty">No ${unit==="G"?"goals":"assists"} recorded yet${scopeText(F[cat])}.</div>`}</div>`;
   // Keepers: real keeper stats from referee reports when there are any, else team defence from the standings
   let keeperHTML;
   const ks = rankRows(keeperStats(F.k).map(k=>({...k, neg:-k.gaa})), "neg", (a,b)=>b.minutes-a.minutes).slice(0,LD_TOP);
@@ -899,6 +927,7 @@ function renderLeaders(){
 /* ---------- Auth ---------- */
 function renderAuthArea(){
   const a = $("#authArea");
+  if(!FEATURES.accounts){ a.innerHTML = ""; return; }
   if(state.user){
     const initials = state.user.name.split(" ").map(s=>s[0]).join("").slice(0,2);
     a.innerHTML = `<button class="userchip" data-view="account" title="Your account"><span class="who"><b>${esc(state.user.name)}</b><small>${esc(titleOf(state.user))}</small></span><span class="avatar">${esc(initials)}</span></button>`;
@@ -909,7 +938,8 @@ function renderAuthArea(){
 }
 function renderTabs(){
   const tabs = [["schedule","Schedule"],["standings","Standings"],["leaders","Leaders"]];
-  if(!state.user || state.user.role==="player") tabs.push(["game-report","Game Report"]);
+  if(FEATURES.gameReport && (!state.user || state.user.role==="player")) tabs.push(["game-report","Game Report"]);
+  if(!FEATURES.accounts){ $("#tabs").innerHTML = tabs.map(([k,n])=>`<button class="tab" data-view="${k}" ${state.view===k?'aria-current="page"':""}>${n}</button>`).join(""); return; }
   if(state.user){ if(state.user.role!=="player") tabs.push(["dashboard", state.user.role==="manager"?"My team":state.user.role==="referee"?"My games":"Admin"]); tabs.push(["account","Account"]); }
   else tabs.push(["sign-in","Sign in"]);
   let dueN = 0;
@@ -1725,6 +1755,7 @@ function rosterHTML(team){
 /* ---------- Routing ---------- */
 const VIEWS = ["schedule","standings","leaders","game-report","sign-in","create-account","check-email","ref-signup","forgot-password","reset-password","dashboard","account"];
 function go(view, push=true){
+  if(!FEATURES.accounts && !["schedule","standings","leaders"].concat(FEATURES.gameReport?["game-report"]:[]).includes(view)) view = "schedule";
   if((view==="dashboard"||view==="account") && !state.user) view="sign-in";
   if((view==="sign-in"||view==="create-account"||view==="ref-signup") && state.user) view="dashboard";
   if(view==="dashboard" && state.user && state.user.role==="player") view="account";
