@@ -5,45 +5,46 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RASA – Richmond Adult Soccer Association</title>
 <meta name="description" content="Schedule, standings, leaders and team tools for the Richmond Adult Soccer Association.">
-<meta name="theme-color" content="#4a504b">
+<meta name="theme-color" content="#4a606d">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,700;1,800&display=swap" rel="stylesheet">
 <style>
 /* Layout idea: a phone-first app shell; a sticky club bar, then one column of match cards grouped by matchday. */
 :root{
-  --bg:#eff2ef;
+  --bg:#e3e3e3;
   --surface:#ffffff;
-  --ink:#141a15;
-  --muted:#5b675d;
-  --line:#d7ded8;
-  --surface-2:#d9e3db;
-  --brand:#4a504b;
-  --pitch:#0f6b06;
-  --accent:#13780b;
+  --ink:#2e2d32;
+  --muted:#5b6870;
+  --line:#c9d3d9;
+  --surface-2:#dce6ec;
+  --brand:#4a606d;
+  --brand-grad:linear-gradient(180deg,#5a707d 0%,#4a606d 45%,#43515a 100%);
+  --pitch:#386a83;
+  --accent:#386a83;
   --accent-ink:#ffffff;
   --card-yellow:#f2c230;
   --d1:#2457d6; --d2:#0b7285; --ms:#8a3fb0; --cup:#c47a0a; --xo:#c2416b;
   --good:#1b8a4b; --warn:#a86a00; --warn-bg:#fff4d6; --bad:#c23a3a;
-  --font-display:"Barlow Condensed","Arial Narrow",sans-serif;
-  --font-body:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-display:"Poppins",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-body:"Poppins",system-ui,-apple-system,"Segoe UI",sans-serif;
   color-scheme:light;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#0b0e0c; --surface:#151a16; --surface-2:#253128; --ink:#e8eee9; --muted:#9ba89d; --line:#273029;
-    --brand:#2c312d; --pitch:#2f9a26; --accent:#5cc75f; --accent-ink:#07110a;
+    --bg:#101518; --surface:#192126; --surface-2:#243039; --ink:#e7ecef; --muted:#9eabb3; --line:#2b3740;
+    --brand:#2e3b43; --brand-grad:linear-gradient(180deg,#3b4c56 0%,#2e3b43 50%,#28333a 100%); --pitch:#5d9cbb; --accent:#6fb0d0; --accent-ink:#0b1418;
     --d1:#6f97ff; --d2:#4cc3d9; --ms:#c58ae6; --cup:#f0a838; --xo:#f07aa0;
     --good:#4cc982; --warn:#f2c230; --warn-bg:#3a3014; --bad:#ff7a7a;
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#0b0e0c; --surface:#151a16; --surface-2:#253128; --ink:#e8eee9; --muted:#9ba89d; --line:#273029;
-  --brand:#2c312d; --pitch:#2f9a26; --accent:#5cc75f; --accent-ink:#07110a;
+  --bg:#101518; --surface:#192126; --surface-2:#243039; --ink:#e7ecef; --muted:#9eabb3; --line:#2b3740;
+  --brand:#2e3b43; --brand-grad:linear-gradient(180deg,#3b4c56 0%,#2e3b43 50%,#28333a 100%); --pitch:#5d9cbb; --accent:#6fb0d0; --accent-ink:#0b1418;
   --d1:#6f97ff; --d2:#4cc3d9; --ms:#c58ae6; --cup:#f0a838; --xo:#f07aa0;
   --good:#4cc982; --warn:#f2c230; --warn-bg:#3a3014; --bad:#ff7a7a;
   color-scheme:dark;
@@ -434,6 +435,40 @@ dl.view{margin:0;display:flex;flex-direction:column;border-top:1px solid var(--l
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
 .std.roster th.tm,.std.roster td.tm{position:sticky;left:0;padding-left:14px;text-align:left;width:auto;min-width:160px;color:var(--ink)}
 .std.roster th.tm{color:var(--muted)}
+
+/* ---------- rasasoccer.ca look ----------
+   Slate gradient bars with white text (like the site's box headings), steel-blue accents, Poppins. */
+body{font-size:15px}
+h1,h2,h3{letter-spacing:0;font-weight:700}
+.bar{background:var(--brand-grad);border-bottom:4px solid var(--pitch)}
+.club b{font-style:italic;font-weight:800;letter-spacing:.02em;text-transform:uppercase;font-size:21px}
+.crest{box-shadow:0 0 0 2px #fff}
+.tab{font-weight:600}
+.std{border-color:var(--line);border-radius:8px}
+.std-h{background:var(--brand-grad);color:#fff;border-bottom:0}
+.std-h h2{font-size:17px;font-weight:600;letter-spacing:.02em}
+.std-h .swipe{color:#fff;opacity:.85}
+.std-h .chip{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.35);color:#fff}
+.std-h .chip[aria-pressed="true"]{background:#fff;border-color:#fff;color:var(--brand)}
+.day-h h2{font-size:16px;font-weight:700;letter-spacing:.03em;color:var(--brand)}
+.match{border-color:#b9cad5;border-radius:8px}
+.m-time,.team .sc,.team-stats b,.pod-val b,.tile .n{font-weight:600}
+.m-time{font-size:18px}
+.seg button[aria-pressed="true"],.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.team-h h1,.hello h1{font-size:26px}
+.backlink:hover,.tlink:hover,.nmlink:hover{color:var(--accent)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .day-h h2{color:var(--accent)} }
+:root[data-theme="dark"] .day-h h2{color:var(--accent)}
+
+/* Tap feedback on team names, then the team page slides in */
+.tlink,.nmlink{border-radius:4px;transition:transform .12s ease, background-color .12s ease}
+.tlink:active,.nmlink:active{transform:scale(.96)}
+.tapped{animation:tapFlash .32s ease-out}
+@keyframes tapFlash{0%{background-color:color-mix(in srgb,var(--accent) 28%,transparent)}100%{background-color:transparent}}
+tr.tapped td{animation:tapFlash .32s ease-out}
+.view.enter{animation:viewIn .28s cubic-bezier(.2,.7,.2,1)}
+@keyframes viewIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){ .tapped,tr.tapped td,.view.enter{animation:none} .tlink:active,.nmlink:active{transform:none} }
 </style>
 </head>
 <body>
@@ -1863,6 +1898,7 @@ function go(view, push=true){
   if(view==="standings") renderStandings();
   if(view==="leaders") renderLeaders();
   if(view==="team") renderTeam(); else document.title = BASE_TITLE;
+  const el = $("#view-"+view); if(el && view==="team"){ el.classList.remove("enter"); void el.offsetWidth; el.classList.add("enter"); }
   if(view==="game-report") renderGameReport();
   if(view==="account") renderAccount();
   if(view==="check-email") renderCheckEmail();
@@ -1893,7 +1929,11 @@ document.addEventListener("click", e=>{
   const tm = e.target.closest("[data-teammode]");
   if(tm){ state.teamMode = tm.dataset.teammode; renderDashboard(); return; }
   const tl = e.target.closest("[data-teamlink]");
-  if(tl){ openTeam(tl.dataset.teamlink); return; }
+  if(tl){ const key = tl.dataset.teamlink;
+    if(state.view==="team" && state.teamKey===key) return;
+    const target = tl.closest("tr") || tl; target.classList.remove("tapped"); void target.offsetWidth; target.classList.add("tapped");
+    const reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    clearTimeout(go._tap); go._tap = setTimeout(()=>openTeam(key), reduce ? 0 : 140); return; }
   if(e.target.closest("[data-teamback]")){ if(state.teamPushed){ state.teamPushed = false; history.back(); } else go(state.teamFrom||"standings"); return; }
   const ttab = e.target.closest("[data-teamtab]"); if(ttab){ state.teamTab = ttab.dataset.teamtab; renderTeam(); const b=document.querySelector(`[data-teamtab="${state.teamTab}"]`); if(b) b.focus({preventScroll:true}); return; }
   const t = e.target.closest("[data-view],[data-comp],[data-fill],[data-score]");
