@@ -1,0 +1,2068 @@
+{
+ "source": "https://www.rasasoccer.ca/leagues/front_pagePro.cfm?clientID=6369&leagueID=27680",
+ "season": "Winter 2026-27",
+ "updatedAt": "2026-11-06T16:40:11Z",
+ "games": [
+  {
+   "date": "2026-09-10",
+   "time": "21:00",
+   "home": "GLORY FC",
+   "away": "RICHMOND ATHLE.",
+   "venue": "",
+   "homeScore": 2,
+   "awayScore": 3,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-09-10",
+   "time": "21:00",
+   "home": "RICHMOND OLD B.",
+   "away": "RAIN CITY GUNN.",
+   "venue": "",
+   "homeScore": 7,
+   "awayScore": 1,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-09-11",
+   "time": "21:00",
+   "home": "UNITED FC",
+   "away": "AC RICHMOND",
+   "venue": "",
+   "homeScore": 0,
+   "awayScore": 1,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-09-11",
+   "time": "21:00",
+   "home": "UNICORN FC",
+   "away": "RICHMOND ALL B.",
+   "venue": "",
+   "homeScore": 1,
+   "awayScore": 6,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-09-11",
+   "time": "21:00",
+   "home": "RANGERS FC",
+   "away": "FREEBIRD FC",
+   "venue": "",
+   "homeScore": 0,
+   "awayScore": 0,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-09-13",
+   "time": "11:00",
+   "home": "RFC HIBS",
+   "away": "HEATHERBRAE",
+   "venue": "",
+   "homeScore": 3,
+   "awayScore": 0,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-09-13",
+   "time": "11:00",
+   "home": "RICHLADS FC",
+   "away": "MAINLAND UNITE.",
+   "venue": "",
+   "homeScore": 6,
+   "awayScore": 0,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-09-13",
+   "time": "11:00",
+   "home": "EPFC LIONS",
+   "away": "HAMMERS FC",
+   "venue": "",
+   "homeScore": 3,
+   "awayScore": 0,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-09-13",
+   "time": "13:00",
+   "home": "RUFC GRADUATES",
+   "away": "LION ROCK",
+   "venue": "",
+   "homeScore": 3,
+   "awayScore": 4,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-09-17",
+   "time": "21:00",
+   "home": "RICHMOND ATHLE.",
+   "away": "RICHMOND OLD B.",
+   "venue": "",
+   "homeScore": 3,
+   "awayScore": 1,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-09-17",
+   "time": "21:00",
+   "home": "RAIN CITY GUNN.",
+   "away": "GLORY FC",
+   "venue": "",
+   "homeScore": 7,
+   "awayScore": 1,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-09-20",
+   "time": "11:00",
+   "home": "AC RICHMOND",
+   "away": "UNICORN FC",
+   "venue": "",
+   "homeScore": 5,
+   "awayScore": 1,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-09-20",
+   "time": "11:00",
+   "home": "RFC HIBS",
+   "away": "UNITED FC",
+   "venue": "",
+   "homeScore": 3,
+   "awayScore": 2,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-09-20",
+   "time": "11:00",
+   "home": "RICHLADS FC",
+   "away": "EPFC LIONS",
+   "venue": "",
+   "homeScore": 4,
+   "awayScore": 2,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-09-20",
+   "time": "13:00",
+   "home": "RICHMOND ALL B.",
+   "away": "RANGERS FC",
+   "venue": "",
+   "homeScore": 6,
+   "awayScore": 0,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-09-20",
+   "time": "13:00",
+   "home": "HAMMERS FC",
+   "away": "RUFC GRADUATES",
+   "venue": "",
+   "homeScore": 1,
+   "awayScore": 1,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-09-20",
+   "time": "13:00",
+   "home": "MAINLAND UNITE.",
+   "away": "WEST COAST CUR.",
+   "venue": "",
+   "homeScore": 5,
+   "awayScore": 1,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-09-20",
+   "time": "15:00",
+   "home": "HEATHERBRAE",
+   "away": "FREEBIRD FC",
+   "venue": "",
+   "homeScore": 1,
+   "awayScore": 1,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-09-20",
+   "time": "15:00",
+   "home": "LION ROCK",
+   "away": "CLUB IRELAND R.",
+   "venue": "",
+   "homeScore": 2,
+   "awayScore": 0,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-09-24",
+   "time": "21:00",
+   "home": "RAIN CITY GUNN.",
+   "away": "RICHMOND ATHLE.",
+   "venue": "",
+   "homeScore": 2,
+   "awayScore": 4,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-09-24",
+   "time": "21:00",
+   "home": "RICHMOND OLD B.",
+   "away": "GLORY FC",
+   "venue": "",
+   "homeScore": 8,
+   "awayScore": 2,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-09-25",
+   "time": "21:00",
+   "home": "UNICORN FC",
+   "away": "RFC HIBS",
+   "venue": "",
+   "homeScore": 1,
+   "awayScore": 2,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-09-25",
+   "time": "21:00",
+   "home": "FREEBIRD FC",
+   "away": "RICHMOND ALL B.",
+   "venue": "",
+   "homeScore": 3,
+   "awayScore": 5,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-09-25",
+   "time": "21:00",
+   "home": "RANGERS FC",
+   "away": "AC RICHMOND",
+   "venue": "",
+   "homeScore": 0,
+   "awayScore": 6,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-09-27",
+   "time": "11:00",
+   "home": "UNITED FC",
+   "away": "HEATHERBRAE",
+   "venue": "",
+   "homeScore": 5,
+   "awayScore": 1,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-09-27",
+   "time": "11:00",
+   "home": "EPFC LIONS",
+   "away": "LION ROCK",
+   "venue": "",
+   "homeScore": 1,
+   "awayScore": 1,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-09-27",
+   "time": "11:00",
+   "home": "HAMMERS FC",
+   "away": "MAINLAND UNITE.",
+   "venue": "",
+   "homeScore": 5,
+   "awayScore": 3,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-09-27",
+   "time": "13:00",
+   "home": "WEST COAST CUR.",
+   "away": "RICHLADS FC",
+   "venue": "",
+   "homeScore": 0,
+   "awayScore": 9,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-09-27",
+   "time": "13:00",
+   "home": "CLUB IRELAND R.",
+   "away": "RUFC GRADUATES",
+   "venue": "",
+   "homeScore": 1,
+   "awayScore": 1,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-10-01",
+   "time": "21:00",
+   "home": "RICHMOND ATHLE.",
+   "away": "GLORY FC",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": 6,
+   "awayScore": 0,
+   "officials": [
+    "Bruce Yung"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-10-01",
+   "time": "21:00",
+   "home": "RAIN CITY GUNN.",
+   "away": "RICHMOND OLD B.",
+   "venue": "Hugh Boyd - Blue",
+   "homeScore": 2,
+   "awayScore": 2,
+   "officials": [
+    "Ernesto De Marco"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-10-02",
+   "time": "21:00",
+   "home": "RICHMOND ALL B.",
+   "away": "RFC HIBS",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": 2,
+   "awayScore": 1,
+   "officials": [
+    "Conor Niemi",
+    "Darman Nair",
+    "Dheeran Nair"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-10-02",
+   "time": "21:00",
+   "home": "FREEBIRD FC",
+   "away": "AC RICHMOND",
+   "venue": "Hugh Boyd - Blue",
+   "homeScore": 2,
+   "awayScore": 11,
+   "officials": [
+    "Sean Davies",
+    "Mike Lynch",
+    "Ella Lynch"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-10-02",
+   "time": "21:00",
+   "home": "UNITED FC",
+   "away": "UNICORN FC",
+   "venue": "Minoru Oval",
+   "homeScore": 1,
+   "awayScore": 4,
+   "officials": [
+    "billy Cheng",
+    "Harry Rahiman",
+    "Jon Lee"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-10-04",
+   "time": "11:00",
+   "home": "MAINLAND UNITE.",
+   "away": "CLUB IRELAND R.",
+   "venue": "MacNeil North",
+   "homeScore": 2,
+   "awayScore": 4,
+   "officials": [
+    "Harry Rahiman"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-10-04",
+   "time": "11:00",
+   "home": "HAMMERS FC",
+   "away": "WEST COAST CUR.",
+   "venue": "MacNeil South",
+   "homeScore": 11,
+   "awayScore": 1,
+   "officials": [
+    "Peter Klausner"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-10-04",
+   "time": "11:00",
+   "home": "EPFC LIONS",
+   "away": "RUFC GRADUATES",
+   "venue": "McNair",
+   "homeScore": 3,
+   "awayScore": 3,
+   "officials": [
+    "Kanwal Sangha"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-10-04",
+   "time": "13:00",
+   "home": "HEATHERBRAE",
+   "away": "RANGERS FC",
+   "venue": "McNair",
+   "homeScore": 0,
+   "awayScore": 2,
+   "officials": [
+    "Dusko Jovic"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-10-04",
+   "time": "13:00",
+   "home": "LION ROCK",
+   "away": "RICHLADS FC",
+   "venue": "MacNeil North",
+   "homeScore": 0,
+   "awayScore": 0,
+   "officials": [
+    "Emre Ogutcen"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-10-07",
+   "time": "21:00",
+   "home": "LION ROCK",
+   "away": "RICHLADS FC",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": 2,
+   "awayScore": 5,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-10-07",
+   "time": "21:00",
+   "home": "RUFC GRADUATES",
+   "away": "CLUB IRELAND R.",
+   "venue": "Hugh Boyd - Blue",
+   "homeScore": 3,
+   "awayScore": 1,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-10-08",
+   "time": "21:00",
+   "home": "RICHMOND OLD B.",
+   "away": "RICHMOND ATHLE.",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": 1,
+   "awayScore": 3,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-10-08",
+   "time": "21:00",
+   "home": "GLORY FC",
+   "away": "RAIN CITY GUNN.",
+   "venue": "Hugh Boyd - Blue",
+   "homeScore": 1,
+   "awayScore": 6,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-10-09",
+   "time": "21:00",
+   "home": "UNITED FC",
+   "away": "RICHMOND ALL B.",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": 0,
+   "awayScore": 5,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-10-09",
+   "time": "21:00",
+   "home": "HEATHERBRAE",
+   "away": "AC RICHMOND",
+   "venue": "Minoru Oval",
+   "homeScore": 0,
+   "awayScore": 6,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-10-09",
+   "time": "21:00",
+   "home": "RANGERS FC",
+   "away": "RFC HIBS",
+   "venue": "Hugh Boyd - Blue",
+   "homeScore": 0,
+   "awayScore": 7,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-10-13",
+   "time": "21:00",
+   "home": "UNICORN FC",
+   "away": "FREEBIRD FC",
+   "venue": "Hugh Boyd - Blue",
+   "homeScore": 4,
+   "awayScore": 1,
+   "officials": [
+    "Kanwal Sangha",
+    "Don Taylor",
+    "Jon Lee"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-10-15",
+   "time": "21:00",
+   "home": "CLUB IRELAND R.",
+   "away": "RICHMOND OLD B.",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": 0,
+   "awayScore": 8,
+   "officials": [
+    "Ernesto De Marco"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-10-15",
+   "time": "21:00",
+   "home": "EPFC LIONS",
+   "away": "RAIN CITY GUNN.",
+   "venue": "Hugh Boyd - Blue",
+   "homeScore": 1,
+   "awayScore": 2,
+   "officials": [
+    "Sean Davies"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-10-15",
+   "time": "21:00",
+   "home": "MAINLAND UNITE.",
+   "away": "RICHMOND ATHLE.",
+   "venue": "Richmond High",
+   "homeScore": 2,
+   "awayScore": 7,
+   "officials": [
+    "Peter Klausner"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-10-16",
+   "time": "21:00",
+   "home": "FREEBIRD FC",
+   "away": "RFC HIBS",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": 0,
+   "awayScore": 8,
+   "officials": [
+    "bob briza",
+    "Mike Lynch",
+    "Don Taylor"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-10-18",
+   "time": "11:00",
+   "home": "WEST COAST CUR.",
+   "away": "RUFC GRADUATES",
+   "venue": "MacNeil North",
+   "homeScore": 0,
+   "awayScore": 7,
+   "officials": [
+    "Bruce Yung"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-10-18",
+   "time": "11:00",
+   "home": "MAINLAND UNITE.",
+   "away": "EPFC LIONS",
+   "venue": "MacNeil South",
+   "homeScore": 2,
+   "awayScore": 3,
+   "officials": [
+    "billy Cheng"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-10-18",
+   "time": "11:00",
+   "home": "HAMMERS FC",
+   "away": "LION ROCK",
+   "venue": "McNair",
+   "homeScore": 2,
+   "awayScore": 2,
+   "officials": [
+    "Kanwal Sangha"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-10-18",
+   "time": "13:00",
+   "home": "HEATHERBRAE",
+   "away": "UNICORN FC",
+   "venue": "Minoru 3",
+   "homeScore": 2,
+   "awayScore": 4,
+   "officials": [
+    "Conor Niemi",
+    "Darman Nair",
+    "Dheeran Nair"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-10-18",
+   "time": "13:00",
+   "home": "UNITED FC",
+   "away": "RANGERS FC",
+   "venue": "Hugh Boyd Oval",
+   "homeScore": 1,
+   "awayScore": 0,
+   "officials": [
+    "Dusko Jovic"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-10-18",
+   "time": "13:00",
+   "home": "RICHLADS FC",
+   "away": "CLUB IRELAND R.",
+   "venue": "MacNeil North",
+   "homeScore": 2,
+   "awayScore": 2,
+   "officials": [
+    "Mike Laing"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-10-20",
+   "time": "21:00",
+   "home": "FREEBIRD FC",
+   "away": "GLORY FC",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": 7,
+   "awayScore": 1,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-10-21",
+   "time": "21:00",
+   "home": "MAINLAND UNITE.",
+   "away": "HAMMERS FC",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": 2,
+   "awayScore": 3,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-10-22",
+   "time": "21:00",
+   "home": "RICHMOND OLD B.",
+   "away": "LION ROCK",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": 4,
+   "awayScore": 1,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-10-22",
+   "time": "21:00",
+   "home": "RAIN CITY GUNN.",
+   "away": "RICHLADS FC",
+   "venue": "Hugh Boyd - Blue",
+   "homeScore": 0,
+   "awayScore": 3,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-10-22",
+   "time": "21:00",
+   "home": "GLORY FC",
+   "away": "WEST COAST CUR.",
+   "venue": "Richmond High",
+   "homeScore": 2,
+   "awayScore": 2,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-10-23",
+   "time": "21:00",
+   "home": "HEATHERBRAE",
+   "away": "RICHMOND ALL B.",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": 1,
+   "awayScore": 7,
+   "officials": [
+    "Mike Laing",
+    "Gavin Laing",
+    "Spencer Brown"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-10-23",
+   "time": "21:00",
+   "home": "AC RICHMOND",
+   "away": "RFC HIBS",
+   "venue": "Hugh Boyd - Blue",
+   "homeScore": 1,
+   "awayScore": 1,
+   "officials": [
+    "billy Cheng",
+    "Don Taylor",
+    "Jon Lee"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-10-25",
+   "time": "11:00",
+   "home": "RUFC GRADUATES",
+   "away": "MAINLAND UNITE.",
+   "venue": "MacNeil North",
+   "homeScore": 2,
+   "awayScore": 5,
+   "officials": [
+    "Lothar Chan"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-10-25",
+   "time": "11:00",
+   "home": "RICHLADS FC",
+   "away": "HAMMERS FC",
+   "venue": "McNair",
+   "homeScore": 1,
+   "awayScore": 4,
+   "officials": [
+    "Harry Rahiman"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-10-25",
+   "time": "13:00",
+   "home": "CLUB IRELAND R.",
+   "away": "EPFC LIONS",
+   "venue": "McNair",
+   "homeScore": 2,
+   "awayScore": 0,
+   "officials": [
+    "Conor Niemi"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-10-25",
+   "time": "13:00",
+   "home": "WEST COAST CUR.",
+   "away": "LION ROCK",
+   "venue": "MacNeil North",
+   "homeScore": 0,
+   "awayScore": 7,
+   "officials": [
+    "Peter Klausner"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-10-25",
+   "time": "13:00",
+   "home": "FREEBIRD FC",
+   "away": "UNITED FC",
+   "venue": "Hugh Boyd - South",
+   "homeScore": 0,
+   "awayScore": 6,
+   "officials": [
+    "Kanwal Sangha",
+    "Mike Lynch",
+    "Dheeran Nair"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-10-25",
+   "time": "13:00",
+   "home": "UNICORN FC",
+   "away": "RANGERS FC",
+   "venue": "Hugh Boyd Oval",
+   "homeScore": 3,
+   "awayScore": 2,
+   "officials": [
+    "Ernesto De Marco"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-10-27",
+   "time": "21:00",
+   "home": "RICHMOND ALL B.",
+   "away": "AC RICHMOND",
+   "venue": "Hugh Boyd - Blue",
+   "homeScore": 3,
+   "awayScore": 0,
+   "officials": [
+    "bob briza",
+    "Don Taylor",
+    "Harry Rahiman"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-10-28",
+   "time": "21:00",
+   "home": "WEST COAST CUR.",
+   "away": "EPFC LIONS",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": 0,
+   "awayScore": 4,
+   "officials": [
+    "Lothar Chan"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-10-29",
+   "time": "21:00",
+   "home": "RICHMOND ATHLE.",
+   "away": "RAIN CITY GUNN.",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": 5,
+   "awayScore": 1,
+   "officials": [
+    "Ernesto De Marco"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-10-29",
+   "time": "21:00",
+   "home": "GLORY FC",
+   "away": "RICHMOND OLD B.",
+   "venue": "Hugh Boyd - Blue",
+   "homeScore": 0,
+   "awayScore": 8,
+   "officials": [
+    "Harry Rahiman"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-10-30",
+   "time": "21:00",
+   "home": "HEATHERBRAE",
+   "away": "RFC HIBS",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": 1,
+   "awayScore": 3,
+   "officials": [
+    "billy Cheng",
+    "Darman Nair",
+    "Dheeran Nair"
+   ],
+   "number": ""
+  },
+  {
+   "date": "2026-11-01",
+   "time": "11:00",
+   "home": "CLUB IRELAND R.",
+   "away": "HAMMERS FC",
+   "venue": "MacNeil North",
+   "homeScore": 3,
+   "awayScore": 3,
+   "officials": [
+    "Kanwal Sangha"
+   ],
+   "number": "d2-7-25"
+  },
+  {
+   "date": "2026-11-01",
+   "time": "11:00",
+   "home": "RUFC GRADUATES",
+   "away": "RICHLADS FC",
+   "venue": "McNair",
+   "homeScore": 4,
+   "awayScore": 3,
+   "officials": [
+    "Sean Davies"
+   ],
+   "number": "d2-7-27"
+  },
+  {
+   "date": "2026-11-01",
+   "time": "13:00",
+   "home": "EPFC LIONS",
+   "away": "WEST COAST CUR.",
+   "venue": "Hugh Boyd - South",
+   "homeScore": 7,
+   "awayScore": 1,
+   "officials": [
+    "Emre Ogutcen"
+   ],
+   "number": "d2-7-26"
+  },
+  {
+   "date": "2026-11-01",
+   "time": "13:00",
+   "home": "LION ROCK",
+   "away": "MAINLAND UNITE.",
+   "venue": "MacNeil North",
+   "homeScore": 1,
+   "awayScore": 1,
+   "officials": [
+    "Philip Leung"
+   ],
+   "number": "d2-7-28"
+  },
+  {
+   "date": "2026-11-01",
+   "time": "13:00",
+   "home": "AC RICHMOND",
+   "away": "UNITED FC",
+   "venue": "McNair",
+   "homeScore": 2,
+   "awayScore": 3,
+   "officials": [
+    "Dusko Jovic",
+    "Darman Nair",
+    "Dheeran Nair"
+   ],
+   "number": "d1-8-30"
+  },
+  {
+   "date": "2026-11-01",
+   "time": "13:00",
+   "home": "FREEBIRD FC",
+   "away": "RANGERS FC",
+   "venue": "Hugh Boyd Oval",
+   "homeScore": 2,
+   "awayScore": 0,
+   "officials": [
+    "Conor Niemi"
+   ],
+   "number": "d1-8-31"
+  },
+  {
+   "date": "2026-11-01",
+   "time": "13:00",
+   "home": "RICHMOND ALL B.",
+   "away": "UNICORN FC",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [
+    "Mike Laing",
+    "Don Taylor",
+    "Harry Rahiman"
+   ],
+   "number": "d1-8-32"
+  },
+  {
+   "date": "2026-11-03",
+   "time": "21:00",
+   "home": "RICHMOND ATHLE.",
+   "away": "UNICORN FC",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [
+    "Ernesto De Marco"
+   ],
+   "number": "LC8"
+  },
+  {
+   "date": "2026-11-05",
+   "time": "21:00",
+   "home": "RAIN CITY GUNN.",
+   "away": "GLORY FC",
+   "venue": "Minoru 3",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [
+    "Dusko Jovic"
+   ],
+   "number": "m-9-21"
+  },
+  {
+   "date": "2026-11-05",
+   "time": "21:00",
+   "home": "EPFC LIONS",
+   "away": "RICHMOND ATHLE.",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [
+    "Emre Ogutcen"
+   ],
+   "number": "m-9-22 / 2-8-C9"
+  },
+  {
+   "date": "2026-11-05",
+   "time": "21:00",
+   "home": "HAMMERS FC",
+   "away": "RICHMOND OLD B.",
+   "venue": "Hugh Boyd - Blue",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [
+    "bob briza"
+   ],
+   "number": "m-9-23 / 2-8-C10"
+  },
+  {
+   "date": "2026-11-06",
+   "time": "21:00",
+   "home": "UNICORN FC",
+   "away": "AC RICHMOND",
+   "venue": "Minoru Oval",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [
+    "billy Cheng",
+    "Darman Nair",
+    "Dheeran Nair"
+   ],
+   "number": "d1-9-33"
+  },
+  {
+   "date": "2026-11-06",
+   "time": "21:00",
+   "home": "UNITED FC",
+   "away": "RFC HIBS",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [
+    "Mike Laing",
+    "Gavin Laing",
+    "Mike Lynch"
+   ],
+   "number": "d1-9-34"
+  },
+  {
+   "date": "2026-11-06",
+   "time": "21:00",
+   "home": "RANGERS FC",
+   "away": "RICHMOND ALL B.",
+   "venue": "Hugh Boyd - Blue",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [
+    "Sean Davies"
+   ],
+   "number": "d1-9-35"
+  },
+  {
+   "date": "2026-11-08",
+   "time": "11:00",
+   "home": "FREEBIRD FC",
+   "away": "HEATHERBRAE",
+   "venue": "MacNeil - North",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [
+    "Kanwal Sangha",
+    "Mike Lynch",
+    "Ella Lynch"
+   ],
+   "number": "d1-9-36"
+  },
+  {
+   "date": "2026-11-08",
+   "time": "11:00",
+   "home": "HAMMERS FC",
+   "away": "EPFC LIONS",
+   "venue": "McNair",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [
+    "Peter Klausner"
+   ],
+   "number": "d2-8-30"
+  },
+  {
+   "date": "2026-11-08",
+   "time": "13:00",
+   "home": "MAINLAND UNITE.",
+   "away": "RICHLADS FC",
+   "venue": "Hugh Boyd Oval",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [
+    "Harry Rahiman"
+   ],
+   "number": "d2-8-29"
+  },
+  {
+   "date": "2026-11-08",
+   "time": "13:00",
+   "home": "WEST COAST CUR.",
+   "away": "CLUB IRELAND R.",
+   "venue": "Hugh Boyd - South",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [
+    "Conor Niemi"
+   ],
+   "number": "d2-8-32"
+  },
+  {
+   "date": "2026-11-10",
+   "time": "21:00",
+   "home": "RICHLADS FC",
+   "away": "FREEBIRD FC",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "LC5"
+  },
+  {
+   "date": "2026-11-10",
+   "time": "21:00",
+   "home": "RUFC GRADUATES",
+   "away": "UNITED FC",
+   "venue": "Hugh Boyd - Blue",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "LC6"
+  },
+  {
+   "date": "2026-11-12",
+   "time": "21:00",
+   "home": "RICHMOND OLD B.",
+   "away": "RICHMOND ATHLE.",
+   "venue": "Hugh Boyd - Blue",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "m-10-24"
+  },
+  {
+   "date": "2026-11-12",
+   "time": "21:00",
+   "home": "MAINLAND UNITE.",
+   "away": "GLORY FC",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "m-10-25 / 2-9-C11"
+  },
+  {
+   "date": "2026-11-13",
+   "time": "21:00",
+   "home": "RFC HIBS",
+   "away": "UNICORN FC",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "d1-10-37"
+  },
+  {
+   "date": "2026-11-13",
+   "time": "21:00",
+   "home": "RICHMOND ALL B.",
+   "away": "FREEBIRD FC",
+   "venue": "Hugh Boyd - Blue",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "d1-10-38"
+  },
+  {
+   "date": "2026-11-15",
+   "time": "11:00",
+   "home": "HEATHERBRAE",
+   "away": "UNITED FC",
+   "venue": "MacNeil - North",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "d1-10-39"
+  },
+  {
+   "date": "2026-11-15",
+   "time": "11:00",
+   "home": "EPFC LIONS",
+   "away": "RICHLADS FC",
+   "venue": "MacNeil - South",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "d2-9-33"
+  },
+  {
+   "date": "2026-11-15",
+   "time": "11:00",
+   "home": "RUFC GRADUATES",
+   "away": "HAMMERS FC",
+   "venue": "McNair",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "d2-9-34"
+  },
+  {
+   "date": "2026-11-15",
+   "time": "13:00",
+   "home": "AC RICHMOND",
+   "away": "RANGERS FC",
+   "venue": "McNair",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "d1-10-40"
+  },
+  {
+   "date": "2026-11-15",
+   "time": "13:00",
+   "home": "WEST COAST CUR.",
+   "away": "MAINLAND UNITE.",
+   "venue": "MacNeil - North",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "d2-9-35"
+  },
+  {
+   "date": "2026-11-15",
+   "time": "13:00",
+   "home": "CLUB IRELAND R.",
+   "away": "LION ROCK",
+   "venue": "MacNeil - South",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "d2-9-36"
+  },
+  {
+   "date": "2026-11-17",
+   "time": "21:00",
+   "home": "HAMMERS FC",
+   "away": "HEATHERBRAE",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "LC10"
+  },
+  {
+   "date": "2026-11-19",
+   "time": "21:00",
+   "home": "RICHMOND OLD B.",
+   "away": "GLORY FC",
+   "venue": "Minoru 3",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "m-11-27"
+  },
+  {
+   "date": "2026-11-19",
+   "time": "21:00",
+   "home": "LION ROCK",
+   "away": "RICHMOND ATHLE.",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "m-11-28 / 2-10-C13"
+  },
+  {
+   "date": "2026-11-19",
+   "time": "21:00",
+   "home": "RUFC GRADUATES",
+   "away": "RAIN CITY GUNN.",
+   "venue": "Hugh Boyd - Blue",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "m-11-29 / 2-10-C14"
+  },
+  {
+   "date": "2026-11-20",
+   "time": "21:00",
+   "home": "RFC HIBS",
+   "away": "RICHMOND ALL B.",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "d1-11-41"
+  },
+  {
+   "date": "2026-11-22",
+   "time": "11:00",
+   "home": "UNICORN FC",
+   "away": "UNITED FC",
+   "venue": "McNair",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "d1-11-42"
+  },
+  {
+   "date": "2026-11-22",
+   "time": "11:00",
+   "home": "LION ROCK",
+   "away": "EPFC LIONS",
+   "venue": "MacNeil - North",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "d2-10-37"
+  },
+  {
+   "date": "2026-11-22",
+   "time": "13:00",
+   "home": "RANGERS FC",
+   "away": "HEATHERBRAE",
+   "venue": "McNair",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "d1-11-43"
+  },
+  {
+   "date": "2026-11-22",
+   "time": "13:00",
+   "home": "AC RICHMOND",
+   "away": "FREEBIRD FC",
+   "venue": "Richmond High",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "d1-11-44"
+  },
+  {
+   "date": "2026-11-22",
+   "time": "13:00",
+   "home": "MAINLAND UNITE.",
+   "away": "HAMMERS FC",
+   "venue": "MacNeil - North",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "d2-10-38"
+  },
+  {
+   "date": "2026-11-22",
+   "time": "13:00",
+   "home": "RICHLADS FC",
+   "away": "WEST COAST CUR.",
+   "venue": "Hugh Boyd Oval",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "d2-10-39"
+  },
+  {
+   "date": "2026-11-22",
+   "time": "13:00",
+   "home": "RUFC GRADUATES",
+   "away": "CLUB IRELAND R.",
+   "venue": "Hugh Boyd - South",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "d2-10-40"
+  },
+  {
+   "date": "2026-11-24",
+   "time": "21:00",
+   "home": "EPFC LIONS",
+   "away": "RFC HIBS",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "LC9"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "21:00",
+   "home": "LION ROCK",
+   "away": "RUFC GRADUATES",
+   "venue": "Hugh Boyd - Blue",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "d2-8-31"
+  },
+  {
+   "date": "2026-11-26",
+   "time": "21:00",
+   "home": "RICHMOND ATHLE.",
+   "away": "RAIN CITY GUNN.",
+   "venue": "Minoru 3",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "m-12-30"
+  },
+  {
+   "date": "2026-11-26",
+   "time": "21:00",
+   "home": "CLUB IRELAND R.",
+   "away": "GLORY FC",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "m-12-31 / 2-11-C15"
+  },
+  {
+   "date": "2026-11-26",
+   "time": "21:00",
+   "home": "WEST COAST CUR.",
+   "away": "RICHMOND OLD B.",
+   "venue": "Hugh Boyd - Blue",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "m-12-32 / 2-11-C16"
+  },
+  {
+   "date": "2026-11-29",
+   "time": "11:00",
+   "home": "RICHMOND ALL B.",
+   "away": "UNITED FC",
+   "venue": "McNair",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "d1-12-45"
+  },
+  {
+   "date": "2026-11-29",
+   "time": "11:00",
+   "home": "WEST COAST CUR.",
+   "away": "HAMMERS FC",
+   "venue": "MacNeil - North",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "d2-11-41"
+  },
+  {
+   "date": "2026-11-29",
+   "time": "11:00",
+   "home": "RUFC GRADUATES",
+   "away": "EPFC LIONS",
+   "venue": "MacNeil - South",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "d2-11-42"
+  },
+  {
+   "date": "2026-11-29",
+   "time": "13:00",
+   "home": "RFC HIBS",
+   "away": "RANGERS FC",
+   "venue": "Hugh Boyd Oval",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "d1-12-46"
+  },
+  {
+   "date": "2026-11-29",
+   "time": "13:00",
+   "home": "AC RICHMOND",
+   "away": "HEATHERBRAE",
+   "venue": "McNair",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "d1-12-47"
+  },
+  {
+   "date": "2026-11-29",
+   "time": "13:00",
+   "home": "FREEBIRD FC",
+   "away": "UNICORN FC",
+   "venue": "Richmond High",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "d1-12-48"
+  },
+  {
+   "date": "2026-11-29",
+   "time": "13:00",
+   "home": "CLUB IRELAND R.",
+   "away": "MAINLAND UNITE.",
+   "venue": "Hugh Boyd - South",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "d2-11-43"
+  },
+  {
+   "date": "2026-11-29",
+   "time": "13:00",
+   "home": "RICHLADS FC",
+   "away": "LION ROCK",
+   "venue": "MacNeil - South",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": "d2-11-44"
+  },
+  {
+   "date": "2026-12-03",
+   "time": "21:00",
+   "home": "RICHMOND ATHLE.",
+   "away": "GLORY FC",
+   "venue": "Richmond High",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-12-03",
+   "time": "21:00",
+   "home": "HAMMERS FC",
+   "away": "RAIN CITY GUNN.",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-12-03",
+   "time": "21:00",
+   "home": "MAINLAND UNITE.",
+   "away": "RICHMOND OLD B.",
+   "venue": "Hugh Boyd - Blue",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-12-04",
+   "time": "21:00",
+   "home": "AC RICHMOND",
+   "away": "RICHMOND ALL B.",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-12-06",
+   "time": "11:00",
+   "home": "RANGERS FC",
+   "away": "UNITED FC",
+   "venue": "MacNeil - North",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-12-06",
+   "time": "11:00",
+   "home": "RUFC GRADUATES",
+   "away": "WEST COAST CUR.",
+   "venue": "MacNeil - South",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-12-06",
+   "time": "11:00",
+   "home": "EPFC LIONS",
+   "away": "MAINLAND UNITE.",
+   "venue": "McNair",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-12-06",
+   "time": "13:00",
+   "home": "UNICORN FC",
+   "away": "HEATHERBRAE",
+   "venue": "Hugh Boyd Oval",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-12-06",
+   "time": "13:00",
+   "home": "RFC HIBS",
+   "away": "FREEBIRD FC",
+   "venue": "Richmond High",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-12-06",
+   "time": "13:00",
+   "home": "LION ROCK",
+   "away": "HAMMERS FC",
+   "venue": "McNair",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-12-06",
+   "time": "13:00",
+   "home": "CLUB IRELAND R.",
+   "away": "RICHLADS FC",
+   "venue": "Hugh Boyd - South",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-12-10",
+   "time": "21:00",
+   "home": "RICHMOND OLD B.",
+   "away": "RAIN CITY GUNN.",
+   "venue": "Richmond High",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-12-10",
+   "time": "21:00",
+   "home": "RICHLADS FC",
+   "away": "GLORY FC",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-12-10",
+   "time": "21:00",
+   "home": "CLUB IRELAND R.",
+   "away": "RICHMOND ATHLE.",
+   "venue": "Hugh Boyd - Blue",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-12-11",
+   "time": "21:00",
+   "home": "RFC HIBS",
+   "away": "AC RICHMOND",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-12-13",
+   "time": "11:00",
+   "home": "UNITED FC",
+   "away": "FREEBIRD FC",
+   "venue": "McNair",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-12-13",
+   "time": "13:00",
+   "home": "RANGERS FC",
+   "away": "UNICORN FC",
+   "venue": "Richmond High",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-12-13",
+   "time": "13:00",
+   "home": "RICHMOND ALL B.",
+   "away": "HEATHERBRAE",
+   "venue": "McNair",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-12-13",
+   "time": "13:00",
+   "home": "MAINLAND UNITE.",
+   "away": "RUFC GRADUATES",
+   "venue": "MacNeil - North",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-12-13",
+   "time": "13:00",
+   "home": "EPFC LIONS",
+   "away": "CLUB IRELAND R.",
+   "venue": "MacNeil - South",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-12-13",
+   "time": "13:00",
+   "home": "HAMMERS FC",
+   "away": "RICHLADS FC",
+   "venue": "Hugh Boyd Oval",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-12-13",
+   "time": "13:00",
+   "home": "LION ROCK",
+   "away": "WEST COAST CUR.",
+   "venue": "Hugh Boyd - South",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-12-16",
+   "time": "21:00",
+   "home": "HAMMERS FC",
+   "away": "GLORY FC",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-12-16",
+   "time": "21:00",
+   "home": "RICHMOND ATHLE.",
+   "away": "RUFC GRADUATES",
+   "venue": "Hugh Boyd - Blue",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-12-17",
+   "time": "21:00",
+   "home": "RICHMOND OLD B.",
+   "away": "RANGERS FC",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-12-17",
+   "time": "21:00",
+   "home": "LION ROCK",
+   "away": "RAIN CITY GUNN.",
+   "venue": "Richmond High",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2026-12-17",
+   "time": "21:00",
+   "home": "CLUB IRELAND R.",
+   "away": "WEST COAST CUR.",
+   "venue": "Hugh Boyd - Blue",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2027-01-14",
+   "time": "21:00",
+   "home": "MAINLAND UNITE.",
+   "away": "RAIN CITY GUNN.",
+   "venue": "TBD",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2027-01-14",
+   "time": "21:00",
+   "home": "WEST COAST CUR.",
+   "away": "RICHMOND ATHLE.",
+   "venue": "TBD",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2027-01-14",
+   "time": "21:00",
+   "home": "EPFC LIONS",
+   "away": "RICHMOND OLD B.",
+   "venue": "TBD",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2027-01-20",
+   "time": "21:00",
+   "home": "WINNER LC5",
+   "away": "RICHMOND ALL B.",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2027-01-20",
+   "time": "21:00",
+   "home": "WINNER LC7",
+   "away": "WINNER LC6",
+   "venue": "King George",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2027-01-21",
+   "time": "21:00",
+   "home": "EPFC LIONS",
+   "away": "GLORY FC",
+   "venue": "TBD",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2027-01-21",
+   "time": "21:00",
+   "home": "HAMMERS FC",
+   "away": "RICHMOND ATHLE.",
+   "venue": "TBD",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2027-01-21",
+   "time": "21:00",
+   "home": "RUFC GRADUATES",
+   "away": "RICHMOND OLD B.",
+   "venue": "TBD",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2027-01-26",
+   "time": "21:00",
+   "home": "WINNER LC8",
+   "away": "AC RICHMOND",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2027-01-26",
+   "time": "21:00",
+   "home": "WINNER LC10",
+   "away": "WINNER LC9",
+   "venue": "King George",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2027-01-28",
+   "time": "21:00",
+   "home": "LION ROCK",
+   "away": "GLORY FC",
+   "venue": "TBD",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2027-01-28",
+   "time": "21:00",
+   "home": "CLUB IRELAND R.",
+   "away": "RAIN CITY GUNN.",
+   "venue": "TBD",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2027-01-28",
+   "time": "21:00",
+   "home": "RICHLADS FC",
+   "away": "RICHMOND OLD B.",
+   "venue": "TBD",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2027-02-04",
+   "time": "21:00",
+   "home": "RUFC GRADUATES",
+   "away": "GLORY FC",
+   "venue": "TBD",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2027-02-04",
+   "time": "21:00",
+   "home": "WEST COAST CUR.",
+   "away": "RAIN CITY GUNN.",
+   "venue": "TBD",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2027-02-04",
+   "time": "21:00",
+   "home": "RICHLADS FC",
+   "away": "RICHMOND ATHLE.",
+   "venue": "TBD",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2027-02-09",
+   "time": "21:00",
+   "home": "WINNER LC12",
+   "away": "WINNER LC11",
+   "venue": "TBA",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  },
+  {
+   "date": "2027-02-09",
+   "time": "21:00",
+   "home": "WINNER LC14",
+   "away": "WINNER LC13",
+   "venue": "King George",
+   "homeScore": null,
+   "awayScore": null,
+   "officials": [],
+   "number": ""
+  }
+ ]
+}
