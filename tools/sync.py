@@ -231,6 +231,23 @@ def parse_photos(html):
     return photos
 
 
+def parse_staff(html):
+    """Team personnel page: a table with Title / Name / Email columns. Only title and name are kept."""
+    soup = BeautifulSoup(html, "html.parser")
+    for table in soup.find_all("table"):
+        heads = [clean(th.get_text()) for th in table.find_all("th")]
+        if "Title" not in heads or "Name" not in heads:
+            continue
+        ti, ni = heads.index("Title"), heads.index("Name")
+        out = []
+        for tr in table.find_all("tr"):
+            tds = tr.find_all("td")
+            if len(tds) > max(ti, ni) and clean(tds[ni].get_text()):
+                out.append({"name": clean(tds[ni].get_text()), "role": clean(tds[ti].get_text())})
+        return out
+    return []
+
+
 def write_if_changed(path, data):
     old = None
     if os.path.exists(path):
@@ -308,11 +325,16 @@ def main():
                 if key in old_r["teams"]:
                     teams[key] = old_r["teams"][key]
                 continue
+            try:
+                staff = parse_staff(f.get(f"personnel.cfm?{LEAGUE}&teamID={tid}", f"staff_{tid}.html"))
+            except Exception as e:
+                print(f"{full} staff: {e}", file=sys.stderr)
+                staff = old_r["teams"].get(key, {}).get("staff", [])
             old_photo = {p["name"].lower(): p.get("photo", "") for p in old_r["teams"].get(key, {}).get("players", [])}
             for p in players:
                 pid = p.pop("_pid")
                 p["photo"] = photos.get(pid) or old_photo.get(p["name"].lower(), "")
-            teams[key] = {"name": full, "source": src, "players": players}
+            teams[key] = {"name": full, "source": src, "staff": staff, "players": players}
         if args.samples and not teams:
             pass
         elif len(teams) >= 15:

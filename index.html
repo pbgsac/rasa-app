@@ -374,6 +374,10 @@ dl.view{margin:0;display:flex;flex-direction:column;border-top:1px solid var(--l
 .std tbody tr:nth-child(even) td{background:var(--surface-2)}
 .std tr.mine td{background:color-mix(in srgb,var(--card-yellow) 22%,transparent)}
 /* Team page */
+.nmlink{background:none;border:0;padding:0;margin:0;font:inherit;color:inherit;text-align:left;cursor:pointer}
+.nmlink:hover{color:var(--accent);text-decoration:underline}
+.team-tabs{margin-top:6px}
+.seg button .cnt{font-weight:600;opacity:.65;font-size:.9em}
 .backlink{align-self:flex-start;background:none;border:0;padding:4px 0;font-weight:700;color:var(--muted);cursor:pointer;font-size:14px}
 .backlink:hover{color:var(--ink)}
 .team-h{display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:6px;border-left:6px solid var(--c);padding-left:12px}
@@ -737,7 +741,7 @@ function toast(msg){const t=$("#toast"); t.textContent=msg; t.hidden=false; clea
 // Lookup-only mode for now: Schedule, Standings and Leaders. Sign-in and Game Report are switched off
 // (their code stays, ready to turn back on with the back end).
 const FEATURES = {accounts:false, gameReport:false};
-const state = { view:"schedule", mode:"up", comp:"ALL", team:"ALL", user:null, upWeeks:2, resWeeks:2, refView:"Kanwal Sangha", teamMode:"up", adminWeeks:2, refMode:"up", adminFilter:null, adminMode:"games", ldF:{g:"ALL",a:"ALL",k:"ALL"}, teamKey:null, teamMore:{} };
+const state = { view:"schedule", mode:"up", comp:"ALL", team:"ALL", user:null, upWeeks:2, resWeeks:2, refView:"Kanwal Sangha", teamMode:"up", adminWeeks:2, refMode:"up", adminFilter:null, adminMode:"games", ldF:{g:"ALL",a:"ALL",k:"ALL"}, teamKey:null, teamTab:"up" };
 
 /* ---------- Match card ---------- */
 function matchCard(g, opts={}){
@@ -745,7 +749,7 @@ function matchCard(g, opts={}){
   const tm = fmtTime(g.time);
   const scored = hasScore(g);
   const hw = scored && g.hs>g.as, aw = scored && g.as>g.hs;
-  const teamRow = (code,score,cls)=>`<div class="team ${cls}"><span class="nm">${esc(tn(code))}</span>${scored?`<span class="sc">${score}</span>`:""}</div>`;
+  const teamRow = (code,score,cls)=>`<div class="team ${cls}">${TEAMS[code]?`<button class="nm nmlink" data-teamlink="${esc(code)}" title="Open the ${esc(tn(code))} team page">${esc(tn(code))}</button>`:`<span class="nm">${esc(tn(code))}</span>`}${scored?`<span class="sc">${score}</span>`:""}</div>`;
   const status = scored ? (g.byApp && webDiffers(g) ? `<span class="appsc" title="Reported in the app by the referee">Ref-reported</span>` : "") : (isPast(g) ? `<span class="pending">Score not reported</span>` : "");
   const venue = g.venue ? `<span>${esc(g.venue)}</span>` : "";
   const ref = g.refs.length ? `<span class="ref">${JERSEY}${refText(g.refs)}</span>` : "";
@@ -965,7 +969,7 @@ function renderAuthArea(){
 function renderTabs(){
   const tabs = [["schedule","Schedule"],["standings","Standings"],["leaders","Leaders"]];
   if(FEATURES.gameReport && (!state.user || state.user.role==="player")) tabs.push(["game-report","Game Report"]);
-  if(!FEATURES.accounts){ $("#tabs").innerHTML = tabs.map(([k,n])=>`<button class="tab" data-view="${k}" ${(state.view===k||(k==="standings"&&state.view==="team"))?'aria-current="page"':""}>${n}</button>`).join(""); return; }
+  if(!FEATURES.accounts){ $("#tabs").innerHTML = tabs.map(([k,n])=>`<button class="tab" data-view="${k}" ${(state.view===k||(state.view==="team"&&k===(state.teamFrom||"standings")))?'aria-current="page"':""}>${n}</button>`).join(""); return; }
   if(state.user){ if(state.user.role!=="player") tabs.push(["dashboard", state.user.role==="manager"?"My team":state.user.role==="referee"?"My games":"Admin"]); tabs.push(["account","Account"]); }
   else tabs.push(["sign-in","Sign in"]);
   let dueN = 0;
@@ -1784,7 +1788,8 @@ function rosterHTML(team){
 const BASE_TITLE = document.title;
 function openTeam(key){
   if(!TEAMS[key]) return;
-  state.teamKey = key; state.teamMore = {};
+  if(state.view==="team" && state.teamKey===key) return;
+  state.teamKey = key; state.teamTab = "up";
   go("team");
 }
 function teamRosterHTML(key){
@@ -1808,16 +1813,14 @@ function renderTeam(){
   const upcoming = mine.filter(g=>!isPast(g)).sort((x,y)=>(x.date+x.time).localeCompare(y.date+y.time));
   const past = mine.filter(g=>isPast(g)).sort((x,y)=>(y.date+y.time).localeCompare(x.date+x.time));
   const pos = positionOf(key);
-  const SHOW = 4;
   let n = 0;
   const cards = list=>list.map(g=>matchCard(g,{showDate:true}).replace('<article class="match"', `<article class="match${(n++)%2?" shade":""}"`)).join("");
-  const section = (id, title, list, emptyText)=>{
-    const all = state.teamMore[id], shown = all ? list : list.slice(0,SHOW);
-    n = 0;
-    return `<div class="tsec"><div class="tsec-h"><h2>${title}</h2><small>${list.length} ${list.length===1?"game":"games"}</small></div>
-      ${list.length ? cards(shown) : `<div class="empty">${emptyText}</div>`}
-      ${list.length>shown.length ? `<button class="btn btn-ghost more" data-tmore="${id}">Show all ${list.length} <span class="count">· ${list.length-shown.length} more</span></button>` : ""}</div>`;
-  };
+  const tabs = [["up","Upcoming",upcoming.length],["res","Results",past.length],["roster","Roster",null]];
+  const tab = state.teamTab;
+  let body;
+  if(tab==="roster") body = teamRosterHTML(key);
+  else { const list = tab==="up" ? upcoming : past;
+    body = list.length ? `<div class="day">${cards(list)}</div>` : `<div class="empty">${tab==="up"?"No more games scheduled.":"No games played yet."}</div>`; }
   const rec = pos && pos.row;
   const stats = rec ? `<div class="team-stats">
       <div><b>${ord(pos.pos)}</b><span>of ${pos.of}</span></div>
@@ -1827,13 +1830,12 @@ function renderTeam(){
       ${rec.streak?`<div><b>${esc(rec.streak)}</b><span>Streak</span></div>`:""}
     </div>` : "";
   $("#view-team").innerHTML = `
-    <button class="backlink" data-teamback>← Standings</button>
+    <button class="backlink" data-teamback>← Back</button>
     <div class="team-h" style="--c:var(${COMPS[comp].v})"><h1>${esc(t.n)}</h1>
       <div class="sub"><span class="pill" style="--c:var(${COMPS[comp].v})">${COMPS[comp].n}</span>${pos?`<span>${ord(pos.pos)} place</span>`:""}</div></div>
     ${stats}
-    ${section("up","Upcoming games", upcoming, "No more games scheduled.")}
-    ${section("res","Results", past, "No games played yet.")}
-    <div class="tsec"><div class="tsec-h"><h2>Roster</h2></div>${teamRosterHTML(key)}</div>`;
+    <div class="seg team-tabs" role="group" aria-label="Team sections">${tabs.map(([k,l,c])=>`<button data-teamtab="${k}" aria-pressed="${tab===k}">${l}${c!=null?` <span class="cnt">${c}</span>`:""}</button>`).join("")}</div>
+    ${body}`;
   wireScrollArrows($("#view-team"));
   document.title = `${t.n} – RASA`;
 }
@@ -1842,6 +1844,7 @@ function renderTeam(){
 const VIEWS = ["schedule","standings","leaders","team","game-report","sign-in","create-account","check-email","ref-signup","forgot-password","reset-password","dashboard","account"];
 function go(view, push=true){
   if(view==="team" && !(state.teamKey && TEAMS[state.teamKey])) view = "standings";
+  if(view==="team" && state.view!=="team") state.teamFrom = state.view;
   if(!FEATURES.accounts && !["schedule","standings","leaders","team"].concat(FEATURES.gameReport?["game-report"]:[]).includes(view)) view = "schedule";
   if((view==="dashboard"||view==="account") && !state.user) view="sign-in";
   if((view==="sign-in"||view==="create-account"||view==="ref-signup") && state.user) view="dashboard";
@@ -1887,8 +1890,8 @@ document.addEventListener("click", e=>{
   if(tm){ state.teamMode = tm.dataset.teammode; renderDashboard(); return; }
   const tl = e.target.closest("[data-teamlink]");
   if(tl){ openTeam(tl.dataset.teamlink); return; }
-  if(e.target.closest("[data-teamback]")){ if(state.teamPushed){ state.teamPushed = false; history.back(); } else go("standings"); return; }
-  const tmore = e.target.closest("[data-tmore]"); if(tmore){ state.teamMore[tmore.dataset.tmore] = true; renderTeam(); return; }
+  if(e.target.closest("[data-teamback]")){ if(state.teamPushed){ state.teamPushed = false; history.back(); } else go(state.teamFrom||"standings"); return; }
+  const ttab = e.target.closest("[data-teamtab]"); if(ttab){ state.teamTab = ttab.dataset.teamtab; renderTeam(); const b=document.querySelector(`[data-teamtab="${state.teamTab}"]`); if(b) b.focus({preventScroll:true}); return; }
   const t = e.target.closest("[data-view],[data-comp],[data-fill],[data-score]");
   if(!t) return;
   if(t.dataset.view) go(t.dataset.view);
@@ -1988,7 +1991,7 @@ document.addEventListener("keydown", e=>{ if(e.key!=="Escape") return;
   if(!$("#scoreModal").hidden) closeScore(); if(!$("#reportModal").hidden) closeReport(); });
 const teamFromHash = h=>{ const m = /^team\/(.+)$/.exec(h); if(!m) return null; try{ const k = decodeURIComponent(m[1]); return TEAMS[k] ? k : null; }catch(e){ return null; } };
 window.addEventListener("hashchange", ()=>{ const h=location.hash.slice(1); const tk = teamFromHash(h);
-  if(tk){ if(state.view!=="team" || state.teamKey!==tk){ state.teamKey = tk; state.teamMore = {}; go("team",false); } return; }
+  if(tk){ if(state.view!=="team" || state.teamKey!==tk){ state.teamKey = tk; state.teamTab = "up"; go("team",false); } return; }
   if(VIEWS.includes(h) && h!==state.view) go(h,false); });
 
 function setBanner(){
