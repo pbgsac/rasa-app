@@ -1794,7 +1794,11 @@ function openTeam(key){
 }
 function teamRosterHTML(key){
   const r = rosters && rosters.teams && rosters.teams[key];
-  const staff = (r && r.staff) || [];
+  // Staff from the team's personnel page: drop exact repeats, managers first, then coaches, then everyone else.
+  const RANK = role=>/^manager$/i.test(role)?0:/^coach$|head coach/i.test(role)?1:/coach/i.test(role)?2:3;
+  const seen = new Set();
+  const staff = ((r && r.staff) || []).filter(s=>{ const k=(s.name+"|"+s.role).toLowerCase(); if(seen.has(k)) return false; seen.add(k); return true; })
+    .map((s,i)=>({...s,i})).sort((a,b)=>RANK(a.role)-RANK(b.role) || a.i-b.i);
   const players = (r && r.players) || [];
   if(!staff.length && !players.length) return `<div class="empty">${rosters ? "No roster on rasasoccer.ca for this team yet." : "The roster couldn’t be loaded. Check your connection and reload the page."}</div>`;
   const last = n=>n.trim().split(/\s+/).slice(-1)[0];
