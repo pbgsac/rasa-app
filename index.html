@@ -401,6 +401,15 @@ dl.view{margin:0;display:flex;flex-direction:column;border-top:1px solid var(--l
 .team-roster th.tm,.team-roster td.tm{min-width:150px}
 .tlink{background:none;border:0;padding:0;font-weight:600;cursor:pointer;color:var(--ink);text-align:left;white-space:normal}
 .tlink:hover{color:var(--accent);text-decoration:underline}
+.std td.rkc{white-space:nowrap}
+.rk{display:inline-block;min-width:14px}
+.mv{display:inline-flex;align-items:baseline;font-size:12px;font-weight:700;margin-left:4px;line-height:1}
+.mv small{font-size:10px;margin-left:1px}
+.mv.up{color:var(--good)} .mv.down{color:var(--bad)} .mv.same{color:var(--muted);font-size:12px}
+.std td.l5c,.std th.l5c{text-align:left;padding-left:12px}
+.last5{display:inline-flex;gap:3px;vertical-align:middle}
+.r5{display:inline-flex}
+.r5.W{color:var(--good)} .r5.L{color:var(--bad)} .r5.T{color:#9aa4ab}
 .form{display:inline-block;min-width:30px;text-align:center;font-size:12px;font-weight:700;border-radius:5px;padding:1px 4px}
 .form.W{background:color-mix(in srgb,var(--good) 18%,transparent);color:var(--good)}
 .form.L{background:color-mix(in srgb,var(--bad) 15%,transparent);color:var(--bad)}
@@ -409,6 +418,8 @@ dl.view{margin:0;display:flex;flex-direction:column;border-top:1px solid var(--l
 .std th:first-child,.std td:first-child{position:sticky;left:0;background:var(--surface);z-index:1}
 .std th.tm,.std td.tm{position:sticky;left:34px;background:var(--surface);z-index:1;min-width:150px;padding-right:12px;box-shadow:6px 0 6px -6px rgba(0,0,0,.25)}
 .std th:first-child,.std td:first-child{min-width:34px;width:34px}
+#view-standings .std th:first-child,#view-standings .std td:first-child{min-width:52px;width:52px}
+#view-standings .std th.tm,#view-standings .std td.tm{left:52px}
 .std tr.mine td.tm,.std tr.mine td:first-child{background:color-mix(in srgb,var(--card-yellow) 22%,var(--surface))}
 .swipe{margin-left:auto;font-size:20px;line-height:1;color:var(--muted)}
 .swipe[hidden]{display:none}
@@ -866,6 +877,56 @@ function adjustedStandings(){
   if(applied) divs.forEach(dv=>dv.rows.sort((x,y)=>y.pts-x.pts || y.w-x.w || y.diff-x.diff || y.gf-x.gf));
   return {divs, applied};
 }
+/* Weekly movement and last-5 form.
+   The website only shows today's table, so earlier tables are rebuilt from game results:
+   division games count for that division, cross-overs count for both teams, League's Cup for neither.
+   Weeks run Monday to Sunday. Arrows compare today's table with the table before the latest week of games. */
+const countsFor = (g, team)=> TEAMS[team] && (g.comp===TEAMS[team].d || g.comp==="XO");
+function weekStart(d){ const x = new Date(d); x.setHours(0,0,0,0); x.setDate(x.getDate() - ((x.getDay()+6)%7)); return x; }
+function tableAt(div, before){   // positions (1-based) in a division using games played before `before` (Date) or all games
+  const keys = Object.keys(TEAMS).filter(k=>TEAMS[k].d===div);
+  const r = {}; keys.forEach(k=>r[k]={k, gp:0, w:0, t:0, l:0, gf:0, ga:0, pts:0});
+  const played = games.filter(g=>hasScore(g) && (!before || parseD(g.date) < before));
+  played.forEach(g=>[[g.h,g.hs,g.as],[g.a,g.as,g.hs]].forEach(([k,f,a])=>{
+    if(!r[k] || !countsFor(g,k)) return; const x=r[k]; x.gp++; x.gf+=f; x.ga+=a;
+    if(f>a){ x.w++; x.pts+=3; } else if(f<a) x.l++; else { x.t++; x.pts++; } }));
+  // head-to-head points between two teams, for breaking ties
+  const h2h = (a,b)=>{ let pa=0,pb=0; played.forEach(g=>{ if(!((g.h===a&&g.a===b)||(g.h===b&&g.a===a))) return;
+    const fa = g.h===a ? g.hs : g.as, fb = g.h===a ? g.as : g.hs; if(fa>fb) pa+=3; else if(fb>fa) pb+=3; else { pa++; pb++; } }); return pb-pa; };
+  const rows = Object.values(r).sort((x,y)=>y.pts-x.pts || y.w-x.w || h2h(x.k,y.k) || (y.gf-y.ga)-(x.gf-x.ga) || y.gf-x.gf || tn(x.k).localeCompare(tn(y.k)));
+  const pos = {}; rows.forEach((x,i)=>pos[x.k] = x.gp ? i+1 : null); return pos;
+}
+function weeklyMoves(div){
+  const played = games.filter(g=>hasScore(g) && (g.comp===div || (g.comp==="XO" && (TEAMS[g.h]&&TEAMS[g.h].d===div || TEAMS[g.a]&&TEAMS[g.a].d===div))));
+  if(!played.length) return {};
+  const latest = played.reduce((m,g)=> g.date>m ? g.date : m, "");
+  const start = weekStart(parseD(latest));
+  const before = tableAt(div, start), now = tableAt(div, null), out = {};
+  Object.keys(now).forEach(k=>{ out[k] = (before[k]==null || now[k]==null) ? 0 : before[k]-now[k]; });
+  out._week = start; return out;
+}
+function lastFive(team){
+  return games.filter(g=>(g.h===team||g.a===team) && hasScore(g) && countsFor(g,team))
+    .sort((x,y)=>(x.date+x.time).localeCompare(y.date+y.time)).slice(-5)
+    .map(g=>{ const home = g.h===team, f = home?g.hs:g.as, a = home?g.as:g.hs, opp = home?g.a:g.h;
+      return {res: f>a?"W":f<a?"L":"T", f, a, opp, date:g.date}; });
+}
+const ICON = {
+  W:`<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M4.6 8.3l2.2 2.2 4.6-4.8" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  L:`<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M5.3 5.3l5.4 5.4M10.7 5.3l-5.4 5.4" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>`,
+  T:`<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M5 8h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>`
+};
+function formHTML(team){
+  const f = lastFive(team); if(!f.length) return `<span class="muted">–</span>`;
+  const word = {W:"Win",L:"Loss",T:"Tie"};
+  return `<span class="last5" role="img" aria-label="Last ${f.length}, oldest first: ${f.map(x=>word[x.res]).join(", ")}">${f.map(x=>`<span class="r5 ${x.res}" title="${word[x.res]} ${x.f}–${x.a} vs ${esc(tn(x.opp))}, ${esc(fmtShort(x.date))}">${ICON[x.res]}</span>`).join("")}</span>`;
+}
+function moveHTML(n){
+  if(n>0) return `<span class="mv up" title="Up ${n} place${n>1?"s":""} this week" aria-label="up ${n}">▲${n>1?`<small>${n}</small>`:""}</span>`;
+  if(n<0) return `<span class="mv down" title="Down ${-n} place${n<-1?"s":""} this week" aria-label="down ${-n}">▼${n<-1?`<small>${-n}</small>`:""}</span>`;
+  return `<span class="mv same" title="Same place as last week" aria-label="no change">–</span>`;
+}
+
 function renderStandings(){
   const body = $("#stdBody");
   if(!standings){ body.innerHTML = `<div class="empty">The standings couldn’t be loaded. Check your connection and reload the page.</div>`; return; }
@@ -876,17 +937,18 @@ function renderStandings(){
   body.innerHTML = divs.map(dv=>{
     const comp = DIV_COMP(dv.name);
     const showD = dv.rows.some(r=>r.d);
+    const moves = weeklyMoves(comp);
     const rows = dv.rows.map((r,i)=>{
       const k = keyFor(r.team);
       const nm = k ? `<button class="tlink" data-teamlink="${esc(k)}" title="Open the ${esc(TEAMS[k].n)} team page">${esc(TEAMS[k].n)}</button>` : esc(r.team);
       const st = String(r.streak||""); const sk = st.charAt(0);
       const diff = r.diff>0 ? "+"+r.diff : String(r.diff);
-      return `<tr class="${k&&k===mine?"mine":""}"><td>${i+1}</td><td class="tm">${nm}</td><td class="pts">${r.pts}</td><td>${r.gp}</td><td>${r.w}</td><td>${r.t}</td><td>${r.l}</td>${showD?`<td>${r.d}</td>`:""}<td class="opt">${r.gf}</td><td class="opt">${r.ga}</td><td>${diff}</td><td class="opt">${st?`<span class="form ${"WLT".includes(sk)?sk:"T"}">${esc(st)}</span>`:""}</td><td class="fill"></td></tr>`;
+      return `<tr class="${k&&k===mine?"mine":""}"><td class="rkc"><span class="rk">${i+1}</span>${k?moveHTML(moves[k]||0):""}</td><td class="tm">${nm}</td><td class="pts">${r.pts}</td><td>${r.gp}</td><td>${r.w}</td><td>${r.t}</td><td>${r.l}</td>${showD?`<td>${r.d}</td>`:""}<td class="opt">${r.gf}</td><td class="opt">${r.ga}</td><td>${diff}</td><td class="l5c">${k?formHTML(k):""}</td><td class="fill"></td></tr>`;
     }).join("");
     return `<div class="std" style="--c:var(${COMPS[comp].v})"><div class="std-h"><h2>${esc(COMPS[comp].n)}</h2><span class="swipe" hidden aria-hidden="true">→</span></div><div class="std-wrap"><table>
-      <thead><tr><th scope="col">#</th><th scope="col" class="tm">Team</th><th scope="col" title="Points">Pts</th><th scope="col" title="Games played">GP</th><th scope="col" title="Wins">W</th><th scope="col" title="Ties">T</th><th scope="col" title="Losses">L</th>${showD?'<th scope="col" title="Defaults">D</th>':""}<th scope="col" class="opt" title="Goals for">GF</th><th scope="col" class="opt" title="Goals against">GA</th><th scope="col" title="Goal difference">+/-</th><th scope="col" class="opt" title="Current streak">Streak</th><th class="fill" aria-hidden="true"></th></tr></thead>
+      <thead><tr><th scope="col">#</th><th scope="col" class="tm">Team</th><th scope="col" title="Points">Pts</th><th scope="col" title="Games played">GP</th><th scope="col" title="Wins">W</th><th scope="col" title="Ties">T</th><th scope="col" title="Losses">L</th>${showD?'<th scope="col" title="Defaults">D</th>':""}<th scope="col" class="opt" title="Goals for">GF</th><th scope="col" class="opt" title="Goals against">GA</th><th scope="col" title="Goal difference">+/-</th><th scope="col" class="l5c" title="Last 5 games, oldest to newest">Last 5</th><th class="fill" aria-hidden="true"></th></tr></thead>
       <tbody>${rows}</tbody></table></div></div>`;
-  }).join("") + `<p class="note">3 points for a win, 1 for a tie. Teams level on points are separated by most wins, then head-to-head, then goal difference in games between them. Tap a team to see its games and roster.</p>${adj.applied?`<p class="note"><b>Includes ${adj.applied} result${adj.applied>1?"s":""} reported by referees that ${adj.applied>1?"aren’t":"isn’t"} on rasasoccer.ca yet.</b></p>`:""}`;
+  }).join("") + `<p class="note"><span class="mv up">▲</span> <span class="mv down">▼</span> show how far a team moved in the latest week of games (Monday to Sunday). Last 5 reads oldest to newest; tap or hover an icon for the score.</p><p class="note">3 points for a win, 1 for a tie. Teams level on points are separated by most wins, then head-to-head, then goal difference in games between them. Tap a team to see its games and roster.</p>${adj.applied?`<p class="note"><b>Includes ${adj.applied} result${adj.applied>1?"s":""} reported by referees that ${adj.applied>1?"aren’t":"isn’t"} on rasasoccer.ca yet.</b></p>`:""}`;
   let when = "";
   if(standings.updatedAt){ const d=new Date(standings.updatedAt); if(!isNaN(d)) when = " · from rasasoccer.ca, last checked "+d.toLocaleString("en-CA",{weekday:"short",month:"short",day:"numeric",hour:"numeric",minute:"2-digit"}); }
   $("#stdSub").textContent = "Winter League 2026–27"+when;
