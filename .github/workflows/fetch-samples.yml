@@ -1,5 +1,7 @@
 name: Fetch site samples
 on: workflow_dispatch
+permissions:
+  contents: write
 jobs:
   fetch:
     runs-on: ubuntu-latest
@@ -19,7 +21,7 @@ jobs:
           get standings.html "$B/standings.cfm?leagueid=27680&clientid=6369"
           get team.html "$B/stats_1team.cfm?clientid=6369&leagueID=27680&teamID=684068"
           get cards.html "$B/rostersV2.cfm?clientid=6369&leagueID=27680&teamID=684068&rosterDisplay=cards"
-      - uses: actions/upload-artifact@v4
-        with:
-          name: samples
-          path: s
+      - name: Push to samples branch
+        run: |
+          cd s && git init -q -b samples && git add . && git -c user.name=bot -c user.email=bot@users.noreply.github.com commit -qm samples
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}" samples
