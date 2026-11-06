@@ -298,6 +298,19 @@ dl.view{margin:0;display:flex;flex-direction:column;border-top:1px solid var(--l
 .pinfo b{font-size:18px}
 .rlist{margin:0;padding-left:24px;display:flex;flex-direction:column;gap:4px}
 
+/* Game report */
+.bigbtn{justify-content:center;padding:12px 16px;font-size:16px;text-decoration:none;align-self:stretch}
+.steps{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
+.refname{margin:0}
+.gp-list{display:flex;flex-direction:column;gap:6px}
+.gp-day{font-size:16px;text-transform:uppercase;margin-top:6px;display:flex;align-items:center;gap:8px}
+.gp-game{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:1px solid var(--line);border-left:5px solid var(--c);background:var(--surface);border-radius:10px;padding:10px 12px;cursor:pointer;font:inherit;color:var(--ink)}
+.gp-game:hover{border-color:var(--accent)}
+.gp-t{font-family:var(--font-display);font-size:18px;min-width:64px}
+.gp-teams{flex:1;display:flex;flex-direction:column;gap:2px}
+.gp-teams small{color:var(--muted)}
+.preview-mail pre{white-space:pre-wrap;font-size:12px;background:var(--bg);border-radius:8px;padding:10px;max-height:240px;overflow:auto}
+
 .preview-tag{font-style:normal;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;background:var(--card-yellow);color:#141a15;border-radius:4px;padding:1px 5px;margin-left:4px;vertical-align:1px}
 
 /* Account */
@@ -442,6 +455,9 @@ dl.view{margin:0;display:flex;flex-direction:column;border-top:1px solid var(--l
     <div id="ldBody" class="ld-grid"></div>
   </section>
 
+  <!-- GAME REPORT -->
+  <section class="view" id="view-game-report" hidden></section>
+
   <!-- SIGN IN -->
   <section class="view" id="view-sign-in" hidden>
     <form class="auth" id="authForm" novalidate>
@@ -461,13 +477,6 @@ dl.view{margin:0;display:flex;flex-direction:column;border-top:1px solid var(--l
       <button class="btn btn-primary" type="submit" style="justify-content:center">Sign in</button>
       <p class="alt"><button type="button" class="linkbtn" data-view="forgot-password">Forgot your password?</button></p>
       <p class="alt">New to RASA? <button type="button" class="linkbtn" data-view="create-account">Create an account</button></p>
-      <div class="demo">
-        <b>Prototype demo accounts</b>
-        <span>Accounts are built into this preview so you can try each role. Password for all: <code>rasa2026</code></span>
-        <button type="button" class="linkbtn" data-fill="manager">Manager, Hammers FC: manager@hammers.demo</button>
-        <button type="button" class="linkbtn" data-fill="referee">Referee: ref@rasa.demo</button>
-        <button type="button" class="linkbtn" data-fill="admin">Administrator: admin@rasa.demo</button>
-      </div>
     </form>
   </section>
 
@@ -645,7 +654,9 @@ function loadGames(data){
 const USERS = {
   "manager@hammers.demo":{role:"manager", name:"Alex Morgan", team:"HAMMERS FC"},
   "ref@rasa.demo":{role:"referee", name:"Demo Referee", resetRequested:"Nov 5"},
-  "admin@rasa.demo":{role:"admin", name:"League Admin"}
+  "admin@rasa.demo":{role:"admin", name:"League Admin"},
+  // League president. Only a SHA-256 hash of the password is stored here, never the password itself.
+  "president@rasasoccer.ca":{role:"admin", name:"D. Pascual", title:"President", pwHash:"b75bac44ddf59cc93c45fa8b912c4146912ffc681efdc219dd9056a7cadc397a"}
 };
 const ROLE_LABEL = {manager:"Manager", referee:"Referee", admin:"Administrator", player:"Player"};
 Object.values(USERS).forEach(u=>u.confirmed=true);
@@ -898,10 +909,11 @@ function renderAuthArea(){
 }
 function renderTabs(){
   const tabs = [["schedule","Schedule"],["standings","Standings"],["leaders","Leaders"]];
+  if(!state.user || state.user.role==="player") tabs.push(["game-report","Game Report"]);
   if(state.user){ if(state.user.role!=="player") tabs.push(["dashboard", state.user.role==="manager"?"My team":state.user.role==="referee"?"My games":"Admin"]); tabs.push(["account","Account"]); }
   else tabs.push(["sign-in","Sign in"]);
   let dueN = 0;
-  if(state.user && state.user.role==="manager"){ const t=state.user.team; dueN = games.filter(g=>(g.h===t||g.a===t) && isPast(g) && !reportFor(g,t)).length; }
+  if(TEAM_REPORTS && state.user && state.user.role==="manager"){ const t=state.user.team; dueN = games.filter(g=>(g.h===t||g.a===t) && isPast(g) && !reportFor(g,t)).length; }
   if(state.user && state.user.role==="admin"){ dueN = refAccounts().filter(a=>a.u.resetRequested).length; }
   if(state.user && state.user.role==="referee"){ const me=state.refView; dueN = games.filter(g=>g.refs[0]===me && isPast(g) && (!hasScore(g) || !refReportFor(g))).length; }
   $("#tabs").innerHTML = tabs.map(([k,n])=>`<button class="tab${(k==="account"||k==="sign-in")?" tab-end":""}" data-view="${k}" ${(state.view===k||(k==="sign-in"&&/create-account|check-email|ref-signup|forgot-password|reset-password/.test(state.view)))?'aria-current="page"':""}>${n}${k==="dashboard"&&dueN?`<span class="dot" aria-label="${dueN} report${dueN>1?"s":""} due"></span>`:""}</button>`).join("");
@@ -1049,7 +1061,7 @@ function renderDashboard(){
         <div class="where">${esc(fmtDay(n.date))} · ${fmtTime(n.time).t} ${fmtTime(n.time).ap} · ${esc(n.venue||"Location TBA")}</div>${n.refs.length?`<div class="where ref">${JERSEY}${refText(n.refs)}</div>`:""}</div>`;
     }
     const mode = state.teamMode;
-    const due = past.filter(g=>!reportFor(g, u.team)).length;
+    const due = TEAM_REPORTS ? past.filter(g=>!reportFor(g, u.team)).length : 0;
     const mgrRosterSide = g=>{
       const r = rosterFor(g,u.team);
       if(isLocked(g)) return r ? `<div class="btns"><button class="btn btn-ghost btn-sm" data-viewroster="${g.id}|${esc(u.team)}">View roster</button><button class="btn btn-ghost btn-sm" data-viewplayers="${g.id}|${esc(u.team)}">View players</button></div>` : "";
@@ -1067,8 +1079,8 @@ function renderDashboard(){
     else html += `<div class="section">${mode==="up"
       ? (up.map(g=>matchCard(g,{showDate:true, side:mgrRosterSide, extra:mgrRosterExtra})).join("")||'<div class="empty">No games scheduled.</div>')
       : (past.map(g=>matchCard(g,{showDate:true,
-          side: g=> `<div class="btns">${reportFor(g,u.team) ? "" : `<button class="btn btn-primary btn-sm" data-report="${g.id}">Submit report</button>`}${rosterFor(g,u.team)?`<button class="btn btn-ghost btn-sm" data-viewroster="${g.id}|${esc(u.team)}">View roster</button><button class="btn btn-ghost btn-sm" data-viewplayers="${g.id}|${esc(u.team)}">View players</button>`:""}</div>`,
-          extra: g=>{ const r=reportFor(g,u.team); return r ? `<div class="reported">✓ Report submitted by <b>${esc(r.by)}</b> · ${esc(r.when)}</div>` : `<div class="reported due-line">Game report due</div>`; }
+          side: g=> `<div class="btns">${(!TEAM_REPORTS || reportFor(g,u.team)) ? "" : `<button class="btn btn-primary btn-sm" data-report="${g.id}">Submit report</button>`}${rosterFor(g,u.team)?`<button class="btn btn-ghost btn-sm" data-viewroster="${g.id}|${esc(u.team)}">View roster</button><button class="btn btn-ghost btn-sm" data-viewplayers="${g.id}|${esc(u.team)}">View players</button>`:""}</div>`,
+          extra: g=>{ if(!TEAM_REPORTS) return ""; const r=reportFor(g,u.team); return r ? `<div class="reported">✓ Report submitted by <b>${esc(r.by)}</b> · ${esc(r.when)}</div>` : `<div class="reported due-line">Game report due</div>`; }
         })).join("")||'<div class="empty">No results yet.</div>')}</div>`;
   }
 
@@ -1124,7 +1136,7 @@ function renderDashboard(){
     const F = state.adminFilter;
     const tile = (k,n,l)=>`<button class="tile tbtn ${n?"alert":""}" data-afilter="${k}" aria-pressed="${F===k}" title="${F===k?"Show all recent games":"Show only these games"}"><div class="n">${n}</div><div class="l">${l}</div></button>`;
     const webTodo = games.filter(webDiffers);
-    html += `<div class="tiles">${tile("score",noScore.length,"Scores not reported")}${tile("web",webTodo.length,"Scores to update on rasasoccer.ca")}${tile("ref",refMissing.length,"Referee reports not submitted")}${tile("team",teamMissing,"Team reports not submitted")}</div>`;
+    html += `<div class="tiles">${tile("score",noScore.length,"Scores not reported")}${tile("web",webTodo.length,"Scores to update on rasasoccer.ca")}${tile("ref",refMissing.length,"Referee reports not submitted")}${TEAM_REPORTS?tile("team",teamMissing,"Team reports not submitted"):""}</div>`;
     const resets = refAccounts().filter(a=>a.u.resetRequested).length;
     html += `<div class="seg" role="group" aria-label="Show">${[["games","Recent games"],["refs","Refs"]].map(([k,l])=>`<button data-adminmode="${k}" aria-pressed="${state.adminMode===k}">${l}${k==="refs"&&resets?`<span class="due" aria-label="${resets} password reset request${resets>1?"s":""}">!</span>`:""}</button>`).join("")}</div>`;
     if(state.adminMode==="refs"){ html += refsAdminHTML(); v.innerHTML = html; wireRefsAdmin(); return; }
@@ -1145,12 +1157,12 @@ function renderDashboard(){
       if(!g.refs.length) rows.push(`<div class="st"><span class="lbl">Referee</span><span class="muted">No referee assigned</span></div>`);
       else { const r = refReportFor(g);
         rows.push(`<div class="st"><span class="lbl">Referee</span>${r ? `<button class="linkbtn" data-view-ref="${g.id}">See ref report</button>` : `<span class="bad">Ref report not submitted</span>`}</div>`); }
-      [g.h,g.a].filter(t=>TEAMS[t]).forEach(t=>{ const r = reportFor(g,t);
+      if(TEAM_REPORTS) [g.h,g.a].filter(t=>TEAMS[t]).forEach(t=>{ const r = reportFor(g,t);
         rows.push(`<div class="st"><span class="lbl">${esc(tn(t))}</span>${r ? `<button class="linkbtn" data-view-team="${g.id}|${esc(t)}">See team report</button>` : `<span class="bad">Team report not submitted</span>`}</div>`); });
       return `<div class="statuses">${rows.join("")}</div>`;
     };
     const scoreSide = g=> hasScore(g) ? "" : `<button class="btn btn-primary btn-sm" data-score="${g.id}">Enter score</button>`;
-    html += `<div class="section"><h2>${F?esc(FL[F]):"Recent games"}</h2>${F?`<div class="row"><span class="count">${recent.length} ${recent.length===1?"game":"games"}, whole season</span><button class="chip" data-afilter="clear">Show all recent games ✕</button></div>`:`<p class="sub">Referees report the score right after the game and their report within 24 hours. Team reports are secondary.</p>`}
+    html += `<div class="section"><h2>${F?esc(FL[F]):"Recent games"}</h2>${F?`<div class="row"><span class="count">${recent.length} ${recent.length===1?"game":"games"}, whole season</span><button class="chip" data-afilter="clear">Show all recent games ✕</button></div>`:`<p class="sub">Referees report the score right after the game and their report within 24 hours.</p>`}
       ${recent.map(g=>matchCard(g,{showDate:true,side:scoreSide,extra:adminExtra})).join("")||`<div class="empty">${F?"Nothing outstanding here.":"No games in this period."}</div>`}
       ${older?`<button class="btn btn-ghost more" id="adminMore">See earlier games <span class="count">· ${older} more</span></button>`:""}</div>`;
   }
@@ -1161,6 +1173,7 @@ function renderDashboard(){
 
 /* ---------- Reports (prototype: kept in memory; games before Nov 1, 2026 carry sample reports) ---------- */
 const TEAM_MANAGERS = {"HAMMERS FC":["Alex Morgan","Chris Doyle"]};
+const TEAM_REPORTS = false;   // Manager game reports are switched off for now to keep things simple.
 const DEMO_SUBMITTED_BEFORE = "2026-11-01";
 const teamReports = {}, refReports = {};
 const gameKey = g=>`${g.date}|${g.h}|${g.a}`;
@@ -1339,8 +1352,10 @@ document.addEventListener("keydown", e=>{
   else if(e.key==="Escape" && !list.hidden){ e.stopImmediatePropagation(); closePicker(input); }
 });
 
-function openRefReport(id){
-  const g = games[id]; formGame = g; pickerSeq = 0;
+function openRefReport(id, opts={}){
+  const g = games[id]; formGame = g; pickerSeq = 0; formGame.publicReport = !!opts.public;
+  const refName = (state.user && state.user.role==="referee") ? (state.refView || state.user.name) : (g.refs[0] || "");
+  const refEmail = (state.user && state.user.role==="referee") ? (state.user.email||"") : "";
   const home = HOME(g), away = AWAY(g);
   const homeScore = g.as, awayScore = g.hs;
   const radios = (name, opts)=>`<div class="stars wide${opts.length===4?" four":""}" role="radiogroup">${opts.map(v=>`<label><input type="radio" name="${name}" value="${esc(v)}"><span>${esc(v)}</span></label>`).join("")}</div>`;
@@ -1364,6 +1379,11 @@ function openRefReport(id){
     <h2 id="reportTitle">Referee report</h2>
     <p class="sub">${esc(fmtDay(g.date))} · ${fmtTime(g.time).t} ${fmtTime(g.time).ap}${g.venue?" · "+esc(g.venue):""}${g.number?" · #"+esc(g.number):""}</p>
     <p class="sub"><b>Home:</b> ${esc(tn(home))} · <b>Away:</b> ${esc(tn(away))}${g.refs.length>1?` · AR: ${g.refs.slice(1).map(esc).join(", ")}`:""}</p>
+    <fieldset><legend>Referee</legend>
+      ${g.refs[0] ? `<p class="refname"><b>${esc(refName)}</b> <span class="muted">(from the officials schedule)</span></p>`
+        : `<div class="field"><label for="fRefName">Referee name</label><input id="fRefName" type="text" autocomplete="name" value="${esc(refName)}"></div>`}
+      <div class="field"><label for="fEmail">Email:</label><input id="fEmail" type="email" autocomplete="email" placeholder="you@example.com" value="${esc(refEmail)}"></div>
+    </fieldset>
     <fieldset><legend>Final score</legend>
       <div class="score-grid">
         <label for="fHome">${esc(tn(home))} (home)</label><input id="fHome" type="number" min="0" max="15" inputmode="numeric" value="${homeScore??""}">
@@ -1379,10 +1399,9 @@ function openRefReport(id){
       <p class="q">Official game ball provided by?</p>${radios("qBall", PROVIDED)}
       <p class="q">Corner flags provided by?</p>${radios("qFlags", PROVIDED)}
       <p class="q">2 copies of official team list provided by home team?</p>${radios("qListHome", ["Yes","No"])}
-      <label class="btn btn-ghost btn-sm filebtn" for="fPicHome">Attach photo of home team player list</label><input id="fPicHome" type="file" accept="image/*" class="visually-hidden"><div class="thumbs" id="thPicHome"></div>
       <p class="q">2 copies of official team list provided by visiting team?</p>${radios("qListAway", ["Yes","No"])}
-      <label class="btn btn-ghost btn-sm filebtn" for="fPicAway">Attach photo of visiting team player list</label><input id="fPicAway" type="file" accept="image/*" class="visually-hidden"><div class="thumbs" id="thPicAway"></div>
       <p class="q">Showed player cards?</p>${radios("qCards", PROVIDED)}
+      <p class="hint">You’ll attach photos of both team lists to the email in the last step.</p>
     </fieldset>
     <p class="err" id="reportErr" hidden></p>
     <div class="actions"><button type="button" class="btn btn-ghost" id="reportCancel">Cancel</button><button type="submit" class="btn btn-primary">Submit report</button></div>`, "ref");
@@ -1430,17 +1449,22 @@ function submitRefReport(){
   const H = readRows("home"), A = readRows("away");
   const q = {ball:checked("qBall"), flags:checked("qFlags"), listHome:checked("qListHome"), listAway:checked("qListAway"), cards:checked("qCards")};
   const missing = [];
+  const refName = g.refs[0] ? ((state.user && state.user.role==="referee") ? (state.refView || state.user.name) : g.refs[0]) : ($("#fRefName") ? $("#fRefName").value.trim() : "");
+  const email = $("#fEmail").value.trim();
+  if(!refName) missing.push("your name");
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) missing.push("a valid email address");
   if(hs===""||as==="") missing.push("the final score");
   if(!H.keepers.length || H.keepers.some(k=>!k.name||k.minutes==="")) missing.push(`the home goalkeeper and minutes played`);
   if(!A.keepers.length || A.keepers.some(k=>!k.name||k.minutes==="")) missing.push(`the away goalkeeper and minutes played`);
   if(Object.values(q).some(v=>!v)) missing.push("answers to all the game questions");
   if(missing.length){ err.textContent = joinMissing(missing); err.hidden=false; err.scrollIntoView({block:"nearest"}); return; }
   if(H.scorers.length > +hs || A.scorers.length > +as){ err.textContent = "There are more goal scorers listed than goals in the final score. Remove a scorer or fix the score."; err.hidden=false; return; }
-  setAppScore(g, as, hs, state.refView || state.user.name);   // g.hs belongs to g.h (away)
-  refReports[gameKey(g)] = {by:state.refView || state.user.name, when:new Date().toLocaleDateString("en-CA",{month:"short",day:"numeric"}),
-    homeScore:+hs, awayScore:+as, home:H, away:A, field:$("#fField").value.trim(), notes:$("#fNotes").value.trim(), questions:q,
-    listPhotos:{home:picks.list_home||null, away:picks.list_away||null}};
-  closeReport(); toast("Referee report submitted"); renderDashboard(); renderTabs();
+  setAppScore(g, as, hs, refName);   // g.hs belongs to g.h (away)
+  const r = refReports[gameKey(g)] = {by:refName, email, public:!!g.publicReport, when:new Date().toLocaleDateString("en-CA",{month:"short",day:"numeric"}),
+    homeScore:+hs, awayScore:+as, home:H, away:A, field:$("#fField").value.trim(), notes:$("#fNotes").value.trim(), questions:q};
+  if(state.user) { renderDashboard(); }
+  renderTabs(); if(state.view==="game-report") renderGameReport();
+  showSendStep(g, r);
 }
 function submitReport(e){
   e.preventDefault();
@@ -1464,7 +1488,7 @@ function viewRefReport(id){
     <p class="sub">${esc(fmtDay(g.date))}${g.number?" · #"+esc(g.number):""} · <b>Home:</b> ${esc(tn(home))} · <b>Away:</b> ${esc(tn(away))}</p>
     ${r.sample?`<p class="sample">Sample report for the prototype</p>`:""}
     <dl class="view">
-      ${vrow("Submitted by", `${esc(r.by)} · ${esc(r.when)}`)}
+      ${vrow("Submitted by", `${esc(r.by)} · ${esc(r.when)}${r.email?`<div class="muted">${esc(r.email)}</div>`:""}`)}
       ${vrow("Final score", (r.homeScore!=null&&r.awayScore!=null) ? `${esc(tn(home))} ${r.homeScore}–${r.awayScore} ${esc(tn(away))}` : "Not given")}
       ${side("Home", r.home)}${side("Away", r.away)}
       ${vrow("Field conditions", esc(r.field||"No issues"))}
@@ -1476,7 +1500,7 @@ function viewRefReport(id){
       ${vrow("Visiting team list (2 copies)", esc(q.listAway) + (r.listPhotos&&r.listPhotos.away?`<div class="thumbs">${ph(r.listPhotos.away)}</div>`:""))}
       ${vrow("Showed player cards", esc(q.cards))}` : ""}
     </dl>
-    <div class="actions"><button type="button" class="btn btn-primary" id="reportCancel">Close</button></div>`, "view");
+    <div class="actions">${state.user && state.user.role==="admin" && r.homeScore!=null ? `<a class="btn btn-ghost" href="${esc(mailtoHref("", reportSubject(g,r), reportText(g,r)))}">Email this report</a>` : ""}<button type="button" class="btn btn-primary" id="reportCancel">Close</button></div>`, "view");
 }
 function viewTeamReport(id, team){
   const g = games[id], r = reportFor(g, team); if(!r) return;
@@ -1609,6 +1633,79 @@ function viewMatchRosters(id, side){
   $("#reportForm").onclick = e=>{ const b = e.target.closest("[data-mrside]"); if(b) viewMatchRosters(id, b.dataset.mrside); };
 }
 
+/* ---------- Game Report tab + email to matchreport@ ----------
+   For now referees don't need to sign in: they pick their game, fill in the report and send it by email
+   from their own email app to matchreport@rasasoccer.ca. Admins can resend any report from their own email. */
+const MATCHREPORT = "matchreport@rasasoccer.ca";
+function reportSubject(g, r){
+  return `REF REPORT | ${g.date} | ${g.number?"#"+g.number+" | ":""}${tn(HOME(g))} ${r.homeScore}-${r.awayScore} ${tn(AWAY(g))}`;
+}
+function reportText(g, r){
+  const L = [];
+  const side = (lbl, s)=>{
+    L.push(`${lbl} goal scorers: ${s && s.scorers.length ? s.scorers.map(x=>x.name+(x.jersey?" #"+x.jersey:"")).join("; ") : "None"}`);
+    L.push(`${lbl} goalkeepers: ${s && s.keepers.length ? s.keepers.map(k=>`${k.name} (${k.minutes} min)`).join("; ") : "Not given"}`);
+    L.push(`${lbl} discipline: ${s && s.cards.length ? "" : "None"}`);
+    (s && s.cards || []).forEach(c=>L.push(`  - ${c.card.toUpperCase()} ${c.name}: ${c.infraction}${c.description?" — "+c.description:""}`));
+  };
+  const q = r.questions || {};
+  L.push("RASA REFEREE REPORT", "");
+  L.push(`Game number: ${g.number||"—"}`, `Date: ${fmtDay(g.date)}`, `Kickoff: ${fmtTime(g.time).t} ${fmtTime(g.time).ap}`, `Field: ${g.venue||"—"}`);
+  L.push(`Home: ${tn(HOME(g))}`, `Away: ${tn(AWAY(g))}`, `Final score: ${tn(HOME(g))} ${r.homeScore} - ${r.awayScore} ${tn(AWAY(g))}`, "");
+  L.push(`Referee: ${r.by}`, `Referee email: ${r.email||"—"}`, `Assistant referees: ${g.refs.slice(1).join(", ")||"None"}`, "");
+  side("Home", r.home); L.push(""); side("Away", r.away); L.push("");
+  L.push(`Field conditions: ${r.field||"No issues"}`, `Injuries and other comments: ${r.notes||"None"}`, "");
+  L.push(`Game ball provided by: ${q.ball||"—"}`, `Corner flags provided by: ${q.flags||"—"}`,
+         `Home team list (2 copies): ${q.listHome||"—"}`, `Visiting team list (2 copies): ${q.listAway||"—"}`, `Showed player cards: ${q.cards||"—"}`, "");
+  L.push(`Submitted ${r.when} via app.rasasoccer.ca`);
+  return L.join("\n");
+}
+const mailtoHref = (to, subject, body)=>`mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+// After a referee submits: the step that actually sends the report by email
+function showSendStep(g, r){
+  const subject = reportSubject(g, r), body = reportText(g, r);
+  showModal(`<h2 id="reportTitle">Send your report</h2>
+    <p class="sub">${esc(tn(HOME(g)))} ${r.homeScore}–${r.awayScore} ${esc(tn(AWAY(g)))} · ${esc(fmtDay(g.date))}</p>
+    <div class="okbox"><b>Last step:</b> tap the button to open your email with the report filled in, attach your photos of the two team lists, then press <b>Send</b>.</div>
+    <a class="btn btn-primary bigbtn" href="${esc(mailtoHref(MATCHREPORT, subject, body))}" id="sendMail">Open email to send report</a>
+    <p class="hint">It goes to <b>${MATCHREPORT}</b>. If your email doesn’t open, copy the report and email it there yourself.</p>
+    <button type="button" class="btn btn-ghost btn-sm" id="copyReport">Copy report</button>
+    <details class="preview-mail"><summary>See the report text</summary><pre>${esc(body)}</pre></details>
+    <div class="actions"><button type="button" class="btn btn-ghost" id="reportCancel">Done</button></div>`, "view");
+  $("#copyReport").onclick = async ()=>{ try{ await navigator.clipboard.writeText(subject+"\n\n"+body); toast("Report copied"); }catch(e){ toast("Couldn’t copy. Open “See the report text” and copy it from there."); } };
+}
+function openGamePicker(days){
+  days = days || 14;
+  const from = new Date(today); from.setDate(from.getDate()-days);
+  const now = new Date();
+  const list = games.filter(g=>kickoff(g) <= now && parseD(g.date) >= from).sort((x,y)=>(y.date+y.time).localeCompare(x.date+x.time));
+  const older = games.some(g=>kickoff(g) <= now && parseD(g.date) < from);
+  const byDay = new Map(); list.forEach(g=>{ if(!byDay.has(g.date)) byDay.set(g.date,[]); byDay.get(g.date).push(g); });
+  let html = "";
+  byDay.forEach((gs,d)=>{ html += `<h3 class="gp-day">${esc(fmtDay(d))}${dayTag(d)?` <span class="tag">${dayTag(d)}</span>`:""}</h3>` + gs.map(g=>`
+    <button type="button" class="gp-game" data-pickgame="${g.id}" style="--c:var(${COMPS[g.comp].v})">
+      <span class="gp-t">${fmtTime(g.time).t} ${fmtTime(g.time).ap}</span>
+      <span class="gp-teams"><b>${esc(tn(HOME(g)))}</b> vs <b>${esc(tn(AWAY(g)))}</b><small>${g.venue?esc(g.venue)+" · ":""}${g.refs[0]?"Ref: "+esc(g.refs[0]):"No referee listed"}</small></span>
+      ${refReportFor(g)&&!refReportFor(g).sample?`<span class="appsc">Reported</span>`:""}
+    </button>`).join(""); });
+  showModal(`<h2 id="reportTitle">Pick your game</h2>
+    <p class="sub">Games from the last ${days} days, newest first. Home team listed first.</p>
+    <div class="gp-list">${html || `<div class="empty">No games in this period.</div>`}</div>
+    ${older?`<button type="button" class="btn btn-ghost" id="gpMore">Show earlier games</button>`:""}
+    <div class="actions sticky-actions"><button type="button" class="btn btn-ghost" id="reportCancel">Cancel</button></div>`, "view");
+  const more = $("#gpMore"); if(more) more.onclick = ()=>openGamePicker(days+14);
+  $("#reportForm").onclick = e=>{ const b = e.target.closest("[data-pickgame]"); if(b) openRefReport(+b.dataset.pickgame, {public:true}); };
+}
+function renderGameReport(){
+  const mine = Object.values(refReports).filter(r=>!r.sample && r.public).length;
+  $("#view-game-report").innerHTML = `<div class="hello"><h1>Game report</h1><p>For referees: report the score and your referee report after each game.</p></div>
+    <div class="invite"><b>How it works</b>
+      <ol class="steps"><li>Pick your game from the schedule.</li><li>Fill in the referee report and your email.</li><li>Your email app opens with the report filled in. Attach photos of the team lists and press Send. It goes to ${MATCHREPORT}.</li></ol>
+      <button type="button" class="btn btn-primary bigbtn" id="pickGame">Pick a game</button></div>
+    ${mine?`<p class="note">You’ve submitted ${mine} report${mine>1?"s":""} on this device.</p>`:""}`;
+  $("#pickGame").onclick = ()=>openGamePicker();
+}
+
 /* ---------- Player list ---------- */
 function rosterHTML(team){
   const r = rosters && rosters.teams && rosters.teams[team];
@@ -1626,7 +1723,7 @@ function rosterHTML(team){
 }
 
 /* ---------- Routing ---------- */
-const VIEWS = ["schedule","standings","leaders","sign-in","create-account","check-email","ref-signup","forgot-password","reset-password","dashboard","account"];
+const VIEWS = ["schedule","standings","leaders","game-report","sign-in","create-account","check-email","ref-signup","forgot-password","reset-password","dashboard","account"];
 function go(view, push=true){
   if((view==="dashboard"||view==="account") && !state.user) view="sign-in";
   if((view==="sign-in"||view==="create-account"||view==="ref-signup") && state.user) view="dashboard";
@@ -1639,6 +1736,7 @@ function go(view, push=true){
   if(view==="schedule") renderSchedule();
   if(view==="standings") renderStandings();
   if(view==="leaders") renderLeaders();
+  if(view==="game-report") renderGameReport();
   if(view==="account") renderAccount();
   if(view==="check-email") renderCheckEmail();
   if(view==="ref-signup") renderRefSignup();
