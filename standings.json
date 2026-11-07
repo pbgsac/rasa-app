@@ -1,75 +1,75 @@
 {
  "source": "https://www.rasasoccer.ca/leagues/standings.cfm?clientid=6369&leagueID=27680",
  "season": "Winter 2026-27",
- "updatedAt": "2026-11-06T23:16:09Z",
+ "updatedAt": "2026-11-07T13:02:43Z",
  "divisions": [
   {
    "name": "Division 1",
    "rows": [
     {
      "team": "Richmond All Blacks",
-     "gp": 7,
-     "w": 7,
+     "gp": 9,
+     "w": 9,
      "l": 0,
      "t": 0,
      "d": 0,
-     "pts": 21,
-     "gf": 34,
+     "pts": 27,
+     "gf": 40,
      "ga": 6,
-     "diff": 28,
-     "streak": "W7"
+     "diff": 34,
+     "streak": "W9"
     },
     {
      "team": "RFC HIBS",
-     "gp": 8,
-     "w": 6,
+     "gp": 9,
+     "w": 7,
      "l": 1,
      "t": 1,
      "d": 0,
-     "pts": 19,
-     "gf": 28,
+     "pts": 22,
+     "gf": 31,
      "ga": 7,
-     "diff": 21,
-     "streak": "W1"
+     "diff": 24,
+     "streak": "W2"
     },
     {
      "team": "AC Richmond",
-     "gp": 8,
-     "w": 5,
+     "gp": 9,
+     "w": 6,
      "l": 2,
      "t": 1,
      "d": 0,
-     "pts": 16,
-     "gf": 32,
+     "pts": 19,
+     "gf": 34,
      "ga": 10,
-     "diff": 22,
-     "streak": "L2"
+     "diff": 24,
+     "streak": "W1"
     },
     {
-     "team": "Unicorn FC",
-     "gp": 7,
+     "team": "United FC",
+     "gp": 9,
      "w": 4,
-     "l": 3,
+     "l": 5,
      "t": 0,
      "d": 0,
      "pts": 12,
      "gf": 18,
      "ga": 19,
      "diff": -1,
-     "streak": "W4"
+     "streak": "L1"
     },
     {
-     "team": "United FC",
-     "gp": 8,
+     "team": "Unicorn FC",
+     "gp": 9,
      "w": 4,
-     "l": 4,
+     "l": 5,
      "t": 0,
      "d": 0,
      "pts": 12,
      "gf": 18,
-     "ga": 16,
-     "diff": 2,
-     "streak": "W3"
+     "ga": 24,
+     "diff": -6,
+     "streak": "L2"
     },
     {
      "team": "Freebird FC",
@@ -86,16 +86,16 @@
     },
     {
      "team": "Rangers FC",
-     "gp": 8,
+     "gp": 9,
      "w": 1,
-     "l": 6,
+     "l": 7,
      "t": 1,
      "d": 0,
      "pts": 4,
      "gf": 4,
-     "ga": 25,
-     "diff": -21,
-     "streak": "L4"
+     "ga": 28,
+     "diff": -24,
+     "streak": "L5"
     },
     {
      "team": "Heatherbrae",
@@ -115,6 +115,19 @@
   {
    "name": "Division 2",
    "rows": [
+    {
+     "team": "Hammers FC",
+     "gp": 8,
+     "w": 4,
+     "l": 1,
+     "t": 3,
+     "d": 0,
+     "pts": 15,
+     "gf": 30,
+     "ga": 17,
+     "diff": 13,
+     "streak": "W1"
+    },
     {
      "team": "Richlads FC",
      "gp": 8,
@@ -142,30 +155,17 @@
      "streak": "T1"
     },
     {
-     "team": "Hammers FC",
-     "gp": 7,
-     "w": 3,
-     "l": 1,
-     "t": 3,
-     "d": 0,
-     "pts": 12,
-     "gf": 26,
-     "ga": 14,
-     "diff": 12,
-     "streak": "T1"
-    },
-    {
      "team": "EPFC Lions",
-     "gp": 8,
+     "gp": 9,
      "w": 3,
-     "l": 3,
+     "l": 4,
      "t": 2,
      "d": 0,
      "pts": 11,
-     "gf": 20,
-     "ga": 15,
-     "diff": 5,
-     "streak": "W1"
+     "gf": 22,
+     "ga": 19,
+     "diff": 3,
+     "streak": "L1"
     },
     {
      "team": "RUFC Graduates",
@@ -226,55 +226,55 @@
    "rows": [
     {
      "team": "Richmond Athletics FC",
-     "gp": 7,
-     "w": 7,
+     "gp": 8,
+     "w": 8,
      "l": 0,
      "t": 0,
      "d": 0,
-     "pts": 21,
-     "gf": 31,
-     "ga": 9,
-     "diff": 22,
-     "streak": "W7"
+     "pts": 24,
+     "gf": 35,
+     "ga": 11,
+     "diff": 24,
+     "streak": "W8"
     },
     {
      "team": "Richmond Old Blacks",
-     "gp": 8,
+     "gp": 9,
      "w": 5,
-     "l": 2,
+     "l": 3,
      "t": 1,
      "d": 0,
      "pts": 16,
-     "gf": 39,
-     "ga": 12,
-     "diff": 27,
-     "streak": "W3"
+     "gf": 42,
+     "ga": 16,
+     "diff": 26,
+     "streak": "L1"
     },
     {
      "team": "Rain City Gunners",
-     "gp": 8,
-     "w": 3,
+     "gp": 9,
+     "w": 4,
      "l": 4,
      "t": 1,
      "d": 0,
-     "pts": 10,
-     "gf": 21,
+     "pts": 13,
+     "gf": 28,
      "ga": 24,
-     "diff": -3,
-     "streak": "L2"
+     "diff": 4,
+     "streak": "W1"
     },
     {
      "team": "Glory FC",
-     "gp": 7,
+     "gp": 8,
      "w": 0,
-     "l": 6,
+     "l": 7,
      "t": 1,
      "d": 0,
      "pts": 1,
      "gf": 8,
-     "ga": 40,
-     "diff": -32,
-     "streak": "L1"
+     "ga": 47,
+     "diff": -39,
+     "streak": "L2"
     }
    ]
   }

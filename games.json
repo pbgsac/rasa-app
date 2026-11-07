@@ -1,7 +1,7 @@
 {
  "source": "https://www.rasasoccer.ca/leagues/schedules.cfm?clientid=6369&leagueID=27680",
  "season": "Winter 2026-27",
- "updatedAt": "2026-11-06T23:16:09Z",
+ "updatedAt": "2026-11-07T13:02:43Z",
  "games": [
   {
    "date": "2026-09-10",
@@ -1206,11 +1206,11 @@
    "home": "RICHMOND ALL B.",
    "away": "UNICORN FC",
    "venue": "Hugh Boyd - Red",
-   "homeScore": null,
-   "awayScore": null,
+   "homeScore": 3,
+   "awayScore": 0,
    "number": "d1-8-32",
    "gameId": "2579586",
-   "status": "-",
+   "status": "Final",
    "officials": [
     "Mike Laing",
     "Don Taylor",
@@ -1253,11 +1253,11 @@
    "home": "RICHMOND ATHLE.",
    "away": "UNICORN FC",
    "venue": "Hugh Boyd - Red",
-   "homeScore": null,
-   "awayScore": null,
+   "homeScore": 0,
+   "awayScore": 3,
    "number": "LC8",
    "gameId": "2565116",
-   "status": "-",
+   "status": "Final",
    "officials": [
     "Ernesto De Marco"
    ]
@@ -1268,11 +1268,11 @@
    "home": "RAIN CITY GUNN.",
    "away": "GLORY FC",
    "venue": "Minoru 3",
-   "homeScore": null,
-   "awayScore": null,
+   "homeScore": 7,
+   "awayScore": 0,
    "number": "m-9-21",
    "gameId": "2580352",
-   "status": "-",
+   "status": "Final",
    "officials": [
     "Dusko Jovic"
    ]
@@ -1283,11 +1283,11 @@
    "home": "EPFC LIONS",
    "away": "RICHMOND ATHLE.",
    "venue": "Hugh Boyd - Red",
-   "homeScore": null,
-   "awayScore": null,
+   "homeScore": 2,
+   "awayScore": 4,
    "number": "m-9-22 / 2-8-C9",
    "gameId": "2580353",
-   "status": "-",
+   "status": "Final",
    "officials": [
     "Emre Ogutcen"
    ]
@@ -1298,11 +1298,11 @@
    "home": "HAMMERS FC",
    "away": "RICHMOND OLD B.",
    "venue": "Hugh Boyd - Blue",
-   "homeScore": null,
-   "awayScore": null,
+   "homeScore": 4,
+   "awayScore": 3,
    "number": "m-9-23 / 2-8-C10",
    "gameId": "2580354",
-   "status": "-",
+   "status": "Final",
    "officials": [
     "bob briza"
    ]
@@ -1313,11 +1313,11 @@
    "home": "UNICORN FC",
    "away": "AC RICHMOND",
    "venue": "Minoru Oval",
-   "homeScore": null,
-   "awayScore": null,
+   "homeScore": 0,
+   "awayScore": 2,
    "number": "d1-9-33",
    "gameId": "2579587",
-   "status": "",
+   "status": "Final",
    "officials": [
     "billy Cheng",
     "Darman Nair",
@@ -1330,11 +1330,11 @@
    "home": "UNITED FC",
    "away": "RFC HIBS",
    "venue": "Hugh Boyd - Red",
-   "homeScore": null,
-   "awayScore": null,
+   "homeScore": 0,
+   "awayScore": 3,
    "number": "d1-9-34",
    "gameId": "2579588",
-   "status": "",
+   "status": "Final",
    "officials": [
     "Mike Laing",
     "Gavin Laing",
@@ -1347,11 +1347,11 @@
    "home": "RANGERS FC",
    "away": "RICHMOND ALL B.",
    "venue": "Hugh Boyd - Blue",
-   "homeScore": null,
-   "awayScore": null,
+   "homeScore": 0,
+   "awayScore": 3,
    "number": "d1-9-35",
    "gameId": "2579589",
-   "status": "",
+   "status": "Final",
    "officials": [
     "Sean Davies"
    ]
