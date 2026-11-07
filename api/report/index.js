@@ -130,7 +130,9 @@ async function sendMail(body, env) {
 module.exports = async function (context, req) {
   const headers = cors(req);
   if ((req.method || "").toUpperCase() === "OPTIONS") { context.res = { status: 204, headers }; return; }
-  const env = process.env;
+  // Settings pasted into the portal sometimes carry spaces or quotes; strip them.
+  const clean = v => String(v || "").trim().replace(/^["']+|["']+$/g, "").trim();
+  const env = Object.fromEntries(["GRAPH_TENANT_ID", "GRAPH_CLIENT_ID", "GRAPH_CLIENT_SECRET", "MAIL_FROM", "MAIL_TO"].map(k => [k, clean(process.env[k])]));
   if (!env.GRAPH_TENANT_ID || !env.GRAPH_CLIENT_ID || !env.GRAPH_CLIENT_SECRET || !env.MAIL_FROM) {
     context.res = { status: 503, headers, body: { ok: false, error: "Report sending isn't set up yet." } }; return;
   }
