@@ -257,6 +257,11 @@ dl.view{margin:0;display:flex;flex-direction:column;border-top:1px solid var(--l
 .crow{display:flex;flex-direction:column;gap:6px;padding:10px;border:1px dashed var(--line);border-radius:10px}
 .crow select{flex:1;min-width:0;border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:7px 8px}
 .crow select.ctype{flex:0 0 auto}
+/* Keep the discipline rows inside the screen: fieldsets otherwise grow to fit the longest infraction in the list */
+.modal fieldset{min-width:0}
+.crow,.crow .prow,.crow .pick{min-width:0;max-width:100%}
+.crow .pick{flex-wrap:nowrap}
+.crow select.cinf{flex:1 1 0;width:0;min-width:0;text-overflow:ellipsis}
 .crow textarea{border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:8px 10px;font:inherit;color:inherit;resize:vertical}
 .cbx{position:relative}
 .cbx-in{width:100%;border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:7px 10px;color:var(--ink)}
@@ -1582,7 +1587,7 @@ function openRefReport(id, opts={}){
     ${teamBlock("away", away)}
     ${discBlock("home", home)}
     ${discBlock("away", away)}
-    <fieldset><legend>Field conditions <span class="opt-l">(if any issues)</span></legend><textarea id="fField" rows="2" placeholder="Field, lines, goal posts, nets, lights"></textarea></fieldset>
+    <fieldset><legend>Field conditions <span class="opt-l">(if any issues)</span></legend><textarea id="fField" rows="5" placeholder="Field, lines, goal posts, nets, lights"></textarea></fieldset>
     <fieldset><legend>Injuries and other comments <span class="opt-l">(optional)</span></legend><textarea id="fNotes" rows="3" placeholder="Injuries (player, team, what happened), notable events, team conduct"></textarea></fieldset>
     <fieldset><legend>Game questions</legend>
       <p class="q">Official game ball provided by?</p>${radios("qBall", PROVIDED)}
@@ -1753,6 +1758,7 @@ function gamePlayers(g, team){
 }
 const poss = n=>/s$/i.test(n) ? n+"’" : n+"’s";
 const rosterHint = (g, team)=>{ const gp = gamePlayers(g, team);
+  if(!FEATURES.accounts) return `Pick from ${esc(poss(tn(team)))} player list, or type a name.`;   // match day rosters are off for now
   return gp.fromRoster ? `Showing the ${gp.count} players on ${esc(poss(tn(team)))} match day roster.` : `${esc(tn(team))} didn’t submit a match day roster, so the full team list is shown.`; };
 const birthYear = b=>{ const m=String(b||"").match(/(\d{2,4})/); if(!m) return ""; let y=+m[1]; if(y<100) y += (2000+y>new Date().getFullYear()) ? 1900 : 2000; return y; };
 const initialsOf = n=>n.trim().split(/\s+/).map(s=>s[0]).slice(0,2).join("").toUpperCase();
