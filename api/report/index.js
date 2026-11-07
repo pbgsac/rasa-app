@@ -77,7 +77,10 @@ async function graphToken(env) {
       scope: "https://graph.microsoft.com/.default", grant_type: "client_credentials"
     })
   });
-  if (!res.ok) throw new Error(`token ${res.status}: ${(await res.text()).slice(0, 300)}`);
+  if (!res.ok) {
+    const t = await res.text(); let code = ""; try { const j = JSON.parse(t); code = j.error || ""; if (j.error_codes) code += " AADSTS" + j.error_codes[0]; } catch (e) {}
+    const err = new Error(`token ${res.status}: ${t.slice(0, 300)}`); err.code = `sign-in ${res.status} ${code}`.trim(); throw err;
+  }
   return (await res.json()).access_token;
 }
 
@@ -118,7 +121,10 @@ async function sendMail(body, env) {
     headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
     body: JSON.stringify({ message, saveToSentItems })
   });
-  if (res.status !== 202) throw new Error(`sendMail ${res.status}: ${(await res.text()).slice(0, 300)}`);
+  if (res.status !== 202) {
+    const t = await res.text(); let code = ""; try { code = JSON.parse(t).error.code || ""; } catch (e) {}
+    const err = new Error(`sendMail ${res.status}: ${t.slice(0, 300)}`); err.code = `send ${res.status} ${code}`.trim(); throw err;
+  }
 }
 
 module.exports = async function (context, req) {
@@ -141,7 +147,8 @@ module.exports = async function (context, req) {
     context.res = { status: 200, headers, body: { ok: true } };
   } catch (e) {
     context.log.error ? context.log.error(String(e)) : context.log(String(e));
-    context.res = { status: 502, headers, body: { ok: false, error: "The report couldn't be emailed. Please try again." } };
+    // "code" is a short, non-secret reason (e.g. "send 403 ErrorAccessDenied") to help the league fix setup problems
+    context.res = { status: 502, headers, body: { ok: false, error: "The report couldn't be emailed. Please try again.", code: str(e.code || "error", 120) } };
   }
 };
 module.exports._test = { validate, buildMessage, cors };
