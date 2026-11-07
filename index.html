@@ -407,7 +407,13 @@ dl.view{margin:0;display:flex;flex-direction:column;border-top:1px solid var(--l
 .std.roster tr.staff td{background:var(--surface-2)}
 .role{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;background:var(--ink);color:var(--surface);border-radius:4px;padding:1px 6px}
 .std.roster .num{color:var(--muted);font-weight:700;width:28px;padding-right:0}
-.team-roster th.tm,.team-roster td.tm{min-width:150px}
+/* Long names wrap onto a second line, then stop with "…", so Pts / G / A stay on screen */
+.std.team-roster th.tm,.std.team-roster td.tm{min-width:0;width:178px;max-width:178px;white-space:normal;padding-right:8px}
+.team-roster td.tm .pl{gap:8px;width:168px}
+.team-roster td.tm .pl>span:last-child{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden;line-height:1.25;overflow-wrap:anywhere}
+.team-roster .mini-photo{width:28px;height:28px;font-size:11px}
+.std.team-roster th:first-child,.std.team-roster td:first-child{padding-left:10px;padding-right:2px;min-width:30px;width:30px}
+.std.team-roster th.tm,.std.team-roster td.tm{left:30px}
 .tlink{background:none;border:0;padding:0;font-weight:600;cursor:pointer;color:var(--ink);text-align:left;white-space:normal}
 .tlink:hover{color:var(--accent);text-decoration:underline}
 .std td.rkc{white-space:nowrap}
@@ -1924,7 +1930,7 @@ function teamRosterHTML(key){
   const last = n=>n.trim().split(/\s+/).slice(-1)[0].toLowerCase();
   const ps = players.map(p=>({...p, pts:(p.g||0)+(p.a||0)}))
     .sort((a,b)=>b.pts-a.pts || (b.g||0)-(a.g||0) || last(a.name).localeCompare(last(b.name)) || a.name.localeCompare(b.name));
-  const rows = ps.map(p=>`<tr><td class="num">${p.number!=null?esc(p.number):""}</td><td class="tm"><span class="pl">${faceHTML(p)}<span>${esc(nameCase(p.name))}</span></span></td><td class="pts">${p.pts}</td><td>${p.g}</td><td>${p.a}</td><td>${p.gp}</td><td>${p.pos&&p.pos!=="-"?esc(p.pos):""}</td><td>${p.yc?`<span class="card yc">${p.yc}</span>`:"0"}</td><td>${p.rc?`<span class="card rc">${p.rc}</span>`:"0"}</td><td class="fill"></td></tr>`).join("");
+  const rows = ps.map(p=>`<tr><td class="num">${p.number!=null?esc(p.number):""}</td><td class="tm"><span class="pl">${faceHTML(p)}<span title="${esc(nameCase(p.name))}">${esc(nameCase(p.name))}</span></span></td><td class="pts">${p.pts}</td><td>${p.g}</td><td>${p.a}</td><td>${p.gp}</td><td>${p.pos&&p.pos!=="-"?esc(p.pos):""}</td><td>${p.yc?`<span class="card yc">${p.yc}</span>`:"0"}</td><td>${p.rc?`<span class="card rc">${p.rc}</span>`:"0"}</td><td class="fill"></td></tr>`).join("");
   return `<div class="std roster team-roster" style="--c:var(${COMPS[TEAMS[key].d].v})"><div class="std-h"><h2>${ps.length} players</h2><span class="swipe" hidden aria-hidden="true">→</span></div><div class="std-wrap"><table>
     <thead><tr><th scope="col" title="Jersey number">#</th><th scope="col" class="tm">Name</th><th scope="col" title="Points: 1 per goal, 1 per assist">Pts</th><th scope="col" title="Goals">G</th><th scope="col" title="Assists">A</th><th scope="col" title="Games played">GP</th><th scope="col" title="Position">Pos</th><th scope="col" title="Yellow cards">YC</th><th scope="col" title="Red cards">RC</th><th class="fill" aria-hidden="true"></th></tr></thead>
     <tbody>${rows}</tbody></table></div></div><p class="note">Points: 1 for each goal and 1 for each assist.</p>`;
