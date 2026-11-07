@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-07T18:48:42Z",
+ "updatedAt": "2026-11-07T23:39:19Z",
  "teams": {
   "AC RICHMOND": {
    "name": "AC Richmond",
@@ -6890,6 +6890,18 @@
      "photo": ""
     },
     {
+     "name": "Mubarak Hassan",
+     "number": null,
+     "pos": "-",
+     "born": "-",
+     "gp": 0,
+     "g": 0,
+     "a": 0,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/614812_pic.jpeg"
+    },
+    {
      "name": "Jeevan Johal",
      "number": 7,
      "pos": "-",
@@ -7025,13 +7037,13 @@
      "name": "Gaven Padda",
      "number": null,
      "pos": "-",
-     "born": "-",
+     "born": "'09",
      "gp": 0,
      "g": 0,
      "a": 0,
      "yc": 0,
      "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/614819_pic.PNG"
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/619905_pic.jpg"
     },
     {
      "name": "Jagdeep Pannu",
