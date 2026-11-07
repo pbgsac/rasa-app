@@ -1,0 +1,7 @@
+{
+  "name": "rasa-app-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "RASA app server functions (Azure Static Web Apps managed API)",
+  "scripts": { "test": "node test/report.test.js" }
+}

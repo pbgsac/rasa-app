@@ -312,6 +312,16 @@ dl.view{margin:0;display:flex;flex-direction:column;border-top:1px solid var(--l
 .gp-day{font-size:16px;text-transform:uppercase;margin-top:6px;display:flex;align-items:center;gap:8px}
 .gp-game{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:1px solid var(--line);border-left:5px solid var(--c);background:var(--surface);border-radius:10px;padding:10px 12px;cursor:pointer;font:inherit;color:var(--ink)}
 .gp-game:hover{border-color:var(--accent)}
+.gp-game.mine{background:color-mix(in srgb,var(--lime) 14%,var(--surface));border-color:var(--lime);box-shadow:0 0 0 1px var(--lime) inset}
+.gp-game .you{font-size:12px;font-weight:700;background:var(--lime);color:#101820;border-radius:999px;padding:2px 9px;white-space:nowrap}
+.gp-t small{display:block;font-size:12px;color:var(--muted);font-family:var(--font-body)}
+.rr-me{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:14px}
+.rr-step{margin:0;font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.rr-who{align-self:stretch;max-width:520px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+.photo-btn{align-self:flex-start;cursor:pointer}
+.phrow{display:flex;flex-direction:column;gap:6px;margin-bottom:10px}
 .gp-t{font-family:var(--font-display);font-size:18px;min-width:64px}
 .gp-teams{flex:1;display:flex;flex-direction:column;gap:2px}
 .gp-teams small{color:var(--muted)}
@@ -519,7 +529,7 @@ tr.tapped td{animation:tapFlash .32s ease-out}
     <img class="crest" src="logo.png" alt="Richmond Adult Soccer Association">
     <div class="club">
       <b>RASA</b>
-      <span>Winter League 2026–27 <em class="preview-tag" title="Accounts, reports and rosters don’t save yet">Preview</em></span>
+      <span>Winter League 2026–27 <em class="preview-tag" title="Early version of the RASA app">Preview</em></span>
     </div>
     <div class="spacer"></div>
     <div id="authArea"></div>
@@ -803,8 +813,8 @@ function toast(msg){const t=$("#toast"); t.textContent=msg; t.hidden=false; clea
 /* ---------- State ---------- */
 // Lookup-only mode for now: Schedule, Standings and Leaders. Sign-in and Game Report are switched off
 // (their code stays, ready to turn back on with the back end).
-const FEATURES = {accounts:false, gameReport:false};
-const state = { view:"schedule", mode:"up", comp:"ALL", team:"ALL", user:null, upWeeks:2, resWeeks:2, refView:"Kanwal Sangha", teamMode:"up", adminWeeks:2, refMode:"up", adminFilter:null, adminMode:"games", ldF:{g:"ALL",a:"ALL",k:"ALL"}, teamKey:null, teamTab:"up" };
+const FEATURES = {accounts:false, gameReport:true};
+const state = { view:"schedule", mode:"up", comp:"ALL", team:"ALL", user:null, upWeeks:2, resWeeks:2, refView:"Kanwal Sangha", teamMode:"up", adminWeeks:2, refMode:"up", adminFilter:null, adminMode:"games", ldF:{g:"ALL",a:"ALL",k:"ALL"}, teamKey:null, teamTab:"up", rr:{step:"who", name:"", email:"", days:14} };
 
 /* ---------- Match card ---------- */
 function matchCard(g, opts={}){
@@ -1083,8 +1093,8 @@ function renderAuthArea(){
 }
 function renderTabs(){
   const tabs = [["schedule","Schedule"],["standings","Standings"],["leaders","Leaders"]];
-  if(FEATURES.gameReport && (!state.user || state.user.role==="player")) tabs.push(["game-report","Game Report"]);
-  if(!FEATURES.accounts){ $("#tabs").innerHTML = tabs.map(([k,n])=>`<button class="tab" data-view="${k}" ${(state.view===k||(state.view==="team"&&k===(state.teamFrom||"standings")))?'aria-current="page"':""}>${n}</button>`).join(""); return; }
+  if(FEATURES.gameReport && (!state.user || state.user.role==="player")) tabs.push(["game-report","Ref Report"]);
+  if(!FEATURES.accounts){ $("#tabs").innerHTML = tabs.map(([k,n])=>`<button class="tab${k==="game-report"?" tab-end":""}" data-view="${k}" ${(state.view===k||(state.view==="team"&&k===(state.teamFrom||"standings")))?'aria-current="page"':""}>${n}</button>`).join(""); return; }
   if(state.user){ if(state.user.role!=="player") tabs.push(["dashboard", state.user.role==="manager"?"My team":state.user.role==="referee"?"My games":"Admin"]); tabs.push(["account","Account"]); }
   else tabs.push(["sign-in","Sign in"]);
   let dueN = 0;
@@ -1529,8 +1539,9 @@ document.addEventListener("keydown", e=>{
 
 function openRefReport(id, opts={}){
   const g = games[id]; formGame = g; pickerSeq = 0; formGame.publicReport = !!opts.public;
-  const refName = (state.user && state.user.role==="referee") ? (state.refView || state.user.name) : (g.refs[0] || "");
-  const refEmail = (state.user && state.user.role==="referee") ? (state.user.email||"") : "";
+  const pub = !!opts.public;
+  const refName = pub ? state.rr.name : (state.user && state.user.role==="referee") ? (state.refView || state.user.name) : (g.refs[0] || "");
+  const refEmail = pub ? state.rr.email : (state.user && state.user.role==="referee") ? (state.user.email||"") : "";
   const home = HOME(g), away = AWAY(g);
   const homeScore = g.as, awayScore = g.hs;
   const radios = (name, opts)=>`<div class="stars wide${opts.length===4?" four":""}" role="radiogroup">${opts.map(v=>`<label><input type="radio" name="${name}" value="${esc(v)}"><span>${esc(v)}</span></label>`).join("")}</div>`;
@@ -1554,11 +1565,14 @@ function openRefReport(id, opts={}){
     <h2 id="reportTitle">Referee report</h2>
     <p class="sub">${esc(fmtDay(g.date))} · ${fmtTime(g.time).t} ${fmtTime(g.time).ap}${g.venue?" · "+esc(g.venue):""}${g.number?" · #"+esc(g.number):""}</p>
     <p class="sub"><b>Home:</b> ${esc(tn(home))} · <b>Away:</b> ${esc(tn(away))}${g.refs.length>1?` · AR: ${g.refs.slice(1).map(esc).join(", ")}`:""}</p>
-    <fieldset><legend>Referee</legend>
+    ${pub ? `<fieldset><legend>Referee</legend>
+      <p class="refname"><b>${esc(refName)}</b> · ${esc(refEmail)}</p>
+      ${g.refs[0] && !refMatch(refName, g.refs[0]) ? `<p class="hint">The officials schedule lists <b>${esc(g.refs[0])}</b> as the referee for this game.</p>` : ""}
+    </fieldset>` : `<fieldset><legend>Referee</legend>
       ${g.refs[0] ? `<p class="refname"><b>${esc(refName)}</b> <span class="muted">(from the officials schedule)</span></p>`
         : `<div class="field"><label for="fRefName">Referee name</label><input id="fRefName" type="text" autocomplete="name" value="${esc(refName)}"></div>`}
       <div class="field"><label for="fEmail">Email:</label><input id="fEmail" type="email" autocomplete="email" placeholder="you@example.com" value="${esc(refEmail)}"></div>
-    </fieldset>
+    </fieldset>`}
     <fieldset><legend>Final score</legend>
       <div class="score-grid">
         <label for="fHome">${esc(tn(home))} (home)</label><input id="fHome" type="number" min="0" max="15" inputmode="numeric" value="${homeScore??""}">
@@ -1576,10 +1590,16 @@ function openRefReport(id, opts={}){
       <p class="q">2 copies of official team list provided by home team?</p>${radios("qListHome", ["Yes","No"])}
       <p class="q">2 copies of official team list provided by visiting team?</p>${radios("qListAway", ["Yes","No"])}
       <p class="q">Showed player cards?</p>${radios("qCards", PROVIDED)}
-      <p class="hint">You’ll attach photos of both team lists to the email in the last step.</p>
+      ${pub ? "" : `<p class="hint">You’ll attach photos of both team lists to the email in the last step.</p>`}
     </fieldset>
+    ${pub ? `<fieldset><legend>Team list photos</legend>
+      <p class="hint">Take a clear photo of each team’s signed team list. At least one per team, up to ${MAX_PHOTOS_PER_TEAM}.</p>
+      ${["home","away"].map(s=>`<div class="phrow"><p class="q">${s==="home"?"Home":"Away"}: ${esc(tn(s==="home"?home:away))}</p>
+        <div class="thumbs" id="ph-${s}"></div>
+        <label class="btn btn-ghost btn-sm photo-btn"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M9 3 7.2 5H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3.2L15 3H9Zm3 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg>Insert photo<input type="file" accept="image/*" multiple data-photo="${s}" class="sr-only"></label></div>`).join("")}
+    </fieldset>` : ""}
     <p class="err" id="reportErr" hidden></p>
-    <div class="actions"><button type="button" class="btn btn-ghost" id="reportCancel">Cancel</button><button type="submit" class="btn btn-primary">Submit report</button></div>`, "ref");
+    <div class="actions"><button type="button" class="btn btn-ghost" id="reportCancel">Cancel</button><button type="submit" class="btn btn-primary" id="refSubmit">${pub?"Send report":"Submit report"}</button></div>`, "ref");
   const teamOf = side=> side==="home" ? home : away;
   const rm = `<button type="button" class="x2" data-rmrow aria-label="Remove">✕</button>`;
   const addScorer = side=>{ const d=document.createElement("div"); d.className="prow";
@@ -1594,6 +1614,7 @@ function openRefReport(id, opts={}){
   ["home","away"].forEach(s=>addGK(s));
   const f = $("#reportForm");
   f.onclick = e=>{
+    const rmp = e.target.closest("[data-rmphoto]"); if(rmp){ const [s,i] = rmp.dataset.rmphoto.split("|"); picks.photos[s].splice(+i,1); drawPhotos(s); return; }
     const t = e.target.closest("[data-addscorer],[data-addgk],[data-addcard],[data-rmrow]"); if(!t) return;
     if(t.dataset.addscorer) addScorer(t.dataset.addscorer);
     else if(t.dataset.addgk){ if($("#gk-"+t.dataset.addgk).children.length<3) addGK(t.dataset.addgk); }
@@ -1603,11 +1624,12 @@ function openRefReport(id, opts={}){
   f.onchange = e=>{
     if(e.target.classList.contains("ctype")){ const inf = e.target.closest(".crow").querySelector(".cinf");
       inf.innerHTML = (e.target.value==="Red"?RED_OFFENCES:YELLOW_OFFENCES).map(o=>`<option>${esc(o)}</option>`).join(""); }
+    if(e.target.dataset && e.target.dataset.photo){ addPhotos(e.target.dataset.photo, [...e.target.files]); e.target.value = ""; return; }
     if(e.target.id==="fPicHome"||e.target.id==="fPicAway"){ const file = e.target.files[0]; if(!file) return;
       const which = e.target.id==="fPicHome"?"home":"away"; picks["list_"+which] = {name:file.name, type:file.type||"", url:URL.createObjectURL(file)};
       $(which==="home"?"#thPicHome":"#thPicAway").innerHTML = `<figure class="thumb"><img src="${picks["list_"+which].url}" alt=""><figcaption>${esc(file.name)}</figcaption></figure>`; }
   };
-  picks = {};
+  picks = {photos:{home:[], away:[]}};
   $("#fHome").focus();
 }
 function readRows(side){
@@ -1624,16 +1646,21 @@ function submitRefReport(){
   const H = readRows("home"), A = readRows("away");
   const q = {ball:checked("qBall"), flags:checked("qFlags"), listHome:checked("qListHome"), listAway:checked("qListAway"), cards:checked("qCards")};
   const missing = [];
-  const refName = g.refs[0] ? ((state.user && state.user.role==="referee") ? (state.refView || state.user.name) : g.refs[0]) : ($("#fRefName") ? $("#fRefName").value.trim() : "");
-  const email = $("#fEmail").value.trim();
+  const pub = !!g.publicReport;
+  const refName = pub ? state.rr.name : g.refs[0] ? ((state.user && state.user.role==="referee") ? (state.refView || state.user.name) : g.refs[0]) : ($("#fRefName") ? $("#fRefName").value.trim() : "");
+  const email = pub ? state.rr.email : $("#fEmail").value.trim();
   if(!refName) missing.push("your name");
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) missing.push("a valid email address");
   if(hs===""||as==="") missing.push("the final score");
   if(!H.keepers.length || H.keepers.some(k=>!k.name||k.minutes==="")) missing.push(`the home goalkeeper and minutes played`);
   if(!A.keepers.length || A.keepers.some(k=>!k.name||k.minutes==="")) missing.push(`the away goalkeeper and minutes played`);
   if(Object.values(q).some(v=>!v)) missing.push("answers to all the game questions");
+  if(pub && picks.photos && (!picks.photos.home.length || !picks.photos.away.length)) missing.push("a photo of each team’s list");
+  if(pub && picks.photos && [...picks.photos.home, ...picks.photos.away].some(p=>p.busy)) missing.push("a moment for the photos to finish loading");
   if(missing.length){ err.textContent = joinMissing(missing); err.hidden=false; err.scrollIntoView({block:"nearest"}); return; }
   if(H.scorers.length > +hs || A.scorers.length > +as){ err.textContent = "There are more goal scorers listed than goals in the final score. Remove a scorer or fix the score."; err.hidden=false; return; }
+  if(pub){ sendRefReport(g, {by:refName, email, public:true, when:new Date().toLocaleDateString("en-CA",{month:"short",day:"numeric"}),
+    homeScore:+hs, awayScore:+as, home:H, away:A, field:$("#fField").value.trim(), notes:$("#fNotes").value.trim(), questions:q}); return; }
   setAppScore(g, as, hs, refName);   // g.hs belongs to g.h (away)
   const r = refReports[gameKey(g)] = {by:refName, email, public:!!g.publicReport, when:new Date().toLocaleDateString("en-CA",{month:"short",day:"numeric"}),
     homeScore:+hs, awayScore:+as, home:H, away:A, field:$("#fField").value.trim(), notes:$("#fNotes").value.trim(), questions:q};
@@ -1849,36 +1876,129 @@ function showSendStep(g, r){
     <div class="actions"><button type="button" class="btn btn-ghost" id="reportCancel">Done</button></div>`, "view");
   $("#copyReport").onclick = async ()=>{ try{ await navigator.clipboard.writeText(subject+"\n\n"+body); toast("Report copied"); }catch(e){ toast("Couldn’t copy. Open “See the report text” and copy it from there."); } };
 }
-function openGamePicker(days){
-  days = days || 14;
-  const from = new Date(today); from.setDate(from.getDate()-days);
-  const now = new Date();
-  const list = games.filter(g=>kickoff(g) <= now && parseD(g.date) >= from).sort((x,y)=>(y.date+y.time).localeCompare(x.date+x.time));
-  const older = games.some(g=>kickoff(g) <= now && parseD(g.date) < from);
-  const byDay = new Map(); list.forEach(g=>{ if(!byDay.has(g.date)) byDay.set(g.date,[]); byDay.get(g.date).push(g); });
-  let html = "";
-  byDay.forEach((gs,d)=>{ html += `<h3 class="gp-day">${esc(fmtDay(d))}${dayTag(d)?` <span class="tag">${dayTag(d)}</span>`:""}</h3>` + gs.map(g=>`
-    <button type="button" class="gp-game" data-pickgame="${g.id}" style="--c:var(${COMPS[g.comp].v})">
-      <span class="gp-t">${fmtTime(g.time).t} ${fmtTime(g.time).ap}</span>
-      <span class="gp-teams"><b>${esc(tn(HOME(g)))}</b> vs <b>${esc(tn(AWAY(g)))}</b><small>${g.venue?esc(g.venue)+" · ":""}${g.refs[0]?"Ref: "+esc(g.refs[0]):"No referee listed"}</small></span>
-      ${refReportFor(g)&&!refReportFor(g).sample?`<span class="appsc">Reported</span>`:""}
-    </button>`).join(""); });
-  showModal(`<h2 id="reportTitle">Pick your game</h2>
-    <p class="sub">Games from the last ${days} days, newest first. Home team listed first.</p>
-    <div class="gp-list">${html || `<div class="empty">No games in this period.</div>`}</div>
-    ${older?`<button type="button" class="btn btn-ghost" id="gpMore">Show earlier games</button>`:""}
-    <div class="actions sticky-actions"><button type="button" class="btn btn-ghost" id="reportCancel">Cancel</button></div>`, "view");
-  const more = $("#gpMore"); if(more) more.onclick = ()=>openGamePicker(days+14);
-  $("#reportForm").onclick = e=>{ const b = e.target.closest("[data-pickgame]"); if(b) openRefReport(+b.dataset.pickgame, {public:true}); };
+/* ---------- Ref Report tab ----------
+   1) Referee enters name + email  2) picks the game (their own games are highlighted)
+   3) fills in the report and adds photos of both team lists  4) the app sends it to the server,
+   which emails it from matchreport@rasasoccer.ca to matchreport@rasasoccer.ca (Reply-To: the referee). */
+const REPORT_API = location.hostname.endsWith("azurestaticapps.net") ? "/api/report" : "https://ashy-water-0e8bef90f.3.azurestaticapps.net/api/report";
+const MAX_PHOTOS_PER_TEAM = 3;
+const normName = s=>String(s||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/[^a-z\s]/g," ").split(/\s+/).filter(Boolean);
+// Same person if the full names match, or first and last names match (middle names and capitals don't matter).
+function refMatch(entered, listed){
+  const a = normName(entered), b = normName(listed);
+  if(!a.length || !b.length) return false;
+  if(a.join(" ")===b.join(" ")) return true;
+  if(a.length>=2 && b.length>=2 && a[0]===b[0] && a[a.length-1]===b[b.length-1]) return true;
+  return false;
 }
+const refRole = (g, name)=> g.refs[0] && refMatch(name, g.refs[0]) ? "Referee" : g.refs.slice(1).some(r=>refMatch(name, r)) ? "Assistant referee" : "";
+const loadRef = ()=>{ try{ return JSON.parse(localStorage.getItem("rasa.ref")||"{}"); }catch(e){ return {}; } };
+const saveRef = v=>{ try{ localStorage.setItem("rasa.ref", JSON.stringify(v)); }catch(e){} };
+
 function renderGameReport(){
-  const mine = Object.values(refReports).filter(r=>!r.sample && r.public).length;
-  $("#view-game-report").innerHTML = `<div class="hello"><h1>Game report</h1><p>For referees: report the score and your referee report after each game.</p></div>
-    <div class="invite"><b>How it works</b>
-      <ol class="steps"><li>Pick your game from the schedule.</li><li>Fill in the referee report and your email.</li><li>Your email app opens with the report filled in. Attach photos of the team lists and press Send. It goes to ${MATCHREPORT}.</li></ol>
-      <button type="button" class="btn btn-primary bigbtn" id="pickGame">Pick a game</button></div>
-    ${mine?`<p class="note">You’ve submitted ${mine} report${mine>1?"s":""} on this device.</p>`:""}`;
-  $("#pickGame").onclick = ()=>openGamePicker();
+  const v = $("#view-game-report"), rr = state.rr;
+  if(rr.step==="who" || !rr.name || !rr.email){
+    const saved = loadRef();
+    v.innerHTML = `<div class="hello"><h1>Ref report</h1><p>For referees: send your game report and photos of both team lists.</p></div>
+      <form class="auth rr-who" id="rrWho" novalidate>
+        <p class="rr-step">Step 1 of 3</p>
+        <div class="field"><label for="rrName">Your name</label><input id="rrName" type="text" autocomplete="name" placeholder="First and last name" value="${esc(rr.name||saved.name||"")}"></div>
+        <div class="field"><label for="rrEmail">Your email</label><input id="rrEmail" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" value="${esc(rr.email||saved.email||"")}"></div>
+        <input type="text" name="website" id="rrWebsite" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+        <p class="err" id="rrErr" hidden></p>
+        <button class="btn btn-primary bigbtn" type="submit">Next</button>
+        <p class="hint">Use the name you referee under, so your games can be found. We only use your email to reply about this report.</p>
+      </form>`;
+    $("#rrWho").onsubmit = e=>{ e.preventDefault();
+      const name = nameCase($("#rrName").value.trim().replace(/\s+/g," ")), email = $("#rrEmail").value.trim(), err = $("#rrErr");
+      const m = []; if(normName(name).length<2) m.push("your first and last name"); if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) m.push("a valid email address");
+      if(m.length){ err.textContent = joinMissing(m); err.hidden = false; return; }
+      Object.assign(state.rr, {step:"pick", name, email, hp:$("#rrWebsite").value}); saveRef({name, email}); renderGameReport(); window.scrollTo(0,0); };
+    return;
+  }
+  // Step 2: the schedule. Games that have started, from the last couple of weeks, plus the rest of today.
+  const now = new Date(), from = new Date(today); from.setDate(from.getDate()-rr.days);
+  const endToday = new Date(today); endToday.setDate(endToday.getDate()+1);
+  const list = games.filter(g=>parseD(g.date) >= from && (kickoff(g) <= now || parseD(g.date) < endToday))
+    .sort((x,y)=>(y.date+y.time).localeCompare(x.date+x.time));
+  const older = games.some(g=>parseD(g.date) < from);
+  const mine = list.filter(g=>refRole(g, rr.name));
+  const sent = id=>{ try{ return (JSON.parse(localStorage.getItem("rasa.sent")||"[]")).includes(gameKey(games[id])); }catch(e){ return false; } };
+  const card = g=>{ const role = refRole(g, rr.name), later = kickoff(g) > now;
+    return `<button type="button" class="gp-game${role?" mine":""}" data-pickgame="${g.id}" style="--c:var(${COMPS[g.comp].v})">
+      <span class="gp-t">${fmtTime(g.time).t}<small>${fmtTime(g.time).ap}</small></span>
+      <span class="gp-teams"><b>${esc(tn(HOME(g)))}</b><span><span class="muted small">vs</span> <b>${esc(tn(AWAY(g)))}</b></span><small>${g.venue?esc(g.venue)+" · ":""}${g.refs[0]?"Ref: "+esc(g.refs[0]):"No referee listed"}${later?" · kicks off later today":""}</small></span>
+      ${role?`<span class="you">${role==="Referee"?"Your game":"You’re AR"}</span>`:""}${sent(g.id)?`<span class="appsc">Sent</span>`:""}
+    </button>`; };
+  const byDay = arr=>{ const m = new Map(); arr.forEach(g=>{ if(!m.has(g.date)) m.set(g.date,[]); m.get(g.date).push(g); }); let s=""; m.forEach((gs,d)=>{ s += `<h3 class="gp-day">${esc(fmtDay(d))}${dayTag(d)?` <span class="tag">${dayTag(d)}</span>`:""}</h3>` + gs.map(card).join(""); }); return s; };
+  v.innerHTML = `<div class="hello"><h1>Ref report</h1><p>Step 2 of 3 · pick your game</p></div>
+    <div class="rr-me"><span>Reporting as <b>${esc(rr.name)}</b> · ${esc(rr.email)}</span><button type="button" class="linkbtn" id="rrChange">Change</button></div>
+    ${mine.length ? `<div class="tsec"><div class="tsec-h"><h2>Your games</h2><small>from the officials schedule</small></div><div class="gp-list">${mine.map(card).join("")}</div></div>`
+      : `<p class="note">We didn’t find games under “${esc(rr.name)}” on the officials schedule for these dates. Pick your game from the list below.</p>`}
+    <div class="tsec"><div class="tsec-h"><h2>All games</h2><small>last ${rr.days} days, newest first</small></div>
+      <div class="gp-list">${byDay(list) || `<div class="empty">No games in this period.</div>`}</div>
+      ${older?`<button type="button" class="btn btn-ghost more" id="gpMore">Show earlier games</button>`:""}</div>`;
+  $("#rrChange").onclick = ()=>{ state.rr.step = "who"; renderGameReport(); };
+  const more = $("#gpMore"); if(more) more.onclick = ()=>{ state.rr.days += 14; renderGameReport(); };
+  v.onclick = e=>{ const b = e.target.closest("[data-pickgame]"); if(b) openRefReport(+b.dataset.pickgame, {public:true}); };
+}
+
+// Photos: shrink on the phone first (max 1600px, JPEG) so they upload quickly and fit in one email.
+function shrinkPhoto(file){
+  return new Promise((resolve, reject)=>{
+    const url = URL.createObjectURL(file), img = new Image();
+    img.onload = ()=>{ const s = Math.min(1, 1600/Math.max(img.naturalWidth, img.naturalHeight));
+      const c = document.createElement("canvas"); c.width = Math.round(img.naturalWidth*s); c.height = Math.round(img.naturalHeight*s);
+      c.getContext("2d").drawImage(img, 0, 0, c.width, c.height); URL.revokeObjectURL(url);
+      const dataURL = c.toDataURL("image/jpeg", 0.72); resolve({url:dataURL, data:dataURL.split(",")[1], type:"image/jpeg"}); };
+    img.onerror = ()=>{ URL.revokeObjectURL(url); reject(new Error("unreadable")); };
+    img.src = url;
+  });
+}
+function drawPhotos(side){
+  const box = $("#ph-"+side); if(!box) return;
+  box.innerHTML = picks.photos[side].map((p,i)=>`<figure class="thumb">${p.busy?`<div class="vid">…</div>`:`<img src="${p.url}" alt="${side==="home"?"Home":"Away"} team list photo ${i+1}">`}<figcaption>${side==="home"?"Home":"Away"} list ${i+1}</figcaption><button type="button" class="x" data-rmphoto="${side}|${i}" aria-label="Remove photo ${i+1}">✕</button></figure>`).join("");
+}
+async function addPhotos(side, files){
+  const err = $("#reportErr");
+  for(const f of files){
+    if(picks.photos[side].length >= MAX_PHOTOS_PER_TEAM){ err.textContent = `Up to ${MAX_PHOTOS_PER_TEAM} photos per team.`; err.hidden = false; break; }
+    if(!/^image\//.test(f.type||"image/")) continue;
+    const slot = {busy:true, name:f.name}; picks.photos[side].push(slot); drawPhotos(side);
+    try{ Object.assign(slot, await shrinkPhoto(f), {busy:false}); }
+    catch(e){ picks.photos[side].splice(picks.photos[side].indexOf(slot),1); err.textContent = "That photo couldn’t be opened. Try taking it again, or pick a JPEG or PNG."; err.hidden = false; }
+    drawPhotos(side);
+  }
+}
+
+async function sendRefReport(g, r){
+  const err = $("#reportErr"), btn = $("#refSubmit");
+  const photos = [];
+  ["home","away"].forEach(s=>picks.photos[s].forEach((p,i)=>photos.push({name:`${s}-team-list-${i+1}.jpg`, type:p.type, data:p.data})));
+  const subject = reportSubject(g, r);
+  const text = reportText(g, r) + `\n\nTeam list photos attached: ${picks.photos.home.length} home, ${picks.photos.away.length} away`;
+  const payload = {refName:r.by, refEmail:r.email, subject, text, website:state.rr.hp||"", photos,
+    report:{...r, game:{date:g.date, time:g.time, number:g.number, venue:g.venue, home:tn(HOME(g)), away:tn(AWAY(g)), officials:g.refs}}};
+  btn.disabled = true; btn.textContent = "Sending…"; err.hidden = true;
+  let res, data = {};
+  try{
+    // text/plain keeps this a "simple" request (no preflight), which is faster on slow phone connections
+    res = await fetch(REPORT_API, {method:"POST", headers:{"Content-Type":"text/plain;charset=UTF-8"}, body:JSON.stringify(payload)});
+    data = await res.json().catch(()=>({}));
+  }catch(e){ res = null; }
+  if(res && res.ok && data.ok){
+    try{ const s = JSON.parse(localStorage.getItem("rasa.sent")||"[]"); s.push(gameKey(g)); localStorage.setItem("rasa.sent", JSON.stringify(s.slice(-50))); }catch(e){}
+    showModal(`<h2 id="reportTitle">Report sent</h2>
+      <p class="sub">${esc(tn(HOME(g)))} ${r.homeScore}–${r.awayScore} ${esc(tn(AWAY(g)))} · ${esc(fmtDay(g.date))}</p>
+      <div class="okbox">Thanks, ${esc(r.by.split(" ")[0])}. Your report and ${photos.length} photo${photos.length>1?"s":""} went to <b>${MATCHREPORT}</b>.</div>
+      <div class="actions"><button type="button" class="btn btn-ghost" id="rrAnother">Report another game</button><button type="button" class="btn btn-primary" id="reportCancel">Done</button></div>`, "view");
+    $("#rrAnother").onclick = ()=>{ closeReport(); renderGameReport(); };
+    renderGameReport(); return;
+  }
+  btn.disabled = false; btn.textContent = "Try again";
+  const why = data && data.error ? data.error : (res ? "The report couldn’t be sent." : "No connection. Check your signal and try again.");
+  err.innerHTML = `${esc(why)} Your answers are still here.<br><a href="${esc(mailtoHref(MATCHREPORT, subject, text))}">Or email it instead</a> and attach the team list photos yourself.`;
+  err.hidden = false; err.scrollIntoView({block:"nearest"});
 }
 
 /* ---------- Player list ---------- */
@@ -2131,7 +2251,7 @@ function setBanner(){
   if(!dataInfo.updatedAt){ b.textContent = "Prototype · schedule from rasasoccer.ca · changes made here are not saved"; return; }
   const d = new Date(dataInfo.updatedAt);
   const when = isNaN(d) ? dataInfo.updatedAt : d.toLocaleString("en-CA",{weekday:"short",month:"short",day:"numeric",hour:"numeric",minute:"2-digit"});
-  b.textContent = `Schedule from rasasoccer.ca, last checked ${when} · Prototype: changes made here are not saved`;
+  b.textContent = `Schedule from rasasoccer.ca, last checked ${when}`;
 }
 const start = location.hash.slice(1);
 $("#list").innerHTML = `<div class="empty">Loading the schedule…</div>`;
