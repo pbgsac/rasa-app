@@ -843,9 +843,29 @@ const FIELDS = [
   [/manoah|steves/i,    "Manoah Steves Elementary, 10111 Fourth Ave, Richmond, BC"],
   [/south\s*arm/i,      "South Arm Park, Richmond, BC"]
 ];
+// Exact pins for each field, supplied by the league. Checked first; the park addresses above are the fallback.
+const FIELD_PINS = [
+  [/hugh\s*boyd\W*red/i,   "https://maps.app.goo.gl/pQwqAB7nWvmvmJ8J6"],
+  [/hugh\s*boyd\W*blue/i,  "https://maps.app.goo.gl/3NZuufu9SCaf1Zgv8"],
+  [/hugh\s*boyd\W*oval/i,  "https://maps.app.goo.gl/Pf5Mj5nR49rKxTTt6"],
+  [/hugh\s*boyd\W*south/i, "https://maps.app.goo.gl/tn9ng9k9PbFDX9CMA"],
+  [/mac\s*neill?\W*north/i, "https://maps.app.goo.gl/RvmxWJL3US9WB8g48"],
+  [/mac\s*neill?\W*south/i, "https://maps.app.goo.gl/2N3RKwXpdRDfBCdH7"],
+  [/richmond\s*high/i,      "https://maps.app.goo.gl/fFhccXAw6F6FH1oh6"],
+  [/king\s*george/i,        "https://maps.app.goo.gl/CnUgCLmYB2RJU2s38"],
+  [/minoru\W*oval/i,        "https://maps.app.goo.gl/ppvnEuEzwm6VSPF68"],
+  [/minoru\W*3\b/i,         "https://maps.app.goo.gl/zR7aZngbKNHGUutK6"],
+  [/minoru\W*2\b/i,         "https://maps.app.goo.gl/kUjuC5abEZHNn3S2A"],
+  [/south\s*arm\W*1\b/i,    "https://maps.app.goo.gl/3fSPq96UiDNkoXKe8"],
+  [/south\s*arm\W*3\b/i,    "https://maps.app.goo.gl/Q5r14j1fHB6PsRjh9"],
+  [/south\s*arm\W*4\b/i,    "https://maps.app.goo.gl/eZMJphywxoAjzwsx5"],
+  [/london/i,               "https://maps.app.goo.gl/tpyB6q6h3DgQhHNW6"],
+  [/mcnair/i,               "https://maps.app.goo.gl/QzLTyeNfBYdbUtAY9"]
+];
 function mapLink(venue){
   const v = String(venue||"").trim();
   if(!v || /^(tba|tbd)$/i.test(v)) return "";
+  const pin = FIELD_PINS.find(([re])=>re.test(v)); if(pin) return pin[1];
   const hit = FIELDS.find(([re])=>re.test(v));
   return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(hit ? hit[1] : v + ", Richmond, BC");
 }
