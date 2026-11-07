@@ -1948,7 +1948,7 @@ function renderTeam(){
   const stats = rec ? `<div class="team-stats">
       <div><b>${rec.pts}</b><span>Points</span></div>
       <div><b>${rec.w}-${rec.t}-${rec.l}</b><span>W-T-L</span></div>
-      <div><b>${rec.gf}:${rec.ga}</b><span>Goals</span></div>
+      <div title="${rec.gf} scored, ${rec.ga} conceded"><b>${rec.diff>0?"+":""}${rec.diff}</b><span>+/-</span></div>
     </div>` : "";
   $("#view-team").innerHTML = `
     <button class="backlink" data-teamback>← Back</button>
