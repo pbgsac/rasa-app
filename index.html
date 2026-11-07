@@ -13,6 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,700;1,800&display=swap" rel="stylesheet">
 <style>
+/* Dark mode follows the system setting on computers only (mouse + hover); phones and tablets always use light mode. */
 /* Layout idea: a phone-first app shell; a sticky club bar, then one column of match cards grouped by matchday. */
 :root{
   /* Palette: Deep Green #064E3B, Midnight #101820, Off-white #E8EDE9, White #FFFFFF, Lime Accent #65A30D */
@@ -35,7 +36,7 @@
   --font-body:"Poppins",system-ui,-apple-system,"Segoe UI",sans-serif;
   color-scheme:light;
 }
-@media (prefers-color-scheme: dark){
+@media (prefers-color-scheme: dark) and (hover: hover) and (pointer: fine){
   :root:not([data-theme="light"]){
     --bg:#101820; --surface:#17222b; --surface-2:#203029; --ink:#e8ede9; --muted:#a3b2aa; --line:#27363a;
     --brand:#064e3b; --brand-grad:linear-gradient(180deg,#075a44 0%,#064e3b 55%,#043a2c 100%); --pitch:#84cc16; --accent:#84cc16; --lime:#84cc16; --accent-ink:#101820;
@@ -472,7 +473,7 @@ h1,h2,h3{letter-spacing:0;font-weight:700}
 .btn-primary{background:var(--brand);color:#fff}
 .team-h h1,.hello h1{font-size:26px}
 .backlink:hover,.tlink:hover,.nmlink:hover{color:var(--accent)}
-@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .day-h h2{color:var(--accent)} }
+@media (prefers-color-scheme: dark) and (hover: hover) and (pointer: fine){ :root:not([data-theme="light"]) .day-h h2{color:var(--accent)} }
 :root[data-theme="dark"] .day-h h2{color:var(--accent)}
 
 /* Tap feedback on team names, then the team page slides in */
