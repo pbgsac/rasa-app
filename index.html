@@ -380,7 +380,13 @@ dl.view{margin:0;display:flex;flex-direction:column;border-top:1px solid var(--l
 /* Team page */
 .nmlink{background:none;border:0;padding:0;margin:0;font:inherit;color:inherit;text-align:left;cursor:pointer}
 .nmlink:hover{color:var(--accent);text-decoration:underline}
-.team-tabs{margin-top:6px}
+.team-tabs{margin-top:6px;align-self:stretch;display:flex}
+.team-tabs button{flex:1;padding:7px 6px;white-space:nowrap}
+.staff-list ul{list-style:none;margin:0;padding:0}
+.staff-list li{display:flex;align-items:center;gap:10px;padding:10px 14px;border-top:1px solid var(--line)}
+.staff-list li:nth-child(even){background:var(--surface-2)}
+.staff-list li .role{margin-left:auto}
+.team-roster td.pts{font-weight:700}
 .seg button .cnt{font-weight:600;opacity:.65;font-size:.9em}
 .backlink{align-self:flex-start;background:none;border:0;padding:4px 0;font-weight:700;color:var(--muted);cursor:pointer;font-size:14px}
 .backlink:hover{color:var(--ink)}
@@ -963,6 +969,7 @@ function renderStandings(){
 function wireScrollArrows(root){
   root.querySelectorAll(".std").forEach(card=>{
     const wrap = card.querySelector(".std-wrap"), arrow = card.querySelector(".swipe");
+    if(!wrap || !arrow) return;
     const upd = ()=>{ arrow.hidden = wrap.scrollWidth - wrap.clientWidth - wrap.scrollLeft < 4; };
     wrap.addEventListener("scroll", upd, {passive:true}); upd();
   });
@@ -1894,24 +1901,33 @@ function openTeam(key){
   state.teamKey = key; state.teamTab = "up";
   go("team");
 }
-function teamRosterHTML(key){
+// Staff from the team's personnel page: drop exact repeats, managers first, then coaches, then everyone else.
+function teamStaff(key){
   const r = rosters && rosters.teams && rosters.teams[key];
-  // Staff from the team's personnel page: drop exact repeats, managers first, then coaches, then everyone else.
   const RANK = role=>/^manager$/i.test(role)?0:/^coach$|head coach/i.test(role)?1:/coach/i.test(role)?2:3;
   const seen = new Set();
-  const staff = ((r && r.staff) || []).filter(s=>{ const k=(s.name+"|"+s.role).toLowerCase(); if(seen.has(k)) return false; seen.add(k); return true; })
+  return ((r && r.staff) || []).filter(s=>{ const k=(s.name+"|"+s.role).toLowerCase(); if(seen.has(k)) return false; seen.add(k); return true; })
     .map((s,i)=>({...s,i})).sort((a,b)=>RANK(a.role)-RANK(b.role) || a.i-b.i);
+}
+const faceHTML = p=>`<span class="mini-photo" aria-hidden="true">${esc(initialsOf(p.name))}${p.photo?`<img src="${esc(p.photo)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">`:""}</span>`;
+function teamStaffHTML(key){
+  const staff = teamStaff(key);
+  if(!staff.length) return `<div class="empty">${rosters ? "No staff listed on rasasoccer.ca for this team." : "Staff couldn’t be loaded. Check your connection and reload the page."}</div>`;
+  return `<div class="std staff-list" style="--c:var(${COMPS[TEAMS[key].d].v})"><div class="std-h"><h2>${staff.length} staff</h2></div>
+    <ul>${staff.map(s=>`<li>${faceHTML(s)}<b>${esc(nameCase(s.name))}</b><span class="role">${esc(s.role||"Staff")}</span></li>`).join("")}</ul></div>`;
+}
+// Roster: Points (goals + assists) first and in bold. Sorted by points, then goals, then last name.
+function teamRosterHTML(key){
+  const r = rosters && rosters.teams && rosters.teams[key];
   const players = (r && r.players) || [];
-  if(!staff.length && !players.length) return `<div class="empty">${rosters ? "No roster on rasasoccer.ca for this team yet." : "The roster couldn’t be loaded. Check your connection and reload the page."}</div>`;
-  const last = n=>n.trim().split(/\s+/).slice(-1)[0];
-  const ps = players.slice().sort((a,b)=>(a.number??999)-(b.number??999) || last(a.name).localeCompare(last(b.name)));
-  const face = p=>`<span class="mini-photo" aria-hidden="true">${esc(initialsOf(p.name))}${p.photo?`<img src="${esc(p.photo)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">`:""}</span>`;
-  const staffRows = staff.map(s=>`<tr class="staff"><td class="num"></td><td class="tm"><span class="pl">${face(s)}<span><b>${esc(nameCase(s.name))}</b> <span class="role">${esc(s.role||"Staff")}</span></span></span></td><td colspan="6"></td><td class="fill"></td></tr>`).join("");
-  const rows = ps.map(p=>`<tr><td class="num">${p.number!=null?esc(p.number):""}</td><td class="tm"><span class="pl">${face(p)}<span>${esc(nameCase(p.name))}</span></span></td><td>${p.pos&&p.pos!=="-"?esc(p.pos):""}</td><td>${p.gp}</td><td>${p.g}</td><td>${p.a}</td><td>${p.yc?`<span class="card yc">${p.yc}</span>`:"0"}</td><td>${p.rc?`<span class="card rc">${p.rc}</span>`:"0"}</td><td class="fill"></td></tr>`).join("");
-  const title = `${ps.length} players${staff.length?` · ${staff.length} staff`:""}`;
-  return `<div class="std roster team-roster" style="--c:var(${COMPS[TEAMS[key].d].v})"><div class="std-h"><h2>${title}</h2><span class="swipe" hidden aria-hidden="true">→</span></div><div class="std-wrap"><table>
-    <thead><tr><th scope="col" title="Jersey number">#</th><th scope="col" class="tm">Name</th><th scope="col" title="Position">Pos</th><th scope="col" title="Games played">GP</th><th scope="col" title="Goals">G</th><th scope="col" title="Assists">A</th><th scope="col" title="Yellow cards">YC</th><th scope="col" title="Red cards">RC</th><th class="fill" aria-hidden="true"></th></tr></thead>
-    <tbody>${staffRows}${rows}</tbody></table></div></div>`;
+  if(!players.length) return `<div class="empty">${rosters ? "No roster on rasasoccer.ca for this team yet." : "The roster couldn’t be loaded. Check your connection and reload the page."}</div>`;
+  const last = n=>n.trim().split(/\s+/).slice(-1)[0].toLowerCase();
+  const ps = players.map(p=>({...p, pts:(p.g||0)+(p.a||0)}))
+    .sort((a,b)=>b.pts-a.pts || (b.g||0)-(a.g||0) || last(a.name).localeCompare(last(b.name)) || a.name.localeCompare(b.name));
+  const rows = ps.map(p=>`<tr><td class="num">${p.number!=null?esc(p.number):""}</td><td class="tm"><span class="pl">${faceHTML(p)}<span>${esc(nameCase(p.name))}</span></span></td><td class="pts">${p.pts}</td><td>${p.g}</td><td>${p.a}</td><td>${p.gp}</td><td>${p.pos&&p.pos!=="-"?esc(p.pos):""}</td><td>${p.yc?`<span class="card yc">${p.yc}</span>`:"0"}</td><td>${p.rc?`<span class="card rc">${p.rc}</span>`:"0"}</td><td class="fill"></td></tr>`).join("");
+  return `<div class="std roster team-roster" style="--c:var(${COMPS[TEAMS[key].d].v})"><div class="std-h"><h2>${ps.length} players</h2><span class="swipe" hidden aria-hidden="true">→</span></div><div class="std-wrap"><table>
+    <thead><tr><th scope="col" title="Jersey number">#</th><th scope="col" class="tm">Name</th><th scope="col" title="Points: 1 per goal, 1 per assist">Pts</th><th scope="col" title="Goals">G</th><th scope="col" title="Assists">A</th><th scope="col" title="Games played">GP</th><th scope="col" title="Position">Pos</th><th scope="col" title="Yellow cards">YC</th><th scope="col" title="Red cards">RC</th><th class="fill" aria-hidden="true"></th></tr></thead>
+    <tbody>${rows}</tbody></table></div></div><p class="note">Points: 1 for each goal and 1 for each assist.</p>`;
 }
 function renderTeam(){
   const key = state.teamKey, t = TEAMS[key], comp = t.d;
@@ -1921,19 +1937,18 @@ function renderTeam(){
   const pos = positionOf(key);
   let n = 0;
   const cards = list=>list.map(g=>matchCard(g,{showDate:true}).replace('<article class="match"', `<article class="match${(n++)%2?" shade":""}"`)).join("");
-  const tabs = [["up","Upcoming",upcoming.length],["res","Results",past.length],["roster","Roster",null]];
+  const tabs = [["up","Upcoming",upcoming.length],["res","Results",past.length],["roster","Roster",null],["staff","Staff",null]];
   const tab = state.teamTab;
   let body;
   if(tab==="roster") body = teamRosterHTML(key);
+  else if(tab==="staff") body = teamStaffHTML(key);
   else { const list = tab==="up" ? upcoming : past;
     body = list.length ? `<div class="day">${cards(list)}</div>` : `<div class="empty">${tab==="up"?"No more games scheduled.":"No games played yet."}</div>`; }
   const rec = pos && pos.row;
   const stats = rec ? `<div class="team-stats">
-      <div><b>${ord(pos.pos)}</b><span>of ${pos.of}</span></div>
       <div><b>${rec.pts}</b><span>Points</span></div>
       <div><b>${rec.w}-${rec.t}-${rec.l}</b><span>W-T-L</span></div>
       <div><b>${rec.gf}:${rec.ga}</b><span>Goals</span></div>
-      ${rec.streak?`<div><b>${esc(rec.streak)}</b><span>Streak</span></div>`:""}
     </div>` : "";
   $("#view-team").innerHTML = `
     <button class="backlink" data-teamback>← Back</button>
