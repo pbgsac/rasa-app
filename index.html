@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RASA – Richmond Adult Soccer Association</title>
 <meta name="description" content="Schedule, standings, leaders and team tools for the Richmond Adult Soccer Association.">
-<meta name="theme-color" content="#4a606d">
+<meta name="theme-color" content="#064e3b">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -15,16 +15,18 @@
 <style>
 /* Layout idea: a phone-first app shell; a sticky club bar, then one column of match cards grouped by matchday. */
 :root{
-  --bg:#e3e3e3;
+  /* Palette: Deep Green #064E3B, Midnight #101820, Off-white #E8EDE9, White #FFFFFF, Lime Accent #65A30D */
+  --bg:#e8ede9;
   --surface:#ffffff;
-  --ink:#2e2d32;
-  --muted:#5b6870;
-  --line:#c9d3d9;
-  --surface-2:#dce6ec;
-  --brand:#4a606d;
-  --brand-grad:linear-gradient(180deg,#5a707d 0%,#4a606d 45%,#43515a 100%);
-  --pitch:#386a83;
-  --accent:#386a83;
+  --ink:#101820;
+  --muted:#4f5e57;
+  --line:#cdd9d1;
+  --surface-2:#dde8e1;
+  --brand:#064e3b;
+  --brand-grad:linear-gradient(180deg,#0a5d47 0%,#064e3b 55%,#053f30 100%);
+  --pitch:#65a30d;
+  --accent:#064e3b;
+  --lime:#65a30d;
   --accent-ink:#ffffff;
   --card-yellow:#f2c230;
   --d1:#2457d6; --d2:#0b7285; --ms:#8a3fb0; --cup:#c47a0a; --xo:#c2416b;
@@ -35,16 +37,16 @@
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#101518; --surface:#192126; --surface-2:#243039; --ink:#e7ecef; --muted:#9eabb3; --line:#2b3740;
-    --brand:#2e3b43; --brand-grad:linear-gradient(180deg,#3b4c56 0%,#2e3b43 50%,#28333a 100%); --pitch:#5d9cbb; --accent:#6fb0d0; --accent-ink:#0b1418;
+    --bg:#101820; --surface:#17222b; --surface-2:#203029; --ink:#e8ede9; --muted:#a3b2aa; --line:#27363a;
+    --brand:#064e3b; --brand-grad:linear-gradient(180deg,#075a44 0%,#064e3b 55%,#043a2c 100%); --pitch:#84cc16; --accent:#84cc16; --lime:#84cc16; --accent-ink:#101820;
     --d1:#6f97ff; --d2:#4cc3d9; --ms:#c58ae6; --cup:#f0a838; --xo:#f07aa0;
     --good:#4cc982; --warn:#f2c230; --warn-bg:#3a3014; --bad:#ff7a7a;
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#101518; --surface:#192126; --surface-2:#243039; --ink:#e7ecef; --muted:#9eabb3; --line:#2b3740;
-  --brand:#2e3b43; --brand-grad:linear-gradient(180deg,#3b4c56 0%,#2e3b43 50%,#28333a 100%); --pitch:#5d9cbb; --accent:#6fb0d0; --accent-ink:#0b1418;
+  --bg:#101820; --surface:#17222b; --surface-2:#203029; --ink:#e8ede9; --muted:#a3b2aa; --line:#27363a;
+  --brand:#064e3b; --brand-grad:linear-gradient(180deg,#075a44 0%,#064e3b 55%,#043a2c 100%); --pitch:#84cc16; --accent:#84cc16; --lime:#84cc16; --accent-ink:#101820;
   --d1:#6f97ff; --d2:#4cc3d9; --ms:#c58ae6; --cup:#f0a838; --xo:#f07aa0;
   --good:#4cc982; --warn:#f2c230; --warn-bg:#3a3014; --bad:#ff7a7a;
   color-scheme:dark;
@@ -451,7 +453,7 @@ dl.view{margin:0;display:flex;flex-direction:column;border-top:1px solid var(--l
    Slate gradient bars with white text (like the site's box headings), steel-blue accents, Poppins. */
 body{font-size:15px}
 h1,h2,h3{letter-spacing:0;font-weight:700}
-.bar{background:var(--brand-grad);border-bottom:4px solid var(--pitch)}
+.bar{background:var(--brand-grad);border-bottom:4px solid var(--lime)}
 .club b{font-style:italic;font-weight:800;letter-spacing:.02em;text-transform:uppercase;font-size:21px}
 .crest{box-shadow:0 0 0 2px #fff}
 .tab{font-weight:600}
@@ -460,12 +462,14 @@ h1,h2,h3{letter-spacing:0;font-weight:700}
 .std-h h2{font-size:17px;font-weight:600;letter-spacing:.02em}
 .std-h .swipe{color:#fff;opacity:.85}
 .std-h .chip{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.35);color:#fff}
-.std-h .chip[aria-pressed="true"]{background:#fff;border-color:#fff;color:var(--brand)}
+.std-h .chip[aria-pressed="true"]{background:var(--lime);border-color:var(--lime);color:#101820}
 .day-h h2{font-size:16px;font-weight:700;letter-spacing:.03em;color:var(--brand)}
-.match{border-color:#b9cad5;border-radius:8px}
+.match{border-color:#c5d5ca;border-radius:8px}
 .m-time,.team .sc,.team-stats b,.pod-val b,.tile .n{font-weight:600}
 .m-time{font-size:18px}
-.seg button[aria-pressed="true"],.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.seg button[aria-pressed="true"],.chip[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:#fff}
+.tab[aria-current="page"]{border-bottom-color:var(--lime)}
+.btn-primary{background:var(--brand);color:#fff}
 .team-h h1,.hello h1{font-size:26px}
 .backlink:hover,.tlink:hover,.nmlink:hover{color:var(--accent)}
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .day-h h2{color:var(--accent)} }
