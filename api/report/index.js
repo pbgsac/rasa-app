@@ -4,6 +4,8 @@
   Sends one email FROM matchreport@rasasoccer.ca TO matchreport@rasasoccer.ca (Microsoft Graph),
   with the team-list photos and a report.json attached, and Reply-To set to the referee.
   The recipient is fixed here on the server, so this endpoint can't be used to email anyone else.
+  Then (if ONEDRIVE_* settings exist) saves the report to the matchreport@ OneDrive folder and rebuilds
+  the "Ref Reports" and "Discipline" workbooks (see lib/store.js).
 
   Settings (Azure Static Web App > Settings > Environment variables):
     GRAPH_TENANT_ID      Microsoft 365 directory (tenant) ID
@@ -11,7 +13,12 @@
     GRAPH_CLIENT_SECRET  App registration's client secret
     MAIL_FROM            matchreport@rasasoccer.ca
     MAIL_TO              optional, defaults to MAIL_FROM
+    ONEDRIVE_DRIVE_ID    matchreport@'s OneDrive drive ID      } from the folder-grant script
+    ONEDRIVE_FOLDER_ID   the "RASA Ref Reports" folder's ID    }
 */
+const { settings, token: sharedToken } = require("../lib/graph");
+const { emailHtml } = require("../lib/reports");
+const store = require("../lib/store");
 const ALLOWED_ORIGINS = [
   "https://app.rasasoccer.ca",
   "https://pbgsac.github.io",
@@ -68,34 +75,29 @@ function validate(body) {
   return null;
 }
 
-async function graphToken(env) {
-  const res = await fetch(`https://login.microsoftonline.com/${encodeURIComponent(env.GRAPH_TENANT_ID)}/oauth2/v2.0/token`, {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams({
-      client_id: env.GRAPH_CLIENT_ID, client_secret: env.GRAPH_CLIENT_SECRET,
-      scope: "https://graph.microsoft.com/.default", grant_type: "client_credentials"
-    })
-  });
-  if (!res.ok) {
-    const t = await res.text(); let code = ""; try { const j = JSON.parse(t); code = j.error || ""; if (j.error_codes) code += " AADSTS" + j.error_codes[0]; } catch (e) {}
-    const err = new Error(`token ${res.status}: ${t.slice(0, 300)}`); err.code = `sign-in ${res.status} ${code}`.trim(); throw err;
-  }
-  return (await res.json()).access_token;
+const graphToken = env => sharedToken(env);
+
+// The stored/emailed form of a report
+function recordOf(body, submittedAt) {
+  return { submittedAt, refName: str(body.refName), refEmail: str(body.refEmail, 200), report: body.report && typeof body.report === "object" ? body.report : {}, photos: [] };
 }
 
-function buildMessage(body, env) {
+function buildMessage(body, env, submittedAt = new Date().toISOString()) {
   const from = env.MAIL_FROM, to = env.MAIL_TO || env.MAIL_FROM;
   const photos = (body.photos || []).map((p, i) => ({
     "@odata.type": "#microsoft.graph.fileAttachment",
     name: str(p.name, 120).replace(/[\\/:*?"<>|]/g, "_") || `team-list-${i + 1}.jpg`,
     contentType: str(p.type, 40),
-    contentBytes: str(p.data, MAX_PHOTO_B64 + 10).replace(/\s/g, "")
+    contentBytes: str(p.data, MAX_PHOTO_B64 + 10).replace(/\s/g, ""),
+    contentId: `photo${i + 1}@rasa`, isInline: true          // shown inside the email body, still downloadable
   }));
+  const rec = recordOf(body, submittedAt);
+  const cids = photos.map((p, i) => ({ cid: p.contentId, label: (/^away/i.test(p.name) ? "Away" : "Home") + " team list " + (p.name.match(/(\d+)\.\w+$/) || [, i + 1])[1] }));
   const json = Buffer.from(JSON.stringify({ ...(body.report || {}), refName: str(body.refName), refEmail: str(body.refEmail, 200),
-    submittedAt: new Date().toISOString(), source: "app.rasasoccer.ca" }, null, 2)).toString("base64");
+    submittedAt, source: "app.rasasoccer.ca" }, null, 2)).toString("base64");
   photos.push({ "@odata.type": "#microsoft.graph.fileAttachment", name: "report.json", contentType: "application/json", contentBytes: json });
-  const html = `<div style="font-family:Segoe UI,Arial,sans-serif;font-size:14px">
+  const structured = rec.report && rec.report.game && rec.report.game.home;
+  const html = structured ? emailHtml(rec, cids) : `<div style="font-family:Segoe UI,Arial,sans-serif;font-size:14px">
     <p style="margin:0 0 8px"><b>Referee report</b> submitted by ${esc(body.refName)} (<a href="mailto:${esc(body.refEmail)}">${esc(body.refEmail)}</a>) via app.rasasoccer.ca.
     Reply to this email to reach the referee.</p>
     <pre style="font-family:Consolas,Menlo,monospace;font-size:13px;white-space:pre-wrap;background:#f4f6f5;padding:12px;border-radius:6px">${esc(body.text)}</pre>
@@ -113,9 +115,9 @@ function buildMessage(body, env) {
   };
 }
 
-async function sendMail(body, env) {
+async function sendMail(body, env, submittedAt) {
   const token = await graphToken(env);
-  const { message, saveToSentItems, from } = buildMessage(body, env);
+  const { message, saveToSentItems, from } = buildMessage(body, env, submittedAt);
   const res = await fetch(`https://graph.microsoft.com/v1.0/users/${encodeURIComponent(from)}/sendMail`, {
     method: "POST",
     headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
@@ -130,9 +132,7 @@ async function sendMail(body, env) {
 module.exports = async function (context, req) {
   const headers = cors(req);
   if ((req.method || "").toUpperCase() === "OPTIONS") { context.res = { status: 204, headers }; return; }
-  // Settings pasted into the portal sometimes carry spaces or quotes; strip them.
-  const clean = v => String(v || "").trim().replace(/^["']+|["']+$/g, "").trim();
-  const env = Object.fromEntries(["GRAPH_TENANT_ID", "GRAPH_CLIENT_ID", "GRAPH_CLIENT_SECRET", "MAIL_FROM", "MAIL_TO"].map(k => [k, clean(process.env[k])]));
+  const env = settings();   // trims stray spaces/quotes pasted into the portal
   if (!env.GRAPH_TENANT_ID || !env.GRAPH_CLIENT_ID || !env.GRAPH_CLIENT_SECRET || !env.MAIL_FROM) {
     context.res = { status: 503, headers, body: { ok: false, error: "Report sending isn't set up yet." } }; return;
   }
@@ -143,14 +143,22 @@ module.exports = async function (context, req) {
   else if (Buffer.isBuffer(body)) { try { body = JSON.parse(body.toString("utf8")); } catch (e) { body = null; } }
   const problem = validate(body);
   if (problem) { context.res = { status: 400, headers, body: { ok: false, error: problem } }; return; }
+  const submittedAt = new Date().toISOString();
   try {
-    await sendMail(body, env);
+    await sendMail(body, env, submittedAt);
     context.log(`Report sent: ${str(body.subject, 300)}`);
-    context.res = { status: 200, headers, body: { ok: true } };
   } catch (e) {
     context.log.error ? context.log.error(String(e)) : context.log(String(e));
     // "code" is a short, non-secret reason (e.g. "send 403 ErrorAccessDenied") to help the league fix setup problems
     context.res = { status: 502, headers, body: { ok: false, error: "The report couldn't be emailed. Please try again.", code: str(e.code || "error", 120) } };
+    return;
   }
+  // The email is the record of truth; saving to OneDrive is a bonus that mustn't fail the referee's submission.
+  let saved = false;
+  if (store.configured(env) && body.report && body.report.game) {
+    try { await store.addReport(env, recordOf(body, submittedAt), body.photos || []); saved = true; }
+    catch (e) { context.log(`OneDrive save failed: ${e.code || e.message}`); }
+  }
+  context.res = { status: 200, headers, body: { ok: true, saved } };
 };
-module.exports._test = { validate, buildMessage, cors };
+module.exports._test = { validate, buildMessage, cors, recordOf };
