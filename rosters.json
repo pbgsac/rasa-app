@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-07T23:39:19Z",
+ "updatedAt": "2026-11-09T18:49:14Z",
  "teams": {
   "AC RICHMOND": {
    "name": "AC Richmond",
@@ -294,6 +294,18 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/540306_pic.png"
+    },
+    {
+     "name": "Sunny Sandher",
+     "number": null,
+     "pos": "-",
+     "born": "'94",
+     "gp": 0,
+     "g": 0,
+     "a": 0,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/127499_pic.jpeg"
     },
     {
      "name": "Jeevan Sandhu",
