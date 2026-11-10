@@ -1,7 +1,7 @@
 {
  "source": "https://www.rasasoccer.ca/leagues/standings.cfm?clientid=6369&leagueID=27680",
  "season": "Winter 2026-27",
- "updatedAt": "2026-11-07T13:02:43Z",
+ "updatedAt": "2026-11-10T20:50:05Z",
  "divisions": [
   {
    "name": "Division 1",
@@ -73,15 +73,28 @@
     },
     {
      "team": "Freebird FC",
-     "gp": 8,
+     "gp": 9,
      "w": 1,
-     "l": 5,
+     "l": 6,
      "t": 2,
      "d": 0,
      "pts": 5,
      "gf": 9,
-     "ga": 35,
-     "diff": -26,
+     "ga": 41,
+     "diff": -32,
+     "streak": "L1"
+    },
+    {
+     "team": "Heatherbrae",
+     "gp": 9,
+     "w": 1,
+     "l": 7,
+     "t": 1,
+     "d": 0,
+     "pts": 4,
+     "gf": 12,
+     "ga": 31,
+     "diff": -19,
      "streak": "W1"
     },
     {
@@ -96,19 +109,6 @@
      "ga": 28,
      "diff": -24,
      "streak": "L5"
-    },
-    {
-     "team": "Heatherbrae",
-     "gp": 8,
-     "w": 0,
-     "l": 7,
-     "t": 1,
-     "d": 0,
-     "pts": 1,
-     "gf": 6,
-     "ga": 31,
-     "diff": -25,
-     "streak": "L6"
     }
    ]
   },
@@ -117,29 +117,29 @@
    "rows": [
     {
      "team": "Hammers FC",
-     "gp": 8,
-     "w": 4,
+     "gp": 9,
+     "w": 5,
      "l": 1,
      "t": 3,
      "d": 0,
-     "pts": 15,
-     "gf": 30,
-     "ga": 17,
-     "diff": 13,
-     "streak": "W1"
+     "pts": 18,
+     "gf": 32,
+     "ga": 18,
+     "diff": 14,
+     "streak": "W2"
     },
     {
      "team": "Richlads FC",
-     "gp": 8,
-     "w": 4,
+     "gp": 9,
+     "w": 5,
      "l": 2,
      "t": 2,
      "d": 0,
-     "pts": 14,
-     "gf": 28,
+     "pts": 17,
+     "gf": 30,
      "ga": 12,
-     "diff": 16,
-     "streak": "L2"
+     "diff": 18,
+     "streak": "W1"
     },
     {
      "team": "Lion Rock",
@@ -156,16 +156,16 @@
     },
     {
      "team": "EPFC Lions",
-     "gp": 9,
+     "gp": 10,
      "w": 3,
-     "l": 4,
+     "l": 5,
      "t": 2,
      "d": 0,
      "pts": 11,
-     "gf": 22,
-     "ga": 19,
-     "diff": 3,
-     "streak": "L1"
+     "gf": 23,
+     "ga": 21,
+     "diff": 2,
+     "streak": "L2"
     },
     {
      "team": "RUFC Graduates",
@@ -195,16 +195,16 @@
     },
     {
      "team": "Mainland United",
-     "gp": 8,
+     "gp": 9,
      "w": 2,
-     "l": 5,
+     "l": 6,
      "t": 1,
      "d": 0,
      "pts": 7,
      "gf": 20,
-     "ga": 29,
-     "diff": -9,
-     "streak": "T1"
+     "ga": 31,
+     "diff": -11,
+     "streak": "L1"
     },
     {
      "team": "West Coast Current",
