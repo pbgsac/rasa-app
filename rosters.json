@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-10T02:45:02Z",
+ "updatedAt": "2026-11-10T12:40:51Z",
  "teams": {
   "AC RICHMOND": {
    "name": "AC Richmond",
@@ -2843,7 +2843,7 @@
    "players": [
     {
      "name": "Tej Sarai",
-     "number": null,
+     "number": 27,
      "pos": "RW",
      "born": "'04",
      "gp": 2,
@@ -2879,7 +2879,7 @@
     },
     {
      "name": "Jackson Lawton",
-     "number": null,
+     "number": 30,
      "pos": "CM",
      "born": "'03",
      "gp": 1,
@@ -2939,7 +2939,7 @@
     },
     {
      "name": "Rob Bartlett",
-     "number": null,
+     "number": 26,
      "pos": "RB",
      "born": "'88",
      "gp": 0,
@@ -3012,7 +3012,7 @@
     {
      "name": "Basel Hejazi",
      "number": null,
-     "pos": "RW",
+     "pos": "CM",
      "born": "'04",
      "gp": 0,
      "g": 0,
@@ -3127,7 +3127,7 @@
      "a": 0,
      "yc": 0,
      "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/561694_pic.jpg"
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/490521_pic.JPG"
     },
     {
      "name": "Colton Turrell",
