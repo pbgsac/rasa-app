@@ -99,6 +99,11 @@ main{max-width:820px;margin:0 auto;padding:16px 16px 48px;display:flex;flex-dire
 
 /* Controls */
 .controls{display:flex;flex-direction:column;gap:10px}
+.seg.sched-seg{align-self:center}
+.sched-filters{flex-wrap:nowrap}
+.sched-filters .select{flex:1 1 0;min-width:0;font:inherit;font-size:15px;padding:10px 8px}
+.sched-filters #compSel{flex-grow:1.35}
+@media (max-width:380px){ .sched-filters{flex-direction:column;align-items:stretch} .sched-filters .select{flex:none;width:100%} }
 .seg{display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:3px;align-self:flex-start}
 .seg button{border:0;background:none;padding:7px 16px;border-radius:7px;font-weight:700;color:var(--muted);cursor:pointer}
 .seg button[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
@@ -455,9 +460,9 @@ dl.view{margin:0;display:flex;flex-direction:column;border-top:1px solid var(--l
 .std th:first-child,.std td:first-child{position:sticky;left:0;background:var(--surface);z-index:1}
 .std th.tm,.std td.tm{position:sticky;left:34px;background:var(--surface);z-index:1;min-width:150px;padding-right:12px;box-shadow:6px 0 6px -6px rgba(0,0,0,.25)}
 .std th:first-child,.std td:first-child{min-width:34px;width:34px}
-#view-standings .std th:first-child,#view-standings .std td:first-child{min-width:52px;width:52px}
-#view-standings .std th.tm,#view-standings .std td.tm{left:52px;min-width:0;padding-right:10px;white-space:nowrap}
-#view-standings .std .tlink{white-space:nowrap}
+#view-standings .std th:first-child,#view-standings .std td:first-child{min-width:46px;width:46px;padding-left:8px;padding-right:2px}
+#view-standings .std th.tm,#view-standings .std td.tm{left:46px;min-width:0;width:112px;max-width:112px;padding-right:6px;white-space:normal}
+#view-standings .std .tlink{white-space:normal;line-height:1.2;display:block;width:106px}
 .std tr.mine td.tm,.std tr.mine td:first-child{background:color-mix(in srgb,var(--card-yellow) 22%,var(--surface))}
 .swipe{margin-left:auto;display:inline-flex;line-height:1;color:var(--muted)}
 .swipe svg{animation:swipeNudge 1.3s ease-in-out infinite}
@@ -576,12 +581,12 @@ tr.tapped td{animation:tapFlash .32s ease-out}
   <section class="view" id="view-schedule" aria-labelledby="schedTitle">
     <h1 id="schedTitle" style="position:absolute;left:-9999px">Schedule</h1>
     <div class="controls">
-      <div class="seg" role="group" aria-label="Show">
+      <div class="seg sched-seg" role="group" aria-label="Show">
         <button id="segUp" aria-pressed="true">Upcoming</button>
         <button id="segRes" aria-pressed="false">Results</button>
       </div>
-      <div class="chips" id="compChips" role="group" aria-label="Competition"></div>
-      <div class="row">
+      <div class="row sched-filters">
+        <select class="select" id="compSel" aria-label="Division or cup"></select>
         <select class="select" id="teamSel" aria-label="Team"></select>
         <span class="count" id="count"></span>
       </div>
@@ -912,8 +917,9 @@ function matchCard(g, opts={}){
 
 /* ---------- Schedule view ---------- */
 function renderChips(){
-  const items = [["ALL","All games",null]].concat(Object.entries(COMPS).map(([k,v])=>[k,v.n,v.v]));
-  $("#compChips").innerHTML = items.map(([k,n,v])=>`<button class="chip" data-comp="${k}" aria-pressed="${state.comp===k}">${v?`<span class="dot" style="background:var(${v})"></span>`:""}${n}</button>`).join("");
+  const cs = $("#compSel");
+  if(!cs.options.length) cs.innerHTML = `<option value="ALL">All Divisions / Cups</option>` + Object.entries(COMPS).map(([k,v])=>`<option value="${k}">${esc(v.n)}</option>`).join("");
+  cs.value = state.comp;
   const sel = $("#teamSel");
   if(!sel.options.length){
     const groups = {D1:[],D2:[],MS:[]};
@@ -2309,6 +2315,7 @@ document.addEventListener("click", e=>{
 document.addEventListener("change", e=>{
   const t = e.target;
   if(t.id==="teamSel"){ state.team=t.value; renderSchedule(); }
+  if(t.id==="compSel"){ state.comp=t.value; renderSchedule(); }
   if(t.id==="refView"){ state.refView=t.value; renderDashboard(); renderTabs(); }
   if(t.dataset && t.dataset.ref!==undefined){
     const g = games[+t.dataset.ref]; if(!t.value) return; g.refs = [t.value].concat(g.refs.slice(1).filter(x=>x!==t.value));
