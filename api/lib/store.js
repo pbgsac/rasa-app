@@ -137,7 +137,8 @@ async function addReport(env, rec, photos) {
 // Rebuild both workbooks (and, the first time, collect earlier reports from the inbox).
 async function sync(env) {
   let state = await loadAll(env), backfilled = 0, note;
-  if (!state) { const bf = await backfillFromMailbox(env); backfilled = bf.records.length; note = bf.skipped; await saveAll(env, bf.records, null); state = { records: bf.records }; }
+  // First run, or still empty: collect earlier reports from the inbox (needs mailbox read access).
+  if (!state || !state.records.length) { const bf = await backfillFromMailbox(env); backfilled = bf.records.length; note = bf.skipped; await saveAll(env, bf.records, state ? state.etag : null); state = { records: bf.records }; }
   const urls = await rebuildWorkbooks(env, state.records);
   return { reports: state.records.length, backfilled, note, ...urls };
 }
