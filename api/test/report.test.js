@@ -1,5 +1,6 @@
 // Runs the function with a fake Microsoft Graph, so it can be tested without real credentials.
 const assert = require("assert");
+process.env.REPORTS_OPEN = "true";   // submissions are paused by default; tests exercise the open path
 const fn = require("../report/index.js");
 const calls = [];
 global.fetch = async (url, opts) => {

@@ -1,5 +1,6 @@
 // End-to-end test of report -> email -> OneDrive with a fake Microsoft Graph (in-memory OneDrive + inbox).
 const assert = require("assert");
+process.env.REPORTS_OPEN = "true";   // submissions are paused by default; tests exercise the open path
 const fs = require("fs");
 const path = require("path");
 const fixtures = require("./fixtures");
