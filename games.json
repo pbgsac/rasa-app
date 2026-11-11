@@ -1,7 +1,7 @@
 {
  "source": "https://www.rasasoccer.ca/leagues/schedules.cfm?clientid=6369&leagueID=27680",
  "season": "Winter 2026-27",
- "updatedAt": "2026-11-11T09:27:51Z",
+ "updatedAt": "2026-11-11T17:55:07Z",
  "games": [
   {
    "date": "2026-09-10",
@@ -1424,11 +1424,11 @@
    "home": "RICHLADS FC",
    "away": "FREEBIRD FC",
    "venue": "Hugh Boyd - Red",
-   "homeScore": null,
-   "awayScore": null,
+   "homeScore": 8,
+   "awayScore": 0,
    "number": "LC5",
    "gameId": "2565117",
-   "status": "-",
+   "status": "Final",
    "officials": [
     "Dusko Jovic"
    ]
