@@ -356,8 +356,6 @@ dl.view{margin:0;display:flex;flex-direction:column;border-top:1px solid var(--l
 .pod-val b{font-family:var(--font-display);font-size:22px}
 .podium{align-items:end}
 
-.preview-tag{font-style:normal;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;background:var(--card-yellow);color:#141a15;border-radius:4px;padding:1px 5px;margin-left:4px;vertical-align:1px}
-
 /* Account */
 .acct{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;align-items:center;gap:14px}
 .avatar.big{width:56px;height:56px;font-size:20px;flex:none}
@@ -458,9 +456,13 @@ dl.view{margin:0;display:flex;flex-direction:column;border-top:1px solid var(--l
 .std th.tm,.std td.tm{position:sticky;left:34px;background:var(--surface);z-index:1;min-width:150px;padding-right:12px;box-shadow:6px 0 6px -6px rgba(0,0,0,.25)}
 .std th:first-child,.std td:first-child{min-width:34px;width:34px}
 #view-standings .std th:first-child,#view-standings .std td:first-child{min-width:52px;width:52px}
-#view-standings .std th.tm,#view-standings .std td.tm{left:52px}
+#view-standings .std th.tm,#view-standings .std td.tm{left:52px;min-width:0;padding-right:10px;white-space:nowrap}
+#view-standings .std .tlink{white-space:nowrap}
 .std tr.mine td.tm,.std tr.mine td:first-child{background:color-mix(in srgb,var(--card-yellow) 22%,var(--surface))}
-.swipe{margin-left:auto;font-size:20px;line-height:1;color:var(--muted)}
+.swipe{margin-left:auto;display:inline-flex;line-height:1;color:var(--muted)}
+.swipe svg{animation:swipeNudge 1.3s ease-in-out infinite}
+@keyframes swipeNudge{0%,100%{transform:translateX(-2px);opacity:.75}50%{transform:translateX(5px);opacity:1}}
+@media (prefers-reduced-motion: reduce){ .swipe svg{animation:none} }
 .swipe[hidden]{display:none}
 
 /* Modal */
@@ -493,7 +495,9 @@ h1,h2,h3{letter-spacing:0;font-weight:700}
 .bar{background:var(--brand-grad);border-bottom:4px solid var(--lime)}
 .club b{font-style:italic;font-weight:800;letter-spacing:.02em;text-transform:uppercase;font-size:21px}
 .crest{box-shadow:0 0 0 2px #fff}
-.tab{font-weight:600}
+.tab{font-weight:700;font-size:16px;color:#33413a}
+.tab[aria-current="page"]{color:var(--ink)}
+@media (max-width:400px){ .tab{font-size:15px;padding:12px 6px 10px} }
 .std{border-color:var(--line);border-radius:8px}
 .std-h{background:var(--brand-grad);color:#fff;border-bottom:0}
 .std-h h2{font-size:17px;font-weight:600;letter-spacing:.02em}
@@ -554,7 +558,7 @@ tr.tapped td{animation:tapFlash .32s ease-out}
     <img class="crest" src="logo.png" alt="Richmond Adult Soccer Association">
     <div class="club">
       <b>RASA</b>
-      <span>Winter League 2026–27 <em class="preview-tag" title="Early version of the RASA app">Preview</em></span>
+      <span>Winter League 2026–27</span>
     </div>
     <div class="spacer"></div>
     <div id="installArea"></div>
@@ -587,7 +591,7 @@ tr.tapped td{animation:tapFlash .32s ease-out}
 
   <!-- STANDINGS -->
   <section class="view" id="view-standings" hidden>
-    <div class="hello"><h1>Standings</h1><p id="stdSub">Winter League 2026–27</p></div>
+    <div class="hello"><h1>Standings</h1><p id="stdSub"></p></div>
     <div id="stdBody" class="section"></div>
   </section>
 
@@ -596,7 +600,7 @@ tr.tapped td{animation:tapFlash .32s ease-out}
 
   <!-- LEADERS -->
   <section class="view" id="view-leaders" hidden>
-    <div class="hello"><h1>League leaders</h1><p id="ldSub">Winter League 2026–27</p></div>
+    <div class="hello"><h1>League leaders</h1><p id="ldSub"></p></div>
     <div id="ldChips" hidden></div>
     <div id="ldBody" class="ld-grid"></div>
   </section>
@@ -933,7 +937,7 @@ function renderSchedule(){
   const inWin = g => up ? parseD(g.date) < edge : parseD(g.date) >= edge;
   const shown = list.filter(inWin), hidden = list.length - shown.length;
   const edgeLabel = (up ? new Date(edge.getTime()-864e5) : edge).toLocaleDateString("en-CA",{month:"short",day:"numeric"});
-  $("#count").textContent = `${shown.length} ${shown.length===1?"game":"games"} ${up?"through":"since"} ${edgeLabel}`;
+  $("#count").textContent = "";
   let html = "";
   if(!shown.length){
     html = `<div class="empty">${list.length ? (up?"No games in the next ":"No results in the last ")+weeks+" weeks for these filters." : "No games match these filters. Try “All games” or another team."}</div>`;
@@ -946,7 +950,7 @@ function renderSchedule(){
     html += `<div class="day"><div class="day-h"><h2>${esc(fmtDay(d))}</h2>${tag?`<span class="tag">${tag}</span>`:""}</div>${gs.map(g=>matchCard(g).replace('<article class="match"', `<article class="match${(n++)%2?" shade":""}"`)).join("")}</div>`;
   });
   if(hidden){
-    html += `<button class="btn btn-ghost more" id="seeMore">${up?"See next 2 weeks":"See earlier 2 weeks"} <span class="count">· ${hidden} more ${hidden===1?"game":"games"}</span></button>`;
+    html += `<button class="btn btn-ghost more" id="seeMore">${up?"See next 2 weeks":"See earlier 2 weeks"}</button>`;
   }
   $("#list").innerHTML = html;
   const more = $("#seeMore");
@@ -1025,6 +1029,12 @@ function moveHTML(n){
   return `<span class="mv same" title="Same place as last week" aria-label="no change">–</span>`;
 }
 
+// "Last updated Wed, Nov 11" (plus the time on the same day the data was checked)
+function lastUpdated(iso){
+  const d = new Date(iso); if(!iso || isNaN(d)) return "";
+  const date = d.toLocaleDateString("en-CA",{weekday:"short", month:"short", day:"numeric"});
+  return `Last updated ${date}, ${d.toLocaleTimeString("en-CA",{hour:"numeric", minute:"2-digit"})}`;
+}
 function renderStandings(){
   const body = $("#stdBody");
   if(!standings){ body.innerHTML = `<div class="empty">The standings couldn’t be loaded. Check your connection and reload the page.</div>`; return; }
@@ -1043,13 +1053,12 @@ function renderStandings(){
       const diff = r.diff>0 ? "+"+r.diff : String(r.diff);
       return `<tr class="${k&&k===mine?"mine":""}"><td class="rkc"><span class="rk">${i+1}</span>${k?moveHTML(moves[k]||0):""}</td><td class="tm">${nm}</td><td class="pts">${r.pts}</td><td>${r.gp}</td><td>${r.w}</td><td>${r.t}</td><td>${r.l}</td>${showD?`<td>${r.d}</td>`:""}<td class="opt">${r.gf}</td><td class="opt">${r.ga}</td><td>${diff}</td><td class="l5c">${k?formHTML(k):""}</td><td class="fill"></td></tr>`;
     }).join("");
-    return `<div class="std" style="--c:var(${COMPS[comp].v})"><div class="std-h"><h2>${esc(COMPS[comp].n)}</h2><span class="swipe" hidden aria-hidden="true">→</span></div><div class="std-wrap"><table>
+    return `<div class="std" style="--c:var(${COMPS[comp].v})"><div class="std-h"><h2>${esc(COMPS[comp].n)}</h2><span class="swipe" hidden aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="std-wrap"><table>
       <thead><tr><th scope="col">#</th><th scope="col" class="tm">Team</th><th scope="col" title="Points">Pts</th><th scope="col" title="Games played">GP</th><th scope="col" title="Wins">W</th><th scope="col" title="Ties">T</th><th scope="col" title="Losses">L</th>${showD?'<th scope="col" title="Defaults">D</th>':""}<th scope="col" class="opt" title="Goals for">GF</th><th scope="col" class="opt" title="Goals against">GA</th><th scope="col" title="Goal difference">+/-</th><th scope="col" class="l5c" title="Last 5 games, oldest to newest">Last 5</th><th class="fill" aria-hidden="true"></th></tr></thead>
       <tbody>${rows}</tbody></table></div></div>`;
   }).join("") + `<p class="note"><span class="mv up">▲</span> <span class="mv down">▼</span> show how far a team moved in the latest week of games (Monday to Sunday). Last 5 reads oldest to newest; tap or hover an icon for the score.</p><p class="note">3 points for a win, 1 for a tie. Teams level on points are separated by most wins, then head-to-head, then goal difference in games between them. Tap a team to see its games and roster.</p>${adj.applied?`<p class="note"><b>Includes ${adj.applied} result${adj.applied>1?"s":""} reported by referees that ${adj.applied>1?"aren’t":"isn’t"} on rasasoccer.ca yet.</b></p>`:""}`;
   let when = "";
-  if(standings.updatedAt){ const d=new Date(standings.updatedAt); if(!isNaN(d)) when = " · from rasasoccer.ca, last checked "+d.toLocaleString("en-CA",{weekday:"short",month:"short",day:"numeric",hour:"numeric",minute:"2-digit"}); }
-  $("#stdSub").textContent = "Winter League 2026–27"+when;
+  $("#stdSub").textContent = lastUpdated(standings.updatedAt);
   wireScrollArrows(document);
 }
 // Show the arrow only on tables that are wider than the screen; hide it once scrolled to the end.
@@ -1146,8 +1155,7 @@ function renderLeaders(){
       <p class="note ld-note">rasasoccer.ca doesn’t track goalkeepers yet, so this ranks teams by fewest goals against per game. Individual keepers appear here once referees submit their reports in the app.</p></div>`;
   }
   body.innerHTML = board("Goals","g","G",goals,r=>r.g) + board("Assists","a","A",assists,r=>r.a) + keeperHTML;
-  let when=""; if(rosters.updatedAt){const d=new Date(rosters.updatedAt); if(!isNaN(d)) when=` · from rasasoccer.ca, last checked ${d.toLocaleString("en-CA",{weekday:"short",month:"short",day:"numeric",hour:"numeric",minute:"2-digit"})}`;}
-  $("#ldSub").textContent = `Top ${LD_TOP} in each category${when}`;
+  $("#ldSub").textContent = lastUpdated(rosters.updatedAt);
 }
 
 /* ---------- Auth ---------- */
@@ -1208,7 +1216,7 @@ function refsAdminHTML(){
       <p class="hint">Works once the app is live at app.rasasoccer.ca. <button class="linkbtn" data-previewsignup="1">Preview the sign-up page</button></p>
     </div>
     ${resets?`<p class="sub"><b class="bad">${resets} password reset request${resets>1?"s":""}.</b> Copy the reset link, email it to the referee, then mark it as sent.</p>`:""}
-    <div class="std roster"><div class="std-h" style="--c:var(--pitch)"><h2>${rows.length} referees</h2><span class="swipe" hidden aria-hidden="true">→</span></div><div class="std-wrap"><table class="refs">
+    <div class="std roster"><div class="std-h" style="--c:var(--pitch)"><h2>${rows.length} referees</h2><span class="swipe" hidden aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="std-wrap"><table class="refs">
       <thead><tr><th scope="col" class="tm">Name</th><th scope="col">Email</th><th class="fill" aria-hidden="true"></th></tr></thead>
       <tbody>${rows.map(([n,a])=>row(n,a).replace("</tr>",'<td class="fill"></td></tr>')).join("")}</tbody></table></div></div>
     <p class="note">Names come from the officials schedule on rasasoccer.ca. Emails appear once a referee registers.</p></div>`;
@@ -2084,7 +2092,7 @@ function rosterHTML(team){
   const ps = r.players.slice().sort((a,b)=>last(a.name).localeCompare(last(b.name)) || a.name.localeCompare(b.name));
   const rows = ps.map(p=>`<tr><td class="tm">${esc(p.name)}</td><td>${p.gp}</td><td>${p.g}</td><td>${p.a}</td><td>${p.yc?`<span class="card yc">${p.yc}</span>`:"0"}</td><td>${p.rc?`<span class="card rc">${p.rc}</span>`:"0"}</td><td>${age(p.born)}</td><td class="fill"></td></tr>`).join("");
   let when=""; if(rosters.updatedAt){const d=new Date(rosters.updatedAt); if(!isNaN(d)) when=` · last checked ${d.toLocaleString("en-CA",{month:"short",day:"numeric",hour:"numeric",minute:"2-digit"})}`;}
-  return `<div class="std roster" style="--c:var(--pitch)"><div class="std-h"><h2>${ps.length} players</h2><span class="swipe" hidden aria-hidden="true">→</span></div><div class="std-wrap"><table>
+  return `<div class="std roster" style="--c:var(--pitch)"><div class="std-h"><h2>${ps.length} players</h2><span class="swipe" hidden aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="std-wrap"><table>
     <thead><tr><th scope="col" class="tm">Player</th><th scope="col" title="Games played">GP</th><th scope="col" title="Goals">G</th><th scope="col" title="Assists">A</th><th scope="col" title="Yellow cards">YC</th><th scope="col" title="Red cards">RC</th><th scope="col" title="Age this year, from birth year">Age</th><th class="fill" aria-hidden="true"></th></tr></thead>
     <tbody>${rows}</tbody></table></div></div><p class="note">From your team page on rasasoccer.ca${when}.</p>`;
 }
@@ -2123,7 +2131,7 @@ function teamRosterHTML(key){
   const ps = players.map(p=>({...p, pts:(p.g||0)+(p.a||0)}))
     .sort((a,b)=>b.pts-a.pts || (b.g||0)-(a.g||0) || last(a.name).localeCompare(last(b.name)) || a.name.localeCompare(b.name));
   const rows = ps.map(p=>`<tr><td class="num">${p.number!=null?esc(p.number):""}</td><td class="tm"><span class="pl">${faceHTML(p)}<span title="${esc(nameCase(p.name))}">${esc(nameCase(p.name))}</span></span></td><td class="pts">${p.pts}</td><td>${p.g}</td><td>${p.a}</td><td>${p.gp}</td><td>${p.pos&&p.pos!=="-"?esc(p.pos):""}</td><td>${p.yc?`<span class="card yc">${p.yc}</span>`:"0"}</td><td>${p.rc?`<span class="card rc">${p.rc}</span>`:"0"}</td><td class="fill"></td></tr>`).join("");
-  return `<div class="std roster team-roster" style="--c:var(${COMPS[TEAMS[key].d].v})"><div class="std-h"><h2>${ps.length} players</h2><span class="swipe" hidden aria-hidden="true">→</span></div><div class="std-wrap"><table>
+  return `<div class="std roster team-roster" style="--c:var(${COMPS[TEAMS[key].d].v})"><div class="std-h"><h2>${ps.length} players</h2><span class="swipe" hidden aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="std-wrap"><table>
     <thead><tr><th scope="col" title="Jersey number">#</th><th scope="col" class="tm">Name</th><th scope="col" title="Points: 1 per goal, 1 per assist">Pts</th><th scope="col" title="Goals">G</th><th scope="col" title="Assists">A</th><th scope="col" title="Games played">GP</th><th scope="col" title="Position">Pos</th><th scope="col" title="Yellow cards">YC</th><th scope="col" title="Red cards">RC</th><th class="fill" aria-hidden="true"></th></tr></thead>
     <tbody>${rows}</tbody></table></div></div><p class="note">Points: 1 for each goal and 1 for each assist.</p>`;
 }
