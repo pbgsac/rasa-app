@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-10T20:50:05Z",
+ "updatedAt": "2026-11-11T09:27:51Z",
  "teams": {
   "AC RICHMOND": {
    "name": "AC Richmond",
@@ -36,8 +36,8 @@
      "number": 11,
      "pos": "-",
      "born": "'94",
-     "gp": 3,
-     "g": 4,
+     "gp": 4,
+     "g": 5,
      "a": 4,
      "yc": 0,
      "rc": 0,
@@ -72,9 +72,9 @@
      "number": 15,
      "pos": "-",
      "born": "'94",
-     "gp": 4,
+     "gp": 5,
      "g": 3,
-     "a": 4,
+     "a": 5,
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/125734_pic.jpg"
@@ -388,8 +388,8 @@
      "number": 10,
      "pos": "-",
      "born": "'88",
-     "gp": 2,
-     "g": 2,
+     "gp": 3,
+     "g": 3,
      "a": 0,
      "yc": 0,
      "rc": 0,
@@ -406,6 +406,18 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/508226_pic.JPG"
+    },
+    {
+     "name": "Gary Donoghue",
+     "number": null,
+     "pos": "-",
+     "born": "'96",
+     "gp": 1,
+     "g": 1,
+     "a": 0,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/560724_pic.jpg"
     },
     {
      "name": "Aditaya Panda",
@@ -526,18 +538,6 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/308512_pic.jpeg"
-    },
-    {
-     "name": "Gary Donoghue",
-     "number": null,
-     "pos": "-",
-     "born": "'96",
-     "gp": 0,
-     "g": 0,
-     "a": 0,
-     "yc": 0,
-     "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/560724_pic.jpg"
     },
     {
      "name": "Hamza Khan",
@@ -1775,8 +1775,8 @@
      "number": 5,
      "pos": "LW",
      "born": "'03",
-     "gp": 3,
-     "g": 6,
+     "gp": 5,
+     "g": 9,
      "a": 0,
      "yc": 0,
      "rc": 0,
@@ -1799,9 +1799,9 @@
      "number": 4,
      "pos": "RW",
      "born": "'97",
-     "gp": 2,
-     "g": 2,
-     "a": 4,
+     "gp": 4,
+     "g": 3,
+     "a": 5,
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/307577_pic.jpg"
@@ -1811,8 +1811,8 @@
      "number": 22,
      "pos": "RW",
      "born": "'94",
-     "gp": 1,
-     "g": 1,
+     "gp": 2,
+     "g": 2,
      "a": 1,
      "yc": 0,
      "rc": 0,
@@ -1831,6 +1831,18 @@
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/561675_pic.jpg"
     },
     {
+     "name": "Corbin Glufka",
+     "number": 29,
+     "pos": "CM",
+     "born": "'98",
+     "gp": 1,
+     "g": 1,
+     "a": 0,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/612794_pic.jpg"
+    },
+    {
      "name": "Caolan Martin",
      "number": 37,
      "pos": "CM",
@@ -1843,25 +1855,61 @@
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/128492_pic.jpg"
     },
     {
+     "name": "Thomas Nunn",
+     "number": 24,
+     "pos": "CB",
+     "born": "'90",
+     "gp": 1,
+     "g": 1,
+     "a": 0,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/526077_pic.jpg"
+    },
+    {
+     "name": "Riley Peters",
+     "number": 44,
+     "pos": "CB",
+     "born": "'98",
+     "gp": 2,
+     "g": 1,
+     "a": 1,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/618670_pic.png"
+    },
+    {
      "name": "Julien Manac'h",
      "number": 14,
      "pos": "ST",
      "born": "'90",
-     "gp": 3,
-     "g": 0,
+     "gp": 4,
+     "g": 1,
      "a": 6,
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/307655_pic.jpg"
     },
     {
+     "name": "Brad Williamson",
+     "number": 15,
+     "pos": "CM",
+     "born": "'97",
+     "gp": 1,
+     "g": 0,
+     "a": 3,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/127147_pic.JPG"
+    },
+    {
      "name": "Yousif Mojadidi",
      "number": 19,
      "pos": "CM",
      "born": "'94",
-     "gp": 1,
+     "gp": 2,
      "g": 0,
-     "a": 1,
+     "a": 2,
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/561750_pic.png"
@@ -1963,18 +2011,6 @@
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/66487_pic.jpg"
     },
     {
-     "name": "Corbin Glufka",
-     "number": 29,
-     "pos": "CM",
-     "born": "'98",
-     "gp": 0,
-     "g": 0,
-     "a": 0,
-     "yc": 0,
-     "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/612794_pic.jpg"
-    },
-    {
      "name": "JP Hervieux",
      "number": 3,
      "pos": "CB",
@@ -2011,18 +2047,6 @@
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/612757_pic.jpg"
     },
     {
-     "name": "Thomas Nunn",
-     "number": 24,
-     "pos": "CB",
-     "born": "'90",
-     "gp": 0,
-     "g": 0,
-     "a": 0,
-     "yc": 0,
-     "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/526077_pic.jpg"
-    },
-    {
      "name": "Wilson Patlan",
      "number": 8,
      "pos": "CB",
@@ -2033,18 +2057,6 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/560967_pic.jpg"
-    },
-    {
-     "name": "Riley Peters",
-     "number": 44,
-     "pos": "CB",
-     "born": "'98",
-     "gp": 0,
-     "g": 0,
-     "a": 0,
-     "yc": 0,
-     "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/618670_pic.png"
     },
     {
      "name": "Bu Reh",
@@ -2069,18 +2081,6 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/307795_pic.jpeg"
-    },
-    {
-     "name": "Brad Williamson",
-     "number": 15,
-     "pos": "CM",
-     "born": "'97",
-     "gp": 0,
-     "g": 0,
-     "a": 0,
-     "yc": 0,
-     "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/127147_pic.JPG"
     }
    ]
   },
@@ -2550,8 +2550,8 @@
      "number": 15,
      "pos": "-",
      "born": "'99",
-     "gp": 1,
-     "g": 1,
+     "gp": 2,
+     "g": 2,
      "a": 1,
      "yc": 0,
      "rc": 0,
@@ -2598,9 +2598,9 @@
      "number": 66,
      "pos": "-",
      "born": "'97",
-     "gp": 2,
+     "gp": 3,
      "g": 1,
-     "a": 1,
+     "a": 2,
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/414488_pic.jpeg"
@@ -3202,37 +3202,37 @@
    ],
    "players": [
     {
-     "name": "Nathan Fong",
-     "number": null,
-     "pos": "-",
-     "born": "'04",
-     "gp": 5,
-     "g": 5,
-     "a": 2,
-     "yc": 0,
-     "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/610965_pic.jpg"
-    },
-    {
      "name": "Alexander Escobar",
      "number": 10,
      "pos": "-",
      "born": "'94",
-     "gp": 6,
-     "g": 5,
-     "a": 4,
+     "gp": 8,
+     "g": 7,
+     "a": 5,
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/149661_pic.jpg"
+    },
+    {
+     "name": "Nathan Fong",
+     "number": null,
+     "pos": "-",
+     "born": "'04",
+     "gp": 6,
+     "g": 5,
+     "a": 3,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/610965_pic.jpg"
     },
     {
      "name": "Sol Harrison",
      "number": null,
      "pos": "-",
      "born": "'04",
-     "gp": 3,
-     "g": 3,
-     "a": 3,
+     "gp": 5,
+     "g": 4,
+     "a": 4,
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/614535_pic.JPG"
@@ -3242,12 +3242,24 @@
      "number": null,
      "pos": "-",
      "born": "'05",
-     "gp": 2,
-     "g": 2,
-     "a": 1,
+     "gp": 3,
+     "g": 3,
+     "a": 2,
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/595833_pic.jpg"
+    },
+    {
+     "name": "Silas Hussey",
+     "number": null,
+     "pos": "-",
+     "born": "'04",
+     "gp": 3,
+     "g": 2,
+     "a": 2,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/611052_pic.JPG"
     },
     {
      "name": "Eli Press",
@@ -3286,18 +3298,6 @@
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/585785_pic.jpeg"
     },
     {
-     "name": "Kyle Kemp",
-     "number": null,
-     "pos": "-",
-     "born": "'94",
-     "gp": 1,
-     "g": 1,
-     "a": 0,
-     "yc": 0,
-     "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/166537_pic.jpeg"
-    },
-    {
      "name": "Wayson Lowe",
      "number": null,
      "pos": "-",
@@ -3308,6 +3308,18 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/601648_pic.jpeg"
+    },
+    {
+     "name": "Georgiy Osadchyy",
+     "number": null,
+     "pos": "-",
+     "born": "'03",
+     "gp": 1,
+     "g": 1,
+     "a": 0,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/338222_pic.jpeg"
     },
     {
      "name": "Tim Sowerby",
@@ -3334,16 +3346,16 @@
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/309761_pic.png"
     },
     {
-     "name": "Silas Hussey",
+     "name": "Kyle Kemp",
      "number": null,
      "pos": "-",
-     "born": "'04",
+     "born": "'94",
      "gp": 2,
      "g": 1,
      "a": 1,
      "yc": 0,
      "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/611052_pic.JPG"
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/166537_pic.jpeg"
     },
     {
      "name": "Ben Webster",
@@ -3584,18 +3596,6 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/262929_pic.jpg"
-    },
-    {
-     "name": "Georgiy Osadchyy",
-     "number": null,
-     "pos": "-",
-     "born": "'03",
-     "gp": 0,
-     "g": 0,
-     "a": 0,
-     "yc": 0,
-     "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/338222_pic.jpeg"
     },
     {
      "name": "David Roberts",
@@ -4650,37 +4650,49 @@
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/309765_pic.jpeg"
     },
     {
-     "name": "Liam Fitzmaurice",
-     "number": 17,
-     "pos": "-",
-     "born": "'98",
-     "gp": 3,
-     "g": 3,
-     "a": 1,
-     "yc": 0,
-     "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/234035_pic.jpg"
-    },
-    {
      "name": "Yossi Tal",
      "number": 86,
      "pos": "-",
      "born": "'92",
-     "gp": 1,
-     "g": 2,
+     "gp": 2,
+     "g": 3,
      "a": 0,
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/175810_pic.jpg"
     },
     {
+     "name": "Liam Fitzmaurice",
+     "number": 17,
+     "pos": "-",
+     "born": "'98",
+     "gp": 4,
+     "g": 3,
+     "a": 2,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/234035_pic.jpg"
+    },
+    {
+     "name": "Mo Hammoud",
+     "number": 13,
+     "pos": "-",
+     "born": "'95",
+     "gp": 2,
+     "g": 2,
+     "a": 0,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/281889_pic.jpg"
+    },
+    {
      "name": "Trevor Tyrer",
      "number": 9,
      "pos": "-",
      "born": "'92",
-     "gp": 1,
-     "g": 1,
-     "a": 2,
+     "gp": 3,
+     "g": 2,
+     "a": 4,
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/124633_pic.png"
@@ -4710,18 +4722,6 @@
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/129045_pic.jpg"
     },
     {
-     "name": "Mo Hammoud",
-     "number": 13,
-     "pos": "-",
-     "born": "'95",
-     "gp": 1,
-     "g": 1,
-     "a": 0,
-     "yc": 0,
-     "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/281889_pic.jpg"
-    },
-    {
      "name": "Eli Paradis",
      "number": 26,
      "pos": "-",
@@ -4744,6 +4744,30 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/127759_pic.jpeg"
+    },
+    {
+     "name": "Miguel Manguerra",
+     "number": 6,
+     "pos": "-",
+     "born": "'00",
+     "gp": 2,
+     "g": 1,
+     "a": 1,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/610718_pic.jpg"
+    },
+    {
+     "name": "Evan Sandhu",
+     "number": 22,
+     "pos": "-",
+     "born": "'01",
+     "gp": 2,
+     "g": 1,
+     "a": 1,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/281064_pic.jpeg"
     },
     {
      "name": "Brendan Gibson",
@@ -4780,18 +4804,6 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/180504_pic.jpg"
-    },
-    {
-     "name": "Miguel Manguerra",
-     "number": 6,
-     "pos": "-",
-     "born": "'00",
-     "gp": 1,
-     "g": 0,
-     "a": 1,
-     "yc": 0,
-     "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/610718_pic.jpg"
     },
     {
      "name": "Rolf Brulhart",
@@ -4890,18 +4902,6 @@
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/453558_pic.jpg"
     },
     {
-     "name": "Evan Sandhu",
-     "number": 22,
-     "pos": "-",
-     "born": "'01",
-     "gp": 0,
-     "g": 0,
-     "a": 0,
-     "yc": 0,
-     "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/281064_pic.jpeg"
-    },
-    {
      "name": "Ravi Sanghera",
      "number": 21,
      "pos": "-",
@@ -4982,8 +4982,8 @@
      "number": 9,
      "pos": "-",
      "born": "'04",
-     "gp": 6,
-     "g": 8,
+     "gp": 7,
+     "g": 9,
      "a": 5,
      "yc": 0,
      "rc": 0,
@@ -4994,8 +4994,8 @@
      "number": 10,
      "pos": "-",
      "born": "'03",
-     "gp": 6,
-     "g": 8,
+     "gp": 7,
+     "g": 9,
      "a": 0,
      "yc": 0,
      "rc": 0,
@@ -5026,16 +5026,16 @@
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/389820_pic.jpeg"
     },
     {
-     "name": "Riley Oughtred",
-     "number": 19,
+     "name": "Zac Bowman",
+     "number": 7,
      "pos": "-",
-     "born": "'06",
-     "gp": 2,
-     "g": 2,
-     "a": 2,
+     "born": "'96",
+     "gp": 4,
+     "g": 3,
+     "a": 1,
      "yc": 0,
      "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/558490_pic.png"
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/129367_pic.jpeg"
     },
     {
      "name": "Sammy Sloboda",
@@ -5050,16 +5050,40 @@
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/536547_pic.jpg"
     },
     {
-     "name": "Zac Bowman",
-     "number": 7,
+     "name": "Riley Oughtred",
+     "number": 19,
      "pos": "-",
-     "born": "'96",
+     "born": "'06",
+     "gp": 3,
+     "g": 2,
+     "a": 3,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/558490_pic.png"
+    },
+    {
+     "name": "Kevin Monk",
+     "number": 5,
+     "pos": "-",
+     "born": "'95",
      "gp": 3,
      "g": 2,
      "a": 1,
      "yc": 0,
      "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/129367_pic.jpeg"
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/131188_pic.jpg"
+    },
+    {
+     "name": "Zabihullah Ataiee",
+     "number": 17,
+     "pos": "-",
+     "born": "'98",
+     "gp": 1,
+     "g": 1,
+     "a": 1,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/384725_pic.jpeg"
     },
     {
      "name": "Ibrahim Pasor",
@@ -5072,18 +5096,6 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/613411_pic.jpeg"
-    },
-    {
-     "name": "Kevin Monk",
-     "number": 5,
-     "pos": "-",
-     "born": "'95",
-     "gp": 2,
-     "g": 1,
-     "a": 1,
-     "yc": 0,
-     "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/131188_pic.jpg"
     },
     {
      "name": "Craig Tillotson",
@@ -5110,6 +5122,18 @@
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/309585_pic.JPG"
     },
     {
+     "name": "Dylan Fajardo",
+     "number": 11,
+     "pos": "-",
+     "born": "'96",
+     "gp": 3,
+     "g": 1,
+     "a": 3,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/127449_pic.jpg"
+    },
+    {
      "name": "Max Ellison",
      "number": 20,
      "pos": "-",
@@ -5122,16 +5146,16 @@
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/537520_pic.jpg"
     },
     {
-     "name": "Dylan Fajardo",
-     "number": 11,
+     "name": "Hikaru Omura",
+     "number": 8,
      "pos": "-",
-     "born": "'96",
-     "gp": 2,
+     "born": "'99",
+     "gp": 1,
      "g": 0,
-     "a": 3,
+     "a": 2,
      "yc": 0,
      "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/127449_pic.jpg"
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/308016_pic.JPG"
     },
     {
      "name": "Elijah Tubajon-Sharma",
@@ -5146,16 +5170,16 @@
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/519402_pic.jpeg"
     },
     {
-     "name": "Zabihullah Ataiee",
-     "number": 17,
+     "name": "Marco Wong",
+     "number": 21,
      "pos": "-",
-     "born": "'98",
-     "gp": 0,
+     "born": "'96",
+     "gp": 1,
      "g": 0,
-     "a": 0,
+     "a": 1,
      "yc": 0,
      "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/384725_pic.jpeg"
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/236335_pic.jpg"
     },
     {
      "name": "Elijah Bhandal-Hayre",
@@ -5230,18 +5254,6 @@
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/396687_pic.jpg"
     },
     {
-     "name": "Hikaru Omura",
-     "number": 8,
-     "pos": "-",
-     "born": "'99",
-     "gp": 0,
-     "g": 0,
-     "a": 0,
-     "yc": 0,
-     "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/308016_pic.JPG"
-    },
-    {
      "name": "Kylan Sandberg",
      "number": 4,
      "pos": "-",
@@ -5252,18 +5264,6 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/491524_pic.jpeg"
-    },
-    {
-     "name": "Marco Wong",
-     "number": 21,
-     "pos": "-",
-     "born": "'96",
-     "gp": 0,
-     "g": 0,
-     "a": 0,
-     "yc": 0,
-     "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/236335_pic.jpg"
     },
     {
      "name": "Alexander Yong",
@@ -5318,8 +5318,8 @@
      "number": 6,
      "pos": "-",
      "born": "'88",
-     "gp": 5,
-     "g": 5,
+     "gp": 6,
+     "g": 6,
      "a": 8,
      "yc": 0,
      "rc": 0,
@@ -5338,16 +5338,16 @@
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/129223_pic.jpg"
     },
     {
-     "name": "Gregory Bernardini Essaoulov",
-     "number": 23,
+     "name": "Danen Sangha",
+     "number": 7,
      "pos": "-",
      "born": "'88",
-     "gp": 4,
+     "gp": 1,
      "g": 2,
-     "a": 2,
+     "a": 0,
      "yc": 0,
      "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/174946_pic.JPG"
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/129138_pic.JPG"
     },
     {
      "name": "Graham Plant",
@@ -5362,6 +5362,18 @@
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/337692_pic.jpg"
     },
     {
+     "name": "Gregory Bernardini Essaoulov",
+     "number": 23,
+     "pos": "-",
+     "born": "'88",
+     "gp": 5,
+     "g": 2,
+     "a": 3,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/174946_pic.JPG"
+    },
+    {
      "name": "Michael Henniger",
      "number": 11,
      "pos": "-",
@@ -5372,6 +5384,18 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/130363_pic.JPG"
+    },
+    {
+     "name": "Steven Bicego",
+     "number": 18,
+     "pos": "-",
+     "born": "'85",
+     "gp": 1,
+     "g": 1,
+     "a": 0,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/307008_pic.jpeg"
     },
     {
      "name": "Nick Genzel",
@@ -5422,6 +5446,18 @@
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/128953_pic.jpg"
     },
     {
+     "name": "Kevin Gill",
+     "number": 9,
+     "pos": "-",
+     "born": "'85",
+     "gp": 1,
+     "g": 0,
+     "a": 1,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/307014_pic.png"
+    },
+    {
      "name": "Dan Mansoor",
      "number": 13,
      "pos": "-",
@@ -5446,16 +5482,16 @@
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/375218_pic.jpg"
     },
     {
-     "name": "Steven Bicego",
-     "number": 18,
+     "name": "Jordan Ng",
+     "number": 5,
      "pos": "-",
-     "born": "'85",
-     "gp": 0,
+     "born": "'89",
+     "gp": 1,
      "g": 0,
-     "a": 0,
+     "a": 1,
      "yc": 0,
      "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/307008_pic.jpeg"
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/127955_pic.jpg"
     },
     {
      "name": "Cameron Burr",
@@ -5480,18 +5516,6 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/127962_pic.jpg"
-    },
-    {
-     "name": "Kevin Gill",
-     "number": 9,
-     "pos": "-",
-     "born": "'85",
-     "gp": 0,
-     "g": 0,
-     "a": 0,
-     "yc": 0,
-     "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/307014_pic.png"
     },
     {
      "name": "Sonny Janda",
@@ -5530,18 +5554,6 @@
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/149725_pic.jpg"
     },
     {
-     "name": "Jordan Ng",
-     "number": 5,
-     "pos": "-",
-     "born": "'89",
-     "gp": 0,
-     "g": 0,
-     "a": 0,
-     "yc": 0,
-     "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/127955_pic.jpg"
-    },
-    {
      "name": "Neil Philipson",
      "number": 8,
      "pos": "-",
@@ -5576,18 +5588,6 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/234664_pic.jpeg"
-    },
-    {
-     "name": "Danen Sangha",
-     "number": 7,
-     "pos": "-",
-     "born": "'88",
-     "gp": 0,
-     "g": 0,
-     "a": 0,
-     "yc": 0,
-     "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/129138_pic.JPG"
     },
     {
      "name": "Rhys Verde Rios",
@@ -5658,8 +5658,8 @@
      "number": 10,
      "pos": "-",
      "born": "'91",
-     "gp": 8,
-     "g": 10,
+     "gp": 9,
+     "g": 11,
      "a": 8,
      "yc": 0,
      "rc": 0,
@@ -5678,6 +5678,18 @@
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/127475_pic.jpg"
     },
     {
+     "name": "Preston Yan",
+     "number": 23,
+     "pos": "-",
+     "born": "'90",
+     "gp": 3,
+     "g": 4,
+     "a": 1,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/129081_pic.jpg"
+    },
+    {
      "name": "Adam Scoble",
      "number": 17,
      "pos": "-",
@@ -5690,18 +5702,6 @@
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/128759_pic.JPG"
     },
     {
-     "name": "Preston Yan",
-     "number": 23,
-     "pos": "-",
-     "born": "'90",
-     "gp": 2,
-     "g": 3,
-     "a": 1,
-     "yc": 0,
-     "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/129081_pic.jpg"
-    },
-    {
      "name": "Jacky Hau",
      "number": 25,
      "pos": "-",
@@ -5712,6 +5712,18 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/507109_pic.jpg"
+    },
+    {
+     "name": "Aman Dhaliwal",
+     "number": 9,
+     "pos": "-",
+     "born": "'77",
+     "gp": 4,
+     "g": 3,
+     "a": 4,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/128115_pic.jpeg"
     },
     {
      "name": "Benny Sio",
@@ -5748,18 +5760,6 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/129074_pic.jpg"
-    },
-    {
-     "name": "Aman Dhaliwal",
-     "number": 9,
-     "pos": "-",
-     "born": "'77",
-     "gp": 3,
-     "g": 2,
-     "a": 4,
-     "yc": 0,
-     "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/128115_pic.jpeg"
     },
     {
      "name": "Jon MacPherson",
@@ -6362,18 +6362,6 @@
    ],
    "players": [
     {
-     "name": "Kevin Wong",
-     "number": null,
-     "pos": "-",
-     "born": "'93",
-     "gp": 3,
-     "g": 3,
-     "a": 1,
-     "yc": 0,
-     "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/128393_pic.JPG"
-    },
-    {
      "name": "Harley Ma",
      "number": null,
      "pos": "-",
@@ -6386,13 +6374,37 @@
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/337020_pic.png"
     },
     {
+     "name": "Kevin Wong",
+     "number": null,
+     "pos": "-",
+     "born": "'93",
+     "gp": 4,
+     "g": 3,
+     "a": 2,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/128393_pic.JPG"
+    },
+    {
+     "name": "Danyal Sahiholnasab",
+     "number": null,
+     "pos": "-",
+     "born": "'07",
+     "gp": 1,
+     "g": 2,
+     "a": 0,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/612612_pic.jpeg"
+    },
+    {
      "name": "Jude Kim",
      "number": 13,
      "pos": "-",
      "born": "'90",
-     "gp": 2,
+     "gp": 3,
      "g": 2,
-     "a": 0,
+     "a": 1,
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/174674_pic.PNG"
@@ -6408,6 +6420,18 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/515053_pic.jpg"
+    },
+    {
+     "name": "Terran Ho",
+     "number": 9,
+     "pos": "-",
+     "born": "'91",
+     "gp": 1,
+     "g": 1,
+     "a": 0,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/128397_pic.jpg"
     },
     {
      "name": "Talal Wahid",
@@ -6446,18 +6470,6 @@
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/128867_pic.jpg"
     },
     {
-     "name": "Abubakarr Barrie",
-     "number": null,
-     "pos": "-",
-     "born": "'98",
-     "gp": 2,
-     "g": 1,
-     "a": 1,
-     "yc": 0,
-     "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/612611_pic.jpeg"
-    },
-    {
      "name": "Vlad Rymar",
      "number": 7,
      "pos": "-",
@@ -6468,6 +6480,18 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/128399_pic.jpeg"
+    },
+    {
+     "name": "Abubakarr Barrie",
+     "number": null,
+     "pos": "-",
+     "born": "'98",
+     "gp": 3,
+     "g": 1,
+     "a": 2,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/612611_pic.jpeg"
     },
     {
      "name": "Fred Baldry",
@@ -6564,18 +6588,6 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/239794_pic.JPG"
-    },
-    {
-     "name": "Terran Ho",
-     "number": 9,
-     "pos": "-",
-     "born": "'91",
-     "gp": 0,
-     "g": 0,
-     "a": 0,
-     "yc": 0,
-     "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/128397_pic.jpg"
     },
     {
      "name": "Nick Hoffman",
@@ -6684,18 +6696,6 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/458082_pic.jpg"
-    },
-    {
-     "name": "Danyal Sahiholnasab",
-     "number": null,
-     "pos": "-",
-     "born": "'07",
-     "gp": 0,
-     "g": 0,
-     "a": 0,
-     "yc": 0,
-     "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/612612_pic.jpeg"
     },
     {
      "name": "Philip Shen",
