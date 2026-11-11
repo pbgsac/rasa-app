@@ -27,7 +27,7 @@ module.exports = async function (context, req) {
     try {
       const { token, graph } = require("../lib/graph");
       const t = await token(env); const claims = JSON.parse(Buffer.from(t.split(".")[1], "base64url").toString("utf8"));
-      check.appPermissions = claims.roles || [];
+      check.appPermissions = claims.roles || []; check.appId = claims.appid;
       const f = await graph(env, "GET", `/drives/${encodeURIComponent(env.ONEDRIVE_DRIVE_ID)}/items/${encodeURIComponent(env.ONEDRIVE_FOLDER_ID)}?$select=name`);
       check.folder = f.status === 200 ? "reachable: " + (await f.json()).name : "status " + f.status;
     } catch (x) { check.error = String(x.code || x.message).slice(0, 120); }
