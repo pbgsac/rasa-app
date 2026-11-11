@@ -129,9 +129,17 @@ async function sendMail(body, env, submittedAt) {
   }
 }
 
+// Ref reports are paused until sign-in arrives (the Ref Report tab is hidden in the app too).
+// Set the REPORTS_OPEN environment variable to "true" in Azure, or change this default, to reopen.
+const REPORTS_OPEN_DEFAULT = false;
+
 module.exports = async function (context, req) {
   const headers = cors(req);
   if ((req.method || "").toUpperCase() === "OPTIONS") { context.res = { status: 204, headers }; return; }
+  const open = String(process.env.REPORTS_OPEN || "").trim().toLowerCase();
+  if (open === "false" || (open !== "true" && !REPORTS_OPEN_DEFAULT)) {
+    context.res = { status: 403, headers, body: { ok: false, error: "Ref reports through the app are paused for now. Please send your report to matchreport@rasasoccer.ca." } }; return;
+  }
   const env = settings();   // trims stray spaces/quotes pasted into the portal
   if (!env.GRAPH_TENANT_ID || !env.GRAPH_CLIENT_ID || !env.GRAPH_CLIENT_SECRET || !env.MAIL_FROM) {
     context.res = { status: 503, headers, body: { ok: false, error: "Report sending isn't set up yet." } }; return;
