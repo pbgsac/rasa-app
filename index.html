@@ -370,6 +370,8 @@ dl.view{margin:0;display:flex;flex-direction:column;border-top:1px solid var(--l
 .seg.ld-tabs button{flex:1;padding:11px 6px;font-size:16px;white-space:nowrap}
 .ld-chips.ld-filter{margin-left:0;justify-content:center}
 .ld-updated{margin:4px 0 0;color:var(--muted);font-size:13px;text-align:center}
+#view-leaders,#view-standings{margin-top:-8px}
+.std-tabs{margin-bottom:4px}
 @media (min-width:760px){ .ld-grid{grid-template-columns:1fr 1fr} .ld-grid > .std:last-child{grid-column:1 / -1} }
 .std.ld table{width:100%}
 .std.ld td.tm{display:flex;flex-direction:column;gap:1px;white-space:normal}
@@ -422,7 +424,8 @@ dl.view{margin:0;display:flex;flex-direction:column;border-top:1px solid var(--l
 .preview-mail pre{white-space:pre-wrap;font-size:12px;background:var(--bg);border-radius:8px;padding:10px;max-height:240px;overflow:auto}
 
 /* Leaders podium */
-.podium{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px 10px;border-bottom:1px solid var(--line)}
+.podium{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 8px;padding:14px 10px;border-bottom:1px solid var(--line)}
+.pod.p1{grid-column:1 / -1;justify-self:center;max-width:70%}
 .pod{display:flex;flex-direction:column;align-items:center;text-align:center;gap:3px;min-width:0}
 .pod-photo{position:relative;width:76px;height:76px;border-radius:50%;background:var(--surface-2);display:grid;place-items:center;font-family:var(--font-display);font-size:26px;color:var(--muted);border:3px solid var(--ring);margin-bottom:4px}
 .pod-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%}
@@ -434,7 +437,7 @@ dl.view{margin:0;display:flex;flex-direction:column;border-top:1px solid var(--l
 .pod .ld-team{font-size:12px;justify-content:center}
 .pod-val{font-size:14px}
 .pod-val b{font-family:var(--font-display);font-size:22px}
-.podium{align-items:end}
+.podium{align-items:start}
 
 /* Account */
 .acct{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;align-items:center;gap:14px}
@@ -675,8 +678,9 @@ tr.tapped td{animation:tapFlash .32s ease-out}
 
   <!-- STANDINGS -->
   <section class="view" id="view-standings" hidden>
-    <div class="hello"><h1 class="sr-only">Standings</h1><p id="stdSub"></p></div>
+    <h1 class="sr-only">Standings</h1>
     <div id="stdBody" class="section"></div>
+    <p id="stdSub" class="ld-updated"></p>
   </section>
 
   <!-- TEAM PAGE -->
@@ -930,7 +934,7 @@ function toast(msg){const t=$("#toast"); t.textContent=msg; t.hidden=false; clea
 // Lookup-only mode for now: Schedule, Standings and Leaders. Sign-in and Game Report are switched off
 // (their code stays, ready to turn back on with the back end).
 const FEATURES = {accounts:false, gameReport:false};   // Ref Report hidden until sign-in arrives (it will move to a Refs screen)
-const state = { view:"schedule", mode:"up", comp:"ALL", team:"ALL", user:null, upWeeks:2, resWeeks:2, refView:"Kanwal Sangha", teamMode:"up", adminWeeks:2, refMode:"up", adminFilter:null, adminMode:"games", ldF:{g:"ALL",a:"ALL",k:"ALL"}, ldTab:"g", teamKey:null, teamTab:"up", rr:{step:"who", name:"", email:"", days:14} };
+const state = { view:"schedule", mode:"up", comp:"ALL", team:"ALL", user:null, upWeeks:2, resWeeks:2, refView:"Kanwal Sangha", teamMode:"up", adminWeeks:2, refMode:"up", adminFilter:null, adminMode:"games", ldF:{g:"ALL",a:"ALL",k:"ALL"}, ldTab:"g", stdTab:"D1", teamKey:null, teamTab:"up", rr:{step:"who", name:"", email:"", days:14} };
 
 /* ---------- Field locations ----------
    Addresses from the Location Maps page on rasasoccer.ca. Each schedule venue name maps to its park or school;
@@ -1326,7 +1330,10 @@ function renderStandings(){
   const order = ["D1","D2","MS"];
   const adj = adjustedStandings();
   const divs = adj.divs.slice().sort((a,b)=>order.indexOf(DIV_COMP(a.name))-order.indexOf(DIV_COMP(b.name)));
-  body.innerHTML = divs.map(dv=>{
+  if(!divs.some(dv=>DIV_COMP(dv.name)===state.stdTab) && divs.length) state.stdTab = DIV_COMP(divs[0].name);
+  const tabs = `<div class="seg ld-tabs std-tabs" role="tablist" aria-label="Divisions">${divs.map(dv=>{ const c = DIV_COMP(dv.name);
+    return `<button role="tab" data-stdtab="${c}" aria-pressed="${state.stdTab===c}" aria-selected="${state.stdTab===c}">${esc(COMPS[c].n)}</button>`; }).join("")}</div>`;
+  body.innerHTML = tabs + divs.filter(dv=>DIV_COMP(dv.name)===state.stdTab).map(dv=>{
     const comp = DIV_COMP(dv.name);
     const showD = dv.rows.some(r=>r.d);
     const moves = weeklyMoves(comp);
@@ -1377,7 +1384,7 @@ const ord = n=>n+(["th","st","nd","rd"][(n%100-20)%10]||["th","st","nd","rd"][n%
    Goals and assists come from each team's player list on rasasoccer.ca (same numbers as the site's Scoring Leaders page).
    Keepers: the website has no keeper stats, so until referee reports exist we rank team defences (goals against per game).
    Once referees submit reports (keeper + minutes), keepers are ranked by goals against per 90 minutes. */
-const LD_TOP = 7;
+const LD_TOP = 10;
 function rankRows(rows, key, tie){
   rows.sort((a,b)=> b[key]-a[key] || (tie?tie(a,b):0) || a.name.localeCompare(b.name));
   let rank = 0;
@@ -1420,11 +1427,13 @@ function renderLeaders(){
   const goals = rankRows(playersIn(F.g).filter(p=>p.g>0), "g", (a,b)=>b.a-a.a || a.gp-b.gp).slice(0,LD_TOP);
   const assists = rankRows(playersIn(F.a).filter(p=>p.a>0), "a", (a,b)=>b.g-a.g || a.gp-b.gp).slice(0,LD_TOP);
   // Top three get a photo card, using the player's photo from their rasasoccer.ca roster card (initials if there's none).
-  const podium = (rows, unit, val)=>`<div class="podium">${rows.slice(0,3).map((r,i)=>`
+  // #1 on its own row in the middle, #2 and #3 side by side under it
+  const UNITS = {G:["goal","goals"], A:["assist","assists"], CS:["clean sheet","clean sheets"]};
+  const podium = (rows, unit, val, isTeam)=>`<div class="podium">${rows.slice(0,3).map((r,i)=>`
     <div class="pod p${i+1}">
       <div class="pod-photo" aria-hidden="true"><span class="ini">${esc(initialsOf(r.name))}</span>${r.photo?`<img src="${esc(r.photo)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">`:""}<span class="medal">${r.rank}</span></div>
-      <b class="pod-name">${esc(r.name)}</b>${teamCell(r.team)}
-      <span class="pod-val"><b>${val(r)}</b> ${unit==="G"?(val(r)===1?"goal":"goals"):(val(r)===1?"assist":"assists")}</span>
+      ${isTeam ? `<b class="pod-name">${esc(r.name)}</b><span class="ld-team"><span class="dot" style="background:var(${COMPS[TEAMS[r.team].d].v})"></span>${esc(COMPS[TEAMS[r.team].d].n)}</span>` : `<b class="pod-name">${esc(r.name)}</b>${teamCell(r.team)}`}
+      <span class="pod-val"><b>${val(r)}</b> ${UNITS[unit][val(r)===1?0:1]}</span>
       <span class="muted small">${r.gp} GP</span>
     </div>`).join("")}</div>`;
   const board = (title, cat, unit, rows, val)=>`
@@ -1441,17 +1450,20 @@ function renderLeaders(){
       ${ks.map(k=>`<tr class="${k.rank===1?"top":""}"><td>${k.rank}</td><td class="tm"><b>${esc(k.name)}</b>${teamCell(k.team)}</td><td>${k.minutes}</td><td>${Math.round(k.ga*10)/10}</td><td class="pts">${k.gaa.toFixed(2)}</td></tr>`).join("")}
       </tbody></table><p class="note ld-note">From referee reports submitted in the app. GAA is goals against per 90 minutes; lower is better.</p></div>`;
   } else {
-    // Clean sheets: league games (division + cross-over) where the team conceded nothing.
-    const teams = [];
-    adjustedStandings().divs.forEach(dv=>dv.rows.forEach(r=>{ const k=keyFor(r.team); if(!k || !r.gp || !inScope(F.k,k)) return;
-      const cs = games.filter(g=>(g.h===k||g.a===k) && hasScore(g) && countsFor(g,k) && (g.h===k ? g.as : g.hs)===0).length;
-      teams.push({name:TEAMS[k].n, team:k, gp:r.gp, ga:r.ga, cs, gaa:r.ga/r.gp}); }));
-    const rows = rankRows(teams.map(t=>({...t, key:t.cs*1000 - Math.round(t.gaa*100)})), "key", (a,b)=>b.gp-a.gp).slice(0,LD_TOP);
+    // Clean sheets: every played game in our records (league, cross-over and cup) where the team conceded no goals.
+    const tally = {};
+    games.forEach(g=>{ if(!hasScore(g)) return;
+      [[g.h, g.as], [g.a, g.hs]].forEach(([k, against])=>{ if(!TEAMS[k] || !inScope(F.k,k)) return;
+        const t = tally[k] = tally[k] || {name:TEAMS[k].n, team:k, gp:0, ga:0, cs:0};
+        t.gp++; t.ga += +against||0; if(+against===0) t.cs++; }); });
+    const teams = Object.values(tally).filter(t=>t.gp).map(t=>({...t, gaa:t.ga/t.gp}));
+    // Most clean sheets; ties go to fewer goals against per game, then more games played
+    const rows = rankRows(teams.filter(t=>t.cs>0).map(t=>({...t, key:t.cs*1000 - Math.round(t.gaa*100)})), "key", (a,b)=>b.gp-a.gp).slice(0,LD_TOP);
     keeperHTML = `<div class="std ld" id="ld-k">
-      ${rows.length ? `<table><thead><tr><th scope="col">#</th><th scope="col" class="tm">Team</th><th scope="col">GP</th><th scope="col" title="Clean sheets: games with no goals against">CS</th><th scope="col" title="Goals against per game">GA/G</th></tr></thead><tbody>
-      ${rows.map(t=>`<tr class="${t.rank===1?"top":""}"><td>${t.rank}</td><td class="tm">${teamCell(t.team)}</td><td>${t.gp}</td><td class="pts">${t.cs}</td><td>${t.gaa.toFixed(2)}</td></tr>`).join("")}
-      </tbody></table>` : `<div class="empty">No games played yet${scopeText(F.k)}.</div>`}
-      <p class="note ld-note">Clean sheets are league games with no goals against, by team. Ties go to fewer goals against per game. Individual keepers will appear once referees submit their reports in the app.</p></div>`;
+      ${rows.length ? `${podium(rows, "CS", r=>r.cs, true)}${rows.length>3?`<table><thead><tr><th scope="col">#</th><th scope="col" class="tm">Team</th><th scope="col">GP</th><th scope="col" title="Goals against per game">GA/G</th><th scope="col" title="Clean sheets: games with no goals against">CS</th></tr></thead><tbody>
+      ${rows.slice(3).map(t=>`<tr><td>${t.rank}</td><td class="tm">${teamCell(t.team)}</td><td>${t.gp}</td><td>${t.gaa.toFixed(2)}</td><td class="pts">${t.cs}</td></tr>`).join("")}
+      </tbody></table>`:""}` : `<div class="empty">No clean sheets yet${scopeText(F.k)}.</div>`}
+      <p class="note ld-note">A clean sheet is a game where the team didn’t concede a goal, counting every game played (league, cross-over and cup). Ties go to fewer goals against per game.</p></div>`;
   }
   const tab = state.ldTab;
   const tabs = [["g","Goals"],["a","Assists"],["k","Clean Sheets"]];
@@ -2585,8 +2597,9 @@ document.addEventListener("click", e=>{
   const rfm = e.target.closest("[data-refmode]"); if(rfm){ state.refMode = rfm.dataset.refmode; renderDashboard(); return; }
   const amd = e.target.closest("[data-adminmode]"); if(amd){ state.adminMode = amd.dataset.adminmode; renderDashboard(); return; }
   const af = e.target.closest("[data-afilter]"); if(af){ const k=af.dataset.afilter; state.adminFilter = (k==="clear"||state.adminFilter===k) ? null : k; state.adminMode="games"; renderDashboard(); return; }
+  const sdt = e.target.closest("[data-stdtab]"); if(sdt){ state.stdTab = sdt.dataset.stdtab; renderStandings(); const b=document.querySelector(`[data-stdtab="${state.stdTab}"]`); if(b) b.focus({preventScroll:true}); return; }
   const ldt = e.target.closest("[data-ldtab]"); if(ldt){ state.ldTab = ldt.dataset.ldtab; renderLeaders(); const b=document.querySelector(`[data-ldtab="${state.ldTab}"]`); if(b) b.focus({preventScroll:true}); return; }
-  const ld = e.target.closest("[data-lddiv]"); if(ld){ const cat = ld.dataset.ldcat; state.ldF[cat] = ld.dataset.lddiv; renderLeaders();
+  const ld = e.target.closest("[data-lddiv]"); if(ld){ const cat = ld.dataset.ldcat; ["g","a","k"].forEach(c=>state.ldF[c] = ld.dataset.lddiv); renderLeaders();   // the division sticks across Goals / Assists / Clean Sheets
     const b = document.querySelector(`[data-lddiv="${ld.dataset.lddiv}"]`); if(b) b.focus({preventScroll:true}); return; }
   const tm = e.target.closest("[data-teammode]");
   if(tm){ state.teamMode = tm.dataset.teammode; renderDashboard(); return; }
