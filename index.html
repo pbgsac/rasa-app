@@ -100,6 +100,10 @@ main{max-width:820px;margin:0 auto;padding:16px 16px 48px;display:flex;flex-dire
 /* Controls */
 .controls{display:flex;flex-direction:column;gap:10px}
 .seg.sched-seg{align-self:center}
+/* Schedule spacing: tabs -> toggle 8px (was 16), toggle -> filters 6.5px (was 10), filters -> games 18px (was 0) */
+#view-schedule{margin-top:-8px}
+#view-schedule .sched-filters{margin-top:-3.5px}
+#view-schedule #list{margin-top:18px}
 .seg.sched-seg button{padding:8px 10px;font-size:20.8px;width:min(185px,45vw);height:45px}
 .sched-filters{flex-wrap:nowrap}
 /* Themed drop-downs */
