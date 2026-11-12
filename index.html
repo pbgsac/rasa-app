@@ -152,8 +152,19 @@ main{max-width:820px;margin:0 auto;padding:16px 16px 48px;display:flex;flex-dire
 .cal-empty{padding:10px 12px;font-size:13.5px;color:var(--muted)}
 .cal-foot{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 12px 12px;border-top:1px solid var(--line);background:var(--surface)}
 .cal-add{width:100%;justify-content:center;font-size:16px;padding:12px}
-.cal-other{font-size:13px}
-.cal-choices{display:flex;flex-direction:column;gap:8px}
+.cal-dd.typing .cal-help,.cal-dd.typing .cal-foot{display:none}
+.cal-dd.typing .cal-menu{max-height:none}
+.cal-title{text-transform:none}
+.cal-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:4px 0 2px}
+.cal-tab{font:inherit;font-weight:700;font-size:14.5px;padding:10px 6px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.cal-tab-dl{grid-column:1 / -1;font-size:13.5px;padding:8px 6px}
+.cal-tab[aria-selected="true"]{background:color-mix(in srgb,var(--brand) 12%,var(--surface));border-color:var(--brand);color:var(--brand);box-shadow:inset 0 0 0 1px var(--brand)}
+.cal-pane{display:flex;flex-direction:column;gap:10px;min-height:150px}
+.cal-pane .cal-go{text-decoration:none;justify-content:center;text-align:center;font-size:16px;padding:12px}
+.cal-lead{margin:0;font-size:14.5px;line-height:1.45}
+.cal-note{margin:0;font-size:13px;color:var(--muted);line-height:1.4}
+.cal-wait{margin:0;padding:10px 12px;border-radius:10px;background:color-mix(in srgb,var(--accent) 12%,var(--surface));font-size:13.5px;line-height:1.45;color:var(--ink)}
+.cal-warn{padding:10px 12px;border-radius:10px;background:color-mix(in srgb,var(--bad) 8%,var(--surface));color:var(--ink)}
 .cal-steps{margin:4px 0 10px;padding-left:20px;display:flex;flex-direction:column;gap:12px;font-size:14.5px;line-height:1.45}
 .cal-link{display:flex;gap:6px;margin:8px 0 4px}
 .cal-link input{flex:1;min-width:0;font:inherit;font-size:13px;padding:9px 10px;border:1.5px solid var(--line);border-radius:10px;background:var(--surface-2,var(--surface));color:var(--ink)}
@@ -1049,6 +1060,21 @@ function calListHtml(){
   }
   return html;
 }
+// Phones: when the keyboard opens, scroll the page so the search box sits just under the sticky header,
+// and size the results to the space left above the keyboard.
+function calLiftForKeyboard(input){
+  if(!matchMedia("(pointer:coarse)").matches) return;
+  const fit = ()=>{
+    const top = ($(".topbar") ? $(".topbar").getBoundingClientRect().bottom : 0) + 8;
+    const r = input.getBoundingClientRect();
+    if(Math.abs(r.top - top) > 4) window.scrollBy({top: r.top - top, behavior:"smooth"});
+    const vv = window.visualViewport, visible = vv ? vv.height : innerHeight;
+    const list = $("#calDD .cal-list"); if(list) list.style.maxHeight = Math.max(140, visible - top - r.height - 20) + "px";
+  };
+  setTimeout(fit, 60); setTimeout(fit, 350);                    // once now, once after the keyboard has finished opening
+  if(window.visualViewport && !calLiftForKeyboard.on){ calLiftForKeyboard.on = true;
+    visualViewport.addEventListener("resize", ()=>{ const i = $("#calSearch"); if(i && document.activeElement===i) fit(); }); }
+}
 function calRefresh(){                          // update the list and the Add button without rebuilding the search box
   const el = $("#calDD"); if(!el) return;
   el.querySelector(".cal-list").innerHTML = calListHtml();
@@ -1069,20 +1095,20 @@ function renderCalendarDD(){
         <input type="text" id="calSearch" placeholder="Type your team" aria-label="Type your team" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="done" value="${esc(calQuery)}">
         <button type="button" class="cal-clear" aria-label="Clear" ${calQuery?"":"hidden"}>×</button></div>
       <ul class="cal-list" role="listbox" aria-label="Games to add">${calListHtml()}</ul>
-      <div class="cal-foot"><button type="button" class="btn btn-primary cal-add" id="calAdd"></button>
-        <button type="button" class="linkbtn cal-other" id="calOther">Other calendar apps</button></div>
+      <div class="cal-foot"><button type="button" class="btn btn-primary cal-add" id="calAdd"></button></div>
     </div>`;
   const btn = el.querySelector(".dd-btn"), menu = el.querySelector(".cal-menu"), input = el.querySelector("#calSearch");
   calRefresh();
   btn.onclick = e=>{ e.stopPropagation(); if(openDD===el){ closeDD(); return; } closeDD(); openDD = el; el.classList.add("open"); btn.setAttribute("aria-expanded","true");
     calQuery = ""; input.value = ""; calRefresh(); if(!matchMedia("(pointer:coarse)").matches) input.focus({preventScroll:true}); };   // phones: keyboard only when the box is tapped
   input.oninput = ()=>{ calQuery = input.value; calRefresh(); };
+  input.onfocus = ()=>{ if(matchMedia("(pointer:coarse)").matches) el.classList.add("typing"); calLiftForKeyboard(input); };
+  input.onblur = ()=>{ setTimeout(()=>{ if(document.activeElement!==input) el.classList.remove("typing"); }, 150); };
   menu.onclick = e=>{ e.stopPropagation();
     if(e.target.closest(".cal-clear")){ calQuery = ""; input.value = ""; calRefresh(); input.focus(); return; }
     const o = e.target.closest("[data-calval]");
     if(o){ calPick = o.dataset.calval; calQuery = ""; input.value = ""; calRefresh(); input.blur(); return; }   // picked: show the choice and the Add button
-    if(e.target.closest("#calAdd")){ addToCalendar(calPick, false); return; }
-    if(e.target.closest("#calOther")){ addToCalendar(calPick, true); return; } };
+    if(e.target.closest("#calAdd")){ addToCalendar(calPick); return; } };
   menu.onkeydown = e=>{ const list=[...menu.querySelectorAll(".dd-opt")], i=list.indexOf(document.activeElement);
     if(e.key==="ArrowDown"){ e.preventDefault(); (list[i+1]||list[i]||list[0]).focus(); }
     else if(e.key==="ArrowUp"){ e.preventDefault(); if(i<=0) input.focus(); else list[i-1].focus(); }
@@ -1090,48 +1116,75 @@ function renderCalendarDD(){
     else if((e.key==="Enter"||e.key===" ") && i>=0){ e.preventDefault(); list[i].click(); menu.querySelector("#calAdd").focus(); }
     else if(e.key==="Escape"){ e.preventDefault(); closeDD(true); } };
 }
-function addToCalendar(pick, chooser){
+let calTab = null;
+function addToCalendar(pick){
   const name = pick==="ALL" ? "all games" : (TEAMS[pick] ? TEAMS[pick].n : "");
   const file = pick==="ALL" ? "all.ics" : calSlug(TEAMS[pick].n) + ".ics";
-  const https = `https://${CAL_HOST}/calendar/${file}`, webcal = `webcal://${CAL_HOST}/calendar/${file}`;
-  const google = "https://calendar.google.com/calendar/render?cid=" + encodeURIComponent(webcal);
-  const android = /android/i.test(navigator.userAgent);
-  if(!chooser && isIOS()){ closeDD(); location.href = webcal; return; }
-  if(!chooser && android){ closeDD(); androidCalendar(name, https); return; }
+  const link = {name, https:`https://${CAL_HOST}/calendar/${file}`, webcal:`webcal://${CAL_HOST}/calendar/${file}`};
+  if(!calTab) calTab = isIOS() || /mac/i.test(navigator.platform) ? "apple" : "google";
   closeDD();
-  showModal(`<h2 id="reportTitle">Add ${esc(name)} to your calendar</h2>
-    <p class="sub">Choose your calendar. It subscribes to RASA’s schedule, so changes to game times or fields show up on their own.</p>
-    <div class="cal-choices">
-      <a class="btn btn-primary" href="${esc(webcal)}">Apple Calendar or Outlook</a>
-      <a class="btn btn-ghost" href="${esc(google)}" target="_blank" rel="noopener">Google Calendar</a>
-      <a class="btn btn-ghost" href="${esc(https)}" download="RASA ${esc(name)}.ics">Download the file (.ics)</a>
-    </div>
-    <p class="hint">Downloading adds the games once. They won’t update if the schedule changes.</p>
+  const tab = (k, label)=>`<button type="button" role="tab" class="cal-tab${k==="dl"?" cal-tab-dl":""}" data-caltab="${k}" aria-selected="${calTab===k}">${label}</button>`;
+  showModal(`<h2 id="reportTitle" class="cal-title">Add ${esc(name)} to calendar</h2>
+    <div class="cal-tabs" role="tablist" aria-label="Calendar app">${tab("google","Google")}${tab("apple","Apple")}${tab("outlook","Outlook")}${tab("dl","Download file")}</div>
+    <div class="cal-pane" id="calPane" role="tabpanel"></div>
     <div class="actions"><button type="button" class="btn btn-ghost" id="reportCancel">Close</button></div>`, "view");
+  const pane = $("#calPane");
+  const show = k=>{ calTab = k;
+    document.querySelectorAll(".cal-tab").forEach(b=>b.setAttribute("aria-selected", b.dataset.caltab===k));
+    pane.innerHTML = calInstructions(k, link); wireCalPane(pane, link); };
+  document.querySelectorAll(".cal-tab").forEach(b=>b.onclick = ()=>show(b.dataset.caltab));
+  show(calTab);
 }
-
-// Google's Android Calendar app can't subscribe to a calendar link (Google only allows that on a computer),
-// so Android gets a short guide: copy the link, add it once at calendar.google.com, and it syncs to the phone.
-function androidCalendar(name, https){
-  const canShare = !!navigator.share;
-  showModal(`<h2 id="reportTitle">Add ${esc(name)} to Google Calendar</h2>
-    <p class="sub">Google only lets you subscribe to a schedule from a computer. It takes a minute, once, and then the games show on your phone and stay up to date.</p>
+function calInstructions(k, l){
+  const phone = isMobile(), ios = isIOS();
+  const copy = `<div class="cal-link"><input type="text" readonly value="${esc(l.https)}" aria-label="Calendar link" class="cal-link-in">
+      <button type="button" class="btn btn-primary cal-copy">Copy</button></div>${navigator.share?`<button type="button" class="linkbtn cal-share">Share link…</button>`:""}`;
+  const live = `<p class="cal-wait"><b>Give it time:</b> the games can take a few hours (sometimes up to a day) to first show up on your phone. After that, your calendar stays up to date on its own. If a game moves, it changes there too, usually within a few hours.</p>`;
+  if(k==="google") return (phone ? `
+    <p class="cal-lead">Google only lets you subscribe from a computer. Do it once and the games appear on your phone too.</p>
     <ol class="cal-steps">
-      <li><b>Copy the link</b>${canShare?" (or share it to yourself)":""}:
-        <div class="cal-link"><input type="text" readonly value="${esc(https)}" aria-label="Calendar link" id="calLinkIn">
-          <button type="button" class="btn btn-primary" id="calCopy">Copy</button></div>
-        ${canShare?`<button type="button" class="linkbtn" id="calShare">Share link…</button>`:""}</li>
-      <li>On a computer, go to <b>calendar.google.com</b>, click <b>+</b> next to <b>Other calendars</b>, then <b>From URL</b>. Paste the link and click <b>Add calendar</b>.</li>
-      <li>Done. It appears in the Calendar app on your phone. If not, open the app’s <b>Settings</b>, tap the RASA calendar and turn on <b>Sync</b>.</li>
-    </ol>
-    <p class="hint">In a hurry? <a style="color:var(--brand);font-weight:600" href="${esc(https)}" download="RASA ${esc(name)}.ics">Download the games</a> to add them once instead. They won’t update if a game moves.</p>
-    <div class="actions"><button type="button" class="btn btn-ghost" id="reportCancel">Close</button></div>`, "view");
-  const inp = $("#calLinkIn"), copy = $("#calCopy");
-  copy.onclick = async ()=>{ let ok = false;
-    try{ await navigator.clipboard.writeText(https); ok = true; }catch(e){ inp.focus(); inp.select(); try{ ok = document.execCommand("copy"); }catch(_){} }
+      <li><b>Copy the link</b>${navigator.share?" (or share it to yourself)":""}:${copy}</li>
+      <li>On a computer, go to <b>calendar.google.com</b>. Click <b>+</b> next to <b>Other calendars</b>, then <b>From URL</b>. Paste the link and click <b>Add calendar</b>.</li>
+      <li>It then shows in the Google Calendar app on your phone. If not, open the app’s <b>Settings</b>, tap the RASA calendar and turn on <b>Sync</b>.</li>
+    </ol>` : `
+    <a class="btn btn-primary cal-go" href="https://calendar.google.com/calendar/render?cid=${encodeURIComponent(l.webcal)}" target="_blank" rel="noopener">Open in Google Calendar</a>
+    <p class="cal-lead">Then click <b>Add</b>. If that doesn’t work:</p>
+    <ol class="cal-steps">
+      <li>Copy the link:${copy}</li>
+      <li>In <b>calendar.google.com</b>, click <b>+</b> next to <b>Other calendars</b>, then <b>From URL</b>. Paste the link and click <b>Add calendar</b>.</li>
+    </ol>`) + live;
+  if(k==="apple") return (ios || !phone ? `
+    <a class="btn btn-primary cal-go" href="${esc(l.webcal)}">Subscribe in Apple Calendar</a>
+    <p class="cal-lead">${ios?"Tap <b>Subscribe</b>, then <b>Add</b>.":"Calendar opens on your Mac. Click <b>Subscribe</b>, then <b>OK</b>."} If nothing happens:</p>
+    <ol class="cal-steps">
+      <li>Copy the link:${copy}</li>
+      ${ios?`<li>Open <b>Settings → Apps → Calendar → Calendar Accounts → Add Account → Other → Add Subscribed Calendar</b>. Paste the link, tap <b>Next</b>, then <b>Save</b>.</li>`
+           :`<li>In Calendar on your Mac, choose <b>File → New Calendar Subscription</b>. Paste the link and click <b>Subscribe</b>.</li>`}
+    </ol>` : `
+    <p class="cal-lead">Apple Calendar is on iPhone, iPad and Mac. Open <b>app.rasasoccer.ca</b> on one of those and choose Apple, or:</p>
+    <ol class="cal-steps">
+      <li>Copy the link:${copy}</li>
+      <li>On an iPhone, open <b>Settings → Apps → Calendar → Calendar Accounts → Add Account → Other → Add Subscribed Calendar</b> and paste it.</li>
+    </ol>`) + live;
+  if(k==="outlook") return `
+    ${phone?`<p class="cal-lead">The Outlook phone app can’t subscribe by itself. Add it once on the web or a computer and it shows in the app.</p>`:""}
+    <ol class="cal-steps">
+      <li>Copy the link:${copy}</li>
+      <li><b>Outlook on the web or the new Outlook:</b> open <b>Calendar</b>, click <b>Add calendar</b>, then <b>Subscribe from web</b>. Paste the link, name it “RASA” and click <b>Import</b>.</li>
+      <li><b>Classic Outlook for Windows:</b> in Calendar, choose <b>Home → Add Calendar → From Internet</b>, paste the link and click <b>OK</b>, then <b>Yes</b>.</li>
+    </ol>` + live;
+  return `
+    <a class="btn btn-primary cal-go" href="${esc(l.https)}" download="RASA ${esc(l.name)}.ics">Download file (.ics)</a>
+    <p class="cal-lead">${ios?"Tap the downloaded file, then <b>Add All</b>.":phone?"Open the downloaded file and choose your calendar app to add the games.":"Open the file to add the games to your calendar app. For Google, use <b>Settings → Import & export → Import</b>."}</p>
+    <p class="cal-note cal-warn">This adds the games once. They <b>won’t update</b> if a game moves. To stay up to date, use Google, Apple or Outlook above.</p>`;
+}
+function wireCalPane(pane, l){
+  const inp = pane.querySelector(".cal-link-in"), copy = pane.querySelector(".cal-copy"), sh = pane.querySelector(".cal-share");
+  if(inp) inp.onfocus = ()=>inp.select();
+  if(copy) copy.onclick = async ()=>{ let ok = false;
+    try{ await navigator.clipboard.writeText(l.https); ok = true; }catch(e){ inp.focus(); inp.select(); try{ ok = document.execCommand("copy"); }catch(_){} }
     copy.textContent = ok ? "Copied ✓" : "Select & copy"; setTimeout(()=>{ copy.textContent = "Copy"; }, 2500); };
-  inp.onfocus = ()=>inp.select();
-  const sh = $("#calShare"); if(sh) sh.onclick = ()=>navigator.share({title:`RASA – ${name} calendar`, text:"Add this in Google Calendar on a computer: Other calendars → + → From URL", url:https}).catch(()=>{});
+  if(sh) sh.onclick = ()=>navigator.share({title:`RASA – ${l.name} calendar`, text:"RASA calendar link: add it as a subscribed calendar", url:l.https}).catch(()=>{});
 }
 
 /* ---------- Schedule view ---------- */
