@@ -439,6 +439,13 @@ dl.view{margin:0;display:flex;flex-direction:column;border-top:1px solid var(--l
 .pod .ld-team{font-size:12px;justify-content:center}
 .pod-val{font-size:14px}
 .std.ld tbody tr:nth-child(even) td.tm{background:var(--surface-2)}
+/* Clean sheets: top three team names stand out, biggest first */
+.std.ld tr.cs-r1 .ld-team{font-size:19px;font-weight:700;color:var(--ink)}
+.std.ld tr.cs-r2 .ld-team{font-size:17px;font-weight:700;color:var(--ink)}
+.std.ld tr.cs-r3 .ld-team{font-size:15.5px;font-weight:600;color:var(--ink)}
+.std.ld tr.cs-r1 .ld-team .dot{width:10px;height:10px}
+/* Division tabs (Standings) and category tabs (Leaders) stay pinned under the header while scrolling */
+.seg.std-tabs,.seg.ld-tabs{position:sticky;top:calc(var(--topbar-h,118px) + 8px);z-index:15;box-shadow:0 -9px 0 3px var(--bg),0 4px 10px -6px rgba(16,24,32,.25)}
 .pod-gp{color:var(--muted);white-space:nowrap}
 .pod-val b{font-family:var(--font-display);font-size:22px}
 .podium{align-items:start}
@@ -1200,6 +1207,10 @@ function wireCalPane(pane, l){
   if(sh) sh.onclick = ()=>navigator.share({title:`RASA – ${l.name} calendar`, text:"RASA calendar link: add it as a subscribed calendar", url:l.https}).catch(()=>{});
 }
 
+(function(){ const tb = document.querySelector(".topbar"); if(!tb) return;
+  const set = ()=>document.documentElement.style.setProperty("--topbar-h", tb.offsetHeight + "px"); set();
+  if(window.ResizeObserver) new ResizeObserver(set).observe(tb); else addEventListener("resize", set); })();
+
 /* ---------- Schedule view ---------- */
 function renderChips(){
   dropdown($("#compDD"), {label:"Division or cup", value:state.comp,
@@ -1464,7 +1475,7 @@ function renderLeaders(){
     const rows = rankRows(teams.filter(t=>t.cs>0).map(t=>({...t, key:t.cs*1000 - Math.round(t.gaa*100)})), "key", (a,b)=>b.gp-a.gp).slice(0,LD_TOP);
     keeperHTML = `<div class="std ld" id="ld-k">
       ${rows.length ? `${`<table><thead><tr><th scope="col">#</th><th scope="col" class="tm">Team</th><th scope="col">GP</th><th scope="col" title="Goals against per game">GA/G</th><th scope="col" title="Clean sheets: games with no goals against">CS</th></tr></thead><tbody>
-      ${rows.map(t=>`<tr class="${t.rank===1?"top":""}"><td>${t.rank}</td><td class="tm">${teamCell(t.team)}</td><td>${t.gp}</td><td>${t.gaa.toFixed(2)}</td><td class="pts">${t.cs}</td></tr>`).join("")}
+      ${rows.map((t,i)=>`<tr class="${t.rank===1?"top":""}${i<3?" cs-r"+(i+1):""}"><td>${t.rank}</td><td class="tm">${teamCell(t.team)}</td><td>${t.gp}</td><td>${t.gaa.toFixed(2)}</td><td class="pts">${t.cs}</td></tr>`).join("")}
       </tbody></table>`}` : `<div class="empty">No clean sheets yet${scopeText(F.k)}.</div>`}
       <p class="note ld-note">A clean sheet is a game where the team didn’t concede a goal, counting every game played (league, cross-over and cup). Ties go to fewer goals against per game.</p></div>`;
   }
