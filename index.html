@@ -445,7 +445,8 @@ dl.view{margin:0;display:flex;flex-direction:column;border-top:1px solid var(--l
 .std.ld tr.cs-r3 .ld-team{font-size:15.5px;font-weight:600;color:var(--ink)}
 .std.ld tr.cs-r1 .ld-team .dot{width:10px;height:10px}
 /* Division tabs (Standings) and category tabs (Leaders) stay pinned under the header while scrolling */
-.seg.std-tabs,.seg.ld-tabs{position:sticky;top:calc(var(--topbar-h,118px) + 8px);z-index:15;box-shadow:0 -9px 0 3px var(--bg),0 4px 10px -6px rgba(16,24,32,.25)}
+.seg.std-tabs{position:sticky;top:calc(var(--topbar-h,118px) + 8px);z-index:15;box-shadow:0 -9px 0 3px var(--bg),0 4px 10px -6px rgba(16,24,32,.25)}
+.ld-pin{position:sticky;top:var(--topbar-h,118px);z-index:15;grid-column:1 / -1;display:flex;flex-direction:column;gap:12px;margin:-8px -3px 0;padding:8px 3px 10px;background:var(--bg);box-shadow:0 6px 8px -8px rgba(16,24,32,.35)}
 .pod-gp{color:var(--muted);white-space:nowrap}
 .pod-val b{font-family:var(--font-display);font-size:22px}
 .podium{align-items:start}
@@ -1481,8 +1482,8 @@ function renderLeaders(){
   }
   const tab = state.ldTab;
   const tabs = [["g","Goals"],["a","Assists"],["k","Clean Sheets"]];
-  body.innerHTML = `<div class="seg ld-tabs" role="tablist" aria-label="Leaders">${tabs.map(([k,n])=>`<button role="tab" data-ldtab="${k}" aria-pressed="${tab===k}" aria-selected="${tab===k}">${n}</button>`).join("")}</div>
-    ${chips(tab).replace('class="ld-chips"','class="ld-chips ld-filter"')}
+  body.innerHTML = `<div class="ld-pin"><div class="seg ld-tabs" role="tablist" aria-label="Leaders">${tabs.map(([k,n])=>`<button role="tab" data-ldtab="${k}" aria-pressed="${tab===k}" aria-selected="${tab===k}">${n}</button>`).join("")}</div>
+    ${chips(tab).replace('class="ld-chips"','class="ld-chips ld-filter"')}</div>
     ${tab==="g" ? board("Goals","g","G",goals,r=>r.g) : tab==="a" ? board("Assists","a","A",assists,r=>r.a) : keeperHTML}`;
   $("#ldSub").textContent = lastUpdated(rosters.updatedAt);
 }
