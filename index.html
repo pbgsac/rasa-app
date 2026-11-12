@@ -374,7 +374,9 @@ dl.view{margin:0;display:flex;flex-direction:column;border-top:1px solid var(--l
 .std-tabs{margin-bottom:4px}
 @media (min-width:760px){ .ld-grid{grid-template-columns:1fr 1fr} .ld-grid > .std:last-child{grid-column:1 / -1} }
 .std.ld table{width:100%}
-.std.ld td.tm{display:flex;flex-direction:column;gap:1px;white-space:normal}
+.std.ld td.tm{white-space:normal}
+.std.ld td.tm > b{display:block;margin-bottom:1px}
+.std.ld td.tm .ld-team{display:flex}
 .std.ld th.tm,.std.ld td.tm{position:static;width:100%;box-shadow:none;min-width:0}
 .ld-team{display:inline-flex;align-items:center;gap:5px;font-size:13px;color:var(--muted)}
 .ld-team .dot{width:7px;height:7px;border-radius:50%;flex:none}
@@ -430,12 +432,14 @@ dl.view{margin:0;display:flex;flex-direction:column;border-top:1px solid var(--l
 .pod-photo{position:relative;width:76px;height:76px;border-radius:50%;background:var(--surface-2);display:grid;place-items:center;font-family:var(--font-display);font-size:26px;color:var(--muted);border:3px solid var(--ring);margin-bottom:4px}
 .pod-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%}
 .pod-photo .medal{z-index:1}
-.pod.p1 .pod-photo{width:90px;height:90px;font-size:30px}
+.pod.p1 .pod-photo{width:108px;height:108px;font-size:36px}
 .pod.p1{--ring:#d4a017} .pod.p2{--ring:#a7b0b8} .pod.p3{--ring:#b87333}
 .medal{position:absolute;bottom:-4px;right:-4px;width:26px;height:26px;border-radius:50%;background:var(--ring);color:#141a15;font-family:var(--font-body);font-size:13px;font-weight:800;display:grid;place-items:center;border:2px solid var(--surface)}
 .pod-name{font-size:14px;line-height:1.2;overflow-wrap:anywhere}
 .pod .ld-team{font-size:12px;justify-content:center}
 .pod-val{font-size:14px}
+.std.ld tbody tr:nth-child(even) td.tm{background:var(--surface-2)}
+.pod-gp{color:var(--muted);white-space:nowrap}
 .pod-val b{font-family:var(--font-display);font-size:22px}
 .podium{align-items:start}
 
@@ -1433,8 +1437,7 @@ function renderLeaders(){
     <div class="pod p${i+1}">
       <div class="pod-photo" aria-hidden="true"><span class="ini">${esc(initialsOf(r.name))}</span>${r.photo?`<img src="${esc(r.photo)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">`:""}<span class="medal">${r.rank}</span></div>
       ${isTeam ? `<b class="pod-name">${esc(r.name)}</b><span class="ld-team"><span class="dot" style="background:var(${COMPS[TEAMS[r.team].d].v})"></span>${esc(COMPS[TEAMS[r.team].d].n)}</span>` : `<b class="pod-name">${esc(r.name)}</b>${teamCell(r.team)}`}
-      <span class="pod-val"><b>${val(r)}</b> ${UNITS[unit][val(r)===1?0:1]}</span>
-      <span class="muted small">${r.gp} GP</span>
+      <span class="pod-val"><b>${val(r)}</b> ${UNITS[unit][val(r)===1?0:1]} <span class="pod-gp">– ${r.gp} GP</span></span>
     </div>`).join("")}</div>`;
   const board = (title, cat, unit, rows, val)=>`
     <div class="std ld" id="ld-${cat}">${head(title, cat)}
@@ -1460,9 +1463,9 @@ function renderLeaders(){
     // Most clean sheets; ties go to fewer goals against per game, then more games played
     const rows = rankRows(teams.filter(t=>t.cs>0).map(t=>({...t, key:t.cs*1000 - Math.round(t.gaa*100)})), "key", (a,b)=>b.gp-a.gp).slice(0,LD_TOP);
     keeperHTML = `<div class="std ld" id="ld-k">
-      ${rows.length ? `${podium(rows, "CS", r=>r.cs, true)}${rows.length>3?`<table><thead><tr><th scope="col">#</th><th scope="col" class="tm">Team</th><th scope="col">GP</th><th scope="col" title="Goals against per game">GA/G</th><th scope="col" title="Clean sheets: games with no goals against">CS</th></tr></thead><tbody>
-      ${rows.slice(3).map(t=>`<tr><td>${t.rank}</td><td class="tm">${teamCell(t.team)}</td><td>${t.gp}</td><td>${t.gaa.toFixed(2)}</td><td class="pts">${t.cs}</td></tr>`).join("")}
-      </tbody></table>`:""}` : `<div class="empty">No clean sheets yet${scopeText(F.k)}.</div>`}
+      ${rows.length ? `${`<table><thead><tr><th scope="col">#</th><th scope="col" class="tm">Team</th><th scope="col">GP</th><th scope="col" title="Goals against per game">GA/G</th><th scope="col" title="Clean sheets: games with no goals against">CS</th></tr></thead><tbody>
+      ${rows.map(t=>`<tr class="${t.rank===1?"top":""}"><td>${t.rank}</td><td class="tm">${teamCell(t.team)}</td><td>${t.gp}</td><td>${t.gaa.toFixed(2)}</td><td class="pts">${t.cs}</td></tr>`).join("")}
+      </tbody></table>`}` : `<div class="empty">No clean sheets yet${scopeText(F.k)}.</div>`}
       <p class="note ld-note">A clean sheet is a game where the team didn’t concede a goal, counting every game played (league, cross-over and cup). Ties go to fewer goals against per game.</p></div>`;
   }
   const tab = state.ldTab;
