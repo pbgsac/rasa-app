@@ -151,8 +151,9 @@ main{max-width:820px;margin:0 auto;padding:16px 16px 48px;display:flex;flex-dire
 .cal-clear{position:absolute;right:6px;top:50%;transform:translateY(-50%);border:0;background:none;color:var(--muted);font-size:20px;line-height:1;padding:6px 8px;cursor:pointer}
 .cal-empty{padding:10px 12px;font-size:13.5px;color:var(--muted)}
 .cal-foot{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 12px 12px;border-top:1px solid var(--line);background:var(--surface)}
+.cal-add:disabled{opacity:.45;cursor:default}
 .cal-add{width:100%;justify-content:center;font-size:16px;padding:12px}
-.cal-dd.typing .cal-help,.cal-dd.typing .cal-foot{display:none}
+.cal-dd.typing.has-q .cal-help,.cal-dd.typing.has-q .cal-foot{display:none}
 .cal-dd.typing .cal-menu{max-height:none}
 .cal-title{text-transform:none}
 .cal-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:4px 0 2px}
@@ -1052,8 +1053,7 @@ function calListHtml(){
   const q = calQuery.trim();
   let html = "";
   if(!q){
-    html += opt("ALL", "All games", `<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg>`);
-    if(calPick!=="ALL" && TEAMS[calPick]) html += opt(calPick, TEAMS[calPick].n, dot(calPick));
+    if(TEAMS[calPick]) html += opt(calPick, TEAMS[calPick].n, dot(calPick));
   } else {
     const ks = calMatches(q);
     html = ks.length ? ks.map(k=>opt(k, TEAMS[k].n, dot(k))).join("") : `<li class="cal-empty" role="presentation">No team matches “${esc(q)}”</li>`;
@@ -1078,19 +1078,21 @@ function calLiftForKeyboard(input){
 function calRefresh(){                          // update the list and the Add button without rebuilding the search box
   const el = $("#calDD"); if(!el) return;
   el.querySelector(".cal-list").innerHTML = calListHtml();
-  el.querySelector("#calAdd").textContent = "Add " + (calPick==="ALL" ? "all games" : (TEAMS[calPick] ? TEAMS[calPick].n : ""));
+  const add = el.querySelector("#calAdd"); add.disabled = !TEAMS[calPick];
+  add.textContent = TEAMS[calPick] ? "Add " + TEAMS[calPick].n : "Type your team above";
   el.querySelector(".cal-clear").hidden = !calQuery;
+  el.classList.toggle("has-q", !!calQuery.trim());
 }
 function renderCalendarDD(){
   const el = $("#calDD"); if(!el) return;
-  if(calPick===null) calPick = state.team;
+  if(calPick===null) calPick = state.team==="ALL" ? "" : state.team;   // "" = no team picked yet (all-games feed is kept for a future admin screen)
   const wasOpen = el.classList.contains("open");
   el.innerHTML = `<button type="button" class="dd-btn cal-btn" aria-haspopup="dialog" aria-expanded="${wasOpen}" aria-controls="calMenu">
       <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M7 2h2v2h6V2h2v2h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3V2Zm12 8H5v9h14v-9ZM11 11h2v2.5h2.5v2H13V18h-2v-2.5H8.5v-2H11V11Z"/></svg>
       <span class="dd-txt">Add to Calendar</span>
       <svg class="chev" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     <div class="dd-menu cal-menu" id="calMenu" role="dialog" aria-label="Add games to your calendar">
-      <p class="cal-help">Add all games, or type your team. Your calendar keeps them up to date if a game moves.</p>
+      <p class="cal-help">Type your team to add its games. Your calendar keeps them up to date if a game moves.</p>
       <div class="cal-search"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M10 3a7 7 0 0 1 5.6 11.2l4.6 4.6-1.4 1.4-4.6-4.6A7 7 0 1 1 10 3Zm0 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10Z"/></svg>
         <input type="text" id="calSearch" placeholder="Type your team" aria-label="Type your team" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="done" value="${esc(calQuery)}">
         <button type="button" class="cal-clear" aria-label="Clear" ${calQuery?"":"hidden"}>×</button></div>
@@ -1108,7 +1110,7 @@ function renderCalendarDD(){
     if(e.target.closest(".cal-clear")){ calQuery = ""; input.value = ""; calRefresh(); input.focus(); return; }
     const o = e.target.closest("[data-calval]");
     if(o){ calPick = o.dataset.calval; calQuery = ""; input.value = ""; calRefresh(); input.blur(); return; }   // picked: show the choice and the Add button
-    if(e.target.closest("#calAdd")){ addToCalendar(calPick); return; } };
+    if(e.target.closest("#calAdd")){ if(TEAMS[calPick]) addToCalendar(calPick); return; } };
   menu.onkeydown = e=>{ const list=[...menu.querySelectorAll(".dd-opt")], i=list.indexOf(document.activeElement);
     if(e.key==="ArrowDown"){ e.preventDefault(); (list[i+1]||list[i]||list[0]).focus(); }
     else if(e.key==="ArrowUp"){ e.preventDefault(); if(i<=0) input.focus(); else list[i-1].focus(); }
