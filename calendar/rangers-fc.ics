@@ -1,0 +1,241 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//RASA//app.rasasoccer.ca//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:RASA – Rangers FC
+X-WR-TIMEZONE:America/Vancouver
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:2567505@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20260912T040000Z
+DTEND:20260912T054500Z
+SUMMARY:Rangers FC 0–0 Freebird FC
+DESCRIPTION:Division 1 · Game #d1-1-1\nFinal: Rangers FC 0\, Freebird FC 0
+ \nField: Hugh Boyd - Red\nMap: https://maps.app.goo.gl/pQwqAB7nWvmvmJ8J6\n
+ Ref: Kanwal Sangha\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2567506@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20260920T200000Z
+DTEND:20260920T214500Z
+SUMMARY:Richmond All Blacks 6–0 Rangers FC
+DESCRIPTION:Division 1 · Game #d1-2-7\nFinal: Richmond All Blacks 6\, Rang
+ ers FC 0\nField: South Arm 1\nMap: https://maps.app.goo.gl/3fSPq96UiDNkoXK
+ e8\nRef: Bob Briza\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:South Arm 1 - South Arm Park\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2567507@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20260926T040000Z
+DTEND:20260926T054500Z
+SUMMARY:Rangers FC 0–6 AC Richmond
+DESCRIPTION:Division 1 · Game #d1-3-10\nFinal: Rangers FC 0\, AC Richmond 
+ 6\nField: Hugh Boyd - Blue\nMap: https://maps.app.goo.gl/3NZuufu9SCaf1Zgv8
+ \nRef: Bob Briza\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Blue - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, B
+ C
+END:VEVENT
+BEGIN:VEVENT
+UID:2567508@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261004T200000Z
+DTEND:20261004T214500Z
+SUMMARY:Heatherbrae 0–2 Rangers FC
+DESCRIPTION:Division 1 · Game #d1-4-16\nFinal: Heatherbrae 0\, Rangers FC 
+ 2\nField: McNair\nMap: https://maps.app.goo.gl/QzLTyeNfBYdbUtAY9\nRef: Dus
+ ko Jovic\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:McNair - Matthew McNair Secondary\, 9500 No. 4 Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2567509@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261010T040000Z
+DTEND:20261010T054500Z
+SUMMARY:Rangers FC 0–7 RFC HIBS
+DESCRIPTION:Division 1 · Game #d1-5-18\nFinal: Rangers FC 0\, RFC HIBS 7\n
+ Field: Hugh Boyd - Blue\nMap: https://maps.app.goo.gl/3NZuufu9SCaf1Zgv8\nS
+ chedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Blue - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, B
+ C
+END:VEVENT
+BEGIN:VEVENT
+UID:2567510@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261018T200000Z
+DTEND:20261018T214500Z
+SUMMARY:United FC 1–0 Rangers FC
+DESCRIPTION:Division 1 · Game #d1-6-24\nFinal: United FC 1\, Rangers FC 0\
+ nField: Hugh Boyd Oval\nMap: https://maps.app.goo.gl/Pf5Mj5nR49rKxTTt6\nRe
+ f: Dusko Jovic\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd Oval - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2567511@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261025T200000Z
+DTEND:20261025T214500Z
+SUMMARY:Unicorn FC 3–2 Rangers FC
+DESCRIPTION:Division 1 · Game #d1-7-28\nFinal: Unicorn FC 3\, Rangers FC 2
+ \nField: Hugh Boyd Oval\nMap: https://maps.app.goo.gl/Pf5Mj5nR49rKxTTt6\nR
+ ef: Ernesto De Marco\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd Oval - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2579585@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261101T200000Z
+DTEND:20261101T214500Z
+SUMMARY:Freebird FC 2–0 Rangers FC
+DESCRIPTION:Division 1 · Game #d1-8-31\nFinal: Freebird FC 2\, Rangers FC 
+ 0\nField: Hugh Boyd Oval\nMap: https://maps.app.goo.gl/Pf5Mj5nR49rKxTTt6\n
+ Ref: Conor Niemi\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd Oval - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2579589@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261107T040000Z
+DTEND:20261107T054500Z
+SUMMARY:Rangers FC 0–3 Richmond All Blacks
+DESCRIPTION:Division 1 · Game #d1-9-35\nFinal: Rangers FC 0\, Richmond All
+  Blacks 3\nField: Hugh Boyd - Blue\nMap: https://maps.app.goo.gl/3NZuufu9S
+ Caf1Zgv8\nRef: Sean Davies\nSchedule and standings: https://app.rasasoccer
+ .ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Blue - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, B
+ C
+END:VEVENT
+BEGIN:VEVENT
+UID:2579594@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261115T200000Z
+DTEND:20261115T214500Z
+SUMMARY:AC Richmond vs Rangers FC
+DESCRIPTION:Division 1 · Game #d1-10-40\nField: McNair\nMap: https://maps.
+ app.goo.gl/QzLTyeNfBYdbUtAY9\nRef: Kanwal Sangha\nSchedule and standings: 
+ https://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:McNair - Matthew McNair Secondary\, 9500 No. 4 Rd\, Richmond\, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:AC Richmond vs Rangers FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2579597@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261122T200000Z
+DTEND:20261122T214500Z
+SUMMARY:Rangers FC vs Heatherbrae
+DESCRIPTION:Division 1 · Game #d1-11-43\nField: McNair\nMap: https://maps.
+ app.goo.gl/QzLTyeNfBYdbUtAY9\nSchedule and standings: https://app.rasasocc
+ er.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:McNair - Matthew McNair Secondary\, 9500 No. 4 Rd\, Richmond\, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rangers FC vs Heatherbrae
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2579600@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261129T200000Z
+DTEND:20261129T214500Z
+SUMMARY:RFC HIBS vs Rangers FC
+DESCRIPTION:Division 1 · Game #d1-12-46\nField: Hugh Boyd Oval\nMap: https
+ ://maps.app.goo.gl/Pf5Mj5nR49rKxTTt6\nSchedule and standings: https://app.
+ rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd Oval - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:RFC HIBS vs Rangers FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2579604@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261206T180000Z
+DTEND:20261206T194500Z
+SUMMARY:Rangers FC vs United FC
+DESCRIPTION:Division 1 · Game #d1-13-50\nField: MacNeil North\nMap: https:
+ //maps.app.goo.gl/RvmxWJL3US9WB8g48\nSchedule and standings: https://app.r
+ asasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:MacNeil North - A.R. MacNeill Secondary\, 6611 No. 4 Rd\, Richmond
+ \, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rangers FC vs United FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2579609@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261213T200000Z
+DTEND:20261213T214500Z
+SUMMARY:Rangers FC vs Unicorn FC
+DESCRIPTION:Division 1 · Game #d1-14-55\nField: Richmond High\nMap: https:
+ //maps.app.goo.gl/fFhccXAw6F6FH1oh6\nSchedule and standings: https://app.r
+ asasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Richmond High - Richmond Secondary\, 7171 Minoru Blvd\, Richmond\,
+  BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rangers FC vs Unicorn FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2567504@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261218T040000Z
+DTEND:20261218T054500Z
+SUMMARY:Richmond Old Blacks vs Rangers FC
+DESCRIPTION:League's Cup · Game #LC7\nField: Hugh Boyd - Red\nMap: https:/
+ /maps.app.goo.gl/pQwqAB7nWvmvmJ8J6\nSchedule and standings: https://app.ra
+ sasoccer.ca
+CATEGORIES:League's Cup
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Richmond Old Blacks vs Rangers FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+END:VCALENDAR

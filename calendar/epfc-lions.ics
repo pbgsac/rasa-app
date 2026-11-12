@@ -1,0 +1,306 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//RASA//app.rasasoccer.ca//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:RASA – EPFC Lions
+X-WR-TIMEZONE:America/Vancouver
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:2564727@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20260913T180000Z
+DTEND:20260913T194500Z
+SUMMARY:EPFC Lions 3–0 Hammers FC
+DESCRIPTION:Division 2 · Game #d2-1-2\nFinal: EPFC Lions 3\, Hammers FC 0\
+ nField: McNair\nMap: https://maps.app.goo.gl/QzLTyeNfBYdbUtAY9\nRef: Bruce
+  Yung\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:McNair - Matthew McNair Secondary\, 9500 No. 4 Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2564741@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20260920T180000Z
+DTEND:20260920T194500Z
+SUMMARY:Richlads FC 4–2 EPFC Lions
+DESCRIPTION:Division 2 · Game #d2-2-5\nFinal: Richlads FC 4\, EPFC Lions 2
+ \nField: South Arm 3\nMap: https://maps.app.goo.gl/Q5r14j1fHB6PsRjh9\nSche
+ dule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:South Arm 3 - South Arm Park\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2572276@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20260927T180000Z
+DTEND:20260927T194500Z
+SUMMARY:EPFC Lions 1–1 Lion Rock
+DESCRIPTION:Division 2 · Game #d2-3-9\nFinal: EPFC Lions 1\, Lion Rock 1\n
+ Field: MacNeil - North\nMap: https://maps.app.goo.gl/RvmxWJL3US9WB8g48\nRe
+ f: Lothar Chan\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:MacNeil - North - A.R. MacNeill Secondary\, 6611 No. 4 Rd\, Richmo
+ nd\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2572282@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261004T180000Z
+DTEND:20261004T194500Z
+SUMMARY:EPFC Lions 3–3 RUFC Graduates
+DESCRIPTION:Division 2 · Game #d2-4-15\nFinal: EPFC Lions 3\, RUFC Graduat
+ es 3\nField: McNair\nMap: https://maps.app.goo.gl/QzLTyeNfBYdbUtAY9\nRef: 
+ Kanwal Sangha\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:McNair - Matthew McNair Secondary\, 9500 No. 4 Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2564695@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261016T040000Z
+DTEND:20261016T054500Z
+SUMMARY:EPFC Lions 1–2 Rain City Gunners
+DESCRIPTION:Cross-over · Game #m-6-12/2-4-14\nFinal: EPFC Lions 1\, Rain C
+ ity Gunners 2\nField: Hugh Boyd - Blue\nMap: https://maps.app.goo.gl/3NZuu
+ fu9SCaf1Zgv8\nRef: Sean Davies\nSchedule and standings: https://app.rasaso
+ ccer.ca
+CATEGORIES:Cross-over
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Blue - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, B
+ C
+END:VEVENT
+BEGIN:VEVENT
+UID:2572285@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261018T180000Z
+DTEND:20261018T194500Z
+SUMMARY:Mainland United 2–3 EPFC Lions
+DESCRIPTION:Division 2 · Game #d2-5-18\nFinal: Mainland United 2\, EPFC Li
+ ons 3\nField: MacNeil South\nMap: https://maps.app.goo.gl/2N3RKwXpdRDfBCdH
+ 7\nRef: Billy Cheng\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:MacNeil South - A.R. MacNeill Secondary\, 6611 No. 4 Rd\, Richmond
+ \, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2572289@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261025T200000Z
+DTEND:20261025T214500Z
+SUMMARY:Club Ireland Rovers 2–0 EPFC Lions
+DESCRIPTION:Division 2 · Game #d2-6-22\nFinal: Club Ireland Rovers 2\, EPF
+ C Lions 0\nField: McNair\nMap: https://maps.app.goo.gl/QzLTyeNfBYdbUtAY9\n
+ Ref: Conor Niemi\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:McNair - Matthew McNair Secondary\, 9500 No. 4 Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2565113@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261029T040000Z
+DTEND:20261029T054500Z
+SUMMARY:West Coast Current 0–4 EPFC Lions
+DESCRIPTION:League's Cup · Game #LC3\nFinal: West Coast Current 0\, EPFC L
+ ions 4\nField: Hugh Boyd - Red\nMap: https://maps.app.goo.gl/pQwqAB7nWvmvm
+ J8J6\nRef: Lothar Chan\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:League's Cup
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2572293@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261101T200000Z
+DTEND:20261101T214500Z
+SUMMARY:EPFC Lions 7–1 West Coast Current
+DESCRIPTION:Division 2 · Game #d2-7-26\nFinal: EPFC Lions 7\, West Coast C
+ urrent 1\nField: Hugh Boyd - South\nMap: https://maps.app.goo.gl/tn9ng9k9P
+ bFDX9CMA\nRef: Emre Ogutcen\nSchedule and standings: https://app.rasasocce
+ r.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - South - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, 
+ BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2580353@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261106T040000Z
+DTEND:20261106T054500Z
+SUMMARY:EPFC Lions 2–4 Richmond Athletics FC
+DESCRIPTION:Cross-over · Game #m-9-22 / 2-8-C9\nFinal: EPFC Lions 2\, Rich
+ mond Athletics FC 4\nField: Hugh Boyd - Red\nMap: https://maps.app.goo.gl/
+ pQwqAB7nWvmvmJ8J6\nRef: Emre Ogutcen\nSchedule and standings: https://app.
+ rasasoccer.ca
+CATEGORIES:Cross-over
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2579615@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261108T180000Z
+DTEND:20261108T194500Z
+SUMMARY:Hammers FC 2–1 EPFC Lions
+DESCRIPTION:Division 2 · Game #d2-8-30\nFinal: Hammers FC 2\, EPFC Lions 1
+ \nField: McNair\nMap: https://maps.app.goo.gl/QzLTyeNfBYdbUtAY9\nRef: Pete
+ r Klausner\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:McNair - Matthew McNair Secondary\, 9500 No. 4 Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2579618@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261115T180000Z
+DTEND:20261115T194500Z
+SUMMARY:EPFC Lions vs Richlads FC
+DESCRIPTION:Division 2 · Game #d2-9-33\nField: MacNeil South\nMap: https:/
+ /maps.app.goo.gl/2N3RKwXpdRDfBCdH7\nRef: Sean Davies\nSchedule and standin
+ gs: https://app.rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:MacNeil South - A.R. MacNeill Secondary\, 6611 No. 4 Rd\, Richmond
+ \, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:EPFC Lions vs Richlads FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2579622@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261122T180000Z
+DTEND:20261122T194500Z
+SUMMARY:Lion Rock vs EPFC Lions
+DESCRIPTION:Division 2 · Game #d2-10-37\nField: MacNeil North\nMap: https:
+ //maps.app.goo.gl/RvmxWJL3US9WB8g48\nSchedule and standings: https://app.r
+ asasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:MacNeil North - A.R. MacNeill Secondary\, 6611 No. 4 Rd\, Richmond
+ \, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lion Rock vs EPFC Lions
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2565119@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261125T040000Z
+DTEND:20261125T054500Z
+SUMMARY:EPFC Lions vs RFC HIBS
+DESCRIPTION:League's Cup · Game #LC9\nField: Hugh Boyd - Red\nMap: https:/
+ /maps.app.goo.gl/pQwqAB7nWvmvmJ8J6\nSchedule and standings: https://app.ra
+ sasoccer.ca
+CATEGORIES:League's Cup
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:EPFC Lions vs RFC HIBS
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2579627@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261129T180000Z
+DTEND:20261129T194500Z
+SUMMARY:RUFC Graduates vs EPFC Lions
+DESCRIPTION:Division 2 · Game #d2-11-42\nField: MacNeil South\nMap: https:
+ //maps.app.goo.gl/2N3RKwXpdRDfBCdH7\nSchedule and standings: https://app.r
+ asasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:MacNeil South - A.R. MacNeill Secondary\, 6611 No. 4 Rd\, Richmond
+ \, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:RUFC Graduates vs EPFC Lions
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2579631@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261206T180000Z
+DTEND:20261206T194500Z
+SUMMARY:EPFC Lions vs Mainland United
+DESCRIPTION:Division 2 · Game #d2-12-46\nField: McNair\nMap: https://maps.
+ app.goo.gl/QzLTyeNfBYdbUtAY9\nSchedule and standings: https://app.rasasocc
+ er.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:McNair - Matthew McNair Secondary\, 9500 No. 4 Rd\, Richmond\, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:EPFC Lions vs Mainland United
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2579635@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261213T200000Z
+DTEND:20261213T214500Z
+SUMMARY:EPFC Lions vs Club Ireland Rovers
+DESCRIPTION:Division 2 · Game #d2-13-50\nField: MacNeil - South\nMap: http
+ s://maps.app.goo.gl/2N3RKwXpdRDfBCdH7\nSchedule and standings: https://app
+ .rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:MacNeil - South - A.R. MacNeill Secondary\, 6611 No. 4 Rd\, Richmo
+ nd\, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:EPFC Lions vs Club Ireland Rovers
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2580372@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20270115T040000Z
+DTEND:20270115T054500Z
+SUMMARY:EPFC Lions vs Richmond Old Blacks
+DESCRIPTION:Cross-over · Game #m-15-41 / 2-14-C23\nField: TBD\nSchedule an
+ d standings: https://app.rasasoccer.ca
+CATEGORIES:Cross-over
+URL:https://app.rasasoccer.ca
+LOCATION:TBD
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:EPFC Lions vs Richmond Old Blacks
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2580373@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20270122T040000Z
+DTEND:20270122T054500Z
+SUMMARY:EPFC Lions vs Glory FC
+DESCRIPTION:Cross-over · Game #m-16-42 / 2-15-C24\nField: TBD\nSchedule an
+ d standings: https://app.rasasoccer.ca
+CATEGORIES:Cross-over
+URL:https://app.rasasoccer.ca
+LOCATION:TBD
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:EPFC Lions vs Glory FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+END:VCALENDAR

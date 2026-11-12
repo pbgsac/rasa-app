@@ -1,0 +1,303 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//RASA//app.rasasoccer.ca//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:RASA – Club Ireland Rovers
+X-WR-TIMEZONE:America/Vancouver
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:2564739@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20260920T220000Z
+DTEND:20260920T234500Z
+SUMMARY:Lion Rock 2–0 Club Ireland Rovers
+DESCRIPTION:Division 2 · Game #d2-2-8\nFinal: Lion Rock 2\, Club Ireland R
+ overs 0\nField: South Arm 1\nMap: https://maps.app.goo.gl/3fSPq96UiDNkoXKe
+ 8\nRef: Sean Davies\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:South Arm 1 - South Arm Park\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2572279@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20260927T200000Z
+DTEND:20260927T214500Z
+SUMMARY:Club Ireland Rovers 1–1 RUFC Graduates
+DESCRIPTION:Division 2 · Game #d2-3-12\nFinal: Club Ireland Rovers 1\, RUF
+ C Graduates 1\nField: McNair\nMap: https://maps.app.goo.gl/QzLTyeNfBYdbUtA
+ Y9\nRef: Philip Leung\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:McNair - Matthew McNair Secondary\, 9500 No. 4 Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2572280@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20261004T180000Z
+DTEND:20261004T194500Z
+SUMMARY:Mainland United 2–4 Club Ireland Rovers
+DESCRIPTION:Division 2 · Game #d2-4-13\nFinal: Mainland United 2\, Club Ir
+ eland Rovers 4\nField: MacNeil North\nMap: https://maps.app.goo.gl/RvmxWJL
+ 3US9WB8g48\nRef: Harry Rahiman\nSchedule and standings: https://app.rasaso
+ ccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:MacNeil North - A.R. MacNeill Secondary\, 6611 No. 4 Rd\, Richmond
+ \, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2565112@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20261008T040000Z
+DTEND:20261008T054500Z
+SUMMARY:RUFC Graduates 3–1 Club Ireland Rovers
+DESCRIPTION:League's Cup · Game #LC2\nFinal: RUFC Graduates 3\, Club Irela
+ nd Rovers 1\nField: Hugh Boyd - Blue\nMap: https://maps.app.goo.gl/3NZuufu
+ 9SCaf1Zgv8\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:League's Cup
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Blue - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, B
+ C
+END:VEVENT
+BEGIN:VEVENT
+UID:2564694@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20261016T040000Z
+DTEND:20261016T054500Z
+SUMMARY:Club Ireland Rovers 0–8 Richmond Old Blacks
+DESCRIPTION:Cross-over · Game #m-6-11/2-4-13\nFinal: Club Ireland Rovers 0
+ \, Richmond Old Blacks 8\nField: Hugh Boyd - Red\nMap: https://maps.app.go
+ o.gl/pQwqAB7nWvmvmJ8J6\nRef: Ernesto De Marco\nSchedule and standings: htt
+ ps://app.rasasoccer.ca
+CATEGORIES:Cross-over
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2572287@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20261018T200000Z
+DTEND:20261018T214500Z
+SUMMARY:Richlads FC 2–2 Club Ireland Rovers
+DESCRIPTION:Division 2 · Game #d2-5-20\nFinal: Richlads FC 2\, Club Irelan
+ d Rovers 2\nField: MacNeil North\nMap: https://maps.app.goo.gl/RvmxWJL3US9
+ WB8g48\nRef: Mike Laing\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:MacNeil North - A.R. MacNeill Secondary\, 6611 No. 4 Rd\, Richmond
+ \, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2572289@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20261025T200000Z
+DTEND:20261025T214500Z
+SUMMARY:Club Ireland Rovers 2–0 EPFC Lions
+DESCRIPTION:Division 2 · Game #d2-6-22\nFinal: Club Ireland Rovers 2\, EPF
+ C Lions 0\nField: McNair\nMap: https://maps.app.goo.gl/QzLTyeNfBYdbUtAY9\n
+ Ref: Conor Niemi\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:McNair - Matthew McNair Secondary\, 9500 No. 4 Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2572292@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20261101T180000Z
+DTEND:20261101T194500Z
+SUMMARY:Club Ireland Rovers 3–3 Hammers FC
+DESCRIPTION:Division 2 · Game #d2-7-25\nFinal: Club Ireland Rovers 3\, Ham
+ mers FC 3\nField: MacNeil North\nMap: https://maps.app.goo.gl/RvmxWJL3US9W
+ B8g48\nRef: Kanwal Sangha\nSchedule and standings: https://app.rasasoccer.
+ ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:MacNeil North - A.R. MacNeill Secondary\, 6611 No. 4 Rd\, Richmond
+ \, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2579617@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20261108T200000Z
+DTEND:20261108T214500Z
+SUMMARY:West Coast Current vs Club Ireland Rovers
+DESCRIPTION:Division 2 · Game #d2-8-32\nField: Hugh Boyd - South\nMap: htt
+ ps://maps.app.goo.gl/tn9ng9k9PbFDX9CMA\nRef: Conor Niemi\nSchedule and sta
+ ndings: https://app.rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - South - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, 
+ BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2579621@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20261115T200000Z
+DTEND:20261115T214500Z
+SUMMARY:Club Ireland Rovers vs Lion Rock
+DESCRIPTION:Division 2 · Game #d2-9-36\nField: MacNeil - South\nMap: https
+ ://maps.app.goo.gl/2N3RKwXpdRDfBCdH7\nSchedule and standings: https://app.
+ rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:MacNeil - South - A.R. MacNeill Secondary\, 6611 No. 4 Rd\, Richmo
+ nd\, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Club Ireland Rovers vs Lion Rock
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2579625@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20261122T200000Z
+DTEND:20261122T214500Z
+SUMMARY:RUFC Graduates vs Club Ireland Rovers
+DESCRIPTION:Division 2 · Game #d2-10-40\nField: Hugh Boyd - South\nMap: ht
+ tps://maps.app.goo.gl/tn9ng9k9PbFDX9CMA\nSchedule and standings: https://a
+ pp.rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - South - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, 
+ BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:RUFC Graduates vs Club Ireland Rovers
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2580362@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20261127T040000Z
+DTEND:20261127T054500Z
+SUMMARY:Club Ireland Rovers vs Glory FC
+DESCRIPTION:Cross-over · Game #m-12-31 / 2-11-C15\nField: Hugh Boyd - Red\
+ nMap: https://maps.app.goo.gl/pQwqAB7nWvmvmJ8J6\nSchedule and standings: h
+ ttps://app.rasasoccer.ca
+CATEGORIES:Cross-over
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Club Ireland Rovers vs Glory FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2579628@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20261129T200000Z
+DTEND:20261129T214500Z
+SUMMARY:Club Ireland Rovers vs Mainland United
+DESCRIPTION:Division 2 · Game #d2-11-43\nField: Hugh Boyd - South\nMap: ht
+ tps://maps.app.goo.gl/tn9ng9k9PbFDX9CMA\nSchedule and standings: https://a
+ pp.rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - South - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, 
+ BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Club Ireland Rovers vs Mainland United
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2579633@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20261206T200000Z
+DTEND:20261206T214500Z
+SUMMARY:Club Ireland Rovers vs Richlads FC
+DESCRIPTION:Division 2 · Game #d2-12-48\nField: Hugh Boyd - South\nMap: ht
+ tps://maps.app.goo.gl/tn9ng9k9PbFDX9CMA\nSchedule and standings: https://a
+ pp.rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - South - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, 
+ BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Club Ireland Rovers vs Richlads FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2580369@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20261211T040000Z
+DTEND:20261211T054500Z
+SUMMARY:Club Ireland Rovers vs Richmond Athletics FC
+DESCRIPTION:Cross-over · Game #m-14-38 / 2-13-C20\nField: Hugh Boyd - Blue
+ \nMap: https://maps.app.goo.gl/3NZuufu9SCaf1Zgv8\nSchedule and standings: 
+ https://app.rasasoccer.ca
+CATEGORIES:Cross-over
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Blue - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, B
+ C
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Club Ireland Rovers vs Richmond Athletics FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2579635@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20261213T200000Z
+DTEND:20261213T214500Z
+SUMMARY:EPFC Lions vs Club Ireland Rovers
+DESCRIPTION:Division 2 · Game #d2-13-50\nField: MacNeil - South\nMap: http
+ s://maps.app.goo.gl/2N3RKwXpdRDfBCdH7\nSchedule and standings: https://app
+ .rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:MacNeil - South - A.R. MacNeill Secondary\, 6611 No. 4 Rd\, Richmo
+ nd\, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:EPFC Lions vs Club Ireland Rovers
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2579645@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20261218T040000Z
+DTEND:20261218T054500Z
+SUMMARY:Club Ireland Rovers vs West Coast Current
+DESCRIPTION:Division 2 · Game #d2-1-4\nField: Hugh Boyd - Blue\nMap: https
+ ://maps.app.goo.gl/3NZuufu9SCaf1Zgv8\nSchedule and standings: https://app.
+ rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Blue - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, B
+ C
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Club Ireland Rovers vs West Coast Current
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2580377@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20270129T040000Z
+DTEND:20270129T054500Z
+SUMMARY:Club Ireland Rovers vs Rain City Gunners
+DESCRIPTION:Cross-over · Game #m-17-46 / 2-16-C28\nField: TBD\nSchedule an
+ d standings: https://app.rasasoccer.ca
+CATEGORIES:Cross-over
+URL:https://app.rasasoccer.ca
+LOCATION:TBD
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Club Ireland Rovers vs Rain City Gunners
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+END:VCALENDAR

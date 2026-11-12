@@ -1,0 +1,296 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//RASA//app.rasasoccer.ca//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:RASA – Richmond Athletics FC
+X-WR-TIMEZONE:America/Vancouver
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:2564684@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20260911T040000Z
+DTEND:20260911T054500Z
+SUMMARY:Glory FC 2–3 Richmond Athletics FC
+DESCRIPTION:Masters · Game #m-1-1\nFinal: Glory FC 2\, Richmond Athletics 
+ FC 3\nField: Hugh Boyd - Red\nMap: https://maps.app.goo.gl/pQwqAB7nWvmvmJ8
+ J6\nRef: Harry Rahiman\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Masters
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2564686@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20260918T040000Z
+DTEND:20260918T054500Z
+SUMMARY:Richmond Athletics FC 3–1 Richmond Old Blacks
+DESCRIPTION:Masters · Game #m-2-3\nFinal: Richmond Athletics FC 3\, Richmo
+ nd Old Blacks 1\nField: Hugh Boyd - Red\nMap: https://maps.app.goo.gl/pQwq
+ AB7nWvmvmJ8J6\nRef: Ernesto De Marco\nSchedule and standings: https://app.
+ rasasoccer.ca
+CATEGORIES:Masters
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2564688@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20260925T040000Z
+DTEND:20260925T054500Z
+SUMMARY:Rain City Gunners 2–4 Richmond Athletics FC
+DESCRIPTION:Masters · Game #m-3-5\nFinal: Rain City Gunners 2\, Richmond A
+ thletics FC 4\nField: Hugh Boyd - Red\nMap: https://maps.app.goo.gl/pQwqAB
+ 7nWvmvmJ8J6\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Masters
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2564690@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261002T040000Z
+DTEND:20261002T054500Z
+SUMMARY:Richmond Athletics FC 6–0 Glory FC
+DESCRIPTION:Masters · Game #m-4-7\nFinal: Richmond Athletics FC 6\, Glory 
+ FC 0\nField: Hugh Boyd - Red\nMap: https://maps.app.goo.gl/pQwqAB7nWvmvmJ8
+ J6\nRef: Bruce Yung\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Masters
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2564692@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261009T040000Z
+DTEND:20261009T054500Z
+SUMMARY:Richmond Old Blacks 1–3 Richmond Athletics FC
+DESCRIPTION:Masters · Game #m-5-9\nFinal: Richmond Old Blacks 1\, Richmond
+  Athletics FC 3\nField: Hugh Boyd - Red\nMap: https://maps.app.goo.gl/pQwq
+ AB7nWvmvmJ8J6\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Masters
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2564696@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261016T040000Z
+DTEND:20261016T054500Z
+SUMMARY:Mainland United 2–7 Richmond Athletics FC
+DESCRIPTION:Cross-over · Game #m-6-13/2-4-15\nFinal: Mainland United 2\, R
+ ichmond Athletics FC 7\nField: Richmond High\nMap: https://maps.app.goo.gl
+ /fFhccXAw6F6FH1oh6\nRef: Peter Klausner\nSchedule and standings: https://a
+ pp.rasasoccer.ca
+CATEGORIES:Cross-over
+URL:https://app.rasasoccer.ca
+LOCATION:Richmond High - Richmond Secondary\, 7171 Minoru Blvd\, Richmond\,
+  BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2564702@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261030T040000Z
+DTEND:20261030T054500Z
+SUMMARY:Richmond Athletics FC 5–1 Rain City Gunners
+DESCRIPTION:Masters · Game #m-8-19\nFinal: Richmond Athletics FC 5\, Rain 
+ City Gunners 1\nField: Hugh Boyd - Red\nMap: https://maps.app.goo.gl/pQwqA
+ B7nWvmvmJ8J6\nRef: Ernesto De Marco\nSchedule and standings: https://app.r
+ asasoccer.ca
+CATEGORIES:Masters
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2565116@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261104T040000Z
+DTEND:20261104T054500Z
+SUMMARY:Richmond Athletics FC 0–3 Unicorn FC
+DESCRIPTION:League's Cup · Game #LC8\nFinal: Richmond Athletics FC 0\, Uni
+ corn FC 3\nField: Hugh Boyd - Red\nMap: https://maps.app.goo.gl/pQwqAB7nWv
+ mvmJ8J6\nRef: Ernesto De Marco\nSchedule and standings: https://app.rasaso
+ ccer.ca
+CATEGORIES:League's Cup
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2580353@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261106T040000Z
+DTEND:20261106T054500Z
+SUMMARY:EPFC Lions 2–4 Richmond Athletics FC
+DESCRIPTION:Cross-over · Game #m-9-22 / 2-8-C9\nFinal: EPFC Lions 2\, Rich
+ mond Athletics FC 4\nField: Hugh Boyd - Red\nMap: https://maps.app.goo.gl/
+ pQwqAB7nWvmvmJ8J6\nRef: Emre Ogutcen\nSchedule and standings: https://app.
+ rasasoccer.ca
+CATEGORIES:Cross-over
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2580355@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261113T040000Z
+DTEND:20261113T054500Z
+SUMMARY:Richmond Old Blacks vs Richmond Athletics FC
+DESCRIPTION:Masters · Game #m-10-24\nField: Hugh Boyd - Blue\nMap: https:/
+ /maps.app.goo.gl/3NZuufu9SCaf1Zgv8\nRef: Bob Briza\nSchedule and standings
+ : https://app.rasasoccer.ca
+CATEGORIES:Masters
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Blue - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, B
+ C
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Richmond Old Blacks vs Richmond Athletics FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2580359@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261120T040000Z
+DTEND:20261120T054500Z
+SUMMARY:Lion Rock vs Richmond Athletics FC
+DESCRIPTION:Cross-over · Game #m-11-28 / 2-10-C13\nField: Hugh Boyd - Red\
+ nMap: https://maps.app.goo.gl/pQwqAB7nWvmvmJ8J6\nSchedule and standings: h
+ ttps://app.rasasoccer.ca
+CATEGORIES:Cross-over
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lion Rock vs Richmond Athletics FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2580361@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261127T040000Z
+DTEND:20261127T054500Z
+SUMMARY:Richmond Athletics FC vs Rain City Gunners
+DESCRIPTION:Masters · Game #m-12-30\nField: Minoru 3\nMap: https://maps.ap
+ p.goo.gl/zR7aZngbKNHGUutK6\nSchedule and standings: https://app.rasasoccer
+ .ca
+CATEGORIES:Masters
+URL:https://app.rasasoccer.ca
+LOCATION:Minoru 3 - Minoru Park\, 7191 Granville Ave\, Richmond\, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Richmond Athletics FC vs Rain City Gunners
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2580364@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261204T040000Z
+DTEND:20261204T054500Z
+SUMMARY:Richmond Athletics FC vs Glory FC
+DESCRIPTION:Masters · Game #m-13-33\nField: Richmond High\nMap: https://ma
+ ps.app.goo.gl/fFhccXAw6F6FH1oh6\nSchedule and standings: https://app.rasas
+ occer.ca
+CATEGORIES:Masters
+URL:https://app.rasasoccer.ca
+LOCATION:Richmond High - Richmond Secondary\, 7171 Minoru Blvd\, Richmond\,
+  BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Richmond Athletics FC vs Glory FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2580369@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261211T040000Z
+DTEND:20261211T054500Z
+SUMMARY:Club Ireland Rovers vs Richmond Athletics FC
+DESCRIPTION:Cross-over · Game #m-14-38 / 2-13-C20\nField: Hugh Boyd - Blue
+ \nMap: https://maps.app.goo.gl/3NZuufu9SCaf1Zgv8\nSchedule and standings: 
+ https://app.rasasoccer.ca
+CATEGORIES:Cross-over
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Blue - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, B
+ C
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Club Ireland Rovers vs Richmond Athletics FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2564700@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261217T040000Z
+DTEND:20261217T054500Z
+SUMMARY:Richmond Athletics FC vs RUFC Graduates
+DESCRIPTION:Cross-over · Game #m-7-17/2-6-\nField: Hugh Boyd - Blue\nMap: 
+ https://maps.app.goo.gl/3NZuufu9SCaf1Zgv8\nSchedule and standings: https:/
+ /app.rasasoccer.ca
+CATEGORIES:Cross-over
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Blue - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, B
+ C
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Richmond Athletics FC vs RUFC Graduates
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2580371@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20270115T040000Z
+DTEND:20270115T054500Z
+SUMMARY:West Coast Current vs Richmond Athletics FC
+DESCRIPTION:Cross-over · Game #m-15-40 / 2-14-C22\nField: TBD\nSchedule an
+ d standings: https://app.rasasoccer.ca
+CATEGORIES:Cross-over
+URL:https://app.rasasoccer.ca
+LOCATION:TBD
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:West Coast Current vs Richmond Athletics FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2580374@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20270122T040000Z
+DTEND:20270122T054500Z
+SUMMARY:Hammers FC vs Richmond Athletics FC
+DESCRIPTION:Cross-over · Game #m-16-43 / 2-15-C25\nField: TBD\nSchedule an
+ d standings: https://app.rasasoccer.ca
+CATEGORIES:Cross-over
+URL:https://app.rasasoccer.ca
+LOCATION:TBD
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Hammers FC vs Richmond Athletics FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2580381@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20270205T040000Z
+DTEND:20270205T054500Z
+SUMMARY:Richlads FC vs Richmond Athletics FC
+DESCRIPTION:Cross-over · Game #m-18-50 / 2-17-C32\nField: TBD\nSchedule an
+ d standings: https://app.rasasoccer.ca
+CATEGORIES:Cross-over
+URL:https://app.rasasoccer.ca
+LOCATION:TBD
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Richlads FC vs Richmond Athletics FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+END:VCALENDAR

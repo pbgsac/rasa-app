@@ -1,0 +1,258 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//RASA//app.rasasoccer.ca//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:RASA – Freebird FC
+X-WR-TIMEZONE:America/Vancouver
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:2567505@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20260912T040000Z
+DTEND:20260912T054500Z
+SUMMARY:Rangers FC 0–0 Freebird FC
+DESCRIPTION:Division 1 · Game #d1-1-1\nFinal: Rangers FC 0\, Freebird FC 0
+ \nField: Hugh Boyd - Red\nMap: https://maps.app.goo.gl/pQwqAB7nWvmvmJ8J6\n
+ Ref: Kanwal Sangha\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2565180@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20260920T220000Z
+DTEND:20260920T234500Z
+SUMMARY:Heatherbrae 1–1 Freebird FC
+DESCRIPTION:Division 1 · Game #d1-2-8\nFinal: Heatherbrae 1\, Freebird FC 
+ 1\nField: South Arm 4\nMap: https://maps.app.goo.gl/eZMJphywxoAjzwsx5\nRef
+ : Harry Rahiman · AR: Mike Lynch\, Aghaei Alireza\nSchedule and standings
+ : https://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:South Arm 4 - South Arm Park\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2565183@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20260926T040000Z
+DTEND:20260926T054500Z
+SUMMARY:Freebird FC 3–5 Richmond All Blacks
+DESCRIPTION:Division 1 · Game #d1-3-11\nFinal: Freebird FC 3\, Richmond Al
+ l Blacks 5\nField: Minoru Oval\nMap: https://maps.app.goo.gl/ppvnEuEzwm6VS
+ PF68\nRef: Kanwal Sangha · AR: Darman Nair\, Dheeran Nair\nSchedule and s
+ tandings: https://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Minoru Oval - Minoru Park\, 7191 Granville Ave\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2565186@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261003T040000Z
+DTEND:20261003T054500Z
+SUMMARY:Freebird FC 2–11 AC Richmond
+DESCRIPTION:Division 1 · Game #d1-4-14\nFinal: Freebird FC 2\, AC Richmond
+  11\nField: Hugh Boyd - Blue\nMap: https://maps.app.goo.gl/3NZuufu9SCaf1Zg
+ v8\nRef: Sean Davies · AR: Mike Lynch\, Ella Lynch\nSchedule and standing
+ s: https://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Blue - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, B
+ C
+END:VEVENT
+BEGIN:VEVENT
+UID:2565192@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261014T040000Z
+DTEND:20261014T054500Z
+SUMMARY:Unicorn FC 4–1 Freebird FC
+DESCRIPTION:Division 1 · Game #d1-5-20\nFinal: Unicorn FC 4\, Freebird FC 
+ 1\nField: Hugh Boyd - Blue\nMap: https://maps.app.goo.gl/3NZuufu9SCaf1Zgv8
+ \nRef: Kanwal Sangha · AR: Don Taylor\, Jon Lee\nSchedule and standings: 
+ https://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Blue - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, B
+ C
+END:VEVENT
+BEGIN:VEVENT
+UID:2565193@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261017T040000Z
+DTEND:20261017T054500Z
+SUMMARY:Freebird FC 0–8 RFC HIBS
+DESCRIPTION:Division 1 · Game #d1-6-21\nFinal: Freebird FC 0\, RFC HIBS 8\
+ nField: Hugh Boyd - Red\nMap: https://maps.app.goo.gl/pQwqAB7nWvmvmJ8J6\nR
+ ef: Bob Briza · AR: Mike Lynch\, Don Taylor\nSchedule and standings: http
+ s://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2565129@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261021T040000Z
+DTEND:20261021T054500Z
+SUMMARY:Freebird FC 7–1 Glory FC
+DESCRIPTION:League's Cup · Game #LC16\nFinal: Freebird FC 7\, Glory FC 1\n
+ Field: Hugh Boyd - Red\nMap: https://maps.app.goo.gl/pQwqAB7nWvmvmJ8J6\nSc
+ hedule and standings: https://app.rasasoccer.ca
+CATEGORIES:League's Cup
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2565199@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261025T200000Z
+DTEND:20261025T214500Z
+SUMMARY:Freebird FC 0–6 United FC
+DESCRIPTION:Division 1 · Game #d1-7-27\nFinal: Freebird FC 0\, United FC 6
+ \nField: Hugh Boyd - South\nMap: https://maps.app.goo.gl/tn9ng9k9PbFDX9CMA
+ \nRef: Kanwal Sangha · AR: Mike Lynch\, Dheeran Nair\nSchedule and standi
+ ngs: https://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - South - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, 
+ BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2579585@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261101T200000Z
+DTEND:20261101T214500Z
+SUMMARY:Freebird FC 2–0 Rangers FC
+DESCRIPTION:Division 1 · Game #d1-8-31\nFinal: Freebird FC 2\, Rangers FC 
+ 0\nField: Hugh Boyd Oval\nMap: https://maps.app.goo.gl/Pf5Mj5nR49rKxTTt6\n
+ Ref: Conor Niemi\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd Oval - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2579590@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261108T180000Z
+DTEND:20261108T194500Z
+SUMMARY:Freebird FC 0–6 Heatherbrae
+DESCRIPTION:Division 1 · Game #d1-9-36\nFinal: Freebird FC 0\, Heatherbrae
+  6\nField: MacNeil - North\nMap: https://maps.app.goo.gl/RvmxWJL3US9WB8g48
+ \nRef: Kanwal Sangha · AR: Mike Lynch\, Ella Lynch\nSchedule and standing
+ s: https://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:MacNeil - North - A.R. MacNeill Secondary\, 6611 No. 4 Rd\, Richmo
+ nd\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2565117@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261111T040000Z
+DTEND:20261111T054500Z
+SUMMARY:Richlads FC 8–0 Freebird FC
+DESCRIPTION:League's Cup · Game #LC5\nFinal: Richlads FC 8\, Freebird FC 0
+ \nField: Hugh Boyd - Red\nMap: https://maps.app.goo.gl/pQwqAB7nWvmvmJ8J6\n
+ Ref: Dusko Jovic\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:League's Cup
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2579592@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261114T040000Z
+DTEND:20261114T054500Z
+SUMMARY:Richmond All Blacks vs Freebird FC
+DESCRIPTION:Division 1 · Game #d1-10-38\nField: Hugh Boyd - Blue\nMap: htt
+ ps://maps.app.goo.gl/3NZuufu9SCaf1Zgv8\nRef: Mike Laing · AR: Gavin Laing
+ \, Spencer Brown\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Blue - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, B
+ C
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Richmond All Blacks vs Freebird FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2579598@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261122T200000Z
+DTEND:20261122T214500Z
+SUMMARY:AC Richmond vs Freebird FC
+DESCRIPTION:Division 1 · Game #d1-11-44\nField: Richmond High\nMap: https:
+ //maps.app.goo.gl/fFhccXAw6F6FH1oh6\nSchedule and standings: https://app.r
+ asasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Richmond High - Richmond Secondary\, 7171 Minoru Blvd\, Richmond\,
+  BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:AC Richmond vs Freebird FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2579602@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261129T200000Z
+DTEND:20261129T214500Z
+SUMMARY:Freebird FC vs Unicorn FC
+DESCRIPTION:Division 1 · Game #d1-12-48\nField: Richmond High\nMap: https:
+ //maps.app.goo.gl/fFhccXAw6F6FH1oh6\nSchedule and standings: https://app.r
+ asasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Richmond High - Richmond Secondary\, 7171 Minoru Blvd\, Richmond\,
+  BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Freebird FC vs Unicorn FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2579606@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261206T200000Z
+DTEND:20261206T214500Z
+SUMMARY:RFC HIBS vs Freebird FC
+DESCRIPTION:Division 1 · Game #d1-13-52\nField: Richmond High\nMap: https:
+ //maps.app.goo.gl/fFhccXAw6F6FH1oh6\nSchedule and standings: https://app.r
+ asasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Richmond High - Richmond Secondary\, 7171 Minoru Blvd\, Richmond\,
+  BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:RFC HIBS vs Freebird FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2579608@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261213T180000Z
+DTEND:20261213T194500Z
+SUMMARY:United FC vs Freebird FC
+DESCRIPTION:Division 1 · Game #d1-14-54\nField: McNair\nMap: https://maps.
+ app.goo.gl/QzLTyeNfBYdbUtAY9\nSchedule and standings: https://app.rasasocc
+ er.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:McNair - Matthew McNair Secondary\, 9500 No. 4 Rd\, Richmond\, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:United FC vs Freebird FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+END:VCALENDAR

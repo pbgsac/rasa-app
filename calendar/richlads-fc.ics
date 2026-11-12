@@ -1,0 +1,304 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//RASA//app.rasasoccer.ca//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:RASA – Richlads FC
+X-WR-TIMEZONE:America/Vancouver
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:2564726@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20260913T180000Z
+DTEND:20260913T194500Z
+SUMMARY:Richlads FC 6–0 Mainland United
+DESCRIPTION:Division 2 · Game #d2-1-1\nFinal: Richlads FC 6\, Mainland Uni
+ ted 0\nField: MacNeil - North\nMap: https://maps.app.goo.gl/RvmxWJL3US9WB8
+ g48\nRef: Lothar Chan\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:MacNeil - North - A.R. MacNeill Secondary\, 6611 No. 4 Rd\, Richmo
+ nd\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2564741@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20260920T180000Z
+DTEND:20260920T194500Z
+SUMMARY:Richlads FC 4–2 EPFC Lions
+DESCRIPTION:Division 2 · Game #d2-2-5\nFinal: Richlads FC 4\, EPFC Lions 2
+ \nField: South Arm 3\nMap: https://maps.app.goo.gl/Q5r14j1fHB6PsRjh9\nSche
+ dule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:South Arm 3 - South Arm Park\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2572278@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20260927T200000Z
+DTEND:20260927T214500Z
+SUMMARY:West Coast Current 0–9 Richlads FC
+DESCRIPTION:Division 2 · Game #d2-3-11\nFinal: West Coast Current 0\, Rich
+ lads FC 9\nField: MacNeil - North\nMap: https://maps.app.goo.gl/RvmxWJL3US
+ 9WB8g48\nRef: Harry Rahiman\nSchedule and standings: https://app.rasasocce
+ r.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:MacNeil - North - A.R. MacNeill Secondary\, 6611 No. 4 Rd\, Richmo
+ nd\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2572283@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20261004T200000Z
+DTEND:20261004T214500Z
+SUMMARY:Lion Rock 0–0 Richlads FC
+DESCRIPTION:Division 2 · Game #d2-4-16\nFinal: Lion Rock 0\, Richlads FC 0
+ \nField: MacNeil North\nMap: https://maps.app.goo.gl/RvmxWJL3US9WB8g48\nRe
+ f: Emre Ogutcen\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:MacNeil North - A.R. MacNeill Secondary\, 6611 No. 4 Rd\, Richmond
+ \, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2565111@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20261008T040000Z
+DTEND:20261008T054500Z
+SUMMARY:Lion Rock 2–5 Richlads FC
+DESCRIPTION:League's Cup · Game #LC1\nFinal: Lion Rock 2\, Richlads FC 5\n
+ Field: Hugh Boyd - Red\nMap: https://maps.app.goo.gl/pQwqAB7nWvmvmJ8J6\nSc
+ hedule and standings: https://app.rasasoccer.ca
+CATEGORIES:League's Cup
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2572287@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20261018T200000Z
+DTEND:20261018T214500Z
+SUMMARY:Richlads FC 2–2 Club Ireland Rovers
+DESCRIPTION:Division 2 · Game #d2-5-20\nFinal: Richlads FC 2\, Club Irelan
+ d Rovers 2\nField: MacNeil North\nMap: https://maps.app.goo.gl/RvmxWJL3US9
+ WB8g48\nRef: Mike Laing\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:MacNeil North - A.R. MacNeill Secondary\, 6611 No. 4 Rd\, Richmond
+ \, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2564699@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20261023T040000Z
+DTEND:20261023T054500Z
+SUMMARY:Rain City Gunners 0–3 Richlads FC
+DESCRIPTION:Cross-over · Game #m-7-16/2-6-\nFinal: Rain City Gunners 0\, R
+ ichlads FC 3\nField: Hugh Boyd - Blue\nMap: https://maps.app.goo.gl/3NZuuf
+ u9SCaf1Zgv8\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Cross-over
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Blue - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, B
+ C
+END:VEVENT
+BEGIN:VEVENT
+UID:2572290@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20261025T180000Z
+DTEND:20261025T194500Z
+SUMMARY:Richlads FC 1–4 Hammers FC
+DESCRIPTION:Division 2 · Game #d2-6-23\nFinal: Richlads FC 1\, Hammers FC 
+ 4\nField: McNair\nMap: https://maps.app.goo.gl/QzLTyeNfBYdbUtAY9\nRef: Har
+ ry Rahiman\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:McNair - Matthew McNair Secondary\, 9500 No. 4 Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2572294@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20261101T180000Z
+DTEND:20261101T194500Z
+SUMMARY:RUFC Graduates 4–3 Richlads FC
+DESCRIPTION:Division 2 · Game #d2-7-27\nFinal: RUFC Graduates 4\, Richlads
+  FC 3\nField: McNair\nMap: https://maps.app.goo.gl/QzLTyeNfBYdbUtAY9\nRef:
+  Sean Davies\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:McNair - Matthew McNair Secondary\, 9500 No. 4 Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2579614@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20261108T200000Z
+DTEND:20261108T214500Z
+SUMMARY:Mainland United 0–2 Richlads FC
+DESCRIPTION:Division 2 · Game #d2-8-29\nFinal: Mainland United 0\, Richlad
+ s FC 2\nField: Hugh Boyd Oval\nMap: https://maps.app.goo.gl/Pf5Mj5nR49rKxT
+ Tt6\nRef: Harry Rahiman\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd Oval - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2565117@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20261111T040000Z
+DTEND:20261111T054500Z
+SUMMARY:Richlads FC 8–0 Freebird FC
+DESCRIPTION:League's Cup · Game #LC5\nFinal: Richlads FC 8\, Freebird FC 0
+ \nField: Hugh Boyd - Red\nMap: https://maps.app.goo.gl/pQwqAB7nWvmvmJ8J6\n
+ Ref: Dusko Jovic\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:League's Cup
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2579618@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20261115T180000Z
+DTEND:20261115T194500Z
+SUMMARY:EPFC Lions vs Richlads FC
+DESCRIPTION:Division 2 · Game #d2-9-33\nField: MacNeil South\nMap: https:/
+ /maps.app.goo.gl/2N3RKwXpdRDfBCdH7\nRef: Sean Davies\nSchedule and standin
+ gs: https://app.rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:MacNeil South - A.R. MacNeill Secondary\, 6611 No. 4 Rd\, Richmond
+ \, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:EPFC Lions vs Richlads FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2579624@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20261122T200000Z
+DTEND:20261122T214500Z
+SUMMARY:Richlads FC vs West Coast Current
+DESCRIPTION:Division 2 · Game #d2-10-39\nField: Hugh Boyd Oval\nMap: https
+ ://maps.app.goo.gl/Pf5Mj5nR49rKxTTt6\nSchedule and standings: https://app.
+ rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd Oval - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Richlads FC vs West Coast Current
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2579629@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20261129T200000Z
+DTEND:20261129T214500Z
+SUMMARY:Richlads FC vs Lion Rock
+DESCRIPTION:Division 2 · Game #d2-11-44\nField: MacNeil South\nMap: https:
+ //maps.app.goo.gl/2N3RKwXpdRDfBCdH7\nSchedule and standings: https://app.r
+ asasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:MacNeil South - A.R. MacNeill Secondary\, 6611 No. 4 Rd\, Richmond
+ \, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Richlads FC vs Lion Rock
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2579633@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20261206T200000Z
+DTEND:20261206T214500Z
+SUMMARY:Club Ireland Rovers vs Richlads FC
+DESCRIPTION:Division 2 · Game #d2-12-48\nField: Hugh Boyd - South\nMap: ht
+ tps://maps.app.goo.gl/tn9ng9k9PbFDX9CMA\nSchedule and standings: https://a
+ pp.rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - South - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, 
+ BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Club Ireland Rovers vs Richlads FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2580368@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20261211T040000Z
+DTEND:20261211T054500Z
+SUMMARY:Richlads FC vs Glory FC
+DESCRIPTION:Cross-over · Game #m-14-37 / 2-13-C19\nField: Hugh Boyd - Red\
+ nMap: https://maps.app.goo.gl/pQwqAB7nWvmvmJ8J6\nSchedule and standings: h
+ ttps://app.rasasoccer.ca
+CATEGORIES:Cross-over
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Richlads FC vs Glory FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2579636@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20261213T200000Z
+DTEND:20261213T214500Z
+SUMMARY:Hammers FC vs Richlads FC
+DESCRIPTION:Division 2 · Game #d2-13-51\nField: Hugh Boyd Oval\nMap: https
+ ://maps.app.goo.gl/Pf5Mj5nR49rKxTTt6\nSchedule and standings: https://app.
+ rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd Oval - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Hammers FC vs Richlads FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2580378@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20270129T040000Z
+DTEND:20270129T054500Z
+SUMMARY:Richlads FC vs Richmond Old Blacks
+DESCRIPTION:Cross-over · Game #m-17-47 / 2-16-C29\nField: TBD\nSchedule an
+ d standings: https://app.rasasoccer.ca
+CATEGORIES:Cross-over
+URL:https://app.rasasoccer.ca
+LOCATION:TBD
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Richlads FC vs Richmond Old Blacks
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2580381@app.rasasoccer.ca
+DTSTAMP:20261112T024733Z
+DTSTART:20270205T040000Z
+DTEND:20270205T054500Z
+SUMMARY:Richlads FC vs Richmond Athletics FC
+DESCRIPTION:Cross-over · Game #m-18-50 / 2-17-C32\nField: TBD\nSchedule an
+ d standings: https://app.rasasoccer.ca
+CATEGORIES:Cross-over
+URL:https://app.rasasoccer.ca
+LOCATION:TBD
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Richlads FC vs Richmond Athletics FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+END:VCALENDAR

@@ -343,6 +343,15 @@ def main():
         else:
             print(f"Only {len(teams)} teams fetched; keeping existing rosters.json", file=sys.stderr)
 
+    # Calendar feeds for "Add to Calendar" (only rewritten when games change)
+    try:
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import calendar_feeds
+        cal = calendar_feeds.build(args.out)
+        if cal:
+            changed.append(f"calendar ({len(cal)} feeds)")
+    except Exception as e:
+        print(f"calendar feeds skipped: {e}", file=sys.stderr)
     print("changed:", ", ".join(changed) or "nothing")
 
 

@@ -1,0 +1,243 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//RASA//app.rasasoccer.ca//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:RASA – United FC
+X-WR-TIMEZONE:America/Vancouver
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:2565174@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20260912T040000Z
+DTEND:20260912T054500Z
+SUMMARY:United FC 0–1 AC Richmond
+DESCRIPTION:Division 1 · Game #d1-1-2\nFinal: United FC 0\, AC Richmond 1\
+ nField: Hugh Boyd - Blue\nMap: https://maps.app.goo.gl/3NZuufu9SCaf1Zgv8\n
+ Ref: Conor Niemi · AR: Peter Klausner\, Jon Lee\nSchedule and standings: 
+ https://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Blue - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, B
+ C
+END:VEVENT
+BEGIN:VEVENT
+UID:2565178@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20260920T180000Z
+DTEND:20260920T194500Z
+SUMMARY:RFC HIBS 3–2 United FC
+DESCRIPTION:Division 1 · Game #d1-2-5\nFinal: RFC HIBS 3\, United FC 2\nFi
+ eld: South Arm 4\nMap: https://maps.app.goo.gl/eZMJphywxoAjzwsx5\nRef: Con
+ or Niemi · AR: Aghaei Alireza\, Gavin Laing\nSchedule and standings: http
+ s://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:South Arm 4 - South Arm Park\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2565184@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20260927T180000Z
+DTEND:20260927T194500Z
+SUMMARY:United FC 5–1 Heatherbrae
+DESCRIPTION:Division 1 · Game #d1-3-12\nFinal: United FC 5\, Heatherbrae 1
+ \nField: MacNeil South\nMap: https://maps.app.goo.gl/2N3RKwXpdRDfBCdH7\nRe
+ f: Dusko Jovic · AR: Mike Lynch\, Ella Lynch\nSchedule and standings: htt
+ ps://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:MacNeil South - A.R. MacNeill Secondary\, 6611 No. 4 Rd\, Richmond
+ \, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2565187@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261003T040000Z
+DTEND:20261003T054500Z
+SUMMARY:United FC 1–4 Unicorn FC
+DESCRIPTION:Division 1 · Game #d1-4-15\nFinal: United FC 1\, Unicorn FC 4\
+ nField: Minoru Oval\nMap: https://maps.app.goo.gl/ppvnEuEzwm6VSPF68\nRef: 
+ Billy Cheng · AR: Harry Rahiman\, Jon Lee\nSchedule and standings: https:
+ //app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Minoru Oval - Minoru Park\, 7191 Granville Ave\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2565189@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261010T040000Z
+DTEND:20261010T054500Z
+SUMMARY:United FC 0–5 Richmond All Blacks
+DESCRIPTION:Division 1 · Game #d1-5-17\nFinal: United FC 0\, Richmond All 
+ Blacks 5\nField: Hugh Boyd - Red\nMap: https://maps.app.goo.gl/pQwqAB7nWvm
+ vmJ8J6\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2567510@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261018T200000Z
+DTEND:20261018T214500Z
+SUMMARY:United FC 1–0 Rangers FC
+DESCRIPTION:Division 1 · Game #d1-6-24\nFinal: United FC 1\, Rangers FC 0\
+ nField: Hugh Boyd Oval\nMap: https://maps.app.goo.gl/Pf5Mj5nR49rKxTTt6\nRe
+ f: Dusko Jovic\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd Oval - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2565199@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261025T200000Z
+DTEND:20261025T214500Z
+SUMMARY:Freebird FC 0–6 United FC
+DESCRIPTION:Division 1 · Game #d1-7-27\nFinal: Freebird FC 0\, United FC 6
+ \nField: Hugh Boyd - South\nMap: https://maps.app.goo.gl/tn9ng9k9PbFDX9CMA
+ \nRef: Kanwal Sangha · AR: Mike Lynch\, Dheeran Nair\nSchedule and standi
+ ngs: https://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - South - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, 
+ BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2579584@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261101T200000Z
+DTEND:20261101T214500Z
+SUMMARY:AC Richmond 2–3 United FC
+DESCRIPTION:Division 1 · Game #d1-8-30\nFinal: AC Richmond 2\, United FC 3
+ \nField: McNair\nMap: https://maps.app.goo.gl/QzLTyeNfBYdbUtAY9\nRef: Dusk
+ o Jovic · AR: Darman Nair\, Dheeran Nair\nSchedule and standings: https:/
+ /app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:McNair - Matthew McNair Secondary\, 9500 No. 4 Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2579588@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261107T040000Z
+DTEND:20261107T054500Z
+SUMMARY:United FC 0–3 RFC HIBS
+DESCRIPTION:Division 1 · Game #d1-9-34\nFinal: United FC 0\, RFC HIBS 3\nF
+ ield: Hugh Boyd - Red\nMap: https://maps.app.goo.gl/pQwqAB7nWvmvmJ8J6\nRef
+ : Mike Laing · AR: Gavin Laing\, Mike Lynch\nSchedule and standings: http
+ s://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2565118@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261111T040000Z
+DTEND:20261111T054500Z
+SUMMARY:RUFC Graduates vs United FC
+DESCRIPTION:League's Cup · Game #LC6\nField: Hugh Boyd - Blue\nMap: https:
+ //maps.app.goo.gl/3NZuufu9SCaf1Zgv8\nRef: Ernesto De Marco\nSchedule and s
+ tandings: https://app.rasasoccer.ca
+CATEGORIES:League's Cup
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Blue - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, B
+ C
+END:VEVENT
+BEGIN:VEVENT
+UID:2579593@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261115T180000Z
+DTEND:20261115T194500Z
+SUMMARY:Heatherbrae vs United FC
+DESCRIPTION:Division 1 · Game #d1-10-39\nField: MacNeil North\nMap: https:
+ //maps.app.goo.gl/RvmxWJL3US9WB8g48\nRef: Billy Cheng · AR: Mike Lynch\, 
+ Dheeran Nair\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:MacNeil North - A.R. MacNeill Secondary\, 6611 No. 4 Rd\, Richmond
+ \, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Heatherbrae vs United FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2579596@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261122T180000Z
+DTEND:20261122T194500Z
+SUMMARY:Unicorn FC vs United FC
+DESCRIPTION:Division 1 · Game #d1-11-42\nField: McNair\nMap: https://maps.
+ app.goo.gl/QzLTyeNfBYdbUtAY9\nSchedule and standings: https://app.rasasocc
+ er.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:McNair - Matthew McNair Secondary\, 9500 No. 4 Rd\, Richmond\, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Unicorn FC vs United FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2579599@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261129T180000Z
+DTEND:20261129T194500Z
+SUMMARY:Richmond All Blacks vs United FC
+DESCRIPTION:Division 1 · Game #d1-12-45\nField: McNair\nMap: https://maps.
+ app.goo.gl/QzLTyeNfBYdbUtAY9\nSchedule and standings: https://app.rasasocc
+ er.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:McNair - Matthew McNair Secondary\, 9500 No. 4 Rd\, Richmond\, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Richmond All Blacks vs United FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2579604@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261206T180000Z
+DTEND:20261206T194500Z
+SUMMARY:Rangers FC vs United FC
+DESCRIPTION:Division 1 · Game #d1-13-50\nField: MacNeil North\nMap: https:
+ //maps.app.goo.gl/RvmxWJL3US9WB8g48\nSchedule and standings: https://app.r
+ asasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:MacNeil North - A.R. MacNeill Secondary\, 6611 No. 4 Rd\, Richmond
+ \, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rangers FC vs United FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2579608@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261213T180000Z
+DTEND:20261213T194500Z
+SUMMARY:United FC vs Freebird FC
+DESCRIPTION:Division 1 · Game #d1-14-54\nField: McNair\nMap: https://maps.
+ app.goo.gl/QzLTyeNfBYdbUtAY9\nSchedule and standings: https://app.rasasocc
+ er.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:McNair - Matthew McNair Secondary\, 9500 No. 4 Rd\, Richmond\, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:United FC vs Freebird FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+END:VCALENDAR

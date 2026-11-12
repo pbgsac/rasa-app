@@ -1,0 +1,309 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//RASA//app.rasasoccer.ca//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:RASA – Hammers FC
+X-WR-TIMEZONE:America/Vancouver
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:2564727@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20260913T180000Z
+DTEND:20260913T194500Z
+SUMMARY:EPFC Lions 3–0 Hammers FC
+DESCRIPTION:Division 2 · Game #d2-1-2\nFinal: EPFC Lions 3\, Hammers FC 0\
+ nField: McNair\nMap: https://maps.app.goo.gl/QzLTyeNfBYdbUtAY9\nRef: Bruce
+  Yung\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:McNair - Matthew McNair Secondary\, 9500 No. 4 Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2564740@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20260920T200000Z
+DTEND:20260920T214500Z
+SUMMARY:Hammers FC 1–1 RUFC Graduates
+DESCRIPTION:Division 2 · Game #d2-2-7\nFinal: Hammers FC 1\, RUFC Graduate
+ s 1\nField: South Arm 4\nMap: https://maps.app.goo.gl/eZMJphywxoAjzwsx5\nR
+ ef: Bruce Yung\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:South Arm 4 - South Arm Park\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2572277@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20260927T180000Z
+DTEND:20260927T194500Z
+SUMMARY:Hammers FC 5–3 Mainland United
+DESCRIPTION:Division 2 · Game #d2-3-10\nFinal: Hammers FC 5\, Mainland Uni
+ ted 3\nField: McNair\nMap: https://maps.app.goo.gl/QzLTyeNfBYdbUtAY9\nRef:
+  Bruce Yung\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:McNair - Matthew McNair Secondary\, 9500 No. 4 Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2572281@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261004T180000Z
+DTEND:20261004T194500Z
+SUMMARY:Hammers FC 11–1 West Coast Current
+DESCRIPTION:Division 2 · Game #d2-4-14\nFinal: Hammers FC 11\, West Coast 
+ Current 1\nField: MacNeil South\nMap: https://maps.app.goo.gl/2N3RKwXpdRDf
+ BCdH7\nRef: Peter Klausner\nSchedule and standings: https://app.rasasoccer
+ .ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:MacNeil South - A.R. MacNeill Secondary\, 6611 No. 4 Rd\, Richmond
+ \, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2572286@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261018T180000Z
+DTEND:20261018T194500Z
+SUMMARY:Hammers FC 2–2 Lion Rock
+DESCRIPTION:Division 2 · Game #d2-5-19\nFinal: Hammers FC 2\, Lion Rock 2\
+ nField: McNair\nMap: https://maps.app.goo.gl/QzLTyeNfBYdbUtAY9\nRef: Kanwa
+ l Sangha\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:McNair - Matthew McNair Secondary\, 9500 No. 4 Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2565114@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261022T040000Z
+DTEND:20261022T054500Z
+SUMMARY:Mainland United 2–3 Hammers FC
+DESCRIPTION:League's Cup · Game #LC4\nFinal: Mainland United 2\, Hammers F
+ C 3\nField: Hugh Boyd - Red\nMap: https://maps.app.goo.gl/pQwqAB7nWvmvmJ8J
+ 6\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:League's Cup
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2572290@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261025T180000Z
+DTEND:20261025T194500Z
+SUMMARY:Richlads FC 1–4 Hammers FC
+DESCRIPTION:Division 2 · Game #d2-6-23\nFinal: Richlads FC 1\, Hammers FC 
+ 4\nField: McNair\nMap: https://maps.app.goo.gl/QzLTyeNfBYdbUtAY9\nRef: Har
+ ry Rahiman\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:McNair - Matthew McNair Secondary\, 9500 No. 4 Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2572292@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261101T180000Z
+DTEND:20261101T194500Z
+SUMMARY:Club Ireland Rovers 3–3 Hammers FC
+DESCRIPTION:Division 2 · Game #d2-7-25\nFinal: Club Ireland Rovers 3\, Ham
+ mers FC 3\nField: MacNeil North\nMap: https://maps.app.goo.gl/RvmxWJL3US9W
+ B8g48\nRef: Kanwal Sangha\nSchedule and standings: https://app.rasasoccer.
+ ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:MacNeil North - A.R. MacNeill Secondary\, 6611 No. 4 Rd\, Richmond
+ \, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2580354@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261106T040000Z
+DTEND:20261106T054500Z
+SUMMARY:Hammers FC 4–3 Richmond Old Blacks
+DESCRIPTION:Cross-over · Game #m-9-23 / 2-8-C10\nFinal: Hammers FC 4\, Ric
+ hmond Old Blacks 3\nField: Hugh Boyd - Blue\nMap: https://maps.app.goo.gl/
+ 3NZuufu9SCaf1Zgv8\nRef: Bob Briza\nSchedule and standings: https://app.ras
+ asoccer.ca
+CATEGORIES:Cross-over
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Blue - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, B
+ C
+END:VEVENT
+BEGIN:VEVENT
+UID:2579615@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261108T180000Z
+DTEND:20261108T194500Z
+SUMMARY:Hammers FC 2–1 EPFC Lions
+DESCRIPTION:Division 2 · Game #d2-8-30\nFinal: Hammers FC 2\, EPFC Lions 1
+ \nField: McNair\nMap: https://maps.app.goo.gl/QzLTyeNfBYdbUtAY9\nRef: Pete
+ r Klausner\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:McNair - Matthew McNair Secondary\, 9500 No. 4 Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2579619@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261115T180000Z
+DTEND:20261115T194500Z
+SUMMARY:RUFC Graduates vs Hammers FC
+DESCRIPTION:Division 2 · Game #d2-9-34\nField: McNair\nMap: https://maps.a
+ pp.goo.gl/QzLTyeNfBYdbUtAY9\nRef: Harry Rahiman\nSchedule and standings: h
+ ttps://app.rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:McNair - Matthew McNair Secondary\, 9500 No. 4 Rd\, Richmond\, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:RUFC Graduates vs Hammers FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2565120@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261118T040000Z
+DTEND:20261118T054500Z
+SUMMARY:Hammers FC vs Heatherbrae
+DESCRIPTION:League's Cup · Game #LC10\nField: Hugh Boyd - Red\nMap: https:
+ //maps.app.goo.gl/pQwqAB7nWvmvmJ8J6\nSchedule and standings: https://app.r
+ asasoccer.ca
+CATEGORIES:League's Cup
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Hammers FC vs Heatherbrae
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2579623@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261122T200000Z
+DTEND:20261122T214500Z
+SUMMARY:Mainland United vs Hammers FC
+DESCRIPTION:Division 2 · Game #d2-10-38\nField: MacNeil North\nMap: https:
+ //maps.app.goo.gl/RvmxWJL3US9WB8g48\nSchedule and standings: https://app.r
+ asasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:MacNeil North - A.R. MacNeill Secondary\, 6611 No. 4 Rd\, Richmond
+ \, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Mainland United vs Hammers FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2579626@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261129T180000Z
+DTEND:20261129T194500Z
+SUMMARY:West Coast Current vs Hammers FC
+DESCRIPTION:Division 2 · Game #d2-11-41\nField: MacNeil North\nMap: https:
+ //maps.app.goo.gl/RvmxWJL3US9WB8g48\nSchedule and standings: https://app.r
+ asasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:MacNeil North - A.R. MacNeill Secondary\, 6611 No. 4 Rd\, Richmond
+ \, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:West Coast Current vs Hammers FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2580365@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261204T040000Z
+DTEND:20261204T054500Z
+SUMMARY:Hammers FC vs Rain City Gunners
+DESCRIPTION:Cross-over · Game #m-13-34 / 2-12-C17\nField: Hugh Boyd - Red\
+ nMap: https://maps.app.goo.gl/pQwqAB7nWvmvmJ8J6\nSchedule and standings: h
+ ttps://app.rasasoccer.ca
+CATEGORIES:Cross-over
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Hammers FC vs Rain City Gunners
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2579632@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261206T200000Z
+DTEND:20261206T214500Z
+SUMMARY:Lion Rock vs Hammers FC
+DESCRIPTION:Division 2 · Game #d2-12-47\nField: McNair\nMap: https://maps.
+ app.goo.gl/QzLTyeNfBYdbUtAY9\nSchedule and standings: https://app.rasasocc
+ er.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:McNair - Matthew McNair Secondary\, 9500 No. 4 Rd\, Richmond\, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lion Rock vs Hammers FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2579636@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261213T200000Z
+DTEND:20261213T214500Z
+SUMMARY:Hammers FC vs Richlads FC
+DESCRIPTION:Division 2 · Game #d2-13-51\nField: Hugh Boyd Oval\nMap: https
+ ://maps.app.goo.gl/Pf5Mj5nR49rKxTTt6\nSchedule and standings: https://app.
+ rasasoccer.ca
+CATEGORIES:Division 2
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd Oval - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Hammers FC vs Richlads FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2564697@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261217T040000Z
+DTEND:20261217T054500Z
+SUMMARY:Hammers FC vs Glory FC
+DESCRIPTION:Cross-over · Game #m-6-14/2-4-16\nField: Hugh Boyd - Red\nMap:
+  https://maps.app.goo.gl/pQwqAB7nWvmvmJ8J6\nSchedule and standings: https:
+ //app.rasasoccer.ca
+CATEGORIES:Cross-over
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Hammers FC vs Glory FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2580374@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20270122T040000Z
+DTEND:20270122T054500Z
+SUMMARY:Hammers FC vs Richmond Athletics FC
+DESCRIPTION:Cross-over · Game #m-16-43 / 2-15-C25\nField: TBD\nSchedule an
+ d standings: https://app.rasasoccer.ca
+CATEGORIES:Cross-over
+URL:https://app.rasasoccer.ca
+LOCATION:TBD
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Hammers FC vs Richmond Athletics FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+END:VCALENDAR

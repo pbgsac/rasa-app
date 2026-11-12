@@ -1,0 +1,245 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//RASA//app.rasasoccer.ca//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:RASA – Richmond All Blacks
+X-WR-TIMEZONE:America/Vancouver
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+X-PUBLISHED-TTL:PT6H
+BEGIN:VEVENT
+UID:2565175@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20260912T040000Z
+DTEND:20260912T054500Z
+SUMMARY:Unicorn FC 1–6 Richmond All Blacks
+DESCRIPTION:Division 1 · Game #d1-1-3\nFinal: Unicorn FC 1\, Richmond All 
+ Blacks 6\nField: Minoru Oval\nMap: https://maps.app.goo.gl/ppvnEuEzwm6VSPF
+ 68\nRef: Dusko Jovic · AR: Mike Lynch\, Aghaei Alireza\nSchedule and stan
+ dings: https://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Minoru Oval - Minoru Park\, 7191 Granville Ave\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2567506@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20260920T200000Z
+DTEND:20260920T214500Z
+SUMMARY:Richmond All Blacks 6–0 Rangers FC
+DESCRIPTION:Division 1 · Game #d1-2-7\nFinal: Richmond All Blacks 6\, Rang
+ ers FC 0\nField: South Arm 1\nMap: https://maps.app.goo.gl/3fSPq96UiDNkoXK
+ e8\nRef: Bob Briza\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:South Arm 1 - South Arm Park\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2565183@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20260926T040000Z
+DTEND:20260926T054500Z
+SUMMARY:Freebird FC 3–5 Richmond All Blacks
+DESCRIPTION:Division 1 · Game #d1-3-11\nFinal: Freebird FC 3\, Richmond Al
+ l Blacks 5\nField: Minoru Oval\nMap: https://maps.app.goo.gl/ppvnEuEzwm6VS
+ PF68\nRef: Kanwal Sangha · AR: Darman Nair\, Dheeran Nair\nSchedule and s
+ tandings: https://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Minoru Oval - Minoru Park\, 7191 Granville Ave\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2565185@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261003T040000Z
+DTEND:20261003T054500Z
+SUMMARY:Richmond All Blacks 2–1 RFC HIBS
+DESCRIPTION:Division 1 · Game #d1-4-13\nFinal: Richmond All Blacks 2\, RFC
+  HIBS 1\nField: Hugh Boyd - Red\nMap: https://maps.app.goo.gl/pQwqAB7nWvmv
+ mJ8J6\nRef: Conor Niemi · AR: Darman Nair\, Dheeran Nair\nSchedule and st
+ andings: https://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2565189@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261010T040000Z
+DTEND:20261010T054500Z
+SUMMARY:United FC 0–5 Richmond All Blacks
+DESCRIPTION:Division 1 · Game #d1-5-17\nFinal: United FC 0\, Richmond All 
+ Blacks 5\nField: Hugh Boyd - Red\nMap: https://maps.app.goo.gl/pQwqAB7nWvm
+ vmJ8J6\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2565197@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261024T040000Z
+DTEND:20261024T054500Z
+SUMMARY:Heatherbrae 1–7 Richmond All Blacks
+DESCRIPTION:Division 1 · Game #d1-7-25\nFinal: Heatherbrae 1\, Richmond Al
+ l Blacks 7\nField: Hugh Boyd - Red\nMap: https://maps.app.goo.gl/pQwqAB7nW
+ vmvmJ8J6\nRef: Mike Laing · AR: Gavin Laing\, Spencer Brown\nSchedule and
+  standings: https://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2565194@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261028T040000Z
+DTEND:20261028T054500Z
+SUMMARY:Richmond All Blacks 3–0 AC Richmond
+DESCRIPTION:Division 1 · Game #d1-6-22\nFinal: Richmond All Blacks 3\, AC 
+ Richmond 0\nField: Hugh Boyd - Blue\nMap: https://maps.app.goo.gl/3NZuufu9
+ SCaf1Zgv8\nRef: Bob Briza · AR: Don Taylor\, Harry Rahiman\nSchedule and 
+ standings: https://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Blue - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, B
+ C
+END:VEVENT
+BEGIN:VEVENT
+UID:2579586@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261101T200000Z
+DTEND:20261101T214500Z
+SUMMARY:Richmond All Blacks 3–0 Unicorn FC
+DESCRIPTION:Division 1 · Game #d1-8-32\nFinal: Richmond All Blacks 3\, Uni
+ corn FC 0\nField: Hugh Boyd - Red\nMap: https://maps.app.goo.gl/pQwqAB7nWv
+ mvmJ8J6\nRef: Mike Laing · AR: Don Taylor\, Harry Rahiman\nSchedule and s
+ tandings: https://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+END:VEVENT
+BEGIN:VEVENT
+UID:2579589@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261107T040000Z
+DTEND:20261107T054500Z
+SUMMARY:Rangers FC 0–3 Richmond All Blacks
+DESCRIPTION:Division 1 · Game #d1-9-35\nFinal: Rangers FC 0\, Richmond All
+  Blacks 3\nField: Hugh Boyd - Blue\nMap: https://maps.app.goo.gl/3NZuufu9S
+ Caf1Zgv8\nRef: Sean Davies\nSchedule and standings: https://app.rasasoccer
+ .ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Blue - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, B
+ C
+END:VEVENT
+BEGIN:VEVENT
+UID:2579592@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261114T040000Z
+DTEND:20261114T054500Z
+SUMMARY:Richmond All Blacks vs Freebird FC
+DESCRIPTION:Division 1 · Game #d1-10-38\nField: Hugh Boyd - Blue\nMap: htt
+ ps://maps.app.goo.gl/3NZuufu9SCaf1Zgv8\nRef: Mike Laing · AR: Gavin Laing
+ \, Spencer Brown\nSchedule and standings: https://app.rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Blue - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, B
+ C
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Richmond All Blacks vs Freebird FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2579595@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261121T040000Z
+DTEND:20261121T054500Z
+SUMMARY:RFC HIBS vs Richmond All Blacks
+DESCRIPTION:Division 1 · Game #d1-11-41\nField: Hugh Boyd - Red\nMap: http
+ s://maps.app.goo.gl/pQwqAB7nWvmvmJ8J6\nSchedule and standings: https://app
+ .rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:RFC HIBS vs Richmond All Blacks
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2579599@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261129T180000Z
+DTEND:20261129T194500Z
+SUMMARY:Richmond All Blacks vs United FC
+DESCRIPTION:Division 1 · Game #d1-12-45\nField: McNair\nMap: https://maps.
+ app.goo.gl/QzLTyeNfBYdbUtAY9\nSchedule and standings: https://app.rasasocc
+ er.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:McNair - Matthew McNair Secondary\, 9500 No. 4 Rd\, Richmond\, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Richmond All Blacks vs United FC
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2579603@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261205T040000Z
+DTEND:20261205T054500Z
+SUMMARY:AC Richmond vs Richmond All Blacks
+DESCRIPTION:Division 1 · Game #d1-13-49\nField: Hugh Boyd - Red\nMap: http
+ s://maps.app.goo.gl/pQwqAB7nWvmvmJ8J6\nSchedule and standings: https://app
+ .rasasoccer.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:AC Richmond vs Richmond All Blacks
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2579610@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20261213T200000Z
+DTEND:20261213T214500Z
+SUMMARY:Richmond All Blacks vs Heatherbrae
+DESCRIPTION:Division 1 · Game #d1-14-56\nField: McNair\nMap: https://maps.
+ app.goo.gl/QzLTyeNfBYdbUtAY9\nSchedule and standings: https://app.rasasocc
+ er.ca
+CATEGORIES:Division 1
+URL:https://app.rasasoccer.ca
+LOCATION:McNair - Matthew McNair Secondary\, 9500 No. 4 Rd\, Richmond\, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Richmond All Blacks vs Heatherbrae
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2565121@app.rasasoccer.ca
+DTSTAMP:20261112T024742Z
+DTSTART:20270121T040000Z
+DTEND:20270121T054500Z
+SUMMARY:Winner Lc5 vs Richmond All Blacks
+DESCRIPTION:League's Cup · Game #LC11\nField: Hugh Boyd - Red\nMap: https:
+ //maps.app.goo.gl/pQwqAB7nWvmvmJ8J6\nSchedule and standings: https://app.r
+ asasoccer.ca
+CATEGORIES:League's Cup
+URL:https://app.rasasoccer.ca
+LOCATION:Hugh Boyd - Red - Hugh Boyd Park\, 4040 Francis Rd\, Richmond\, BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Winner Lc5 vs Richmond All Blacks
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+END:VCALENDAR
