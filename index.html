@@ -130,12 +130,18 @@ main{max-width:820px;margin:0 auto;padding:16px 16px 48px;display:flex;flex-dire
 .dd-opt .tick{margin-left:auto;color:var(--brand);flex:none}
 .dd-group{margin:8px 6px 2px;padding-top:6px;border-top:1px solid var(--line);font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--c)}
 .dd-group:first-of-type{border-top:0}
-@media (max-width:400px){ .dd-btn{font-size:12.5px;padding:9px 7px 9px 9px;gap:5px} }
+@media (max-width:400px){ .dd-btn{font-size:12.5px;padding:9px 7px 9px 9px;gap:5px} .cal-btn{font-size:12px;padding:7px 5px;gap:3px} }
 /* Add to Calendar */
-.cal-dd{margin-top:-2px}
-.cal-btn{justify-content:center;color:var(--brand);border-color:color-mix(in srgb,var(--brand) 35%,var(--line))}
+/* Small button floating on the right, level with the first date heading */
+.cal-dd{flex:none;align-self:flex-end;width:40%;min-width:136px;margin:19px 0 -53px;z-index:5}
+.cal-dd[hidden]{display:none}
+.cal-btn{justify-content:center;gap:4px;color:var(--brand);font-size:12.5px;padding:7px 6px;border-radius:999px;border-color:color-mix(in srgb,var(--brand) 35%,var(--line));box-shadow:0 1px 3px rgba(16,24,32,.08)}
 .cal-btn .dd-txt{flex:none}
-.cal-menu{width:100%;max-width:none;min-width:0;padding:0;display:flex;flex-direction:column;max-height:min(70vh,520px);overflow:hidden}
+.cal-btn svg{flex:none}
+.cal-btn .chev{display:none}
+.cal-btn > svg:first-child{width:16px;height:16px}
+#view-schedule:has(.cal-dd:not([hidden])) #list > .day:first-child .day-h{padding-right:calc(max(40%, 136px) + 8px)}
+.cal-menu{left:auto;right:0;width:min(358px,calc(100vw - 32px));max-width:none;min-width:0;padding:0;display:flex;flex-direction:column;max-height:min(70vh,520px);overflow:hidden;transform-origin:top right}
 .cal-help{margin:0;padding:12px 14px 4px;font-size:13px;color:var(--muted)}
 .cal-list{list-style:none;margin:0;padding:4px 6px;overflow:auto;flex:1;min-height:0}
 .cal-foot{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 12px 12px;border-top:1px solid var(--line);background:var(--surface)}
@@ -1084,6 +1090,7 @@ function renderSchedule(){
   renderChips();
   $("#segUp").setAttribute("aria-pressed", state.mode==="up");
   $("#segRes").setAttribute("aria-pressed", state.mode==="res");
+  const cal = $("#calDD"); if(cal){ cal.hidden = state.mode!=="up"; if(cal.hidden && openDD===cal) closeDD(); }   // no calendar for games already played
   let list = games.filter(g=> state.mode==="up" ? !isPast(g) : isPast(g));
   if(state.comp!=="ALL") list = list.filter(g=>g.comp===state.comp);
   if(state.team!=="ALL") list = list.filter(g=>g.h===state.team || g.a===state.team);
