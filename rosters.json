@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-11T09:27:51Z",
+ "updatedAt": "2026-11-12T09:52:05Z",
  "teams": {
   "AC RICHMOND": {
    "name": "AC Richmond",
@@ -2926,6 +2926,18 @@
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/490528_pic.jpg"
     },
     {
+     "name": "Mohammed Abusbeaa",
+     "number": null,
+     "pos": "CB",
+     "born": "'90",
+     "gp": 0,
+     "g": 0,
+     "a": 0,
+     "yc": 0,
+     "rc": 0,
+     "photo": ""
+    },
+    {
      "name": "Saajan Aulakh",
      "number": 15,
      "pos": "CB",
@@ -3127,7 +3139,7 @@
      "a": 0,
      "yc": 0,
      "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/490521_pic.JPG"
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/235394_pic.jpeg"
     },
     {
      "name": "Colton Turrell",
