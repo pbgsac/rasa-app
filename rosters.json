@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-12T18:21:01Z",
+ "updatedAt": "2026-11-13T09:32:34Z",
  "teams": {
   "AC RICHMOND": {
    "name": "AC Richmond",
@@ -3116,6 +3116,18 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/491979_pic.jpeg"
+    },
+    {
+     "name": "Aidan Sanders",
+     "number": null,
+     "pos": "-",
+     "born": "'04",
+     "gp": 0,
+     "g": 0,
+     "a": 0,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/542408_pic.JPEG"
     },
     {
      "name": "Ronin Sandhu",
