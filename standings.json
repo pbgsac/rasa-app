@@ -1,7 +1,7 @@
 {
  "source": "https://www.rasasoccer.ca/leagues/standings.cfm?clientid=6369&leagueID=27680",
  "season": "Winter 2026-27",
- "updatedAt": "2026-11-10T20:50:05Z",
+ "updatedAt": "2026-11-13T23:35:34Z",
  "divisions": [
   {
    "name": "Division 1",
@@ -168,6 +168,19 @@
      "streak": "L2"
     },
     {
+     "team": "Mainland United",
+     "gp": 10,
+     "w": 3,
+     "l": 6,
+     "t": 1,
+     "d": 0,
+     "pts": 10,
+     "gf": 22,
+     "ga": 32,
+     "diff": -10,
+     "streak": "W1"
+    },
+    {
      "team": "RUFC Graduates",
      "gp": 7,
      "w": 2,
@@ -194,19 +207,6 @@
      "streak": "T1"
     },
     {
-     "team": "Mainland United",
-     "gp": 9,
-     "w": 2,
-     "l": 6,
-     "t": 1,
-     "d": 0,
-     "pts": 7,
-     "gf": 20,
-     "ga": 31,
-     "diff": -11,
-     "streak": "L1"
-    },
-    {
      "team": "West Coast Current",
      "gp": 7,
      "w": 0,
@@ -226,29 +226,29 @@
    "rows": [
     {
      "team": "Richmond Athletics FC",
-     "gp": 8,
-     "w": 8,
+     "gp": 9,
+     "w": 9,
      "l": 0,
      "t": 0,
      "d": 0,
-     "pts": 24,
-     "gf": 35,
+     "pts": 27,
+     "gf": 37,
      "ga": 11,
-     "diff": 24,
-     "streak": "W8"
+     "diff": 26,
+     "streak": "W9"
     },
     {
      "team": "Richmond Old Blacks",
-     "gp": 9,
+     "gp": 10,
      "w": 5,
-     "l": 3,
+     "l": 4,
      "t": 1,
      "d": 0,
      "pts": 16,
      "gf": 42,
-     "ga": 16,
-     "diff": 26,
-     "streak": "L1"
+     "ga": 18,
+     "diff": 24,
+     "streak": "L2"
     },
     {
      "team": "Rain City Gunners",
@@ -265,16 +265,16 @@
     },
     {
      "team": "Glory FC",
-     "gp": 8,
+     "gp": 9,
      "w": 0,
-     "l": 7,
+     "l": 8,
      "t": 1,
      "d": 0,
      "pts": 1,
-     "gf": 8,
-     "ga": 47,
-     "diff": -39,
-     "streak": "L2"
+     "gf": 9,
+     "ga": 49,
+     "diff": -40,
+     "streak": "L3"
     }
    ]
   }

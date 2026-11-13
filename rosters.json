@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-13T09:32:34Z",
+ "updatedAt": "2026-11-13T23:35:34Z",
  "teams": {
   "AC RICHMOND": {
    "name": "AC Richmond",
@@ -4356,6 +4356,18 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/455606_pic.jpeg"
+    },
+    {
+     "name": "Caden Chiu",
+     "number": null,
+     "pos": "-",
+     "born": "'07",
+     "gp": 0,
+     "g": 0,
+     "a": 0,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/560758_pic.jpg"
     },
     {
      "name": "Bismark Ebbah",
