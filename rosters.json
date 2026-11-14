@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-13T23:35:34Z",
+ "updatedAt": "2026-11-14T06:24:58Z",
  "teams": {
   "AC RICHMOND": {
    "name": "AC Richmond",
@@ -4367,7 +4367,7 @@
      "a": 0,
      "yc": 0,
      "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/560758_pic.jpg"
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/620389_pic.jpeg"
     },
     {
      "name": "Bismark Ebbah",
@@ -4596,6 +4596,18 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/396241_pic.jpg"
+    },
+    {
+     "name": "Ablesh Singh",
+     "number": null,
+     "pos": "-",
+     "born": "'76",
+     "gp": 0,
+     "g": 0,
+     "a": 0,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/394590_pic.jpeg"
     },
     {
      "name": "Jai Tanwar",
