@@ -1,7 +1,7 @@
 {
  "source": "https://www.rasasoccer.ca/leagues/schedules.cfm?clientid=6369&leagueID=27680",
  "season": "Winter 2026-27",
- "updatedAt": "2026-11-14T15:06:18Z",
+ "updatedAt": "2026-11-14T20:44:12Z",
  "games": [
   {
    "date": "2026-09-10",
@@ -1570,7 +1570,9 @@
    "number": "d2-9-36",
    "gameId": "2579621",
    "status": "",
-   "officials": []
+   "officials": [
+    "Lothar Chan"
+   ]
   },
   {
    "date": "2026-11-15",
@@ -1598,7 +1600,9 @@
    "number": "d2-9-35",
    "gameId": "2579620",
    "status": "",
-   "officials": []
+   "officials": [
+    "Peter Klausner"
+   ]
   },
   {
    "date": "2026-11-17",
