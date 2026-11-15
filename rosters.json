@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-14T06:24:58Z",
+ "updatedAt": "2026-11-15T01:56:35Z",
  "teams": {
   "AC RICHMOND": {
    "name": "AC Richmond",
@@ -3008,6 +3008,18 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/557858_pic.jpeg"
+    },
+    {
+     "name": "Amad Gani",
+     "number": 1,
+     "pos": "GK",
+     "born": "-",
+     "gp": 0,
+     "g": 0,
+     "a": 0,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/613709_pic.jpeg"
     },
     {
      "name": "Ahmed Ghallab",
