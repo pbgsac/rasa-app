@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-15T01:56:35Z",
+ "updatedAt": "2026-11-15T09:27:44Z",
  "teams": {
   "AC RICHMOND": {
    "name": "AC Richmond",
@@ -2667,7 +2667,7 @@
     },
     {
      "name": "Herman Chan",
-     "number": null,
+     "number": 22,
      "pos": "-",
      "born": "'88",
      "gp": 0,
@@ -2679,7 +2679,7 @@
     },
     {
      "name": "Ka Faat Chan",
-     "number": null,
+     "number": 3,
      "pos": "-",
      "born": "'97",
      "gp": 0,
@@ -2752,7 +2752,7 @@
     {
      "name": "Ka Chun Lee",
      "number": 25,
-     "pos": "CB",
+     "pos": "-",
      "born": "'92",
      "gp": 0,
      "g": 0,
@@ -2935,7 +2935,7 @@
      "a": 0,
      "yc": 0,
      "rc": 0,
-     "photo": ""
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/235394_pic.jpeg"
     },
     {
      "name": "Saajan Aulakh",
@@ -3163,7 +3163,7 @@
      "a": 0,
      "yc": 0,
      "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/235394_pic.jpeg"
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/620079_pic.jpg"
     },
     {
      "name": "Colton Turrell",
