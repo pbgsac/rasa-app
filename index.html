@@ -99,12 +99,13 @@ main{max-width:820px;margin:0 auto;padding:16px 16px 48px;display:flex;flex-dire
 
 /* Controls */
 .controls{display:flex;flex-direction:column;gap:10px}
-.seg.sched-seg{align-self:stretch;width:100%;box-sizing:border-box;display:flex}
+/* Schedule: Results / Upcoming as sub-tabs (same look as Standings and Leaders), pinned under the header */
+.sched-subtabs{position:sticky;top:var(--topbar-h,118px);z-index:16;display:flex;align-items:flex-end;margin:-16px -16px 0;padding:6px 16px 0;background:var(--bg);border-bottom:1px solid var(--line)}
 /* Schedule spacing: tabs -> toggle 8px (was 16), toggle -> filters 6.5px (was 10), filters -> games 18px (was 0) */
 #view-schedule{margin-top:-8px}
-#view-schedule .sched-filters{margin-top:-3.5px}
+#view-schedule .sched-filters{margin-top:18px}
 #view-schedule #list{margin-top:5px}
-.seg.sched-seg button{padding:8px 10px;font-size:20.8px;flex:1;width:auto;height:45px}
+
 .sched-filters{flex-wrap:nowrap}
 /* Themed drop-downs */
 .sched-filters{gap:8px}
@@ -446,13 +447,13 @@ dl.view{margin:0;display:flex;flex-direction:column;border-top:1px solid var(--l
 /* Division tabs (Standings) and category tabs (Leaders) stay pinned under the header while scrolling */
 /* Standings: divisions as sub-tabs of the Standings tab (underlined text, no box), pinned under the header */
 .std-subtabs{position:sticky;top:var(--topbar-h,118px);z-index:15;display:flex;margin:-8px -16px 0;padding:0 16px;background:var(--bg);border-bottom:1px solid var(--line)}
-.std-subtabs button,.ld-subtabs button{flex:1;font:inherit;font-size:15.5px;font-weight:700;color:var(--muted);background:none;border:0;border-bottom:3px solid transparent;padding:12px 4px 9px;cursor:pointer;white-space:nowrap}
+.std-subtabs button,.ld-subtabs button,.sched-subtabs button{flex:1;font:inherit;font-size:15.5px;font-weight:700;color:var(--muted);background:none;border:0;border-bottom:3px solid transparent;padding:12px 4px 9px;cursor:pointer;white-space:nowrap}
 .std-subtabs{align-items:flex-end;padding-top:6px}
-.std-subtabs button,.ld-subtabs button{border-radius:9px 9px 0 0;transition:background-color .25s ease,color .25s ease,font-size .25s ease}
-.std-subtabs button[aria-pressed="true"],.ld-subtabs button[aria-pressed="true"]{color:var(--brand);border-bottom-color:var(--brand);background:color-mix(in srgb,var(--brand) 13%,transparent);font-size:16.5px;animation:subIn .3s cubic-bezier(.2,.8,.2,1)}
+.std-subtabs button,.ld-subtabs button,.sched-subtabs button{border-radius:9px 9px 0 0;transition:background-color .25s ease,color .25s ease,font-size .25s ease}
+.std-subtabs button[aria-pressed="true"],.ld-subtabs button,.sched-subtabs button[aria-pressed="true"]{color:var(--brand);border-bottom-color:var(--brand);background:color-mix(in srgb,var(--brand) 13%,transparent);font-size:16.5px;animation:subIn .3s cubic-bezier(.2,.8,.2,1)}
 @keyframes subIn{from{background-color:transparent;font-size:15.5px}}
-@media (prefers-reduced-motion:reduce){ .std-subtabs button,.ld-subtabs button{transition:none;animation:none} }
-.std-subtabs button:focus-visible,.ld-subtabs button:focus-visible{outline:2px solid var(--brand);outline-offset:-4px;border-radius:6px}
+@media (prefers-reduced-motion:reduce){ .std-subtabs button,.ld-subtabs button,.sched-subtabs button{transition:none;animation:none} }
+.std-subtabs button:focus-visible,.ld-subtabs button,.sched-subtabs button:focus-visible{outline:2px solid var(--brand);outline-offset:-4px;border-radius:6px}
 .ld-subtabs{display:flex;align-items:flex-end;margin:0 -16px;padding:6px 16px 0;border-bottom:1px solid var(--line)}
 .ld-pin{position:sticky;top:var(--topbar-h,118px);z-index:15;grid-column:1 / -1;display:flex;flex-direction:column;gap:12px;margin:-8px -16px 0;padding:0 16px 10px;background:var(--bg);box-shadow:0 6px 8px -8px rgba(16,24,32,.35)}
 /* Leaders list (Goals / Assists) */
@@ -714,11 +715,11 @@ tr.tapped td{animation:tapFlash .32s ease-out}
   <!-- SCHEDULE -->
   <section class="view" id="view-schedule" aria-labelledby="schedTitle">
     <h1 id="schedTitle" style="position:absolute;left:-9999px">Schedule</h1>
+    <div class="sched-subtabs" role="group" aria-label="Show">
+      <button id="segRes" aria-pressed="false">Results</button>
+      <button id="segUp" aria-pressed="true">Upcoming</button>
+    </div>
     <div class="controls">
-      <div class="seg sched-seg" role="group" aria-label="Show">
-        <button id="segRes" aria-pressed="false">Results</button>
-        <button id="segUp" aria-pressed="true">Upcoming</button>
-      </div>
       <div class="row sched-filters">
         <div class="dd" id="compDD"></div>
         <div class="dd dd-right" id="teamDD"></div>
@@ -1404,7 +1405,7 @@ function renderStandings(){
     return `<div class="std" style="--c:var(${COMPS[comp].v})"><div class="std-h std-h-slim"><h2 class="sr-only">${esc(COMPS[comp].n)}</h2><span class="swipe" hidden aria-hidden="true"><span class="swipe-txt">Slide for more</span><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="std-wrap"><table>
       <thead><tr><th scope="col">#</th><th scope="col" class="tm">Team</th><th scope="col" title="Points">Pts</th><th scope="col" title="Games played">GP</th><th scope="col" title="Wins">W</th><th scope="col" title="Ties">T</th><th scope="col" title="Losses">L</th>${showD?'<th scope="col" title="Defaults">D</th>':""}<th scope="col" class="opt" title="Goals for">GF</th><th scope="col" class="opt" title="Goals against">GA</th><th scope="col" title="Goal difference">+/-</th><th scope="col" class="l5c" title="Last 5 games, oldest to newest">Last 5</th><th class="fill" aria-hidden="true"></th></tr></thead>
       <tbody>${rows}</tbody></table></div></div>`;
-  }).join("") + `<p class="note"><span class="mv up">▲</span> <span class="mv down">▼</span> show how far a team moved in the latest week of games (Monday to Sunday). Last 5 reads oldest to newest; tap or hover an icon for the score.</p><p class="note">3 points for a win, 1 for a tie. Teams level on points are separated by most wins, then head-to-head, then goal difference in games between them. Tap a team to see its games and roster.</p>${adj.applied?`<p class="note"><b>Includes ${adj.applied} result${adj.applied>1?"s":""} reported by referees that ${adj.applied>1?"aren’t":"isn’t"} on rasasoccer.ca yet.</b></p>`:""}`;
+  }).join("");   // only "Last updated" sits under the table
   let when = "";
   $("#stdSub").textContent = lastUpdated(standings.updatedAt);
   wireScrollArrows(document);
