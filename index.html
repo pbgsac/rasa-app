@@ -607,6 +607,10 @@ h1,h2,h3{letter-spacing:0;font-weight:700}
 .std-h{background:var(--brand-grad);color:#fff;border-bottom:0}
 .std-h h2{font-size:17px;font-weight:600;letter-spacing:.02em}
 .std-h .swipe{color:#fff;opacity:.85}
+/* Standings: no division title bar (the sub-tab above names it), only the slide hint when the table scrolls */
+.std-h.std-h-slim{background:none;color:var(--muted);border-left:0;border-bottom:1px solid var(--line);padding:7px 12px}
+.std-h.std-h-slim .swipe,.std-h.std-h-slim .swipe-txt{color:var(--brand);opacity:1}
+.std-h.std-h-slim:has(.swipe[hidden]){display:none}
 .std-h .chip{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.35);color:#fff}
 .std-h .chip[aria-pressed="true"]{background:var(--lime);border-color:var(--lime);color:#101820}
 .day-h h2{font-size:16px;font-weight:700;letter-spacing:.03em;color:var(--brand)}
@@ -1373,7 +1377,7 @@ function renderStandings(){
       const diff = r.diff>0 ? "+"+r.diff : String(r.diff);
       return `<tr class="${k&&k===mine?"mine":""}"><td class="rkc"><span class="rk">${i+1}</span>${k?moveHTML(moves[k]||0):""}</td><td class="tm">${nm}</td><td class="pts">${r.pts}</td><td>${r.gp}</td><td>${r.w}</td><td>${r.t}</td><td>${r.l}</td>${showD?`<td>${r.d}</td>`:""}<td class="opt">${r.gf}</td><td class="opt">${r.ga}</td><td>${diff}</td><td class="l5c">${k?formHTML(k):""}</td><td class="fill"></td></tr>`;
     }).join("");
-    return `<div class="std" style="--c:var(${COMPS[comp].v})"><div class="std-h"><h2>${esc(COMPS[comp].n)}</h2><span class="swipe" hidden aria-hidden="true"><span class="swipe-txt">Slide for more</span><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="std-wrap"><table>
+    return `<div class="std" style="--c:var(${COMPS[comp].v})"><div class="std-h std-h-slim"><h2 class="sr-only">${esc(COMPS[comp].n)}</h2><span class="swipe" hidden aria-hidden="true"><span class="swipe-txt">Slide for more</span><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="std-wrap"><table>
       <thead><tr><th scope="col">#</th><th scope="col" class="tm">Team</th><th scope="col" title="Points">Pts</th><th scope="col" title="Games played">GP</th><th scope="col" title="Wins">W</th><th scope="col" title="Ties">T</th><th scope="col" title="Losses">L</th>${showD?'<th scope="col" title="Defaults">D</th>':""}<th scope="col" class="opt" title="Goals for">GF</th><th scope="col" class="opt" title="Goals against">GA</th><th scope="col" title="Goal difference">+/-</th><th scope="col" class="l5c" title="Last 5 games, oldest to newest">Last 5</th><th class="fill" aria-hidden="true"></th></tr></thead>
       <tbody>${rows}</tbody></table></div></div>`;
   }).join("") + `<p class="note"><span class="mv up">▲</span> <span class="mv down">▼</span> show how far a team moved in the latest week of games (Monday to Sunday). Last 5 reads oldest to newest; tap or hover an icon for the score.</p><p class="note">3 points for a win, 1 for a tie. Teams level on points are separated by most wins, then head-to-head, then goal difference in games between them. Tap a team to see its games and roster.</p>${adj.applied?`<p class="note"><b>Includes ${adj.applied} result${adj.applied>1?"s":""} reported by referees that ${adj.applied>1?"aren’t":"isn’t"} on rasasoccer.ca yet.</b></p>`:""}`;
