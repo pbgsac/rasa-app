@@ -612,7 +612,11 @@ h1,h2,h3{letter-spacing:0;font-weight:700}
 .seg button[aria-pressed="true"],.chip[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:#fff}
 .tabs-in{align-items:flex-end;padding-top:6px}
 .tab{border-radius:10px 10px 0 0;padding-left:14px;padding-right:14px}
-.tab[aria-current="page"]{background:var(--brand);color:#fff;border-bottom-color:var(--brand)}
+.tab{transition:background-color .28s ease,color .28s ease,font-size .28s cubic-bezier(.2,.8,.2,1),padding .28s cubic-bezier(.2,.8,.2,1),border-color .28s ease,box-shadow .28s ease}
+.tab[aria-current="page"]{background:var(--brand);color:#fff;border-bottom-color:var(--brand);font-size:17.5px;padding:14px 17px 10px;box-shadow:0 -2px 8px -3px rgba(6,78,59,.45)}
+.tab:active{transform:scale(.97)}
+@media (max-width:400px){ .tab[aria-current="page"]{font-size:16.5px;padding:14px 12px 10px} }
+@media (prefers-reduced-motion:reduce){ .tab{transition:none} }
 .btn-primary{background:var(--brand);color:#fff}
 .team-h h1,.hello h1{font-size:26px}
 .backlink:hover,.tlink:hover,.nmlink:hover{color:var(--accent)}
@@ -1508,6 +1512,11 @@ function renderAuthArea(){
 function renderTabs(){
   const tabs = [["schedule","Schedule"],["standings","Standings"],["leaders","Leaders"]];
   if(FEATURES.gameReport && (!state.user || state.user.role==="player")) tabs.push(["game-report","Ref Report"]);
+  const isOn = k=>state.view===k||(state.view==="team"&&k===(state.teamFrom||"standings"));
+  // Same tabs as last time: just move the selection, so the change animates instead of redrawing
+  const existing = [...$("#tabs").querySelectorAll(".tab")];
+  if(!FEATURES.accounts && existing.length===tabs.length && existing.every((b,i)=>b.dataset.view===tabs[i][0])){
+    existing.forEach(b=>{ if(isOn(b.dataset.view)) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); }); return; }
   if(!FEATURES.accounts){ $("#tabs").innerHTML = tabs.map(([k,n])=>`<button class="tab${k==="game-report"?" tab-end":""}" data-view="${k}" ${(state.view===k||(state.view==="team"&&k===(state.teamFrom||"standings")))?'aria-current="page"':""}>${n}</button>`).join(""); return; }
   if(state.user){ if(state.user.role!=="player") tabs.push(["dashboard", state.user.role==="manager"?"My team":state.user.role==="referee"?"My games":"Admin"]); tabs.push(["account","Account"]); }
   else tabs.push(["sign-in","Sign in"]);
