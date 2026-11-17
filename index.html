@@ -447,7 +447,11 @@ dl.view{margin:0;display:flex;flex-direction:column;border-top:1px solid var(--l
 /* Standings: divisions as sub-tabs of the Standings tab (underlined text, no box), pinned under the header */
 .std-subtabs{position:sticky;top:var(--topbar-h,118px);z-index:15;display:flex;margin:-8px -16px 0;padding:0 16px;background:var(--bg);border-bottom:1px solid var(--line)}
 .std-subtabs button{flex:1;font:inherit;font-size:15.5px;font-weight:700;color:var(--muted);background:none;border:0;border-bottom:3px solid transparent;padding:12px 4px 9px;cursor:pointer;white-space:nowrap}
-.std-subtabs button[aria-pressed="true"]{color:var(--brand);border-bottom-color:var(--brand)}
+.std-subtabs{align-items:flex-end;padding-top:6px}
+.std-subtabs button{border-radius:9px 9px 0 0;transition:background-color .25s ease,color .25s ease,font-size .25s ease}
+.std-subtabs button[aria-pressed="true"]{color:var(--brand);border-bottom-color:var(--brand);background:color-mix(in srgb,var(--brand) 13%,transparent);font-size:16.5px;animation:subIn .3s cubic-bezier(.2,.8,.2,1)}
+@keyframes subIn{from{background-color:transparent;font-size:15.5px}}
+@media (prefers-reduced-motion:reduce){ .std-subtabs button{transition:none;animation:none} }
 .std-subtabs button:focus-visible{outline:2px solid var(--brand);outline-offset:-4px;border-radius:6px}
 .ld-pin{position:sticky;top:var(--topbar-h,118px);z-index:15;grid-column:1 / -1;display:flex;flex-direction:column;gap:12px;margin:-8px -3px 0;padding:8px 3px 10px;background:var(--bg);box-shadow:0 6px 8px -8px rgba(16,24,32,.35)}
 .pod-gp{color:var(--muted);white-space:nowrap}
