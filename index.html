@@ -569,6 +569,8 @@ dl.view{margin:0;display:flex;flex-direction:column;border-top:1px solid var(--l
 @keyframes swipeNudge{0%,100%{transform:translateX(-2px);opacity:.75}50%{transform:translateX(5px);opacity:1}}
 @media (prefers-reduced-motion: reduce){ .swipe svg{animation:none} }
 .swipe[hidden]{display:none}
+.swipe{transition:opacity .25s ease}
+.swipe.done{opacity:0 !important;visibility:hidden}
 
 /* Modal */
 .scrim{position:fixed;inset:0;background:rgba(8,12,24,.55);display:flex;align-items:center;justify-content:center;padding:16px;z-index:50}
@@ -1391,7 +1393,12 @@ function wireScrollArrows(root){
   root.querySelectorAll(".std").forEach(card=>{
     const wrap = card.querySelector(".std-wrap"), arrow = card.querySelector(".swipe");
     if(!wrap || !arrow) return;
-    const upd = ()=>{ arrow.hidden = wrap.scrollWidth - wrap.clientWidth - wrap.scrollLeft < 4; };
+    // The hint row stays while the table can slide. The hint fades out once the end is reached and
+    // only comes back when the table is slid all the way back to the start.
+    const upd = ()=>{ const room = wrap.scrollWidth - wrap.clientWidth;
+      arrow.hidden = room < 4;
+      if(room - wrap.scrollLeft < 4) arrow.classList.add("done");
+      else if(wrap.scrollLeft < 4) arrow.classList.remove("done"); };
     wrap.addEventListener("scroll", upd, {passive:true}); upd();
     // Sliding a finger along the title bar (e.g. "Division 1") scrolls the table under it too.
     const bar = card.querySelector(".std-h");
