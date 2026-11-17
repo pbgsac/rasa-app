@@ -455,6 +455,26 @@ dl.view{margin:0;display:flex;flex-direction:column;border-top:1px solid var(--l
 .std-subtabs button:focus-visible,.ld-subtabs button:focus-visible{outline:2px solid var(--brand);outline-offset:-4px;border-radius:6px}
 .ld-subtabs{display:flex;align-items:flex-end;margin:0 -16px;padding:6px 16px 0;border-bottom:1px solid var(--line)}
 .ld-pin{position:sticky;top:var(--topbar-h,118px);z-index:15;grid-column:1 / -1;display:flex;flex-direction:column;gap:12px;margin:-8px -16px 0;padding:0 16px 10px;background:var(--bg);box-shadow:0 6px 8px -8px rgba(16,24,32,.35)}
+/* Leaders list (Goals / Assists) */
+.ldl-head{display:flex;justify-content:space-between;padding:10px 16px 8px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line)}
+.ldl-list{list-style:none;margin:0;padding:0}
+.ldl-row{display:grid;grid-template-columns:26px 58px 1fr auto;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid var(--line)}
+.ldl-row:last-child{border-bottom:0}
+.ldl-rank{font-size:16px;color:var(--muted);text-align:center;font-variant-numeric:tabular-nums}
+.ldl-photo{justify-self:center;position:relative;width:44px;height:44px;border-radius:50%;overflow:hidden;display:grid;place-items:center;font-size:15px;font-weight:600;color:var(--muted);background:color-mix(in srgb,var(--brand) 10%,var(--surface));border:2px solid var(--line)}
+.ldl-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ldl-who{min-width:0;display:flex;flex-direction:column;gap:2px}
+.ldl-who b{font-size:15.5px;line-height:1.25}
+.ldl-who .ld-team{font-size:13px}
+.ldl-val{font-size:19px;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;padding-left:6px}
+.ldl-row.r1 .ldl-photo{width:58px;height:58px;font-size:19px;border-color:#d4a017}
+.ldl-row.r1 .ldl-who b{font-size:17.5px}
+.ldl-row.r1 .ldl-val{font-size:24px}
+.ldl-row.r1 .ldl-rank{font-size:18px;font-weight:700;color:var(--ink)}
+.ldl-row.r2 .ldl-photo{width:51px;height:51px;font-size:17px;border-color:#a9b1b8}
+.ldl-row.r2 .ldl-who b{font-size:16.5px}
+.ldl-row.r2 .ldl-val{font-size:21.5px}
+.ldl-row.r2 .ldl-rank{font-size:17px;font-weight:700;color:var(--ink)}
 .pod-gp{color:var(--muted);white-space:nowrap}
 .pod-val b{font-family:var(--font-display);font-size:22px}
 .podium{align-items:start}
@@ -1468,20 +1488,16 @@ function renderLeaders(){
   // Ties: goals are separated by assists, assists by goals (as on rasasoccer.ca), then fewer games played.
   const goals = rankRows(playersIn(F.g).filter(p=>p.g>0), "g", (a,b)=>b.a-a.a || a.gp-b.gp).slice(0,LD_TOP);
   const assists = rankRows(playersIn(F.a).filter(p=>p.a>0), "a", (a,b)=>b.g-a.g || a.gp-b.gp).slice(0,LD_TOP);
-  // Top three get a photo card, using the player's photo from their rasasoccer.ca roster card (initials if there's none).
-  // #1 on its own row in the middle, #2 and #3 side by side under it
-  const UNITS = {G:["goal","goals"], A:["assist","assists"], CS:["clean sheet","clean sheets"]};
-  const podium = (rows, unit, val, isTeam)=>`<div class="podium">${rows.slice(0,3).map((r,i)=>`
-    <div class="pod p${i+1}">
-      <div class="pod-photo" aria-hidden="true"><span class="ini">${esc(initialsOf(r.name))}</span>${r.photo?`<img src="${esc(r.photo)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">`:""}<span class="medal">${r.rank}</span></div>
-      ${isTeam ? `<b class="pod-name">${esc(r.name)}</b><span class="ld-team"><span class="dot" style="background:var(${COMPS[TEAMS[r.team].d].v})"></span>${esc(COMPS[TEAMS[r.team].d].n)}</span>` : `<b class="pod-name">${esc(r.name)}</b>${teamCell(r.team)}`}
-      <span class="pod-val"><b>${val(r)}</b> ${UNITS[unit][val(r)===1?0:1]} <span class="pod-gp">– ${r.gp} GP</span></span>
-    </div>`).join("")}</div>`;
+  // Simple list (rank, photo, name and team, number), like a sports app; #1 and #2 a little bigger.
+  // Photos come from the player's rasasoccer.ca roster card, initials if there's none.
   const board = (title, cat, unit, rows, val)=>`
-    <div class="std ld" id="ld-${cat}">${head(title, cat)}
-      ${rows.length ? `${podium(rows, unit, val)}${rows.length>3?`<table><thead><tr><th scope="col">#</th><th scope="col" class="tm">Player</th><th scope="col">GP</th><th scope="col">${unit}</th></tr></thead><tbody>
-      ${rows.slice(3).map(r=>`<tr><td>${r.rank}</td><td class="tm"><b>${esc(r.name)}</b>${teamCell(r.team)}</td><td>${r.gp}</td><td class="pts">${val(r)}</td></tr>`).join("")}
-      </tbody></table>`:""}` : `<div class="empty">No ${unit==="G"?"goals":"assists"} recorded yet${scopeText(F[cat])}.</div>`}</div>`;
+    <div class="std ld ldl" id="ld-${cat}">${head(title, cat)}
+      ${rows.length ? `<div class="ldl-head" aria-hidden="true"><span>Player</span><span>${unit==="G"?"Goals":"Assists"}</span></div>
+      <ol class="ldl-list">${rows.map(r=>`<li class="ldl-row${r.rank<=2?" r"+r.rank:""}">
+        <span class="ldl-rank">${r.rank}</span>
+        <span class="ldl-photo" aria-hidden="true">${esc(initialsOf(r.name))}${r.photo?`<img src="${esc(r.photo)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">`:""}</span>
+        <span class="ldl-who"><b>${esc(r.name)}</b>${teamCell(r.team)}</span>
+        <span class="ldl-val" aria-label="${val(r)} ${unit==="G"?"goals":"assists"}">${val(r)}</span></li>`).join("")}</ol>` : `<div class="empty">No ${unit==="G"?"goals":"assists"} recorded yet${scopeText(F[cat])}.</div>`}</div>`;
   // Keepers: real keeper stats from referee reports when there are any, else team defence from the standings
   let keeperHTML;
   const ks = rankRows(keeperStats(F.k).map(k=>({...k, neg:-k.gaa})), "neg", (a,b)=>b.minutes-a.minutes).slice(0,LD_TOP);
