@@ -461,6 +461,7 @@ dl.view{margin:0;display:flex;flex-direction:column;border-top:1px solid var(--l
 .ldl-list{list-style:none;margin:0;padding:0}
 .ldl-row{display:grid;grid-template-columns:26px 58px 1fr auto;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid var(--line)}
 .ldl-row:last-child{border-bottom:0}
+.ldl-row:nth-child(even){background:var(--surface-2)}   /* alternating rows, like the tables */
 .ldl-rank{font-size:16px;color:var(--muted);text-align:center;font-variant-numeric:tabular-nums}
 .ldl-photo{justify-self:center;position:relative;width:44px;height:44px;border-radius:50%;overflow:hidden;display:grid;place-items:center;font-size:15px;font-weight:600;color:var(--muted);background:color-mix(in srgb,var(--brand) 10%,var(--surface));border:2px solid var(--line)}
 .ldl-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -1519,7 +1520,7 @@ function renderLeaders(){
     const rows = rankRows(teams.filter(t=>t.cs>0).map(t=>({...t, key:t.cs*1000 - Math.round(t.gaa*100)})), "key", (a,b)=>b.gp-a.gp).slice(0,LD_TOP);
     keeperHTML = `<div class="std ld" id="ld-k">
       ${rows.length ? `${`<table><thead><tr><th scope="col">#</th><th scope="col" class="tm">Team</th><th scope="col">GP</th><th scope="col" title="Goals against per game">GA/G</th><th scope="col" title="Clean sheets: games with no goals against">CS</th></tr></thead><tbody>
-      ${rows.map((t,i)=>`<tr class="${t.rank===1?"top":""}${i<3?" cs-r"+(i+1):""}"><td>${t.rank}</td><td class="tm">${teamCell(t.team)}</td><td>${t.gp}</td><td>${t.gaa.toFixed(2)}</td><td class="pts">${t.cs}</td></tr>`).join("")}
+      ${rows.map((t,i)=>`<tr class="${i<3?"cs-r"+(i+1):""}"><td>${t.rank}</td><td class="tm">${teamCell(t.team)}</td><td>${t.gp}</td><td>${t.gaa.toFixed(2)}</td><td class="pts">${t.cs}</td></tr>`).join("")}
       </tbody></table>`}` : `<div class="empty">No clean sheets yet${scopeText(F.k)}.</div>`}
       <p class="note ld-note">A clean sheet is a game where the team didn’t concede a goal, counting every game played (league, cross-over and cup). Ties go to fewer goals against per game.</p></div>`;
   }
