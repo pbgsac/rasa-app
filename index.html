@@ -1039,7 +1039,7 @@ function matchCard(g, opts={}){
   const scored = hasScore(g);
   const hw = scored && g.hs>g.as, aw = scored && g.as>g.hs;
   const teamRow = (code,score,cls)=>`<div class="team ${cls}">${TEAMS[code]?`<button class="nm nmlink" data-teamlink="${esc(code)}" title="Open the ${esc(tn(code))} team page">${esc(tn(code))}</button>`:`<span class="nm">${esc(tn(code))}</span>`}${scored?`<span class="sc">${score}</span>`:""}</div>`;
-  const status = scored ? (g.byApp && webDiffers(g) ? `<span class="appsc" title="Reported in the app by the referee">Ref-reported</span>` : "") : (isPast(g) ? `<span class="pending">Score not reported</span>` : "");
+  const status = scored ? (g.byApp && webDiffers(g) ? `<span class="appsc" title="Reported in the app by the referee">Ref-reported</span>` : "") : (isPast(g) ? `<span class="pending">To be updated</span>` : "");
   const map = mapLink(g.venue);
   const venue = g.venue ? (map ? `<a class="venue" href="${esc(map)}" target="_blank" rel="noopener" title="Open ${esc(g.venue)} in Google Maps">${PIN}${esc(g.venue)}</a>` : `<span>${esc(g.venue)}</span>`) : "";
   const ref = g.refs.length ? `<span class="ref">${JERSEY}${refText(g.refs)}</span>` : "";
