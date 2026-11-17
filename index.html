@@ -371,7 +371,7 @@ dl.view{margin:0;display:flex;flex-direction:column;border-top:1px solid var(--l
 .ld-chips.ld-filter{margin-left:0;justify-content:center}
 .ld-updated{margin:4px 0 0;color:var(--muted);font-size:13px;text-align:center}
 #view-leaders,#view-standings{margin-top:-8px}
-.std-tabs{margin-bottom:4px}
+
 @media (min-width:760px){ .ld-grid{grid-template-columns:1fr 1fr} .ld-grid > .std:last-child{grid-column:1 / -1} }
 .std.ld table{width:100%}
 .std.ld td.tm{white-space:normal}
@@ -444,7 +444,11 @@ dl.view{margin:0;display:flex;flex-direction:column;border-top:1px solid var(--l
 .std.ld tr.cs-r2 .ld-team{font-size:14.5px;font-weight:600;color:var(--ink)}
 .std.ld tr.cs-r3 .ld-team{font-size:13.5px;font-weight:600;color:var(--ink)}
 /* Division tabs (Standings) and category tabs (Leaders) stay pinned under the header while scrolling */
-.seg.std-tabs{position:sticky;top:calc(var(--topbar-h,118px) + 8px);z-index:15;box-shadow:0 -9px 0 3px var(--bg),0 4px 10px -6px rgba(16,24,32,.25)}
+/* Standings: divisions as sub-tabs of the Standings tab (underlined text, no box), pinned under the header */
+.std-subtabs{position:sticky;top:var(--topbar-h,118px);z-index:15;display:flex;margin:-8px -16px 0;padding:0 16px;background:var(--bg);border-bottom:1px solid var(--line)}
+.std-subtabs button{flex:1;font:inherit;font-size:15.5px;font-weight:700;color:var(--muted);background:none;border:0;border-bottom:3px solid transparent;padding:12px 4px 9px;cursor:pointer;white-space:nowrap}
+.std-subtabs button[aria-pressed="true"]{color:var(--brand);border-bottom-color:var(--brand)}
+.std-subtabs button:focus-visible{outline:2px solid var(--brand);outline-offset:-4px;border-radius:6px}
 .ld-pin{position:sticky;top:var(--topbar-h,118px);z-index:15;grid-column:1 / -1;display:flex;flex-direction:column;gap:12px;margin:-8px -3px 0;padding:8px 3px 10px;background:var(--bg);box-shadow:0 6px 8px -8px rgba(16,24,32,.35)}
 .pod-gp{color:var(--muted);white-space:nowrap}
 .pod-val b{font-family:var(--font-display);font-size:22px}
@@ -606,8 +610,9 @@ h1,h2,h3{letter-spacing:0;font-weight:700}
 .m-time,.team .sc,.team-stats b,.pod-val b,.tile .n{font-weight:600}
 .m-time{font-size:18px}
 .seg button[aria-pressed="true"],.chip[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:#fff}
-.tab[aria-current="page"]{border-bottom-color:var(--brand)}
-:root[data-theme="dark"] .tab[aria-current="page"]{border-bottom-color:var(--accent)}
+.tabs-in{align-items:flex-end;padding-top:6px}
+.tab{border-radius:10px 10px 0 0;padding-left:14px;padding-right:14px}
+.tab[aria-current="page"]{background:var(--brand);color:#fff;border-bottom-color:var(--brand)}
 .btn-primary{background:var(--brand);color:#fff}
 .team-h h1,.hello h1{font-size:26px}
 .backlink:hover,.tlink:hover,.nmlink:hover{color:var(--accent)}
@@ -1347,7 +1352,7 @@ function renderStandings(){
   const adj = adjustedStandings();
   const divs = adj.divs.slice().sort((a,b)=>order.indexOf(DIV_COMP(a.name))-order.indexOf(DIV_COMP(b.name)));
   if(!divs.some(dv=>DIV_COMP(dv.name)===state.stdTab) && divs.length) state.stdTab = DIV_COMP(divs[0].name);
-  const tabs = `<div class="seg ld-tabs std-tabs" role="tablist" aria-label="Divisions">${divs.map(dv=>{ const c = DIV_COMP(dv.name);
+  const tabs = `<div class="std-subtabs" role="tablist" aria-label="Divisions">${divs.map(dv=>{ const c = DIV_COMP(dv.name);
     return `<button role="tab" data-stdtab="${c}" aria-pressed="${state.stdTab===c}" aria-selected="${state.stdTab===c}">${esc(COMPS[c].n)}</button>`; }).join("")}</div>`;
   body.innerHTML = tabs + divs.filter(dv=>DIV_COMP(dv.name)===state.stdTab).map(dv=>{
     const comp = DIV_COMP(dv.name);
