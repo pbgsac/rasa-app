@@ -1,0 +1,55 @@
+/* Team pages: header, stats, games, roster and staff. */
+/* Team header */
+.team-h{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px}
+.team-h h1{font-size:30px}
+.standpill{display:inline-flex;align-items:baseline;gap:4px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:14px;color:var(--muted);text-decoration:none}
+.standpill b{color:var(--ink);font-size:16px}
+.standpill:hover{border-color:var(--accent)}
+.std td.pos{color:var(--muted);text-align:left}
+.card{display:inline-block;min-width:16px;padding:0 3px;border-radius:2px;font-size:12px;font-weight:700;text-align:center}
+.card.yc{background:var(--card-yellow);color:#141a15}
+.card.rc{background:var(--bad);color:#fff}
+/* Team page */
+.nmlink{background:none;border:0;padding:0;margin:0;font:inherit;color:inherit;text-align:left;cursor:pointer}
+.nmlink:hover{color:var(--accent);text-decoration:underline}
+.team-tabs{margin-top:6px;align-self:stretch;display:flex}
+.team-tabs button{flex:1;padding:7px 6px;white-space:nowrap}
+.staff-list ul{list-style:none;margin:0;padding:0}
+.staff-list li{display:flex;align-items:center;gap:10px;padding:10px 14px;border-top:1px solid var(--line)}
+.staff-list li:nth-child(even){background:var(--surface-2)}
+.staff-list li .role{margin-left:auto}
+.team-roster td.pts{font-weight:700}
+.backlink{align-self:flex-start;background:none;border:0;padding:4px 0;font-weight:700;color:var(--muted);cursor:pointer;font-size:14px}
+.backlink:hover{color:var(--ink)}
+.team-h{display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:6px;border-left:6px solid var(--c);padding-left:12px}
+.team-h h1{font-size:30px;margin:0}
+.team-h .sub{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;color:var(--muted);font-size:14px}
+.team-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(62px,1fr));gap:6px}
+.team-stats div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px;text-align:left;display:flex;flex-direction:column}
+.team-stats b{font-family:var(--font-display);font-size:20px;line-height:1.1;white-space:nowrap}
+.team-stats span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;font-weight:700}
+.tsec{display:flex;flex-direction:column;gap:10px;margin-top:10px}
+.tsec-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.tsec-h h2{font-size:20px;margin:0}
+.tsec-h small{color:var(--muted)}
+.std.roster td.tm .pl{display:flex;align-items:center;gap:10px}
+.mini-photo{position:relative;flex:none;width:32px;height:32px;border-radius:50%;background:var(--surface-2);display:grid;place-items:center;font-size:12px;font-weight:700;color:var(--muted);overflow:hidden}
+.mini-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.std.roster tr.staff td{background:var(--surface-2)}
+.role{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;background:var(--ink);color:var(--surface);border-radius:4px;padding:1px 6px}
+.std.roster .num{color:var(--muted);font-weight:700;width:28px;padding-right:0}
+/* Long names wrap onto a second line, then stop with "…", so Pts / G / A stay on screen */
+.std.team-roster th.tm,.std.team-roster td.tm{min-width:0;width:178px;max-width:178px;white-space:normal;padding-right:8px}
+.team-roster td.tm .pl{gap:8px;width:168px}
+.team-roster td.tm .pl>span:last-child{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden;line-height:1.25;overflow-wrap:anywhere}
+.team-roster .mini-photo{width:28px;height:28px;font-size:11px}
+.std.team-roster th:first-child,.std.team-roster td:first-child{padding-left:10px;padding-right:2px;min-width:30px;width:30px}
+.std.team-roster th.tm,.std.team-roster td.tm{left:30px}
+.std.roster th.tm,.std.roster td.tm{position:sticky;left:0;padding-left:14px;text-align:left;width:auto;min-width:160px;color:var(--ink)}
+.std.roster th.tm{color:var(--muted)}
+.team-h h1,.hello h1{font-size:26px}
+.backlink:hover,.tlink:hover,.nmlink:hover{color:var(--accent)}
+/* Tap feedback on team names, then the team page slides in */
+.tlink,.nmlink{border-radius:4px;transition:transform .12s ease, background-color .12s ease}
+.tlink:active,.nmlink:active{transform:scale(.96)}
+@media (prefers-reduced-motion: reduce){ .tlink:active,.nmlink:active{transform:none} }

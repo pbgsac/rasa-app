@@ -1,7 +1,7 @@
 // Network first, so the schedule is always fresh; falls back to the last copy when offline.
 // cache: "no-cache" makes the browser check with the server every time instead of reusing
 // its own short-term copy, so updates show on the next open or refresh.
-const CACHE = "rasa-v2";
+const CACHE = "rasa-v3";   // bump when the file layout changes so installed apps start clean
 self.addEventListener("install", e => self.skipWaiting());
 self.addEventListener("activate", e => e.waitUntil(
   caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim())

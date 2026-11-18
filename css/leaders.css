@@ -1,0 +1,72 @@
+/* Leaders tab: Goals / Assists lists and Clean Sheets. */
+/* Leaders */
+.mine-chip[aria-pressed="false"]{border-color:var(--pitch);color:var(--pitch)}
+.ld-h{flex-wrap:wrap;row-gap:8px}
+.ld-chips{display:flex;flex-wrap:wrap;gap:5px;margin-left:auto}
+@media (max-width:480px){ .ld-chips{margin-left:0;width:100%} }
+.ld-grid{display:grid;grid-template-columns:1fr;gap:12px}
+.ld-chips.ld-filter{margin-left:0;justify-content:center}
+.ld-updated{margin:4px 0 0;color:var(--muted);font-size:13px;text-align:center}
+#view-leaders,#view-standings{margin-top:-8px}
+@media (min-width:760px){ .ld-grid{grid-template-columns:1fr 1fr} .ld-grid > .std:last-child{grid-column:1 / -1} }
+.std.ld table{width:100%}
+.std.ld td.tm{white-space:normal}
+.std.ld td.tm > b{display:block;margin-bottom:1px}
+.std.ld td.tm .ld-team{display:flex}
+.std.ld th.tm,.std.ld td.tm{position:static;width:100%;box-shadow:none;min-width:0}
+.ld-team{display:inline-flex;align-items:center;gap:5px;font-size:13px;color:var(--muted)}
+.ld-team .dot{width:7px;height:7px;border-radius:50%;flex:none}
+.std.ld tr.top td{background:color-mix(in srgb,var(--card-yellow) 18%,var(--surface))}
+.std.ld .empty{border:0;border-radius:0}
+.ld-note{padding:8px 14px 12px}
+.pod.p1{grid-column:1 / -1;justify-self:center;max-width:70%}
+.pod{display:flex;flex-direction:column;align-items:center;text-align:center;gap:3px;min-width:0}
+.pod-photo{position:relative;width:76px;height:76px;border-radius:50%;background:var(--surface-2);display:grid;place-items:center;font-family:var(--font-display);font-size:26px;color:var(--muted);border:3px solid var(--ring);margin-bottom:4px}
+.pod-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%}
+.pod-photo .medal{z-index:1}
+.pod.p1 .pod-photo{width:108px;height:108px;font-size:36px}
+.pod.p1{--ring:#d4a017}
+.pod.p2{--ring:#a7b0b8}
+.pod.p3{--ring:#b87333}
+.medal{position:absolute;bottom:-4px;right:-4px;width:26px;height:26px;border-radius:50%;background:var(--ring);color:#141a15;font-family:var(--font-body);font-size:13px;font-weight:800;display:grid;place-items:center;border:2px solid var(--surface)}
+.pod-name{font-size:14px;line-height:1.2;overflow-wrap:anywhere}
+.pod .ld-team{font-size:12px;justify-content:center}
+.pod-val{font-size:14px}
+.std.ld tbody tr:nth-child(even) td.tm{background:var(--surface-2)}
+/* Clean sheets: top three team names stand out, biggest first */
+.std.ld tr.cs-r1 .ld-team{font-size:15.5px;font-weight:700;color:var(--ink)}
+.std.ld tr.cs-r2 .ld-team{font-size:14.5px;font-weight:600;color:var(--ink)}
+.std.ld tr.cs-r3 .ld-team{font-size:13.5px;font-weight:600;color:var(--ink)}
+.std-subtabs button,.ld-subtabs button,.sched-subtabs button{flex:1;font:inherit;font-size:15.5px;font-weight:700;color:var(--muted);background:none;border:0;border-bottom:3px solid transparent;padding:12px 4px 9px;cursor:pointer;white-space:nowrap}
+.std-subtabs button,.ld-subtabs button,.sched-subtabs button{border-radius:9px 9px 0 0;transition:background-color .25s ease,color .25s ease,font-size .25s ease}
+.std-subtabs button[aria-pressed="true"],.ld-subtabs button[aria-pressed="true"],.sched-subtabs button[aria-pressed="true"]{color:var(--brand);border-bottom-color:var(--brand);background:color-mix(in srgb,var(--brand) 13%,transparent);font-size:16.5px;animation:subIn .3s cubic-bezier(.2,.8,.2,1)}
+@media (prefers-reduced-motion:reduce){ .std-subtabs button,.ld-subtabs button,.sched-subtabs button{transition:none;animation:none} }
+.std-subtabs button:focus-visible,.ld-subtabs button:focus-visible,.sched-subtabs button:focus-visible{outline:2px solid var(--brand);outline-offset:-4px;border-radius:6px}
+.ld-subtabs{display:flex;align-items:flex-end;margin:0 -16px;padding:6px 16px 0;border-bottom:1px solid var(--line)}
+.ld-pin{position:sticky;top:var(--topbar-h,118px);z-index:15;grid-column:1 / -1;display:flex;flex-direction:column;gap:12px;margin:-8px -16px -12px;padding:0 16px 10px;background:var(--bg);box-shadow:0 6px 8px -8px rgba(16,24,32,.35)}
+/* Leaders list (Goals / Assists) */
+.ldl-head{display:flex;justify-content:space-between;padding:10px 16px 8px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line)}
+.ldl-list{list-style:none;margin:0;padding:0}
+.ldl-row{display:grid;grid-template-columns:26px 58px 1fr auto;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid var(--line)}
+.ldl-row:last-child{border-bottom:0}
+.ldl-row:nth-child(even){background:var(--surface-2)}   /* alternating rows, like the tables */
+.ldl-rank{font-size:16px;color:var(--muted);text-align:center;font-variant-numeric:tabular-nums}
+.ldl-photo{justify-self:center;position:relative;width:44px;height:44px;border-radius:50%;overflow:hidden;display:grid;place-items:center;font-size:15px;font-weight:600;color:var(--muted);background:color-mix(in srgb,var(--brand) 10%,var(--surface));border:1px solid var(--line)}
+.ldl-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ldl-who{min-width:0;display:flex;flex-direction:column;gap:2px}
+.ldl-who b{font-size:15.5px;line-height:1.25}
+.ldl-who .ld-team{font-size:13px}
+.ldl-val{font-size:19px;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;padding-left:6px}
+.ldl-row.r1 .ldl-photo{width:58px;height:58px;font-size:19px;border-color:#d4a017}
+.ldl-row.r1 .ldl-who b{font-size:17.5px}
+.ldl-row.r1 .ldl-val{font-size:24px}
+.ldl-row.r1 .ldl-rank{font-size:18px;font-weight:700;color:var(--ink)}
+.ldl-row.r2 .ldl-photo{width:51px;height:51px;font-size:17px;border-color:#a9b1b8}
+.ldl-row.r2 .ldl-who b{font-size:16.5px}
+.ldl-row.r2 .ldl-val{font-size:21.5px}
+.ldl-row.r2 .ldl-rank{font-size:17px;font-weight:700;color:var(--ink)}
+.pod-gp{color:var(--muted);white-space:nowrap}
+.pod-val b{font-family:var(--font-display);font-size:22px}
+.podium{align-items:start}
+@media (max-width:700px){ #stdBody > .std,#ldBody > .std{margin:0 -16px;border-radius:0;border-left:0;border-right:0} }
+.m-time,.team .sc,.team-stats b,.pod-val b,.tile .n{font-weight:600}

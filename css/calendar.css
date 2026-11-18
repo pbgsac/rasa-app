@@ -1,0 +1,45 @@
+/* Add to Calendar: button, team search menu, instructions window. */
+/* Add to Calendar */
+/* Small button floating on the right, level with the first date heading */
+.cal-dd{flex:none;align-self:flex-end;width:40%;min-width:136px;margin:6px 0 -40px;z-index:5}
+.cal-dd[hidden]{display:none}
+.cal-btn{justify-content:center;gap:4px;color:var(--brand);font-size:12.5px;padding:7px 6px;border-radius:999px;border-color:color-mix(in srgb,var(--brand) 35%,var(--line));box-shadow:0 1px 3px rgba(16,24,32,.08)}
+.cal-btn .dd-txt{flex:none}
+.cal-btn svg{flex:none}
+.cal-btn .chev{display:none}
+.cal-btn > svg:first-child{width:16px;height:16px}
+#view-schedule:has(.cal-dd:not([hidden])) #list > .day:first-child .day-h{padding-right:calc(max(40%, 136px) + 8px);margin-bottom:10px}
+.cal-menu{left:auto;right:0;width:min(358px,calc(100vw - 32px));max-width:none;min-width:0;padding:0;display:flex;flex-direction:column;max-height:min(70vh,520px);overflow:hidden;transform-origin:top right}
+.cal-help{margin:0;padding:12px 14px 4px;font-size:13px;color:var(--muted)}
+.cal-list{list-style:none;margin:0;padding:4px 6px;overflow:auto;flex:1;min-height:0}
+.cal-search{position:relative;margin:8px 12px 4px}
+.cal-search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.cal-search input{width:100%;box-sizing:border-box;font:inherit;font-size:16px;padding:11px 36px 11px 38px;border:1.5px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink)}
+.cal-search input:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px color-mix(in srgb,var(--brand) 18%,transparent)}
+.cal-clear{position:absolute;right:6px;top:50%;transform:translateY(-50%);border:0;background:none;color:var(--muted);font-size:20px;line-height:1;padding:6px 8px;cursor:pointer}
+.cal-empty{padding:10px 12px;font-size:13.5px;color:var(--muted)}
+.cal-foot{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 12px 12px;border-top:1px solid var(--line);background:var(--surface)}
+.cal-add:disabled{opacity:.45;cursor:default}
+.cal-add{width:100%;justify-content:center;font-size:16px;padding:12px}
+.cal-dd.typing.has-q .cal-help,.cal-dd.typing.has-q .cal-foot{display:none}
+.cal-dd.typing .cal-menu{max-height:none}
+.cal-title{text-transform:none;margin:0}
+.cal-head{display:flex;align-items:flex-start;gap:10px;justify-content:space-between}
+.cal-x{flex:none;display:grid;place-items:center;width:38px;height:38px;margin:-4px -6px 0 0;border:0;border-radius:50%;background:color-mix(in srgb,var(--ink) 7%,transparent);color:var(--ink);cursor:pointer}
+.cal-x:hover{background:color-mix(in srgb,var(--ink) 12%,transparent)}
+.cal-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:4px 0 2px}
+.cal-tab{font:inherit;font-weight:700;font-size:14.5px;padding:10px 6px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.cal-tab-dl{grid-column:1 / -1;font-size:13.5px;padding:8px 6px}
+.cal-tab[aria-selected="true"]{background:color-mix(in srgb,var(--brand) 12%,var(--surface));border-color:var(--brand);color:var(--brand);box-shadow:inset 0 0 0 1px var(--brand)}
+.cal-pane{display:flex;flex-direction:column;gap:10px;min-height:150px}
+.cal-pane .cal-go{text-decoration:none;justify-content:center;text-align:center;font-size:16px;padding:12px}
+.cal-lead{margin:0;font-size:14.5px;line-height:1.45}
+.cal-note{margin:0;font-size:13px;color:var(--muted);line-height:1.4}
+.cal-wait{margin:0;padding:10px 12px;border-radius:10px;background:color-mix(in srgb,var(--accent) 12%,var(--surface));font-size:13.5px;line-height:1.45;color:var(--ink)}
+.cal-warn{padding:10px 12px;border-radius:10px;background:color-mix(in srgb,var(--bad) 8%,var(--surface));color:var(--ink)}
+.cal-steps{margin:4px 0 10px;padding-left:20px;display:flex;flex-direction:column;gap:12px;font-size:14.5px;line-height:1.45}
+.cal-link{display:flex;gap:6px;margin:8px 0 4px}
+.cal-link input{flex:1;min-width:0;font:inherit;font-size:13px;padding:9px 10px;border:1.5px solid var(--line);border-radius:10px;background:var(--surface-2,var(--surface));color:var(--ink)}
+.cal-link .btn{flex:none;padding:9px 14px}
+.cal-choices .btn{justify-content:center;text-align:center}
+@media (prefers-reduced-motion: reduce){ .dd-menu,.dd.open .dd-menu,.dd-btn .chev{transition:none} }

@@ -1,20 +1,14 @@
 # RASA app (app.rasasoccer.ca)
 
-Web app for the Richmond Adult Soccer Association: public schedule and standings, plus
-sign-in areas for managers, referees and administrators.
+The league app for the Richmond Adult Soccer Association: schedule and results, standings,
+leaders, team pages, and Add to Calendar. Data is copied automatically from rasasoccer.ca.
 
-## Status: preview
-This is the working prototype. Schedule, referees, standings and the Hammers FC player list are
-copied from rasasoccer.ca (eSportsDesk) every 4 hours. Accounts, reports and uploads are
-**not saved yet**; they reset when the page reloads. That needs the back end (next phase).
-
-## Files
-- `index.html` – the whole app
-- `games.json`, `standings.json`, `rosters.json` – data copied from rasasoccer.ca
-- `logo.png`, `icon-*.png`, `apple-touch-icon.png`, `manifest.webmanifest`, `sw.js` – logo and
-  "Add to Home Screen" support
-- `CNAME` – tells GitHub Pages to serve this at app.rasasoccer.ca
+- **How it's organised, how to make changes, and the league's rules:** see [CLAUDE.md](CLAUDE.md).
+- **Making a change:** create a branch, open a pull request, try the Azure preview link it posts,
+  then the president merges it. Merging into `main` publishes it.
+- **Trying it locally:** `python3 -m http.server 8000` in this folder, then open http://localhost:8000.
 
 ## Hosting
-GitHub Pages from the `main` branch. DNS (GoDaddy): a CNAME record `app` pointing to
-`<github-account>.github.io`.
+- GitHub Pages from `main`, served at app.rasasoccer.ca (`CNAME`; GoDaddy DNS has a CNAME record
+  `app` pointing to the GitHub Pages address).
+- Azure Static Web App (ashy-water-0e8bef90f) for the server functions in `api/`.
