@@ -1,4 +1,4 @@
-/* Team and referee game reports, match-day rosters (switched off for now: FEATURES.gameReport). */
+/* Game Reports: Ref Reports and Team Reports (no sign-in, FEATURES.gameReport), plus the switched-off sign-in versions and match-day rosters. */
 "use strict";
 
 /* ---------- Reports (prototype: kept in memory; games before Nov 1, 2026 carry sample reports) ---------- */
@@ -49,16 +49,18 @@ function closeReport(){ $("#reportModal").hidden = true; formGame = null; }
 const checked = n=>(document.querySelector(`input[name="${n}"]:checked`)||{}).value;
 const joinMissing = m=>"Please add " + m.join(", ").replace(/, ([^,]*)$/, " and $1") + ".";
 
-// Manager (team) report
-function openReport(id){
-  const u = state.user, g = games[id]; formGame = g; picks = {goals:{}, assists:{}, files:[]};
-  const team = u.team, opp = g.h===team ? g.a : g.h;
+// Manager (team) report. With opts.public it's the no-sign-in Team Reports flow (state.tr holds name, email, team).
+const MAX_FIELD_PHOTOS = 3;
+function openReport(id, opts={}){
+  const pub = !!opts.public, u = state.user, g = games[id]; formGame = g; formGame.publicTeam = pub; pickerSeq = 0;
+  picks = {goals:{}, assists:{}, files:[]};
+  const team = pub ? state.tr.team : u.team, opp = g.h===team ? g.a : g.h;
   const us = g.h===team ? g.hs : g.as, them = g.h===team ? g.as : g.hs;
-  const gp = gamePlayers(g, team);
-  const opts = gp.players.map(p=>p.name).sort((a,b)=>a.split(" ").slice(-1)[0].localeCompare(b.split(" ").slice(-1)[0])).map(n=>`<option>${esc(n)}</option>`).join("");
+  const pickRow = (id, label, btn)=>`<div class="pick pick-add">${playerPicker(team,{label, placeholder:"Player name"})}<button type="button" class="btn btn-ghost btn-sm" id="${id}">${btn}</button></div>`;
   showModal(`
-    <h2 id="reportTitle">Game report</h2>
-    <p class="sub">${esc(tn(team))} vs ${esc(tn(opp))} · ${esc(fmtDay(g.date))}${g.venue?" · "+esc(g.venue):""}</p>
+    <h2 id="reportTitle">Team report</h2>
+    <p class="sub">${esc(tn(team))} vs ${esc(tn(opp))} · ${esc(fmtDay(g.date))} · ${fmtTime(g.time).t} ${fmtTime(g.time).ap}${g.venue?" · "+esc(g.venue):""}</p>
+    ${pub ? `<fieldset><legend>Manager</legend><p class="refname"><b>${esc(state.tr.name)}</b> · ${esc(state.tr.email)}</p><p class="hint">Reporting for ${esc(tn(team))}</p></fieldset>` : ""}
     <fieldset><legend>Final score</legend>
       <div class="score-grid">
         <label for="rUs">${esc(tn(team))}</label><input id="rUs" type="number" min="0" max="30" inputmode="numeric" value="${us??""}">
@@ -66,10 +68,10 @@ function openReport(id){
       </div></fieldset>
     <p class="hint">${rosterHint(g, team)}</p>
     <fieldset><legend>Goal scorers</legend>
-      <div class="pick"><select id="rScorer" aria-label="Player who scored"><option value="">Choose a player</option>${opts}</select><button type="button" class="btn btn-ghost btn-sm" id="rAddGoal">Add goal</button></div>
+      ${pickRow("rAddGoal","Player who scored","Add goal")}
       <div class="chips" id="rGoals"></div></fieldset>
     <fieldset><legend>Assists</legend>
-      <div class="pick"><select id="rAssister" aria-label="Player who assisted"><option value="">Choose a player</option>${opts}</select><button type="button" class="btn btn-ghost btn-sm" id="rAddAssist">Add assist</button></div>
+      ${pickRow("rAddAssist","Player who assisted","Add assist")}
       <div class="chips" id="rAssists"></div></fieldset>
     <fieldset><legend>Referee${g.refs.length?": "+esc(g.refs[0]):""}</legend>
       <p class="q">Overall control of the game</p><p class="hint">1 is poor, 5 is excellent.</p>${rateRow("rControl",5,"Overall control of the game")}
@@ -80,29 +82,40 @@ function openReport(id){
       ${g.refs.slice(1).map((n,i)=>`<p class="q">${esc(n)}</p>${rateRow("rAR"+i,5,"Rating for "+n)}`).join("")}</fieldset>`:""}
     <fieldset><legend>Field condition</legend>
       <label for="rField" class="hint">Describe any field issues: surface, lines, nets, lights, anything unsafe.</label>
-      <textarea id="rField" rows="3" placeholder="No issues"></textarea>
-      <label class="btn btn-ghost btn-sm filebtn" for="rFiles">Add photos or videos</label>
-      <input id="rFiles" type="file" accept="image/*,video/*" multiple class="visually-hidden">
+      <textarea id="rField" rows="4" placeholder="No issues"></textarea>
+      <label class="btn btn-ghost btn-sm photo-btn"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M9 3 7.2 5H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3.2L15 3H9Zm3 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg>Add photos<input id="rFiles" type="file" accept="image/*" multiple class="sr-only"></label>
+      <p class="hint">Optional, up to ${MAX_FIELD_PHOTOS} photos.</p>
       <div class="thumbs" id="rThumbs"></div></fieldset>
     <fieldset><legend>Comments <span class="opt-l">(optional)</span></legend><textarea id="rNotes" rows="3" placeholder="Anything else the league should know"></textarea></fieldset>
     <p class="err" id="reportErr" hidden></p>
-    <div class="actions"><button type="button" class="btn btn-ghost" id="reportCancel">Cancel</button><button type="submit" class="btn btn-primary">Submit report</button></div>`, "team");
+    <div class="actions"><button type="button" class="btn btn-ghost" id="reportCancel">Cancel</button><button type="submit" class="btn btn-primary" id="teamSubmit">${pub?"Send report":"Submit report"}</button></div>`, "team");
   const draw = ()=>{
     $("#rGoals").innerHTML = Object.entries(picks.goals).map(([n,c])=>`<button type="button" class="chip" data-rm="goals" data-n="${esc(n)}" title="Remove one">${esc(n)}${c>1?" ×"+c:""} <span aria-hidden="true">✕</span></button>`).join("");
     $("#rAssists").innerHTML = Object.entries(picks.assists).map(([n,c])=>`<button type="button" class="chip" data-rm="assists" data-n="${esc(n)}" title="Remove one">${esc(n)}${c>1?" ×"+c:""} <span aria-hidden="true">✕</span></button>`).join("");
-    $("#rThumbs").innerHTML = picks.files.map((f,i)=>`<figure class="thumb">${f.type.startsWith("image/")?`<img src="${f.url}" alt="">`:`<div class="vid">▶</div>`}<figcaption>${esc(f.name)}</figcaption><button type="button" class="x" data-rmfile="${i}" aria-label="Remove ${esc(f.name)}">✕</button></figure>`).join("");
+    $("#rThumbs").innerHTML = picks.files.map((f,i)=>`<figure class="thumb">${f.busy?`<div class="vid">…</div>`:`<img src="${f.url}" alt="Field photo ${i+1}">`}<figcaption>Photo ${i+1}</figcaption><button type="button" class="x" data-rmfile="${i}" aria-label="Remove photo ${i+1}">✕</button></figure>`).join("");
   };
-  $("#rAddGoal").onclick = ()=>{ const p=$("#rScorer").value; if(!p) return; picks.goals[p]=(picks.goals[p]||0)+1; draw(); };
-  $("#rAddAssist").onclick = ()=>{ const p=$("#rAssister").value; if(!p) return; picks.assists[p]=(picks.assists[p]||0)+1; draw(); };
+  const add = (btnId, kind)=>{ const input = $("#"+btnId).closest(".pick").querySelector(".cbx-in"); const p = nameCase(input.value.trim().replace(/\s+/g," "));
+    if(!p){ input.focus(); return; } picks[kind][p] = (picks[kind][p]||0)+1; input.value = ""; closePicker(input); draw(); };
+  $("#rAddGoal").onclick = ()=>add("rAddGoal","goals");
+  $("#rAddAssist").onclick = ()=>add("rAddAssist","assists");
   $("#reportForm").onclick = e=>{
     const b = e.target.closest("[data-rm]"); if(b){ const o=picks[b.dataset.rm], n=b.dataset.n; if(--o[n]<=0) delete o[n]; draw(); return; }
     const x = e.target.closest("[data-rmfile]"); if(x){ picks.files.splice(+x.dataset.rmfile,1); draw(); }
   };
-  $("#rFiles").onchange = e=>{ [...e.target.files].forEach(f=>picks.files.push({name:f.name, type:f.type||"", url:URL.createObjectURL(f)})); e.target.value=""; draw(); };
+  $("#reportForm").onchange = null;
+  $("#rFiles").onchange = async e=>{ const files = [...e.target.files]; e.target.value = ""; const err = $("#reportErr");
+    for(const f of files){
+      if(picks.files.length >= MAX_FIELD_PHOTOS){ err.textContent = `Up to ${MAX_FIELD_PHOTOS} photos.`; err.hidden = false; break; }
+      if(!/^image\//.test(f.type||"image/")) continue;
+      const slot = {busy:true}; picks.files.push(slot); draw();
+      try{ Object.assign(slot, await shrinkPhoto(f), {busy:false}); }
+      catch(x){ picks.files.splice(picks.files.indexOf(slot),1); err.textContent = "That photo couldn’t be opened. Try taking it again, or pick a JPEG or PNG."; err.hidden = false; }
+      draw(); } };
   $("#rUs").focus();
 }
 function submitTeamReport(){
-  const err = $("#reportErr"), u = state.user, g = formGame;
+  const err = $("#reportErr"), g = formGame, pub = !!g.publicTeam;
+  const team = pub ? state.tr.team : state.user.team, opp = g.h===team ? g.a : g.h;
   const us = $("#rUs").value, them = $("#rThem").value;
   const control = checked("rControl"), decisions = checked("rDecisions"), overall = checked("rOverall");
   const missing = [];
@@ -112,13 +125,16 @@ function submitTeamReport(){
   if(!overall) missing.push("an overall score");
   const ars = g.refs.slice(1).map((name,i)=>({name, rating:+checked("rAR"+i)||0}));
   if(ars.some(a=>!a.rating)) missing.push("a rating for each assistant referee");
-  if(missing.length){ err.textContent = joinMissing(missing); err.hidden=false; return; }
+  if(picks.files.some(f=>f.busy)) missing.push("a moment for the photos to finish loading");
+  if(missing.length){ err.textContent = joinMissing(missing); err.hidden=false; err.scrollIntoView({block:"nearest"}); return; }
   const goals = Object.values(picks.goals).reduce((a,b)=>a+b,0), assists = Object.values(picks.assists).reduce((a,b)=>a+b,0);
-  if(goals > +us){ err.textContent = `You listed ${goals} goals but a final score of ${us}. Remove a scorer or fix the score.`; err.hidden=false; return; }
-  if(assists > goals){ err.textContent = `You listed more assists (${assists}) than goals (${goals}).`; err.hidden=false; return; }
-  teamReports[reportKey(g,u.team)] = {by:u.name, when:new Date().toLocaleDateString("en-CA",{month:"short",day:"numeric"}), team:u.team,
-    us:+us, them:+them, goals:{...picks.goals}, assists:{...picks.assists}, control:+control, decisions:+decisions, overall:+overall, ars,
-    field:$("#rField").value.trim(), files:picks.files.slice(), notes:$("#rNotes").value.trim()};
+  if(goals > +us){ err.textContent = `You listed ${goals} goals but a final score of ${us}. Remove a scorer or fix the score.`; err.hidden=false; err.scrollIntoView({block:"nearest"}); return; }
+  if(assists > goals){ err.textContent = `You listed more assists (${assists}) than goals (${goals}).`; err.hidden=false; err.scrollIntoView({block:"nearest"}); return; }
+  const r = {by: pub ? state.tr.name : state.user.name, email: pub ? state.tr.email : (state.user.email||""), when:new Date().toLocaleDateString("en-CA",{month:"short",day:"numeric"}),
+    team:tn(team), opponent:tn(opp), us:+us, them:+them, goals:{...picks.goals}, assists:{...picks.assists}, referee:g.refs[0]||"", control:+control, decisions:+decisions, overall:+overall, ars,
+    field:$("#rField").value.trim(), notes:$("#rNotes").value.trim()};
+  if(pub){ sendTeamReport(g, team, r); return; }
+  teamReports[reportKey(g,team)] = {...r, team, files:picks.files.slice()};
   closeReport(); toast("Report submitted. Your co-managers will see it's done."); renderDashboard(); renderTabs();
 }
 
@@ -381,6 +397,7 @@ const fmtLock = g=>lockAt(g).toLocaleString("en-CA",{weekday:"short",hour:"numer
 function rosterFor(g, team){
   const k = mrKey(g,team);
   if(matchRosters[k]) return matchRosters[k];
+  if(!FEATURES.accounts) return null;   // sample rosters belong to the sign-in prototype
   if(isPast(g) && g.date >= "2026-10-01" && rosterOf(team).length){
     const ps = rosterOf(team).slice().sort((a,b)=>b.gp-a.gp || a.name.localeCompare(b.name)).slice(0,16).map(p=>p.name);
     return {players:ps, by:(TEAM_MANAGERS[team]||[`${tn(team)} manager`])[0], sample:true};
@@ -642,5 +659,103 @@ async function sendRefReport(g, r){
   btn.disabled = false; btn.textContent = "Try again";
   const why = data && data.error ? data.error : (res ? "The report couldn’t be sent." : "No connection. Check your signal and try again.");
   err.innerHTML = `${esc(why)} Your answers are still here.<br><a href="${esc(mailtoHref(MATCHREPORT, subject, text))}">Or email it instead</a> and attach the team list photos yourself.`;
+  err.hidden = false; err.scrollIntoView({block:"nearest"});
+}
+
+/* ---------- Team Reports (managers, no sign-in) ----------
+   1) Manager enters name, email and team  2) picks one of that team's games
+   3) fills in the team report  4) the app sends it to the server, which emails it from
+   matchreport@rasasoccer.ca to stats@ and president@rasasoccer.ca (Reply-To: the manager). */
+const TEAM_REPORT_TO = ["stats@rasasoccer.ca", "president@rasasoccer.ca"];
+const loadMgr = ()=>{ try{ return JSON.parse(localStorage.getItem("rasa.mgr")||"{}"); }catch(e){ return {}; } };
+const saveMgr = v=>{ try{ localStorage.setItem("rasa.mgr", JSON.stringify(v)); }catch(e){} };
+const sentTeam = (g, team)=>{ try{ return (JSON.parse(localStorage.getItem("rasa.sentTeam")||"[]")).includes(reportKey(g, team)); }catch(e){ return false; } };
+const teamOptions = sel=>["D1","D2","MS"].map(d=>`<optgroup label="${esc(COMPS[d].n)}">${Object.entries(TEAMS).filter(([,t])=>t.d===d)
+  .sort((a,b)=>a[1].n.localeCompare(b[1].n)).map(([k,t])=>`<option value="${esc(k)}"${k===sel?" selected":""}>${esc(t.n)}</option>`).join("")}</optgroup>`).join("");
+
+function renderTeamReport(){
+  const v = $("#view-team-report"), tr = state.tr;
+  if(tr.step==="who" || !tr.name || !tr.email || !TEAMS[tr.team]){
+    const saved = loadMgr();
+    v.innerHTML = `<div class="hello"><h1>Team report</h1><p>For team managers: send your game report to the league.</p></div>
+      <form class="auth rr-who" id="trWho" novalidate>
+        <p class="rr-step">Step 1 of 3</p>
+        <div class="field"><label for="trName">Your name</label><input id="trName" type="text" autocomplete="name" placeholder="First and last name" value="${esc(tr.name||saved.name||"")}"></div>
+        <div class="field"><label for="trEmail">Your email</label><input id="trEmail" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" value="${esc(tr.email||saved.email||"")}"></div>
+        <div class="field"><label for="trTeam">Your team</label><select id="trTeam"><option value="">Choose your team</option>${teamOptions(tr.team||saved.team||"")}</select></div>
+        <input type="text" name="website" id="trWebsite" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+        <p class="err" id="trErr" hidden></p>
+        <button class="btn btn-primary bigbtn" type="submit">Next</button>
+        <p class="hint">Your report goes to the league’s stats and president. We only use your email to reply about this report.</p>
+      </form>`;
+    $("#trWho").onsubmit = e=>{ e.preventDefault();
+      const name = nameCase($("#trName").value.trim().replace(/\s+/g," ")), email = $("#trEmail").value.trim(), team = $("#trTeam").value, err = $("#trErr");
+      const m = []; if(normName(name).length<2) m.push("your first and last name"); if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) m.push("a valid email address"); if(!TEAMS[team]) m.push("your team");
+      if(m.length){ err.textContent = joinMissing(m); err.hidden = false; return; }
+      Object.assign(state.tr, {step:"pick", name, email, team, hp:$("#trWebsite").value}); saveMgr({name, email, team}); renderTeamReport(); window.scrollTo(0,0); };
+    return;
+  }
+  // Step 2: this team's games that have started, from the last couple of weeks, plus the rest of today
+  const team = tr.team, now = new Date(), from = new Date(today); from.setDate(from.getDate()-tr.days);
+  const endToday = new Date(today); endToday.setDate(endToday.getDate()+1);
+  const theirs = games.filter(g=>g.h===team || g.a===team);
+  const list = theirs.filter(g=>parseD(g.date) >= from && (kickoff(g) <= now || parseD(g.date) < endToday)).sort((x,y)=>(y.date+y.time).localeCompare(x.date+x.time));
+  const older = theirs.some(g=>parseD(g.date) < from);
+  const card = g=>{ const opp = g.h===team ? g.a : g.h, later = kickoff(g) > now;
+    const us = g.h===team ? g.hs : g.as, them = g.h===team ? g.as : g.hs, scored = hasScore(g);
+    return `<button type="button" class="gp-game" data-pickteamgame="${g.id}" style="--c:var(${COMPS[g.comp].v})">
+      <span class="gp-t">${fmtTime(g.time).t}<small>${fmtTime(g.time).ap}</small></span>
+      <span class="gp-teams"><b>${esc(tn(team))}${scored?` ${us}–${them}`:""}</b><span><span class="muted small">vs</span> <b>${esc(tn(opp))}</b></span><small>${esc(COMPS[g.comp].n)}${g.venue?" · "+esc(g.venue):""}${later?" · kicks off later today":""}</small></span>
+      ${sentTeam(g, team)?`<span class="appsc">Sent</span>`:""}
+    </button>`; };
+  const m = new Map(); list.forEach(g=>{ if(!m.has(g.date)) m.set(g.date,[]); m.get(g.date).push(g); });
+  let days = ""; m.forEach((gs,d)=>{ days += `<h3 class="gp-day">${esc(fmtDay(d))}${dayTag(d)?` <span class="tag">${dayTag(d)}</span>`:""}</h3>` + gs.map(card).join(""); });
+  v.innerHTML = `<div class="hello"><h1>Team report</h1><p>Step 2 of 3 · pick your game</p></div>
+    <div class="rr-me"><span>Reporting for <b>${esc(tn(team))}</b> · ${esc(tr.name)} · ${esc(tr.email)}</span><button type="button" class="linkbtn" id="trChange">Change</button></div>
+    <div class="tsec"><div class="tsec-h"><h2>${esc(tn(team))} games</h2><small>last ${tr.days} days, newest first</small></div>
+      <div class="gp-list">${days || `<div class="empty">No ${esc(tn(team))} games in this period.</div>`}</div>
+      ${older?`<button type="button" class="btn btn-ghost more" id="trMore">Show earlier games</button>`:""}</div>`;
+  $("#trChange").onclick = ()=>{ state.tr.step = "who"; renderTeamReport(); };
+  const more = $("#trMore"); if(more) more.onclick = ()=>{ state.tr.days += 14; renderTeamReport(); };
+  v.onclick = e=>{ const b = e.target.closest("[data-pickteamgame]"); if(b) openReport(+b.dataset.pickteamgame, {public:true}); };
+}
+
+function teamReportSubject(g, r){ return `TEAM REPORT | ${g.date} | ${g.number?"#"+g.number+" | ":""}${r.team} ${r.us}-${r.them} ${r.opponent}`; }
+function teamReportText(g, r){
+  const L = [], list = o=>Object.entries(o||{}).map(([n,c])=>n+(c>1?" x"+c:"")).join("; ") || "None";
+  L.push("RASA TEAM REPORT", "");
+  L.push(`Team: ${r.team}`, `Opponent: ${r.opponent}`, `Final score: ${r.team} ${r.us} - ${r.them} ${r.opponent}`);
+  L.push(`Game number: ${g.number||"—"}`, `Date: ${fmtDay(g.date)}`, `Kickoff: ${fmtTime(g.time).t} ${fmtTime(g.time).ap}`, `Field: ${g.venue||"—"}`, "");
+  L.push(`Manager: ${r.by}`, `Manager email: ${r.email}`, "");
+  L.push(`Goal scorers: ${list(r.goals)}`, `Assists: ${list(r.assists)}`, "");
+  L.push(`Referee: ${r.referee||"Not listed"}`, `Control of the game: ${r.control}/5`, `Decision making: ${r.decisions}/5`, `Overall score: ${r.overall}/10`);
+  r.ars.forEach(a=>L.push(`Assistant referee ${a.name}: ${a.rating}/5`)); L.push("");
+  L.push(`Field condition: ${r.field||"No issues"}`, `Comments: ${r.notes||"None"}`, "", `Submitted ${r.when} via app.rasasoccer.ca`);
+  return L.join("\n");
+}
+async function sendTeamReport(g, team, r){
+  const err = $("#reportErr"), btn = $("#teamSubmit");
+  const photos = picks.files.filter(p=>p.data).map((p,i)=>({name:`field-photo-${i+1}.jpg`, type:p.type, data:p.data}));
+  const subject = teamReportSubject(g, r), text = teamReportText(g, r) + (photos.length ? `\n\nField photos attached: ${photos.length}` : "");
+  const payload = {type:"team", name:r.by, email:r.email, team:r.team, subject, text, website:state.tr.hp||"", photos,
+    report:{...r, game:{date:g.date, time:g.time, number:g.number, venue:g.venue, home:tn(HOME(g)), away:tn(AWAY(g)), comp:COMPS[g.comp].n, officials:g.refs}}};
+  btn.disabled = true; btn.textContent = "Sending…"; err.hidden = true;
+  let res, data = {};
+  try{
+    res = await fetch(REPORT_API, {method:"POST", headers:{"Content-Type":"text/plain;charset=UTF-8"}, body:JSON.stringify(payload)});
+    data = await res.json().catch(()=>({}));
+  }catch(e){ res = null; }
+  if(res && res.ok && data.ok){
+    try{ const s = JSON.parse(localStorage.getItem("rasa.sentTeam")||"[]"); s.push(reportKey(g, team)); localStorage.setItem("rasa.sentTeam", JSON.stringify(s.slice(-50))); }catch(e){}
+    showModal(`<h2 id="reportTitle">Report sent</h2>
+      <p class="sub">${esc(r.team)} ${r.us}–${r.them} ${esc(r.opponent)} · ${esc(fmtDay(g.date))}</p>
+      <div class="okbox">Thanks, ${esc(r.by.split(" ")[0])}. Your report${photos.length?` and ${photos.length} photo${photos.length>1?"s":""}`:""} went to the league.</div>
+      <div class="actions"><button type="button" class="btn btn-ghost" id="trAnother">Report another game</button><button type="button" class="btn btn-primary" id="reportCancel">Done</button></div>`, "view");
+    $("#trAnother").onclick = ()=>{ closeReport(); renderTeamReport(); };
+    renderTeamReport(); return;
+  }
+  btn.disabled = false; btn.textContent = "Try again";
+  const why = data && data.error ? data.error : (res ? "The report couldn’t be sent." : "No connection. Check your signal and try again.");
+  err.innerHTML = `${esc(why)} Your answers are still here.<br><a href="${esc(mailtoHref(TEAM_REPORT_TO.join(","), subject, text))}">Or email it instead</a>${photos.length?" and attach your photos":""}.`;
   err.hidden = false; err.scrollIntoView({block:"nearest"});
 }

@@ -19,14 +19,15 @@ phone-first. It is plain HTML, CSS and JavaScript: no framework, no build step, 
 | `index.html` | The page frame: header, main tabs, empty screens, pop-up shells. Loads the files below. |
 | `css/base.css` | Shared look: colours (CSS variables), fonts, header, main tabs, sub-tabs, drop-downs, tables, pop-ups, install button. |
 | `css/schedule.css` `standings.css` `team.css` `leaders.css` `calendar.css` | One file per screen. |
-| `css/refs.css` | Sign-in, accounts, dashboards, ref reports, match-day rosters (switched off for now). |
+| `css/refs.css` | Report forms and game pickers, plus sign-in, accounts and dashboards (switched off for now). |
 | `js/core.js` | Team list, data loading, helpers (`$`, `esc`, dates), app `state`, `FEATURES` switches, field map pins, drop-down menus. |
 | `js/schedule.js` `standings.js` `leaders.js` `team.js` `calendar.js` `install.js` | One file per screen or feature. |
-| `js/accounts.js` `js/reports.js` | Sign-in, dashboards, team and referee reports (switched off for now). |
+| `js/reports.js` | Game Reports: Ref Reports and Team Reports (name + email, pick a game, fill in, send). Also holds the switched-off sign-in versions. |
+| `js/accounts.js` | Sign-in, ref accounts and dashboards (switched off for now). |
 | `js/app.js` | Main tabs, page routing, tap/change handlers and start-up. Loads last. |
 | `games.json` `standings.json` `rosters.json` `calendar/*.ics` | Data copied from rasasoccer.ca by the sync bot. **Don't edit by hand**; the next sync overwrites it. |
 | `tools/sync.py` `tools/calendar_feeds.py` | The scraper and the calendar-feed builder used by the sync. |
-| `api/` | Azure Functions (Node 20): `/api/report` (paused) and `/api/sync-reports`. |
+| `api/` | Azure Functions (Node 20): `/api/report` (sends Ref and Team reports) and `/api/sync-reports`. Tests: `cd api && npm test`. |
 | `sw.js` `manifest.webmanifest` icons | Installed-app support. |
 | `CNAME` | Serves GitHub Pages at app.rasasoccer.ca. |
 
@@ -59,9 +60,14 @@ changed, and redeploys to Azure. It can also be started by hand from the Actions
 ("Run workflow").
 
 ## League rules (please keep to these)
-- **Ref reports through the app are paused** until sign-in exists: the Ref Report screen is hidden
-  (`FEATURES.gameReport`) and `/api/report` refuses submissions unless the Azure setting
-  `REPORTS_OPEN` is `true`. Referees email matchreport@rasasoccer.ca for now.
+- **Game Reports** (main tab, right side) need no sign-in: people enter their name and email.
+  - **Ref Reports** are emailed from matchreport@rasasoccer.ca to itself (Reply-To: the referee) and saved
+    to the matchreport@ OneDrive, which rebuilds the "Ref Reports" and "Discipline" workbooks.
+  - **Team Reports** (managers) are emailed from matchreport@ to stats@rasasoccer.ca and
+    president@rasasoccer.ca (Reply-To: the manager). Not saved to OneDrive. The Azure setting
+    `TEAM_REPORT_TO` can change that list.
+  - Recipients are fixed on the server; never let the app choose who an email goes to.
+  - To pause both: set `REPORTS_OPEN` to `false` in Azure and `FEATURES.gameReport` to `false` in `js/core.js`.
 - **No keys or passwords in the code.** Microsoft Graph settings (`GRAPH_TENANT_ID`,
   `GRAPH_CLIENT_ID`, `GRAPH_CLIENT_SECRET`, `MAIL_FROM`, `ONEDRIVE_DRIVE_ID`, `ONEDRIVE_FOLDER_ID`)
   live only in Azure → Static Web App → Environment variables.

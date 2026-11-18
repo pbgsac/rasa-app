@@ -80,6 +80,46 @@ ${photos}
 </table></td></tr></table></body></html>`;
 }
 
+/* ---------------- Team (manager) report email ----------------
+   rec: { submittedAt, name, email, team, report:{ team, opponent, us, them, goals:{name:count}, assists:{name:count},
+          referee, control, decisions, overall, ars:[{name, rating}], field, notes, game:{date, time, number, venue, comp, officials} } } */
+function teamEmailHtml(rec, photoCids) {
+  const r = rec.report || {}, g = r.game || {};
+  const td = "padding:6px 10px;border-bottom:1px solid #e3e9e5;vertical-align:top;font-size:14px;color:#101820";
+  const th = "padding:6px 10px;text-align:left;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:#4F5E57;background:#F3F6F4;border-bottom:1px solid #dde4e0";
+  const section = (title, inner) => `<tr><td style="padding:18px 20px 4px"><div style="font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:${C.green};border-bottom:2px solid ${C.lime};padding-bottom:4px;margin-bottom:8px">${title}</div>${inner}</td></tr>`;
+  const table = (heads, rows, empty) => rows.length
+    ? `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse"><tr>${heads.map(h => `<th style="${th}">${h}</th>`).join("")}</tr>${rows.map(cells => `<tr>${cells.map(c => `<td style="${td}">${c}</td>`).join("")}</tr>`).join("")}</table>`
+    : `<div style="font-size:14px;color:${C.muted};padding:2px 0 6px">${empty}</div>`;
+  const kv = rows => `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse">${rows.map(([k, v]) => `<tr><td style="${td};width:42%;color:${C.muted}">${k}</td><td style="${td}">${v}</td></tr>`).join("")}</table>`;
+  const counted = o => Object.entries(o || {}).filter(([n]) => s(n)).map(([n, c]) => [esc(titleCase(n)), esc(+c || 1)]);
+  // Rating shown as filled/empty dots plus the number, e.g. ●●●●○ 4/5
+  const rating = (n, of) => { n = Math.max(0, Math.min(of, +n || 0)); return `<span style="color:${C.green};letter-spacing:2px;font-size:15px">${"●".repeat(n)}</span><span style="color:#c9d3cd;letter-spacing:2px;font-size:15px">${"●".repeat(of - n)}</span> <b>${n}/${of}</b>`; };
+  const photos = (photoCids || []).length ? section("Field photos", photoCids.map(p => `<div style="display:inline-block;margin:0 10px 10px 0;text-align:center;vertical-align:top"><img src="cid:${p.cid}" alt="${esc(p.label)}" width="250" style="width:250px;max-width:100%;border:1px solid #dde4e0;border-radius:6px;display:block"><div style="font-size:12px;color:${C.muted};margin-top:4px">${esc(p.label)}</div></div>`).join("")) : "";
+  const meta = [fmtDate(g.date, true), g.time ? fmtTime(g.time) : "", g.venue, g.number ? "Game #" + g.number : "", g.comp || compOf(g.number)].filter(Boolean).map(esc).join(" &nbsp;·&nbsp; ");
+  const ars = (r.ars || []).map(a => [esc(titleCase(a.name)), rating(a.rating, 5)]);
+  return `<!doctype html><html><body style="margin:0;padding:0;background:${C.off}">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${C.off};padding:16px 0"><tr><td align="center">
+<table role="presentation" width="640" cellpadding="0" cellspacing="0" style="width:640px;max-width:100%;background:#fff;border-radius:10px;overflow:hidden;font-family:Segoe UI,Helvetica,Arial,sans-serif;border:1px solid #dde4e0">
+<tr><td style="background:${C.green};padding:16px 20px;border-bottom:4px solid ${C.lime}">
+  <div style="color:#cfe3d9;font-size:12px;letter-spacing:.06em;text-transform:uppercase;font-weight:700">RASA team report · ${esc(r.team)}</div>
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:8px"><tr>
+    <td style="color:#fff;font-size:18px;font-weight:700;width:40%">${esc(r.team)}<div style="font-size:11px;font-weight:600;color:#cfe3d9;text-transform:uppercase;letter-spacing:.05em">Reporting team</div></td>
+    <td align="center" style="color:#fff;font-size:34px;font-weight:800;white-space:nowrap">${esc(r.us)} – ${esc(r.them)}</td>
+    <td align="right" style="color:#fff;font-size:18px;font-weight:700;width:40%">${esc(r.opponent)}<div style="font-size:11px;font-weight:600;color:#cfe3d9;text-transform:uppercase;letter-spacing:.05em">Opponent</div></td>
+  </tr></table>
+  <div style="color:#e6f0eb;font-size:13px;margin-top:10px">${meta}</div>
+</td></tr>
+${section("Submitted by", kv([["Manager", `<b>${esc(rec.name)}</b><br><a href="mailto:${esc(rec.email)}" style="color:${C.link}">${esc(rec.email)}</a>`], ["Team", esc(r.team)]]))}
+${section("Goals and assists", `${table(["Goal scorer", "Goals"], counted(r.goals), "No goals listed")}<div style="height:8px"></div>${table(["Assisted by", "Assists"], counted(r.assists), "No assists listed")}`)}
+${section(`Referee${r.referee ? " · " + esc(r.referee) : ""}`, kv([["Control of the game", rating(r.control, 5)], ["Decision making", rating(r.decisions, 5)], ["Overall score", rating(r.overall, 10)]]))}
+${ars.length ? section("Assistant referees", table(["Assistant referee", "Rating"], ars, "")) : ""}
+${section("Field and comments", kv([["Field condition", nl2br(r.field) || "No issues"], ["Comments", nl2br(r.notes) || "None"]]))}
+${photos}
+<tr><td style="padding:16px 20px;color:${C.muted};font-size:12px;border-top:1px solid #e3e9e5">Submitted ${esc(new Date(rec.submittedAt || Date.now()).toLocaleString("en-CA", { timeZone: "America/Vancouver", dateStyle: "medium", timeStyle: "short" }))} via app.rasasoccer.ca · Reply to this email to reach the manager.</td></tr>
+</table></td></tr></table></body></html>`;
+}
+
 /* ---------------- Ref Reports workbook ---------------- */
 const ST = {
   title: { font: { bold: true, size: 16, color: C.white }, fill: C.green, align: { v: "center", indent: 1 } },
@@ -267,4 +307,4 @@ function buildDisciplineWorkbook(records, reportsBookUrl, seasonLabel) {
   return wb.toBuffer();
 }
 
-module.exports = { emailHtml, buildReportsWorkbook, buildDisciplineWorkbook, computeDiscipline, sheetNameFor, gameKey, latestPerGame, shortTeam, fmtDate, normName };
+module.exports = { emailHtml, teamEmailHtml, buildReportsWorkbook, buildDisciplineWorkbook, computeDiscipline, sheetNameFor, gameKey, latestPerGame, shortTeam, fmtDate, normName };

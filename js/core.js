@@ -112,8 +112,8 @@ function toast(msg){const t=$("#toast"); t.textContent=msg; t.hidden=false; clea
 // (their code stays, ready to turn back on with the back end).
 // Note: the website lists the AWAY team first, so in our data g.h is the away team and g.a the home team.
 const HOME = g=>g.a, AWAY = g=>g.h;
-const FEATURES = {accounts:false, gameReport:false};   // Ref Report hidden until sign-in arrives (it will move to a Refs screen)
-const state = { view:"schedule", mode:"up", comp:"ALL", team:"ALL", user:null, upWeeks:2, resWeeks:2, refView:"Kanwal Sangha", teamMode:"up", adminWeeks:2, refMode:"up", adminFilter:null, adminMode:"games", ldF:{g:"ALL",a:"ALL",k:"ALL"}, ldTab:"g", stdTab:"D1", teamKey:null, teamTab:"up", rr:{step:"who", name:"", email:"", days:14} };
+const FEATURES = {accounts:false, gameReport:true};   // gameReport: the "Game Reports" menu (Ref Reports + Team Reports), no sign-in needed
+const state = { view:"schedule", mode:"up", comp:"ALL", team:"ALL", user:null, upWeeks:2, resWeeks:2, refView:"Kanwal Sangha", teamMode:"up", adminWeeks:2, refMode:"up", adminFilter:null, adminMode:"games", ldF:{g:"ALL",a:"ALL",k:"ALL"}, ldTab:"g", stdTab:"D1", teamKey:null, teamTab:"up", rr:{step:"who", name:"", email:"", days:14}, tr:{step:"who", name:"", email:"", team:"", days:14} };
 
 /* ---------- Field locations ----------
    Addresses from the Location Maps page on rasasoccer.ca. Each schedule venue name maps to its park or school;

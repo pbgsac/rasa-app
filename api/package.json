@@ -4,6 +4,6 @@
   "private": true,
   "description": "RASA app server functions (Azure Static Web Apps managed API)",
   "scripts": {
-    "test": "node test/report.test.js && node test/onedrive.test.js"
+    "test": "node test/report.test.js && node test/onedrive.test.js && node test/team.test.js"
   }
 }
