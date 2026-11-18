@@ -1,0 +1,31 @@
+/* Standings tab: division sub-tabs, table columns, weekly arrows, last 5. */
+/* Division tabs (Standings) and category tabs (Leaders) stay pinned under the header while scrolling */
+/* Standings: divisions as sub-tabs of the Standings tab (underlined text, no box), pinned under the header */
+.std-subtabs{position:sticky;top:var(--topbar-h,118px);z-index:15;display:flex;margin:-8px -16px -8px;padding:0 16px;background:var(--bg);border-bottom:1px solid var(--line)}
+.std-subtabs{align-items:flex-end;padding-top:6px}
+.std tr.mine td{background:color-mix(in srgb,var(--card-yellow) 22%,transparent)}
+.std td.rkc{white-space:nowrap}
+.rk{display:inline-block;min-width:14px}
+.mv{display:inline-flex;align-items:baseline;font-size:12px;font-weight:700;margin-left:4px;line-height:1}
+.mv small{font-size:10px;margin-left:1px}
+.mv.up{color:var(--good)}
+.mv.down{color:var(--bad)}
+.mv.same{color:var(--muted);font-size:12px}
+.std td.l5c,.std th.l5c{text-align:left;padding-left:12px}
+.last5{display:inline-flex;gap:3px;vertical-align:middle}
+.r5{display:inline-flex}
+.r5.W{color:var(--good)}
+.r5.L{color:var(--bad)}
+.r5.T{color:#9aa4ab}
+.form{display:inline-block;min-width:30px;text-align:center;font-size:12px;font-weight:700;border-radius:5px;padding:1px 4px}
+.form.W{background:color-mix(in srgb,var(--good) 18%,transparent);color:var(--good)}
+.form.L{background:color-mix(in srgb,var(--bad) 15%,transparent);color:var(--bad)}
+.form.T{background:var(--bg);color:var(--muted)}
+#view-standings .std th:first-child,#view-standings .std td:first-child{min-width:46px;width:46px;padding-left:8px;padding-right:2px}
+#view-standings .std th.tm,#view-standings .std td.tm{left:46px;min-width:0;width:112px;max-width:112px;padding-right:6px;white-space:normal}
+#view-standings .std .tlink{white-space:normal;line-height:1.2;display:block;width:106px}
+.std tr.mine td.tm,.std tr.mine td:first-child{background:color-mix(in srgb,var(--card-yellow) 22%,var(--surface))}
+/* Standings: no division title bar (the sub-tab above names it), only the slide hint when the table scrolls */
+.std-h.std-h-slim{background:none;color:var(--muted);border-left:0;border-bottom:1px solid var(--line);padding:7px 12px}
+.std-h.std-h-slim .swipe,.std-h.std-h-slim .swipe-txt{color:var(--brand);opacity:1}
+.std-h.std-h-slim:has(.swipe[hidden]){display:none}
