@@ -1,11 +1,12 @@
 /* Microsoft Graph helpers (app-only). Settings come from the Static Web App's environment variables. */
 const clean = v => String(v || "").trim().replace(/^["']+|["']+$/g, "").trim();
-const KEYS = ["GRAPH_TENANT_ID", "GRAPH_CLIENT_ID", "GRAPH_CLIENT_SECRET", "MAIL_FROM", "MAIL_TO", "ONEDRIVE_DRIVE_ID", "ONEDRIVE_FOLDER_ID", "REPORTS_FILE", "DISCIPLINE_FILE", "SEASON_LABEL"];
+const KEYS = ["GRAPH_TENANT_ID", "GRAPH_CLIENT_ID", "GRAPH_CLIENT_SECRET", "MAIL_FROM", "MAIL_TO", "ONEDRIVE_DRIVE_ID", "ONEDRIVE_FOLDER_ID", "REPORTS_FILE", "DISCIPLINE_FILE", "SEASON_LABEL",
+  "TEAM_REPORT_TO", "TEAM_REPORTS_FILE", "REF_RATINGS_FILE"];   // every setting the API reads must be listed here
 // Non-secret defaults (folder addresses only - access is controlled by the app's permissions).
 // An Azure environment variable with the same name takes priority.
 const DEFAULTS = {
   ONEDRIVE_DRIVE_ID: "b!sZBm4cG47UStKjbz-lE2GU3H2dtR-Z1ChlPSZql2BTZSXiOkzUNrR6tocX3muaVA",   // matchreport@ OneDrive
-  ONEDRIVE_FOLDER_ID: "01CHCMFWEK6G4RPBFAINC2VHXUHBKLHNX6"                                   // "RASA Ref Reports" folder
+  ONEDRIVE_FOLDER_ID: "01CHCMFWEK6G4RPBFAINC2VHXUHBKLHNX6"                                   // "RASA Game Reports" folder (found by ID, so renaming it is fine)
 };
 const settings = () => Object.fromEntries(KEYS.map(k => [k, clean(process.env[k]) || DEFAULTS[k] || ""]));
 

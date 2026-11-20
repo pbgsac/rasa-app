@@ -74,7 +74,7 @@ ${section("Officials", kv([["Referee", `<b>${esc(rec.refName)}</b><br><a href="m
 ${side("Home", g.home, r.home)}
 ${side("Away", g.away, r.away)}
 ${section("Field and comments", kv([["Field conditions", nl2br(r.field) || "No issues"], ["Injuries and other comments", nl2br(r.notes) || "None"]]))}
-${section("Game questions", kv([["Game ball provided by", esc(q.ball) || "—"], ["Corner flags provided by", esc(q.flags) || "—"], ["Home team list (2 copies)", esc(q.listHome) || "—"], ["Visiting team list (2 copies)", esc(q.listAway) || "—"], ["Showed player cards", esc(q.cards) || "—"]]))}
+${section("Game questions", kv([["Game ball provided by", esc(q.ball) || "—"], ["Corner flags provided by", esc(q.flags) || "—"], [`${esc(g.home) || "Home team"} list (2 copies)`, esc(q.listHome) || "—"], [`${esc(g.away) || "Visiting team"} list (2 copies)`, esc(q.listAway) || "—"], ["Showed player cards", esc(q.cards) || "—"]]))}
 ${photos}
 <tr><td style="padding:16px 20px;color:${C.muted};font-size:12px;border-top:1px solid #e3e9e5;margin-top:8px">Submitted ${esc(new Date(rec.submittedAt || Date.now()).toLocaleString("en-CA", { timeZone: "America/Vancouver", dateStyle: "medium", timeStyle: "short" }))} via app.rasasoccer.ca · Reply to this email to reach the referee.</td></tr>
 </table></td></tr></table></body></html>`;
@@ -175,8 +175,8 @@ function addReportSheet(wb, rec) {
   full("GAME QUESTIONS", ST.section, 18);
   kv("Game ball provided by", s(q.ball) || "—");
   kv("Corner flags provided by", s(q.flags) || "—");
-  kv("Home team list (2 copies)", s(q.listHome) || "—");
-  kv("Visiting team list (2 copies)", s(q.listAway) || "—");
+  kv(`${s(g.home) || "Home team"} list (2 copies)`, s(q.listHome) || "—");
+  kv(`${s(g.away) || "Visiting team"} list (2 copies)`, s(q.listAway) || "—");
   kv("Showed player cards", s(q.cards) || "—");
   if ((rec.photos || []).length) {
     row++;

@@ -50,7 +50,7 @@ global.fetch = async (url, opts = {}) => {
       const ex = files.get(p);
       if (h["If-Match"] && (conflictOnce || (ex && ex.etag !== h["If-Match"]))) { conflictOnce = false; return asJson(412, { error: { code: "resourceModified" } }); }
       const f = { buf: Buffer.from(opts.body), etag: '"e' + etagN++ + '"', id: ex ? ex.id : "i" + idN++ }; files.set(p, f);
-      return asJson(200, { id: f.id, eTag: f.etag, webUrl: "https://rasasoccer-my.sharepoint.com/personal/matchreport/Documents/RASA%20Ref%20Reports/" + encodeURIComponent(p) });
+      return asJson(200, { id: f.id, eTag: f.etag, webUrl: "https://rasasoccer-my.sharepoint.com/personal/matchreport/Documents/RASA%20Game%20Reports/" + encodeURIComponent(p) });
     }
   }
   throw new Error("unexpected " + m + " " + url);
