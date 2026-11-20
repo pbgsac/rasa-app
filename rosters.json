@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-20T03:17:41Z",
+ "updatedAt": "2026-11-20T21:50:24Z",
  "teams": {
   "AC RICHMOND": {
    "name": "AC Richmond",
@@ -1901,6 +1901,18 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/561750_pic.png"
+    },
+    {
+     "name": "Oluwaseyi Emmanuel Aluko",
+     "number": null,
+     "pos": "-",
+     "born": "-",
+     "gp": 0,
+     "g": 0,
+     "a": 0,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/507783_pic.jpeg"
     },
     {
      "name": "Adham Amhaz",
