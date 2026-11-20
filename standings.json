@@ -1,7 +1,7 @@
 {
  "source": "https://www.rasasoccer.ca/leagues/standings.cfm?clientid=6369&leagueID=27680",
  "season": "Winter 2026-27",
- "updatedAt": "2026-11-17T13:27:57Z",
+ "updatedAt": "2026-11-20T12:54:39Z",
  "divisions": [
   {
    "name": "Division 1",
@@ -155,6 +155,19 @@
      "streak": "T2"
     },
     {
+     "team": "Club Ireland Rovers",
+     "gp": 9,
+     "w": 3,
+     "l": 2,
+     "t": 4,
+     "d": 0,
+     "pts": 13,
+     "gf": 15,
+     "ga": 18,
+     "diff": -3,
+     "streak": "T1"
+    },
+    {
      "team": "Mainland United",
      "gp": 11,
      "w": 4,
@@ -194,30 +207,17 @@
      "streak": "T1"
     },
     {
-     "team": "Club Ireland Rovers",
-     "gp": 8,
-     "w": 2,
-     "l": 2,
-     "t": 4,
-     "d": 0,
-     "pts": 10,
-     "gf": 12,
-     "ga": 18,
-     "diff": -6,
-     "streak": "T2"
-    },
-    {
      "team": "West Coast Current",
-     "gp": 8,
+     "gp": 9,
      "w": 0,
-     "l": 7,
+     "l": 8,
      "t": 1,
      "d": 0,
      "pts": 1,
      "gf": 5,
-     "ga": 55,
-     "diff": -50,
-     "streak": "L3"
+     "ga": 58,
+     "diff": -53,
+     "streak": "L4"
     }
    ]
   },
