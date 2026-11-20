@@ -4,7 +4,8 @@
   Ref reports (default): one email FROM matchreport@rasasoccer.ca TO matchreport@rasasoccer.ca (Microsoft Graph),
   with the team-list photos and a report.json attached, and Reply-To set to the referee.
   Team reports (type "team"): one email FROM matchreport@ TO stats@ and president@rasasoccer.ca, with any field
-  photos and a report.json attached, and Reply-To set to the manager. Not saved to OneDrive.
+  photos and a report.json attached, and Reply-To set to the manager. Then saved to the same OneDrive folder, which
+  rebuilds the "Team Reports" and "Ref Ratings" workbooks (see lib/store.js).
   Recipients are fixed here on the server, so this endpoint can't be used to email anyone else.
   Then (if ONEDRIVE_* settings exist) saves the report to the matchreport@ OneDrive folder and rebuilds
   the "Ref Reports" and "Discipline" workbooks (see lib/store.js).
@@ -127,6 +128,10 @@ function buildMessage(body, env, submittedAt = new Date().toISOString()) {
   };
 }
 
+// The stored/emailed form of a team report
+function teamRecordOf(body, submittedAt) {
+  return { submittedAt, name: str(body.name), email: str(body.email, 200), team: str(body.team, 100), report: body.report && typeof body.report === "object" ? body.report : {}, photos: [] };
+}
 function buildTeamMessage(body, env, submittedAt = new Date().toISOString()) {
   const from = env.MAIL_FROM, to = teamRecipients(env);
   const photos = (body.photos || []).map((p, i) => ({
@@ -136,7 +141,7 @@ function buildTeamMessage(body, env, submittedAt = new Date().toISOString()) {
     contentBytes: str(p.data, MAX_PHOTO_B64 + 10).replace(/\s/g, ""),
     contentId: `photo${i + 1}@rasa`, isInline: true
   }));
-  const rec = { submittedAt, name: str(body.name), email: str(body.email, 200), team: str(body.team, 100), report: body.report && typeof body.report === "object" ? body.report : {} };
+  const rec = teamRecordOf(body, submittedAt);
   const cids = photos.map((p, i) => ({ cid: p.contentId, label: "Field photo " + (i + 1) }));
   const json = Buffer.from(JSON.stringify({ type: "team", ...rec.report, managerName: rec.name, managerEmail: rec.email,
     submittedAt, source: "app.rasasoccer.ca" }, null, 2)).toString("base64");
@@ -207,10 +212,14 @@ module.exports = async function (context, req) {
   }
   // The email is the record of truth; saving to OneDrive is a bonus that mustn't fail the referee's submission.
   let saved = false;
-  if (!isTeam(body) && store.configured(env) && body.report && body.report.game) {
-    try { await store.addReport(env, recordOf(body, submittedAt), body.photos || []); saved = true; }
+  if (store.configured(env) && body.report && body.report.game) {
+    try {
+      if (isTeam(body)) await store.addTeamReport(env, teamRecordOf(body, submittedAt), body.photos || []);
+      else await store.addReport(env, recordOf(body, submittedAt), body.photos || []);
+      saved = true;
+    }
     catch (e) { context.log(`OneDrive save failed: ${e.code || e.message}`); }
   }
   context.res = { status: 200, headers, body: { ok: true, saved } };
 };
-module.exports._test = { validate, buildMessage, buildTeamMessage, teamRecipients, cors, recordOf };
+module.exports._test = { validate, buildMessage, buildTeamMessage, teamRecipients, cors, recordOf, teamRecordOf };

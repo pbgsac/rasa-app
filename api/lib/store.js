@@ -5,16 +5,21 @@
       Discipline Winter 2026.xlsx     cards per player, grouped by team
       Photos/<game>/…jpg              team list photos
       App data/reports.json           every report as data (the app rebuilds the workbooks from this; don't edit)
+      Team Reports 2026.xlsx          team (manager) reports: a Directory sheet, then one sheet per report
+      Ref Ratings Winter 2026.xlsx    managers' ratings of referees and assistant referees: averages per official
+      Photos/Team reports/<game>/…jpg field photos from team reports
+      App data/team-reports.json      every team report as data (both team workbooks are rebuilt from this; don't edit)
   Both workbooks are rebuilt from reports.json each time, so they always match, and a failed save fixes itself
   on the next report. Edits made by hand inside the two workbooks are replaced on the next rebuild.
 */
 const { graph, graphError } = require("./graph");
 const R = require("./reports");
 
-const DATA = "App data/reports.json";
+const DATA = "App data/reports.json", TEAM_DATA = "App data/team-reports.json";
 const enc = p => p.split("/").map(encodeURIComponent).join("/");
 const itemPath = (env, p) => `/drives/${encodeURIComponent(env.ONEDRIVE_DRIVE_ID)}/items/${encodeURIComponent(env.ONEDRIVE_FOLDER_ID)}:/${enc(p)}:`;
-const files = env => ({ reports: env.REPORTS_FILE || "Ref Reports 2026.xlsx", discipline: env.DISCIPLINE_FILE || "Discipline Winter 2026.xlsx", season: env.SEASON_LABEL || "Winter 2026–27" });
+const files = env => ({ reports: env.REPORTS_FILE || "Ref Reports 2026.xlsx", discipline: env.DISCIPLINE_FILE || "Discipline Winter 2026.xlsx", season: env.SEASON_LABEL || "Winter 2026–27",
+  teamReports: env.TEAM_REPORTS_FILE || "Team Reports 2026.xlsx", refRatings: env.REF_RATINGS_FILE || "Ref Ratings Winter 2026.xlsx" });
 const configured = env => !!(env.ONEDRIVE_DRIVE_ID && env.ONEDRIVE_FOLDER_ID);
 
 const folderIds = new Map();
@@ -53,8 +58,8 @@ async function upload(env, path, buf, contentType, ifMatch) {
   return item;
 }
 
-async function loadAll(env) {                      // -> {records, etag} or null when there's no data file yet
-  const res = await graph(env, "GET", itemPath(env, DATA));
+async function loadAll(env, dataPath = DATA) {     // -> {records, etag} or null when there's no data file yet
+  const res = await graph(env, "GET", itemPath(env, dataPath));
   if (res.status === 404) return null;
   if (!res.ok) throw await graphError(res, "read");
   const meta = await res.json();
@@ -63,18 +68,21 @@ async function loadAll(env) {                      // -> {records, etag} or null
   const data = JSON.parse(await body.text());
   return { records: Array.isArray(data.reports) ? data.reports : [], etag: meta.eTag };
 }
-async function saveAll(env, records, etag) {
-  const buf = Buffer.from(JSON.stringify({ note: "Data for the RASA app. The two Excel files are rebuilt from this file - please don't edit it.", updatedAt: new Date().toISOString(), reports: records }, null, 1));
-  return upload(env, DATA, buf, "application/json", etag);
+async function saveAll(env, records, etag, dataPath = DATA) {
+  const buf = Buffer.from(JSON.stringify({ note: "Data for the RASA app. The Excel files are rebuilt from this file - please don't edit it.", updatedAt: new Date().toISOString(), reports: records }, null, 1));
+  return upload(env, dataPath, buf, "application/json", etag);
 }
 
 const photoFolder = rec => { const g = (rec.report && rec.report.game) || {};
   const stamp = (rec.submittedAt || new Date().toISOString()).replace(/[-:]/g, "").slice(0, 13).replace("T", "-");
   return `Photos/${R.fmtDate(g.date)} ${g.home} v ${g.away} ${stamp}`.replace(/[\\:*?"<>|#%]/g, "-").replace(/\s+/g, " ").trim(); };
-async function savePhotos(env, rec, photos) {
+const teamPhotoFolder = rec => { const r = rec.report || {}, g = r.game || {};
+  const stamp = (rec.submittedAt || new Date().toISOString()).replace(/[-:]/g, "").slice(0, 13).replace("T", "-");
+  return `Photos/Team reports/${R.fmtDate(g.date)} ${r.team} v ${r.opponent} ${stamp}`.replace(/[\\:*?"<>|#%]/g, "-").replace(/\s+/g, " ").trim(); };
+async function savePhotos(env, rec, photos, folder = photoFolder(rec)) {
   const out = [];
   for (const p of photos || []) {
-    try { const item = await upload(env, `${photoFolder(rec)}/${p.name}`, Buffer.from(p.data, "base64"), p.type || "image/jpeg"); out.push({ name: p.name, url: item.webUrl }); }
+    try { const item = await upload(env, `${folder}/${p.name}`, Buffer.from(p.data, "base64"), p.type || "image/jpeg"); out.push({ name: p.name, url: item.webUrl }); }
     catch (e) { out.push({ name: p.name, url: "" }); }
   }
   return out;
@@ -134,13 +142,37 @@ async function addReport(env, rec, photos) {
   return { count: records.length, ...urls };
 }
 
+/* ---- Team (manager) reports: "Team Reports" and "Ref Ratings" workbooks ---- */
+async function rebuildTeamWorkbooks(env, records) {
+  const f = files(env);
+  const book = await upload(env, f.teamReports, R.buildTeamReportsWorkbook(records, f.season), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+  const ratings = await upload(env, f.refRatings, R.buildRefRatingsWorkbook(records, book && book.webUrl, f.season), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+  return { teamReportsUrl: book && book.webUrl, refRatingsUrl: ratings && ratings.webUrl };
+}
+// Add one team report (photos first, then data with a retry if another report saved at the same moment).
+async function addTeamReport(env, rec, photos) {
+  rec.photos = await savePhotos(env, rec, photos, teamPhotoFolder(rec));
+  let records;
+  for (let attempt = 0; attempt < 4; attempt++) {
+    const state = (await loadAll(env, TEAM_DATA)) || { records: [], etag: null };
+    records = state.records.filter(r => !(r.submittedAt === rec.submittedAt && r.email === rec.email)).concat([rec]);
+    try { await saveAll(env, records, state.etag, TEAM_DATA); break; }
+    catch (e) { if (e.status === 412 && attempt < 3) continue; throw e; }
+  }
+  const urls = await rebuildTeamWorkbooks(env, records);
+  return { count: records.length, ...urls };
+}
+
 // Rebuild both workbooks (and, the first time, collect earlier reports from the inbox).
 async function sync(env) {
   let state = await loadAll(env), backfilled = 0, note;
   // First run, or still empty: collect earlier reports from the inbox (needs mailbox read access).
   if (!state || !state.records.length) { const bf = await backfillFromMailbox(env); backfilled = bf.records.length; note = bf.skipped; await saveAll(env, bf.records, state ? state.etag : null); state = { records: bf.records }; }
   const urls = await rebuildWorkbooks(env, state.records);
-  return { reports: state.records.length, backfilled, note, ...urls };
+  // Team reports: rebuild their two workbooks too (once there's at least one)
+  const team = await loadAll(env, TEAM_DATA);
+  const teamUrls = team && team.records.length ? await rebuildTeamWorkbooks(env, team.records) : {};
+  return { reports: state.records.length, teamReports: team ? team.records.length : 0, backfilled, note, ...urls, ...teamUrls };
 }
 
-module.exports = { configured, addReport, sync, files, photoFolder };
+module.exports = { configured, addReport, addTeamReport, sync, files, photoFolder, teamPhotoFolder };

@@ -1,8 +1,9 @@
 // Team (manager) reports: runs the function with a fake Microsoft Graph, so no real email is sent.
 const assert = require("assert");
 delete process.env.REPORTS_OPEN;   // reports are open by default now
-Object.assign(process.env, { GRAPH_TENANT_ID: "t", GRAPH_CLIENT_ID: "c", GRAPH_CLIENT_SECRET: "s", MAIL_FROM: "matchreport@rasasoccer.ca",
-  ONEDRIVE_DRIVE_ID: "drive", ONEDRIVE_FOLDER_ID: "folder" });   // OneDrive is set up, but team reports must not touch it
+Object.assign(process.env, { GRAPH_TENANT_ID: "t", GRAPH_CLIENT_ID: "c", GRAPH_CLIENT_SECRET: "s", MAIL_FROM: "matchreport@rasasoccer.ca" });
+// (OneDrive saving of team reports is tested in onedrive.test.js; this fake has no OneDrive, so saving fails quietly
+//  and the manager still gets "sent", because the email is what counts)
 const fn = require("../report/index.js");
 const { teamEmailHtml } = require("../lib/reports.js");
 const calls = [];
@@ -10,7 +11,7 @@ global.fetch = async (url, opts) => {
   calls.push({ url, opts });
   if (url.includes("/oauth2/")) return { ok: true, json: async () => ({ access_token: "T" }) };
   if (url.includes("/sendMail")) return { status: 202, text: async () => "" };
-  throw new Error("unexpected call (team reports should only send mail): " + url);
+  throw new Error("unexpected call: " + url);
 };
 const run = async (req) => { const ctx = { log: Object.assign(() => {}, { error: () => {} }) }; await fn(ctx, req); return ctx.res; };
 const sent = () => JSON.parse(calls.filter(c => c.url.includes("/sendMail")).pop().opts.body).message;
@@ -39,8 +40,8 @@ const good = { type: "team", name: "Pat Manager", email: "pat@example.com", team
     assert.ok(html.includes(t), "email should include " + t);
   const json = JSON.parse(Buffer.from(msg.attachments[1].contentBytes, "base64").toString());
   assert.strictEqual(json.type, "team"); assert.strictEqual(json.managerEmail, "pat@example.com");
-  // nothing went to OneDrive
-  assert.ok(!calls.some(c => /drives\//.test(c.url)), "team reports are not saved to OneDrive");
+  // the OneDrive save failed (no OneDrive in this fake), but the report still counts as sent
+  assert.strictEqual(r.body.ok, true);
   // the request can't change who receives it
   r = await run({ method: "POST", headers: { ...hdr, "x-forwarded-for": "5.5.5.2" }, body: { ...good, to: "x@evil.example", TEAM_REPORT_TO: "x@evil.example", toRecipients: ["x@evil.example"] } });
   assert.strictEqual(r.status, 200);

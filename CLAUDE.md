@@ -64,8 +64,10 @@ changed, and redeploys to Azure. It can also be started by hand from the Actions
   - **Ref Reports** are emailed from matchreport@rasasoccer.ca to itself (Reply-To: the referee) and saved
     to the matchreport@ OneDrive, which rebuilds the "Ref Reports" and "Discipline" workbooks.
   - **Team Reports** (managers) are emailed from matchreport@ to stats@rasasoccer.ca and
-    president@rasasoccer.ca (Reply-To: the manager). Not saved to OneDrive. The Azure setting
-    `TEAM_REPORT_TO` can change that list.
+    president@rasasoccer.ca (Reply-To: the manager). The Azure setting `TEAM_REPORT_TO` can change that list.
+    They're also saved to the matchreport@ OneDrive (`App data/team-reports.json` + field photos), which
+    rebuilds "Team Reports 2026" (a Directory sheet, then one sheet per report) and "Ref Ratings Winter 2026"
+    (each referee's and assistant's average ratings; the latest report per team per game counts).
   - Recipients are fixed on the server; never let the app choose who an email goes to.
   - To pause both: set `REPORTS_OPEN` to `false` in Azure and `FEATURES.gameReport` to `false` in `js/core.js`.
 - **No keys or passwords in the code.** Microsoft Graph settings (`GRAPH_TENANT_ID`,
@@ -73,7 +75,8 @@ changed, and redeploys to Azure. It can also be started by hand from the Actions
   live only in Azure → Static Web App → Environment variables.
 - **Privacy:** never show players' dates of birth. Team staff appear by first name and title only,
   with no emails or phone numbers. Don't publish anyone's personal email address.
-- The OneDrive workbooks "Ref Reports 2026" and "Discipline Winter 2026" are rebuilt from
-  `App data/reports.json` on every report. Don't edit them by hand.
+- The OneDrive workbooks are rebuilt automatically, so don't edit them by hand: "Ref Reports 2026" and
+  "Discipline Winter 2026" from `App data/reports.json`, "Team Reports 2026" and "Ref Ratings Winter 2026"
+  from `App data/team-reports.json`. `/api/sync-reports` rebuilds all four.
 - Keep everything in league-owned accounts (rasasoccer.ca Microsoft 365, the league's GitHub
   organization), not personal ones.
