@@ -1,5 +1,5 @@
 /*
-  GET /api/sync-reports — rebuild the "Ref Reports" and "Discipline" workbooks in matchreport@'s OneDrive.
+  GET /api/sync-reports — rebuild the "Ref Reports", "Discipline", "Team Reports" and "Ref Ratings" workbooks in matchreport@'s OneDrive.
   The first time (no data file yet) it also collects earlier reports from the matchreport@ inbox.
   Safe to call any time: it only reads reports and rewrites the two workbooks. Limited to once a minute.
 */

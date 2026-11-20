@@ -13,15 +13,23 @@ function renderAuthArea(){
     $("#signInBtn").onclick = ()=>go("sign-in");
   }
 }
+const REPORT_VIEWS = ["game-report","team-report"];
 function renderTabs(){
   const tabs = [["schedule","Schedule"],["standings","Standings"],["leaders","Leaders"]];
+  closeReportsMenu();
+  if(!FEATURES.accounts){
+    // "Game Reports" sits on the right and opens a small menu: Ref Reports / Team Reports
+    if(FEATURES.gameReport) tabs.push(["reports","Game Reports"]);
+    const isOn = k=> k==="reports" ? REPORT_VIEWS.includes(state.view) : (state.view===k||(state.view==="team"&&k===(state.teamFrom||"standings")));
+    // Same tabs as last time: just move the selection, so the change animates instead of redrawing
+    const existing = [...$("#tabs").querySelectorAll(".tab")];
+    if(existing.length===tabs.length && existing.every((b,i)=>b.dataset.tab===tabs[i][0])){
+      existing.forEach(b=>{ if(isOn(b.dataset.tab)) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); }); return; }
+    $("#tabs").innerHTML = tabs.map(([k,n])=> k==="reports"
+      ? `<button class="tab tab-end tab-reports" data-tab="reports" id="reportsTab" aria-haspopup="menu" aria-expanded="false" aria-controls="reportsMenu" ${isOn(k)?'aria-current="page"':""}><span class="tr-long">Game Reports</span><span class="tr-short">Reports</span><svg class="tab-chev" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`
+      : `<button class="tab" data-tab="${k}" data-view="${k}" ${isOn(k)?'aria-current="page"':""}>${n}</button>`).join("");
+    return; }
   if(FEATURES.gameReport && (!state.user || state.user.role==="player")) tabs.push(["game-report","Ref Report"]);
-  const isOn = k=>state.view===k||(state.view==="team"&&k===(state.teamFrom||"standings"));
-  // Same tabs as last time: just move the selection, so the change animates instead of redrawing
-  const existing = [...$("#tabs").querySelectorAll(".tab")];
-  if(!FEATURES.accounts && existing.length===tabs.length && existing.every((b,i)=>b.dataset.view===tabs[i][0])){
-    existing.forEach(b=>{ if(isOn(b.dataset.view)) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); }); return; }
-  if(!FEATURES.accounts){ $("#tabs").innerHTML = tabs.map(([k,n])=>`<button class="tab${k==="game-report"?" tab-end":""}" data-view="${k}" ${(state.view===k||(state.view==="team"&&k===(state.teamFrom||"standings")))?'aria-current="page"':""}>${n}</button>`).join(""); return; }
   if(state.user){ if(state.user.role!=="player") tabs.push(["dashboard", state.user.role==="manager"?"My team":state.user.role==="referee"?"My games":"Admin"]); tabs.push(["account","Account"]); }
   else tabs.push(["sign-in","Sign in"]);
   let dueN = 0;
@@ -31,12 +39,51 @@ function renderTabs(){
   $("#tabs").innerHTML = tabs.map(([k,n])=>`<button class="tab${(k==="account"||k==="sign-in")?" tab-end":""}" data-view="${k}" ${(state.view===k||(k==="sign-in"&&/create-account|check-email|ref-signup|forgot-password|reset-password/.test(state.view)))?'aria-current="page"':""}>${n}${k==="dashboard"&&dueN?`<span class="dot" aria-label="${dueN} report${dueN>1?"s":""} due"></span>`:""}</button>`).join("");
 }
 
+// The Game Reports menu lives in the sticky header (outside the tab strip, which scrolls sideways and would clip it)
+function reportsMenuEl(){
+  let m = $("#reportsMenu");
+  if(!m){
+    m = document.createElement("div"); m.id = "reportsMenu"; m.className = "tab-menu"; m.setAttribute("role","menu"); m.setAttribute("aria-label","Game Reports"); m.hidden = true;
+    m.innerHTML = `<button type="button" role="menuitem" data-view="game-report"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M5 3h10l4 4v14H5V3Zm9 1.5V8h3.5L14 4.5ZM8 11v2h8v-2H8Zm0 4v2h8v-2H8Z"/></svg><span><b>Ref Reports</b><small>For referees: score, cards, team list photos</small></span></button>
+      <button type="button" role="menuitem" data-view="team-report"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12 2 4 5v6c0 5 3.4 9.5 8 11 4.6-1.5 8-6 8-11V5l-8-3Zm0 5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Zm-4 9c.6-1.9 2.2-3 4-3s3.4 1.1 4 3H8Z"/></svg><span><b>Team Reports</b><small>For managers: score, scorers, ref ratings</small></span></button>`;
+    $(".topbar").appendChild(m);
+  }
+  return m;
+}
+function openReportsMenu(){
+  const btn = $("#reportsTab"); if(!btn) return;
+  const m = reportsMenuEl(), bar = $(".topbar").getBoundingClientRect(), r = btn.getBoundingClientRect();
+  m.style.top = (r.bottom - bar.top) + "px";
+  m.style.right = Math.max(8, document.documentElement.clientWidth - r.right) + "px";
+  m.hidden = false; btn.setAttribute("aria-expanded","true");
+  const cur = m.querySelector(`[data-view="${state.view}"]`) || m.querySelector("[role=menuitem]");
+  m.querySelectorAll("[role=menuitem]").forEach(b=>b.classList.toggle("on", b.dataset.view===state.view));
+  cur.focus({preventScroll:true});
+}
+function closeReportsMenu(focusTab){
+  const m = $("#reportsMenu"), btn = $("#reportsTab");
+  if(m) m.hidden = true; if(btn){ btn.setAttribute("aria-expanded","false"); if(focusTab) btn.focus(); }
+}
+document.addEventListener("click", e=>{
+  if(e.target.closest("#reportsTab")){ const m = $("#reportsMenu"); if(m && !m.hidden) closeReportsMenu(); else openReportsMenu(); return; }
+  const m = $("#reportsMenu"); if(m && !m.hidden && !e.target.closest("#reportsMenu")) closeReportsMenu();
+}, true);
+document.addEventListener("keydown", e=>{
+  const m = $("#reportsMenu"); if(!m || m.hidden) return;
+  const items = [...m.querySelectorAll("[role=menuitem]")], i = items.indexOf(document.activeElement);
+  if(e.key==="Escape"){ e.preventDefault(); e.stopImmediatePropagation(); closeReportsMenu(true); }
+  else if(e.key==="ArrowDown"){ e.preventDefault(); items[(i+1)%items.length].focus(); }
+  else if(e.key==="ArrowUp"){ e.preventDefault(); items[(i-1+items.length)%items.length].focus(); }
+  else if(e.key==="Tab") closeReportsMenu();
+}, true);
+addEventListener("resize", ()=>closeReportsMenu());
+
 /* ---------- Routing ---------- */
-const VIEWS = ["schedule","standings","leaders","team","game-report","sign-in","create-account","check-email","ref-signup","forgot-password","reset-password","dashboard","account"];
+const VIEWS = ["schedule","standings","leaders","team","game-report","team-report","sign-in","create-account","check-email","ref-signup","forgot-password","reset-password","dashboard","account"];
 function go(view, push=true){
   if(view==="team" && !(state.teamKey && TEAMS[state.teamKey])) view = "standings";
   if(view==="team" && state.view!=="team") state.teamFrom = state.view;
-  if(!FEATURES.accounts && !["schedule","standings","leaders","team"].concat(FEATURES.gameReport?["game-report"]:[]).includes(view)) view = "schedule";
+  if(!FEATURES.accounts && !["schedule","standings","leaders","team"].concat(FEATURES.gameReport?REPORT_VIEWS:[]).includes(view)) view = "schedule";
   if((view==="dashboard"||view==="account") && !state.user) view="sign-in";
   if((view==="sign-in"||view==="create-account"||view==="ref-signup") && state.user) view="dashboard";
   if(view==="dashboard" && state.user && state.user.role==="player") view="account";
@@ -52,6 +99,7 @@ function go(view, push=true){
   if(view==="team") renderTeam(); else document.title = BASE_TITLE;
   const el = $("#view-"+view); if(el && view==="team"){ el.classList.remove("enter"); void el.offsetWidth; el.classList.add("enter"); }
   if(view==="game-report") renderGameReport();
+  if(view==="team-report") renderTeamReport();
   if(view==="account") renderAccount();
   if(view==="check-email") renderCheckEmail();
   if(view==="ref-signup") renderRefSignup();

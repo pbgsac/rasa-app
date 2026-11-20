@@ -220,3 +220,36 @@ tr.tapped td{animation:tapFlash .32s ease-out}
 .view.enter{animation:viewIn .28s cubic-bezier(.2,.7,.2,1)}
 @keyframes viewIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion: reduce){ .tapped,tr.tapped td,.view.enter{animation:none} }
+
+/* Game Reports tab (right) and its menu: Ref Reports / Team Reports */
+.tab-reports{display:inline-flex;align-items:center;gap:4px}
+.tab-reports .tr-short{display:none}
+.tab-reports .tab-chev{flex:none;transition:transform .2s ease}
+.tab-reports[aria-expanded="true"] .tab-chev{transform:rotate(180deg)}
+.tab-menu{position:absolute;z-index:40;min-width:250px;max-width:calc(100vw - 16px);background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 30px -10px rgba(16,24,32,.35);padding:6px;display:flex;flex-direction:column;gap:2px;margin-top:6px;transform-origin:top right;animation:menuIn .16s ease-out}
+.tab-menu[hidden]{display:none}
+.tab-menu button{display:flex;align-items:center;gap:12px;text-align:left;width:100%;border:0;background:none;border-radius:9px;padding:11px 12px;font:inherit;color:var(--ink);cursor:pointer}
+.tab-menu button svg{flex:none;color:var(--brand)}
+.tab-menu button span{display:flex;flex-direction:column;gap:1px}
+.tab-menu button b{font-size:16px}
+.tab-menu button small{font-size:12.5px;color:var(--muted);font-weight:500}
+.tab-menu button:hover,.tab-menu button:focus-visible{background:color-mix(in srgb,var(--brand) 9%,transparent);outline:none}
+.tab-menu button.on{background:color-mix(in srgb,var(--brand) 13%,transparent)}
+.tab-menu button.on b{color:var(--brand)}
+@keyframes menuIn{from{opacity:0;transform:translateY(-4px) scale(.98)}}
+@media (prefers-reduced-motion:reduce){ .tab-menu{animation:none} .tab-reports .tab-chev{transition:none} }
+/* Four tabs on a phone: tighter spacing, and "Game Reports" shortens to "Reports" */
+@media (max-width:520px){
+  .tabs-in{padding-left:4px;padding-right:4px;gap:0}
+  .tab{padding-left:9px;padding-right:9px}
+  .tab[aria-current="page"]{padding:14px 11px 10px}
+  .tab-reports .tr-long{display:none}
+  .tab-reports .tr-short{display:inline}
+  .tab-reports{gap:2px}
+}
+@media (max-width:380px){
+  .tabs-in{padding-left:2px;padding-right:2px}
+  .tab{font-size:13.5px;padding-left:5px;padding-right:5px}
+  .tab[aria-current="page"]{font-size:15px;padding:14px 7px 10px}
+  .tab-reports .tab-chev{width:12px;height:12px}
+}

@@ -1,9 +1,12 @@
 /*
-  POST /api/report — a referee's game report from app.rasasoccer.ca.
+  POST /api/report — game reports from app.rasasoccer.ca ("Game Reports" menu).
 
-  Sends one email FROM matchreport@rasasoccer.ca TO matchreport@rasasoccer.ca (Microsoft Graph),
+  Ref reports (default): one email FROM matchreport@rasasoccer.ca TO matchreport@rasasoccer.ca (Microsoft Graph),
   with the team-list photos and a report.json attached, and Reply-To set to the referee.
-  The recipient is fixed here on the server, so this endpoint can't be used to email anyone else.
+  Team reports (type "team"): one email FROM matchreport@ TO stats@ and president@rasasoccer.ca, with any field
+  photos and a report.json attached, and Reply-To set to the manager. Then saved to the same OneDrive folder, which
+  rebuilds the "Team Reports" and "Ref Ratings" workbooks (see lib/store.js).
+  Recipients are fixed here on the server, so this endpoint can't be used to email anyone else.
   Then (if ONEDRIVE_* settings exist) saves the report to the matchreport@ OneDrive folder and rebuilds
   the "Ref Reports" and "Discipline" workbooks (see lib/store.js).
 
@@ -12,12 +15,14 @@
     GRAPH_CLIENT_ID      App registration's application (client) ID
     GRAPH_CLIENT_SECRET  App registration's client secret
     MAIL_FROM            matchreport@rasasoccer.ca
-    MAIL_TO              optional, defaults to MAIL_FROM
+    MAIL_TO              optional, defaults to MAIL_FROM (ref reports)
+    TEAM_REPORT_TO       optional, comma-separated; defaults to stats@rasasoccer.ca,president@rasasoccer.ca
     ONEDRIVE_DRIVE_ID    matchreport@'s OneDrive drive ID      } from the folder-grant script
     ONEDRIVE_FOLDER_ID   the "RASA Ref Reports" folder's ID    }
 */
 const { settings, token: sharedToken } = require("../lib/graph");
-const { emailHtml } = require("../lib/reports");
+const { emailHtml, teamEmailHtml } = require("../lib/reports");
+const TEAM_REPORT_TO_DEFAULT = ["stats@rasasoccer.ca", "president@rasasoccer.ca"];
 const store = require("../lib/store");
 const ALLOWED_ORIGINS = [
   "https://app.rasasoccer.ca",
@@ -57,8 +62,14 @@ const EMAIL_RE = /^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/;
 function validate(body) {
   if (!body || typeof body !== "object") return "Missing report.";
   if (str(body.website)) return "Rejected.";   // honeypot field: people never fill it in
-  if (!str(body.refName)) return "Missing referee name.";
-  if (!EMAIL_RE.test(str(body.refEmail, 200))) return "Missing or invalid referee email.";
+  if (isTeam(body)) {
+    if (!str(body.name)) return "Missing your name.";
+    if (!EMAIL_RE.test(str(body.email, 200))) return "Missing or invalid email.";
+    if (!str(body.team, 100)) return "Missing team.";
+  } else {
+    if (!str(body.refName)) return "Missing referee name.";
+    if (!EMAIL_RE.test(str(body.refEmail, 200))) return "Missing or invalid referee email.";
+  }
   if (!str(body.subject, 300)) return "Missing subject.";
   if (!str(body.text, MAX_TEXT)) return "Missing report text.";
   const photos = Array.isArray(body.photos) ? body.photos : [];
@@ -76,6 +87,8 @@ function validate(body) {
 }
 
 const graphToken = env => sharedToken(env);
+const isTeam = body => !!body && body.type === "team";
+const teamRecipients = env => (str(env.TEAM_REPORT_TO, 500) ? str(env.TEAM_REPORT_TO, 500).split(",").map(x => x.trim()).filter(x => EMAIL_RE.test(x)) : TEAM_REPORT_TO_DEFAULT);
 
 // The stored/emailed form of a report
 function recordOf(body, submittedAt) {
@@ -115,9 +128,45 @@ function buildMessage(body, env, submittedAt = new Date().toISOString()) {
   };
 }
 
+// The stored/emailed form of a team report
+function teamRecordOf(body, submittedAt) {
+  return { submittedAt, name: str(body.name), email: str(body.email, 200), team: str(body.team, 100), report: body.report && typeof body.report === "object" ? body.report : {}, photos: [] };
+}
+function buildTeamMessage(body, env, submittedAt = new Date().toISOString()) {
+  const from = env.MAIL_FROM, to = teamRecipients(env);
+  const photos = (body.photos || []).map((p, i) => ({
+    "@odata.type": "#microsoft.graph.fileAttachment",
+    name: str(p.name, 120).replace(/[\\/:*?"<>|]/g, "_") || `field-photo-${i + 1}.jpg`,
+    contentType: str(p.type, 40),
+    contentBytes: str(p.data, MAX_PHOTO_B64 + 10).replace(/\s/g, ""),
+    contentId: `photo${i + 1}@rasa`, isInline: true
+  }));
+  const rec = teamRecordOf(body, submittedAt);
+  const cids = photos.map((p, i) => ({ cid: p.contentId, label: "Field photo " + (i + 1) }));
+  const json = Buffer.from(JSON.stringify({ type: "team", ...rec.report, managerName: rec.name, managerEmail: rec.email,
+    submittedAt, source: "app.rasasoccer.ca" }, null, 2)).toString("base64");
+  photos.push({ "@odata.type": "#microsoft.graph.fileAttachment", name: "report.json", contentType: "application/json", contentBytes: json });
+  const structured = rec.report && rec.report.game && rec.report.team;
+  const html = structured ? teamEmailHtml(rec, cids) : `<div style="font-family:Segoe UI,Arial,sans-serif;font-size:14px">
+    <p style="margin:0 0 8px"><b>Team report</b> from ${esc(rec.name)} (<a href="mailto:${esc(rec.email)}">${esc(rec.email)}</a>), ${esc(rec.team)}, via app.rasasoccer.ca.
+    Reply to this email to reach the manager.</p>
+    <pre style="font-family:Consolas,Menlo,monospace;font-size:13px;white-space:pre-wrap;background:#f4f6f5;padding:12px;border-radius:6px">${esc(body.text)}</pre></div>`;
+  return {
+    message: {
+      subject: str(body.subject, 300),
+      body: { contentType: "HTML", content: html },
+      toRecipients: to.map(address => ({ emailAddress: { address } })),
+      replyTo: [{ emailAddress: { address: rec.email, name: rec.name } }],
+      attachments: photos
+    },
+    saveToSentItems: true,
+    from
+  };
+}
+
 async function sendMail(body, env, submittedAt) {
   const token = await graphToken(env);
-  const { message, saveToSentItems, from } = buildMessage(body, env, submittedAt);
+  const { message, saveToSentItems, from } = isTeam(body) ? buildTeamMessage(body, env, submittedAt) : buildMessage(body, env, submittedAt);
   const res = await fetch(`https://graph.microsoft.com/v1.0/users/${encodeURIComponent(from)}/sendMail`, {
     method: "POST",
     headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
@@ -129,16 +178,16 @@ async function sendMail(body, env, submittedAt) {
   }
 }
 
-// Ref reports are paused until sign-in arrives (the Ref Report tab is hidden in the app too).
-// Set the REPORTS_OPEN environment variable to "true" in Azure, or change this default, to reopen.
-const REPORTS_OPEN_DEFAULT = false;
+// Game reports are open (the app's "Game Reports" menu, no sign-in). To pause them again, set the
+// REPORTS_OPEN environment variable to "false" in Azure (or change this default) and set FEATURES.gameReport to false in js/core.js.
+const REPORTS_OPEN_DEFAULT = true;
 
 module.exports = async function (context, req) {
   const headers = cors(req);
   if ((req.method || "").toUpperCase() === "OPTIONS") { context.res = { status: 204, headers }; return; }
   const open = String(process.env.REPORTS_OPEN || "").trim().toLowerCase();
   if (open === "false" || (open !== "true" && !REPORTS_OPEN_DEFAULT)) {
-    context.res = { status: 403, headers, body: { ok: false, error: "Ref reports through the app are paused for now. Please send your report to matchreport@rasasoccer.ca." } }; return;
+    context.res = { status: 403, headers, body: { ok: false, error: "Reports through the app are paused for now. Please email your report to matchreport@rasasoccer.ca." } }; return;
   }
   const env = settings();   // trims stray spaces/quotes pasted into the portal
   if (!env.GRAPH_TENANT_ID || !env.GRAPH_CLIENT_ID || !env.GRAPH_CLIENT_SECRET || !env.MAIL_FROM) {
@@ -154,7 +203,7 @@ module.exports = async function (context, req) {
   const submittedAt = new Date().toISOString();
   try {
     await sendMail(body, env, submittedAt);
-    context.log(`Report sent: ${str(body.subject, 300)}`);
+    context.log(`${isTeam(body) ? "Team" : "Ref"} report sent: ${str(body.subject, 300)}`);
   } catch (e) {
     context.log.error ? context.log.error(String(e)) : context.log(String(e));
     // "code" is a short, non-secret reason (e.g. "send 403 ErrorAccessDenied") to help the league fix setup problems
@@ -164,9 +213,13 @@ module.exports = async function (context, req) {
   // The email is the record of truth; saving to OneDrive is a bonus that mustn't fail the referee's submission.
   let saved = false;
   if (store.configured(env) && body.report && body.report.game) {
-    try { await store.addReport(env, recordOf(body, submittedAt), body.photos || []); saved = true; }
+    try {
+      if (isTeam(body)) await store.addTeamReport(env, teamRecordOf(body, submittedAt), body.photos || []);
+      else await store.addReport(env, recordOf(body, submittedAt), body.photos || []);
+      saved = true;
+    }
     catch (e) { context.log(`OneDrive save failed: ${e.code || e.message}`); }
   }
   context.res = { status: 200, headers, body: { ok: true, saved } };
 };
-module.exports._test = { validate, buildMessage, cors, recordOf };
+module.exports._test = { validate, buildMessage, buildTeamMessage, teamRecipients, cors, recordOf, teamRecordOf };

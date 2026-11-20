@@ -80,6 +80,46 @@ ${photos}
 </table></td></tr></table></body></html>`;
 }
 
+/* ---------------- Team (manager) report email ----------------
+   rec: { submittedAt, name, email, team, report:{ team, opponent, us, them, goals:{name:count}, assists:{name:count},
+          referee, control, decisions, overall, ars:[{name, rating}], field, notes, game:{date, time, number, venue, comp, officials} } } */
+function teamEmailHtml(rec, photoCids) {
+  const r = rec.report || {}, g = r.game || {};
+  const td = "padding:6px 10px;border-bottom:1px solid #e3e9e5;vertical-align:top;font-size:14px;color:#101820";
+  const th = "padding:6px 10px;text-align:left;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:#4F5E57;background:#F3F6F4;border-bottom:1px solid #dde4e0";
+  const section = (title, inner) => `<tr><td style="padding:18px 20px 4px"><div style="font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:${C.green};border-bottom:2px solid ${C.lime};padding-bottom:4px;margin-bottom:8px">${title}</div>${inner}</td></tr>`;
+  const table = (heads, rows, empty) => rows.length
+    ? `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse"><tr>${heads.map(h => `<th style="${th}">${h}</th>`).join("")}</tr>${rows.map(cells => `<tr>${cells.map(c => `<td style="${td}">${c}</td>`).join("")}</tr>`).join("")}</table>`
+    : `<div style="font-size:14px;color:${C.muted};padding:2px 0 6px">${empty}</div>`;
+  const kv = rows => `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse">${rows.map(([k, v]) => `<tr><td style="${td};width:42%;color:${C.muted}">${k}</td><td style="${td}">${v}</td></tr>`).join("")}</table>`;
+  const counted = o => Object.entries(o || {}).filter(([n]) => s(n)).map(([n, c]) => [esc(titleCase(n)), esc(+c || 1)]);
+  // Rating shown as filled/empty dots plus the number, e.g. ●●●●○ 4/5
+  const rating = (n, of) => { n = Math.max(0, Math.min(of, +n || 0)); return `<span style="color:${C.green};letter-spacing:2px;font-size:15px">${"●".repeat(n)}</span><span style="color:#c9d3cd;letter-spacing:2px;font-size:15px">${"●".repeat(of - n)}</span> <b>${n}/${of}</b>`; };
+  const photos = (photoCids || []).length ? section("Field photos", photoCids.map(p => `<div style="display:inline-block;margin:0 10px 10px 0;text-align:center;vertical-align:top"><img src="cid:${p.cid}" alt="${esc(p.label)}" width="250" style="width:250px;max-width:100%;border:1px solid #dde4e0;border-radius:6px;display:block"><div style="font-size:12px;color:${C.muted};margin-top:4px">${esc(p.label)}</div></div>`).join("")) : "";
+  const meta = [fmtDate(g.date, true), g.time ? fmtTime(g.time) : "", g.venue, g.number ? "Game #" + g.number : "", g.comp || compOf(g.number)].filter(Boolean).map(esc).join(" &nbsp;·&nbsp; ");
+  const ars = (r.ars || []).map(a => [esc(titleCase(a.name)), rating(a.rating, 5)]);
+  return `<!doctype html><html><body style="margin:0;padding:0;background:${C.off}">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${C.off};padding:16px 0"><tr><td align="center">
+<table role="presentation" width="640" cellpadding="0" cellspacing="0" style="width:640px;max-width:100%;background:#fff;border-radius:10px;overflow:hidden;font-family:Segoe UI,Helvetica,Arial,sans-serif;border:1px solid #dde4e0">
+<tr><td style="background:${C.green};padding:16px 20px;border-bottom:4px solid ${C.lime}">
+  <div style="color:#cfe3d9;font-size:12px;letter-spacing:.06em;text-transform:uppercase;font-weight:700">RASA team report · ${esc(r.team)}</div>
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:8px"><tr>
+    <td style="color:#fff;font-size:18px;font-weight:700;width:40%">${esc(r.team)}<div style="font-size:11px;font-weight:600;color:#cfe3d9;text-transform:uppercase;letter-spacing:.05em">Reporting team</div></td>
+    <td align="center" style="color:#fff;font-size:34px;font-weight:800;white-space:nowrap">${esc(r.us)} – ${esc(r.them)}</td>
+    <td align="right" style="color:#fff;font-size:18px;font-weight:700;width:40%">${esc(r.opponent)}<div style="font-size:11px;font-weight:600;color:#cfe3d9;text-transform:uppercase;letter-spacing:.05em">Opponent</div></td>
+  </tr></table>
+  <div style="color:#e6f0eb;font-size:13px;margin-top:10px">${meta}</div>
+</td></tr>
+${section("Submitted by", kv([["Manager", `<b>${esc(rec.name)}</b><br><a href="mailto:${esc(rec.email)}" style="color:${C.link}">${esc(rec.email)}</a>`], ["Team", esc(r.team)]]))}
+${section("Goals and assists", `${table(["Goal scorer", "Goals"], counted(r.goals), "No goals listed")}<div style="height:8px"></div>${table(["Assisted by", "Assists"], counted(r.assists), "No assists listed")}`)}
+${section(`Referee${r.referee ? " · " + esc(r.referee) : ""}`, kv([["Control of the game", rating(r.control, 5)], ["Decision making", rating(r.decisions, 5)], ["Overall score", rating(r.overall, 10)]]))}
+${ars.length ? section("Assistant referees", table(["Assistant referee", "Rating"], ars, "")) : ""}
+${section("Field and comments", kv([["Field condition", nl2br(r.field) || "No issues"], ["Comments", nl2br(r.notes) || "None"]]))}
+${photos}
+<tr><td style="padding:16px 20px;color:${C.muted};font-size:12px;border-top:1px solid #e3e9e5">Submitted ${esc(new Date(rec.submittedAt || Date.now()).toLocaleString("en-CA", { timeZone: "America/Vancouver", dateStyle: "medium", timeStyle: "short" }))} via app.rasasoccer.ca · Reply to this email to reach the manager.</td></tr>
+</table></td></tr></table></body></html>`;
+}
+
 /* ---------------- Ref Reports workbook ---------------- */
 const ST = {
   title: { font: { bold: true, size: 16, color: C.white }, fill: C.green, align: { v: "center", indent: 1 } },
@@ -267,4 +307,155 @@ function buildDisciplineWorkbook(records, reportsBookUrl, seasonLabel) {
   return wb.toBuffer();
 }
 
-module.exports = { emailHtml, buildReportsWorkbook, buildDisciplineWorkbook, computeDiscipline, sheetNameFor, gameKey, latestPerGame, shortTeam, fmtDate, normName };
+/* ---------------- Team Reports workbook ----------------
+   Team report record: { submittedAt, name, email, team, report:{ team, opponent, us, them, goals, assists, referee,
+   control, decisions, overall, ars:[{name, rating}], field, notes, game:{date, time, number, venue, comp, home, away, officials} }, photos:[{name, url}] } */
+const submittedText = rec => new Date(rec.submittedAt || Date.now()).toLocaleString("en-CA", { timeZone: "America/Vancouver", dateStyle: "medium", timeStyle: "short" });
+function teamSheetNameFor(rec) { const r = rec.report || {}, g = r.game || {}; return safeSheetName(`${fmtDate(g.date)} ${shortTeam(r.team)} v ${shortTeam(r.opponent)}`); }
+const byNewest = records => [...records].sort((a, b) => s(b.submittedAt).localeCompare(s(a.submittedAt)));
+// Give every record its sheet name, in the same order the Team Reports workbook creates them
+function nameTeamSheets(records) { const tmp = new Workbook(); tmp.addSheet("Directory"); byNewest(records).forEach(rec => { rec._sheet = tmp.addSheet(teamSheetNameFor(rec)).name; }); }
+const BAND_A = { fill: C.white, border: { bottom: { color: "#E3E9E5" } }, align: { v: "center" } };
+const BAND_B = { fill: C.band, border: { bottom: { color: "#D2DDD6" } }, align: { v: "center" } };
+const HEAD = { font: { bold: true, color: C.white }, fill: C.green, align: { v: "center", wrap: true }, border: { bottom: { color: C.lime, style: "medium" } } };
+const HEADC = { ...HEAD, align: { h: "center", v: "center", wrap: true } };
+const center = b => ({ ...b, align: { h: "center", v: "center" } });
+const boldOf = b => ({ ...b, font: { bold: true } });
+const linkOf = b => ({ ...b, font: { color: C.link, underline: true } });
+const titleRow = (ws, text, lastCol, note) => {
+  ws.set(0, 0, text, { font: { bold: true, size: 16, color: C.white }, fill: C.green, align: { v: "center", indent: 1 } });
+  ws.fillRange(0, 1, 0, lastCol, { fill: C.green }); ws.merge(0, 0, 0, lastCol); ws.height(0, 30);
+  if (note) { ws.set(1, 0, note, { font: { italic: true, color: C.muted }, align: { wrap: true, v: "center" } }); ws.merge(1, 0, 1, lastCol); ws.height(1, 32); }
+};
+
+function addTeamReportSheet(wb, rec) {
+  const r = rec.report || {}, g = r.game || {};
+  const ws = wb.addSheet(teamSheetNameFor(rec)); rec._sheet = ws.name;
+  [28, 30, 12, 30, 30].forEach((w, i) => ws.width(i, w));
+  let row = 0;
+  const full = (text, st, h) => { ws.set(row, 0, text, st); ws.fillRange(row, 1, row, 4, st); ws.merge(row, 0, row, 4); if (h) ws.height(row, h); row++; };
+  const kv = (k, v, st) => { ws.set(row, 0, k, ST.label); ws.set(row, 1, v, st || ST.val); ws.fillRange(row, 2, row, 4, ST.val); ws.merge(row, 1, row, 4); row++; };
+  const rating = (n, of) => (+n ? `${+n} / ${of}` : "—");
+  full(`${s(r.team)}  ${s(r.us)} – ${s(r.them)}  ${s(r.opponent)}`, ST.title, 30);
+  full([fmtDate(g.date, true), g.time ? fmtTime(g.time) : "", g.venue, g.number ? "Game #" + g.number : "", g.comp || compOf(g.number)].filter(Boolean).join("  ·  "), ST.sub, 20);
+  ws.link(row, 0, "← Back to Directory", { sheet: "Directory" }, { font: { color: C.link, underline: true } }); row += 2;
+  full("SUBMITTED BY", ST.section, 18);
+  kv("Manager", s(rec.name), ST.valB);
+  ws.set(row, 0, "Manager email", ST.label); ws.link(row, 1, s(rec.email), "mailto:" + s(rec.email), ST.link); ws.fillRange(row, 2, row, 4, ST.val); ws.merge(row, 1, row, 4); row++;
+  kv("Team", s(r.team));
+  kv("Submitted", submittedText(rec));
+  row++;
+  full("GOALS AND ASSISTS", ST.section, 18);
+  for (const [label, obj, none] of [["Goal scorers", r.goals, "No goals listed"], ["Assists", r.assists, "No assists listed"]]) {
+    ws.row(row, [label, "Player", label === "Assists" ? "Assists" : "Goals", "", ""], Array(5).fill(ST.head)); row++;
+    const list = Object.entries(obj || {}).filter(([n]) => s(n));
+    if (list.length) list.forEach(([n, c]) => { ws.row(row, ["", titleCase(n), +c || 1, "", ""], [ST.label, ST.val, ST.val, ST.val, ST.val]); row++; });
+    else { ws.set(row, 1, none, ST.muted); row++; }
+  }
+  row++;
+  full(`REFEREE${r.referee ? " · " + s(r.referee).toUpperCase() : ""}`, ST.section, 18);
+  kv("Control of the game", rating(r.control, 5), ST.valB);
+  kv("Decision making", rating(r.decisions, 5), ST.valB);
+  kv("Overall score", rating(r.overall, 10), ST.valB);
+  if ((r.ars || []).length) {
+    row++;
+    full("ASSISTANT REFEREES", ST.section, 18);
+    r.ars.forEach(a => kv(titleCase(a.name), rating(a.rating, 5), ST.valB));
+  }
+  row++;
+  full("FIELD AND COMMENTS", ST.section, 18);
+  kv("Field condition", s(r.field) || "No issues");
+  kv("Comments", s(r.notes) || "None");
+  if ((rec.photos || []).length) {
+    row++;
+    full("FIELD PHOTOS", ST.section, 18);
+    rec.photos.forEach((p, i) => { ws.set(row, 0, "Photo " + (i + 1), ST.label);
+      if (p.url) ws.link(row, 1, p.name, p.url, ST.link); else ws.set(row, 1, p.name, ST.val); ws.fillRange(row, 2, row, 4, ST.val); ws.merge(row, 1, row, 4); row++; });
+  }
+  ws.freeze(2, 0);
+  return ws;
+}
+// Directory first, then one sheet per report (newest first)
+function buildTeamReportsWorkbook(records, seasonLabel) {
+  const wb = new Workbook(), sorted = byNewest(records);
+  const dir = wb.addSheet("Directory");
+  sorted.forEach(rec => addTeamReportSheet(wb, rec));
+  titleRow(dir, `Team Reports · ${seasonLabel}`, 7, "Every team report from managers, newest first. Click a report to open its sheet. If a manager sends a report for the same game again, both are kept here; the Ref Ratings workbook uses the latest one.");
+  dir.row(2, ["Date", "Game #", "Reporting team", "Score", "Opponent", "Manager", "Submitted", "Report"], [HEAD, HEADC, HEAD, HEADC, HEAD, HEAD, HEAD, HEAD]); dir.height(2, 30);
+  [13, 10, 24, 9, 24, 24, 22, 30].forEach((w, i) => dir.width(i, w));
+  if (!sorted.length) dir.set(3, 0, "Team reports will appear here, newest first.", ST.muted);
+  sorted.forEach((rec, i) => {
+    const r = rec.report || {}, g = r.game || {}, b = i % 2 ? BAND_B : BAND_A, row = 3 + i;
+    dir.row(row, [fmtDate(g.date), s(g.number), s(r.team), `${s(r.us)}–${s(r.them)}`, s(r.opponent), s(rec.name), submittedText(rec)], [b, center(b), boldOf(b), center(boldOf(b)), b, b, b]);
+    dir.link(row, 7, rec._sheet, { sheet: rec._sheet }, linkOf(b), "Open this report");
+  });
+  dir.freeze(3, 0);
+  if (sorted.length) dir.autoFilter(2, 0, 2 + sorted.length, 7);
+  return wb.toBuffer();
+}
+
+/* ---------------- Ref Ratings (from team reports) ---------------- */
+// One report per team per game: the latest wins (a corrected report replaces the earlier one)
+function latestPerTeamGame(records) {
+  const m = new Map();
+  for (const rec of records) { const k = gameKey(rec) + "|" + normName((rec.report || {}).team); const ex = m.get(k); if (!ex || s(rec.submittedAt) > s(ex.submittedAt)) m.set(k, rec); }
+  return [...m.values()];
+}
+const avg = list => list.length ? Math.round(list.reduce((a, b) => a + b, 0) / list.length * 100) / 100 : null;
+function computeRatings(records) {
+  const people = new Map(), all = [];
+  const person = name => { const k = normName(name); if (!people.has(k)) people.set(k, { name: titleCase(name), control: [], decisions: [], overall: [], ar: [], games: new Set() }); return people.get(k); };
+  for (const rec of latestPerTeamGame(records)) {
+    const r = rec.report || {}, g = r.game || {};
+    const base = { date: s(g.date), game: `${s(g.home)} v ${s(g.away)}`, number: s(g.number), by: s(r.team), rec };
+    if (s(r.referee) && (+r.control || +r.decisions || +r.overall)) {
+      const p = person(r.referee);
+      if (+r.control) p.control.push(+r.control); if (+r.decisions) p.decisions.push(+r.decisions); if (+r.overall) p.overall.push(+r.overall);
+      p.games.add("R|" + gameKey(rec) + "|" + normName(r.team));
+      all.push({ ...base, official: p.name, role: "Referee", control: +r.control || null, decisions: +r.decisions || null, overall: +r.overall || null, ar: null });
+    }
+    for (const a of r.ars || []) {
+      if (!s(a.name) || !+a.rating) continue;
+      const p = person(a.name); p.ar.push(+a.rating); p.games.add("A|" + gameKey(rec) + "|" + normName(r.team));
+      all.push({ ...base, official: p.name, role: "Assistant referee", control: null, decisions: null, overall: null, ar: +a.rating });
+    }
+  }
+  const list = [...people.values()].map(p => ({ name: p.name, refN: p.overall.length || p.control.length || p.decisions.length, control: avg(p.control), decisions: avg(p.decisions), overall: avg(p.overall),
+    arN: p.ar.length, ar: avg(p.ar), total: p.games.size })).sort((a, b) => a.name.localeCompare(b.name));
+  all.sort((a, b) => b.date.localeCompare(a.date) || a.official.localeCompare(b.official));
+  return { officials: list, ratings: all };
+}
+function buildRefRatingsWorkbook(records, teamBookUrl, seasonLabel) {
+  nameTeamSheets(records);   // so each rating can link to its report's sheet
+  const { officials, ratings } = computeRatings(records);
+  const wb = new Workbook();
+  // How an average looks: green when good, red when low (on a 5 or 10 scale)
+  const scored = (b, v, of) => { const st = center(b); if (v == null) return st; const pct = v / of;
+    return pct >= 0.8 ? { ...st, fill: "#D9F0DE", font: { bold: true, color: "#14532D" } } : pct < 0.5 ? { ...st, fill: "#FADBD8", font: { bold: true, color: "#7F1D1D" } } : { ...st, font: { bold: true } }; };
+
+  const ws = wb.addSheet("Officials");
+  titleRow(ws, `Ref Ratings · ${seasonLabel}`, 7, "Average of every rating from team managers' reports. As referee: control of the game and decision making out of 5, overall score out of 10. As assistant referee: out of 5. Green is 80% or more, red is under 50%. Use the arrows to sort or filter.");
+  ws.row(2, ["Official", "Games rated as referee", "Control of the game (avg /5)", "Decision making (avg /5)", "Overall score (avg /10)", "Games rated as assistant", "Assistant rating (avg /5)", "Ratings in total"],
+    [HEAD, HEADC, HEADC, HEADC, HEADC, HEADC, HEADC, HEADC]); ws.height(2, 44);
+  [26, 12, 14, 14, 14, 12, 14, 11].forEach((w, i) => ws.width(i, w));
+  if (!officials.length) ws.set(3, 0, "Ratings will appear here once managers send team reports.", ST.muted);
+  officials.forEach((p, i) => { const b = i % 2 ? BAND_B : BAND_A, row = 3 + i;
+    ws.row(row, [p.name, p.refN || null, p.control, p.decisions, p.overall, p.arN || null, p.ar, p.total],
+      [boldOf(b), center(b), scored(b, p.control, 5), scored(b, p.decisions, 5), scored(b, p.overall, 10), center(b), scored(b, p.ar, 5), center(b)]); });
+  ws.freeze(3, 1);
+  if (officials.length) ws.autoFilter(2, 0, 2 + officials.length, 7);
+
+  const ar = wb.addSheet("All ratings");
+  ar.row(0, ["Date", "Game", "Game #", "Official", "Role", "Rated by", "Control (/5)", "Decisions (/5)", "Overall (/10)", "Assistant (/5)", "Report"], [HEAD, HEAD, HEADC, HEAD, HEAD, HEAD, HEADC, HEADC, HEADC, HEADC, HEAD]); ar.height(0, 30);
+  [12, 30, 10, 24, 17, 22, 11, 12, 12, 12, 30].forEach((w, i) => ar.width(i, w));
+  ratings.forEach((x, i) => { const b = i % 2 ? BAND_B : BAND_A, row = 1 + i;
+    ar.row(row, [fmtDate(x.date), x.game, x.number, x.official, x.role, x.by, x.control, x.decisions, x.overall, x.ar], [b, b, center(b), boldOf(b), b, b, center(b), center(b), center(b), center(b)]);
+    const url = sheetLink(teamBookUrl, x.rec._sheet);
+    if (url) ar.link(row, 10, x.rec._sheet, url, linkOf(b), "Open the team report"); else ar.set(row, 10, x.rec._sheet, b); });
+  ar.freeze(1, 0);
+  if (ratings.length) ar.autoFilter(0, 0, ratings.length, 10);
+  return wb.toBuffer();
+}
+
+module.exports = { emailHtml, teamEmailHtml, buildReportsWorkbook, buildDisciplineWorkbook, computeDiscipline, sheetNameFor, gameKey, latestPerGame, shortTeam, fmtDate, normName,
+  buildTeamReportsWorkbook, buildRefRatingsWorkbook, computeRatings, teamSheetNameFor, latestPerTeamGame };

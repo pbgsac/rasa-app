@@ -96,6 +96,57 @@ const data = () => JSON.parse(files.get("App data/reports.json").buf.toString("u
   r = await call(report, { method: "POST", headers: { origin: "https://app.rasasoccer.ca", "x-forwarded-for": "5.5.5.4" }, body: JSON.stringify(body(fixtures[4])) });
   assert.strictEqual(r.body.saved, true); assert.strictEqual(data().length, 5);
 
+  // 6. team (manager) reports: emailed, then saved; "Team Reports" and "Ref Ratings" workbooks rebuilt
+  const zlib = require("zlib");
+  const unzip = buf => { const out = {}; let i = 0;   // reads the zip files our xlsx writer makes
+    while (buf.readUInt32LE(i) === 0x04034b50) { const cl = buf.readUInt32LE(i + 18), nl = buf.readUInt16LE(i + 26), xl = buf.readUInt16LE(i + 28);
+      const name = buf.slice(i + 30, i + 30 + nl).toString(); out[name] = zlib.inflateRawSync(buf.slice(i + 30 + nl + xl, i + 30 + nl + xl + cl)).toString(); i += 30 + nl + xl + cl; }
+    return out; };
+  const sheetNames = buf => [...unzip(buf)["xl/workbook.xml"].matchAll(/<sheet name="([^"]+)"/g)].map(m => m[1].replace(/&amp;/g, "&"));
+  const game = { date: "2026-11-15", time: "15:00", number: "LC-3", venue: "Hugh Boyd - Red", comp: "League's Cup", home: "Heatherbrae", away: "Hammers FC", officials: ["Harry Rahiman", "Kanwal Sangha", "Peter Klausner"] };
+  const teamBody = (team, opp, us, them, ratings, extra = {}) => ({ type: "team", name: team + " Manager", email: team.split(" ")[0].toLowerCase() + "@example.com", team, subject: "TEAM REPORT | x", text: "plain",
+    report: { team, opponent: opp, us, them, goals: { "Alex Smith": us }, assists: {}, referee: "Harry Rahiman", control: ratings[0], decisions: ratings[1], overall: ratings[2],
+      ars: [{ name: "Kanwal Sangha", rating: ratings[3] }, { name: "Peter Klausner", rating: ratings[4] }], field: "", notes: "", game, ...extra },
+    photos: [{ name: "field-photo-1.jpg", type: "image/jpeg", data: jpg }] });
+  const teamData = () => JSON.parse(files.get("App data/team-reports.json").buf.toString("utf8")).reports;
+  sent = [];
+  r = await call(report, { method: "POST", headers: { origin: "https://app.rasasoccer.ca", "x-forwarded-for": "6.6.6.1" }, body: JSON.stringify(teamBody("Hammers FC", "Heatherbrae", 3, 1, [4, 3, 7, 5, 4])) });
+  assert.strictEqual(r.status, 200); assert.strictEqual(r.body.saved, true, JSON.stringify(r.body));
+  assert.deepStrictEqual(sent.pop().message.toRecipients.map(x => x.emailAddress.address), ["stats@rasasoccer.ca", "president@rasasoccer.ca"]);
+  assert.ok(files.has("Team Reports 2026.xlsx") && files.has("Ref Ratings Winter 2026.xlsx"));
+  assert.ok([...files.keys()].some(k => k.startsWith("Photos/Team reports/Nov 15 Hammers FC v Heatherbrae") && k.endsWith("field-photo-1.jpg")), [...files.keys()].join("\n"));
+  assert.ok(teamData()[0].photos[0].url, "photo link saved with the report");
+  // the other team reports the same game; then Hammers sends a corrected report (it replaces their first one in the ratings)
+  r = await call(report, { method: "POST", headers: { origin: "https://app.rasasoccer.ca", "x-forwarded-for": "6.6.6.2" }, body: JSON.stringify(teamBody("Heatherbrae", "Hammers FC", 1, 3, [2, 2, 4, 3, 2])) });
+  assert.strictEqual(r.body.saved, true);
+  await new Promise(res => setTimeout(res, 5));
+  r = await call(report, { method: "POST", headers: { origin: "https://app.rasasoccer.ca", "x-forwarded-for": "6.6.6.3" }, body: JSON.stringify(teamBody("Hammers FC", "Heatherbrae", 3, 1, [5, 4, 8, 5, 5])) });
+  assert.strictEqual(r.body.saved, true);
+  // a different game with a different referee
+  r = await call(report, { method: "POST", headers: { origin: "https://app.rasasoccer.ca", "x-forwarded-for": "6.6.6.4" }, body: JSON.stringify(teamBody("Unicorn FC", "RFC Hibs", 0, 2, [3, 3, 6, 4, 4],
+    { referee: "Billy Cheng", ars: [{ name: "Kanwal Sangha", rating: 2 }], game: { ...game, date: "2026-11-08", number: "d1-8-31", home: "Unicorn FC", away: "RFC Hibs", officials: ["Billy Cheng", "Kanwal Sangha"] } })) });
+  assert.strictEqual(r.body.saved, true);
+  assert.strictEqual(teamData().length, 4, "all four team reports kept as data");
+  // Team Reports workbook: Directory first, then one sheet per report (both Hammers reports kept)
+  const tr = sheetNames(files.get("Team Reports 2026.xlsx").buf);
+  assert.strictEqual(tr[0], "Directory"); assert.strictEqual(tr.length, 5, tr.join(" | "));
+  assert.ok(tr.includes("Nov 15 Hammers v Heatherbrae") && tr.some(n => /^Nov 15 Hammers v .* \(2\)$/.test(n)) && tr.includes("Nov 15 Heatherbrae v Hammers") && tr.includes("Nov 8 Unicorn v RFC Hibs"), tr.join(" | "));
+  const dirXml = unzip(files.get("Team Reports 2026.xlsx").buf)["xl/worksheets/sheet1.xml"];
+  assert.strictEqual((dirXml.match(/location=/g) || []).length, 4, "each Directory row links to its sheet");
+  // Ref Ratings: latest report per team per game -> Harry rated by Hammers (corrected: 5/4/8) and Heatherbrae (2/2/4)
+  const { computeRatings } = require("../lib/reports.js");
+  const { officials, ratings } = computeRatings(teamData());
+  const by = n => officials.find(o => o.name === n);
+  assert.deepStrictEqual([by("Harry Rahiman").refN, by("Harry Rahiman").control, by("Harry Rahiman").decisions, by("Harry Rahiman").overall], [2, 3.5, 3, 6]);
+  assert.deepStrictEqual([by("Kanwal Sangha").arN, by("Kanwal Sangha").ar], [3, 3.33]);   // (5 + 3 + 2) / 3
+  assert.deepStrictEqual([by("Billy Cheng").refN, by("Billy Cheng").overall, by("Billy Cheng").arN], [1, 6, 0]);
+  assert.strictEqual(ratings.length, 3 + 3 + 2, "8 individual ratings (corrected report counted once)");
+  assert.deepStrictEqual(sheetNames(files.get("Ref Ratings Winter 2026.xlsx").buf), ["Officials", "All ratings"]);
+  const ratingsXml = unzip(files.get("Ref Ratings Winter 2026.xlsx").buf)["xl/worksheets/_rels/sheet2.xml.rels"];
+  assert.ok(ratingsXml && ratingsXml.includes("activeCell="), "each rating links to its team report");
+  // a manual sync rebuilds the team workbooks too
+  await new Promise(res => setTimeout(res, 0));
+
   if (OUT) for (const [p, f] of files) if (/\.xlsx$/.test(p)) fs.writeFileSync(path.join(OUT, p), f.buf);
   console.log("all OneDrive tests passed;", files.size, "files in the fake OneDrive");
 })().catch(e => { console.error(e); process.exit(1); });
