@@ -203,7 +203,11 @@ function openRefReport(id, opts={}){
   const refEmail = pub ? state.rr.email : (state.user && state.user.role==="referee") ? (state.user.email||"") : "";
   const home = HOME(g), away = AWAY(g);
   const homeScore = g.as, awayScore = g.hs;
-  const radios = (name, opts)=>`<div class="stars wide${opts.length===4?" four":""}" role="radiogroup">${opts.map(v=>`<label><input type="radio" name="${name}" value="${esc(v)}"><span>${esc(v)}</span></label>`).join("")}</div>`;
+  // opts: plain strings, or {v, label, sub} to show a team name with "Home"/"Away" under it
+  const radios = (name, opts)=>`<div class="stars wide${opts.length===4?" four":""}" role="radiogroup">${opts.map(o=>{ const x = typeof o==="string" ? {v:o, label:o} : o;
+    return `<label><input type="radio" name="${name}" value="${esc(x.v)}"><span>${esc(x.label)}${x.sub?`<small>${esc(x.sub)}</small>`:""}</span></label>`; }).join("")}</div>`;
+  // Who provided it: the two teams by name (saved as e.g. "Heatherbrae (home)"), then Neither / Both
+  const provided = [{v:`${tn(home)} (home)`, label:tn(home), sub:"Home"}, {v:`${tn(away)} (away)`, label:tn(away), sub:"Away"}, "Neither team", "Both teams"];
   const teamBlock = (side, team)=>`
     <fieldset class="teamset"><legend>${side==="home"?"Home":"Away"}: ${esc(tn(team))}</legend>
       <p class="hint">${rosterHint(g, team)}</p>
@@ -244,11 +248,11 @@ function openRefReport(id, opts={}){
     <fieldset><legend>Field conditions <span class="opt-l">(if any issues)</span></legend><textarea id="fField" rows="5" placeholder="Field, lines, goal posts, nets, lights"></textarea></fieldset>
     <fieldset><legend>Injuries and other comments <span class="opt-l">(optional)</span></legend><textarea id="fNotes" rows="3" placeholder="Injuries (player, team, what happened), notable events, team conduct"></textarea></fieldset>
     <fieldset><legend>Game questions</legend>
-      <p class="q">Official game ball provided by?</p>${radios("qBall", PROVIDED)}
-      <p class="q">Corner flags provided by?</p>${radios("qFlags", PROVIDED)}
-      <p class="q">2 copies of official team list provided by home team?</p>${radios("qListHome", ["Yes","No"])}
-      <p class="q">2 copies of official team list provided by visiting team?</p>${radios("qListAway", ["Yes","No"])}
-      <p class="q">Showed player cards?</p>${radios("qCards", PROVIDED)}
+      <p class="q">Official game ball provided by?</p>${radios("qBall", provided)}
+      <p class="q">Corner flags provided by?</p>${radios("qFlags", provided)}
+      <p class="q">2 copies of official team list provided by ${esc(tn(home))} <span class="q-side">(home)</span>?</p>${radios("qListHome", ["Yes","No"])}
+      <p class="q">2 copies of official team list provided by ${esc(tn(away))} <span class="q-side">(away)</span>?</p>${radios("qListAway", ["Yes","No"])}
+      <p class="q">Showed player cards?</p>${radios("qCards", provided)}
       ${pub ? "" : `<p class="hint">You’ll attach photos of both team lists to the email in the last step.</p>`}
     </fieldset>
     ${pub ? `<fieldset><legend>Team list photos</legend>
@@ -357,8 +361,8 @@ function viewRefReport(id){
       ${r.questions ? `
       ${vrow("Game ball provided by", esc(q.ball))}
       ${vrow("Corner flags provided by", esc(q.flags))}
-      ${vrow("Home team list (2 copies)", esc(q.listHome) + (r.listPhotos&&r.listPhotos.home?`<div class="thumbs">${ph(r.listPhotos.home)}</div>`:""))}
-      ${vrow("Visiting team list (2 copies)", esc(q.listAway) + (r.listPhotos&&r.listPhotos.away?`<div class="thumbs">${ph(r.listPhotos.away)}</div>`:""))}
+      ${vrow(`${tn(HOME(g))} team list (2 copies)`, esc(q.listHome) + (r.listPhotos&&r.listPhotos.home?`<div class="thumbs">${ph(r.listPhotos.home)}</div>`:""))}
+      ${vrow(`${tn(AWAY(g))} team list (2 copies)`, esc(q.listAway) + (r.listPhotos&&r.listPhotos.away?`<div class="thumbs">${ph(r.listPhotos.away)}</div>`:""))}
       ${vrow("Showed player cards", esc(q.cards))}` : ""}
     </dl>
     <div class="actions">${state.user && state.user.role==="admin" && r.homeScore!=null ? `<a class="btn btn-ghost" href="${esc(mailtoHref("", reportSubject(g,r), reportText(g,r)))}">Email this report</a>` : ""}<button type="button" class="btn btn-primary" id="reportCancel">Close</button></div>`, "view");
@@ -519,7 +523,7 @@ function reportText(g, r){
   side("Home", r.home); L.push(""); side("Away", r.away); L.push("");
   L.push(`Field conditions: ${r.field||"No issues"}`, `Injuries and other comments: ${r.notes||"None"}`, "");
   L.push(`Game ball provided by: ${q.ball||"—"}`, `Corner flags provided by: ${q.flags||"—"}`,
-         `Home team list (2 copies): ${q.listHome||"—"}`, `Visiting team list (2 copies): ${q.listAway||"—"}`, `Showed player cards: ${q.cards||"—"}`, "");
+         `${tn(HOME(g))} (home) team list (2 copies): ${q.listHome||"—"}`, `${tn(AWAY(g))} (away) team list (2 copies): ${q.listAway||"—"}`, `Showed player cards: ${q.cards||"—"}`, "");
   L.push(`Submitted ${r.when} via app.rasasoccer.ca`);
   return L.join("\n");
 }
