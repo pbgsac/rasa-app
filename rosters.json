@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-18T07:30:09Z",
+ "updatedAt": "2026-11-20T03:17:41Z",
  "teams": {
   "AC RICHMOND": {
    "name": "AC Richmond",
@@ -1555,6 +1555,18 @@
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/559778_pic.jpeg"
     },
     {
+     "name": "LAK TAO CHRIST LEE",
+     "number": null,
+     "pos": "-",
+     "born": "'85",
+     "gp": 0,
+     "g": 0,
+     "a": 0,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/559784_pic.jpg"
+    },
+    {
      "name": "Andy Lam",
      "number": 18,
      "pos": "-",
@@ -1591,18 +1603,6 @@
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/234509_pic.jpg"
     },
     {
-     "name": "Stephen Ka Hay Li",
-     "number": null,
-     "pos": "-",
-     "born": "'91",
-     "gp": 0,
-     "g": 0,
-     "a": 0,
-     "yc": 0,
-     "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/618424_pic.jpeg"
-    },
-    {
      "name": "Joe Louie",
      "number": 88,
      "pos": "-",
@@ -1625,18 +1625,6 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/558957_pic.jpg"
-    },
-    {
-     "name": "KA HIM NG",
-     "number": null,
-     "pos": "-",
-     "born": "'83",
-     "gp": 0,
-     "g": 0,
-     "a": 0,
-     "yc": 0,
-     "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/612942_pic.png"
     },
     {
      "name": "KA KI NG",
@@ -3824,6 +3812,18 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/612479_pic.jpg"
+    },
+    {
+     "name": "Emir Besli",
+     "number": null,
+     "pos": "CB",
+     "born": "'09",
+     "gp": 0,
+     "g": 0,
+     "a": 0,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/620857_pic.jpeg"
     },
     {
      "name": "Samuel Bradshaw",
