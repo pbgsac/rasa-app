@@ -18,7 +18,7 @@
     MAIL_TO              optional, defaults to MAIL_FROM (ref reports)
     TEAM_REPORT_TO       optional, comma-separated; defaults to stats@rasasoccer.ca,president@rasasoccer.ca
     ONEDRIVE_DRIVE_ID    matchreport@'s OneDrive drive ID      } from the folder-grant script
-    ONEDRIVE_FOLDER_ID   the "RASA Ref Reports" folder's ID    }
+    ONEDRIVE_FOLDER_ID   the "RASA Game Reports" folder's ID    }
 */
 const { settings, token: sharedToken } = require("../lib/graph");
 const { emailHtml, teamEmailHtml } = require("../lib/reports");

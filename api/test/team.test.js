@@ -47,9 +47,9 @@ const good = { type: "team", name: "Pat Manager", email: "pat@example.com", team
   assert.strictEqual(r.status, 200);
   assert.deepStrictEqual(sent().toRecipients.map(x => x.emailAddress.address), ["stats@rasasoccer.ca", "president@rasasoccer.ca"]);
   // the league can change the list in Azure settings
-  process.env.TEAM_REPORT_TO = "stats@rasasoccer.ca, bad-address, president@rasasoccer.ca";
+  process.env.TEAM_REPORT_TO = "stats@rasasoccer.ca, bad-address, games@rasasoccer.ca";
   r = await run({ method: "POST", headers: { ...hdr, "x-forwarded-for": "5.5.5.3" }, body: good });
-  assert.deepStrictEqual(sent().toRecipients.map(x => x.emailAddress.address), ["stats@rasasoccer.ca", "president@rasasoccer.ca"]);
+  assert.deepStrictEqual(sent().toRecipients.map(x => x.emailAddress.address), ["stats@rasasoccer.ca", "games@rasasoccer.ca"], "the Azure setting changes who gets team reports");
   delete process.env.TEAM_REPORT_TO;
   // validation
   for (const [bad, why] of [[{ ...good, team: "" }, /team/i], [{ ...good, email: "nope" }, /email/i], [{ ...good, name: "" }, /name/i], [{ ...good, website: "x" }, /Rejected/]]) {

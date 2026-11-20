@@ -1,6 +1,6 @@
 /*
   Saves ref reports to one folder in matchreport@'s OneDrive (the app has access to that folder only):
-    RASA Ref Reports/
+    RASA Game Reports/       (renamed from "RASA Ref Reports"; the app finds it by ID, so the name can change)
       Ref Reports 2026.xlsx           one sheet per report, newest first
       Discipline Winter 2026.xlsx     cards per player, grouped by team
       Photos/<game>/…jpg              team list photos
