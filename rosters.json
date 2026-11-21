@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-21T12:40:18Z",
+ "updatedAt": "2026-11-21T20:32:15Z",
  "teams": {
   "AC RICHMOND": {
    "name": "AC Richmond",
@@ -6294,6 +6294,18 @@
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/372704_pic.jpeg"
     },
     {
+     "name": "Muhammed Hilali",
+     "number": null,
+     "pos": "-",
+     "born": "-",
+     "gp": 0,
+     "g": 0,
+     "a": 0,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/337491_pic.jpeg"
+    },
+    {
      "name": "Payton Hinds",
      "number": null,
      "pos": "-",
@@ -6890,6 +6902,18 @@
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/614813_pic.jpeg"
     },
     {
+     "name": "Muhammad Yasin Abbas",
+     "number": null,
+     "pos": "-",
+     "born": "'02",
+     "gp": 0,
+     "g": 0,
+     "a": 0,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/397209_pic.jpg"
+    },
+    {
      "name": "Affan Askar",
      "number": null,
      "pos": "-",
@@ -7008,18 +7032,6 @@
      "yc": 0,
      "rc": 0,
      "photo": ""
-    },
-    {
-     "name": "Mubarak Hassan",
-     "number": null,
-     "pos": "-",
-     "born": "-",
-     "gp": 0,
-     "g": 0,
-     "a": 0,
-     "yc": 0,
-     "rc": 0,
-     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/614812_pic.jpeg"
     },
     {
      "name": "Jeevan Johal",
@@ -7188,6 +7200,18 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/614996_pic.jpg"
+    },
+    {
+     "name": "Jagroop Rai",
+     "number": null,
+     "pos": "-",
+     "born": "'03",
+     "gp": 0,
+     "g": 0,
+     "a": 0,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/620946_pic.jpeg"
     },
     {
      "name": "Veer Sadana",
