@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-21T03:14:09Z",
+ "updatedAt": "2026-11-21T12:40:18Z",
  "teams": {
   "AC RICHMOND": {
    "name": "AC Richmond",
@@ -6306,6 +6306,18 @@
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/337491_pic.jpeg"
     },
     {
+     "name": "Amir Hussain Ireshad",
+     "number": null,
+     "pos": "-",
+     "born": "-",
+     "gp": 0,
+     "g": 0,
+     "a": 0,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/337015_pic.jpeg"
+    },
+    {
      "name": "Ronald Lau",
      "number": null,
      "pos": "-",
@@ -6316,6 +6328,18 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/337015_pic.jpeg"
+    },
+    {
+     "name": "HongRui Liu",
+     "number": null,
+     "pos": "-",
+     "born": "'06",
+     "gp": 0,
+     "g": 0,
+     "a": 0,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/620933_pic.jpeg"
     },
     {
      "name": "Liam Lynch",
