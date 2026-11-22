@@ -1,7 +1,7 @@
 {
  "source": "https://www.rasasoccer.ca/leagues/standings.cfm?clientid=6369&leagueID=27680",
  "season": "Winter 2026-27",
- "updatedAt": "2026-11-22T09:52:06Z",
+ "updatedAt": "2026-11-22T23:37:42Z",
  "divisions": [
   {
    "name": "Division 1",
@@ -116,6 +116,19 @@
    "name": "Division 2",
    "rows": [
     {
+     "team": "Hammers FC",
+     "gp": 11,
+     "w": 6,
+     "l": 2,
+     "t": 3,
+     "d": 0,
+     "pts": 21,
+     "gf": 35,
+     "ga": 21,
+     "diff": 14,
+     "streak": "W1"
+    },
+    {
      "team": "Richlads FC",
      "gp": 10,
      "w": 5,
@@ -127,19 +140,6 @@
      "ga": 15,
      "diff": 18,
      "streak": "T1"
-    },
-    {
-     "team": "Hammers FC",
-     "gp": 10,
-     "w": 5,
-     "l": 2,
-     "t": 3,
-     "d": 0,
-     "pts": 18,
-     "gf": 32,
-     "ga": 21,
-     "diff": 11,
-     "streak": "L1"
     },
     {
      "team": "Lion Rock",
@@ -169,16 +169,16 @@
     },
     {
      "team": "Mainland United",
-     "gp": 11,
+     "gp": 12,
      "w": 4,
-     "l": 6,
+     "l": 7,
      "t": 1,
      "d": 0,
      "pts": 13,
      "gf": 29,
-     "ga": 32,
-     "diff": -3,
-     "streak": "W2"
+     "ga": 35,
+     "diff": -6,
+     "streak": "L1"
     },
     {
      "team": "RUFC Graduates",
