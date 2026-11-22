@@ -1,36 +1,36 @@
 {
  "source": "https://www.rasasoccer.ca/leagues/standings.cfm?clientid=6369&leagueID=27680",
  "season": "Winter 2026-27",
- "updatedAt": "2026-11-20T21:50:24Z",
+ "updatedAt": "2026-11-22T09:52:06Z",
  "divisions": [
   {
    "name": "Division 1",
    "rows": [
     {
      "team": "Richmond All Blacks",
-     "gp": 10,
+     "gp": 11,
      "w": 10,
-     "l": 0,
+     "l": 1,
      "t": 0,
      "d": 0,
      "pts": 30,
      "gf": 49,
-     "ga": 6,
-     "diff": 43,
-     "streak": "W10"
+     "ga": 9,
+     "diff": 40,
+     "streak": "L1"
     },
     {
      "team": "RFC HIBS",
-     "gp": 10,
-     "w": 8,
+     "gp": 11,
+     "w": 9,
      "l": 1,
      "t": 1,
      "d": 0,
-     "pts": 25,
-     "gf": 38,
+     "pts": 28,
+     "gf": 41,
      "ga": 9,
-     "diff": 29,
-     "streak": "W3"
+     "diff": 32,
+     "streak": "W4"
     },
     {
      "team": "AC Richmond",
