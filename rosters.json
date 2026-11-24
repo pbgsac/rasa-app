@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-22T17:50:18Z",
+ "updatedAt": "2026-11-24T04:49:55Z",
  "teams": {
   "AC RICHMOND": {
    "name": "AC Richmond",
@@ -6948,6 +6948,18 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/616144_pic.jpeg"
+    },
+    {
+     "name": "Luis Barrientos Catalan",
+     "number": null,
+     "pos": "-",
+     "born": "-",
+     "gp": 0,
+     "g": 0,
+     "a": 0,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/617010_pic.jpg"
     },
     {
      "name": "Jessy Bassi",
