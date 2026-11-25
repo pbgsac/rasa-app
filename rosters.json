@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-24T04:49:55Z",
+ "updatedAt": "2026-11-25T02:30:55Z",
  "teams": {
   "AC RICHMOND": {
    "name": "AC Richmond",
@@ -3230,6 +3230,10 @@
     {
      "name": "Devon",
      "role": "Chef de Mission"
+    },
+    {
+     "name": "Nathaniel",
+     "role": "Asst. Coach"
     },
     {
      "name": "Alexander",
@@ -6732,6 +6736,18 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/174636_pic.jpg"
+    },
+    {
+     "name": "Aiden Leung",
+     "number": null,
+     "pos": "-",
+     "born": "'07",
+     "gp": 0,
+     "g": 0,
+     "a": 0,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/621088_pic.jpeg"
     },
     {
      "name": "Jayden Low",
