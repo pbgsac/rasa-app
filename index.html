@@ -45,7 +45,7 @@ window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); window
     s.style.setProperty("--roll-x", dist + "px");
     s.style.setProperty("--roll-deg", (dist / (Math.PI * size) * 360) + "deg");
     s.classList.add("go");
-    setTimeout(done, still ? 400 : 1250);
+    setTimeout(done, still ? 400 : 1350);
   }
   s.addEventListener("click", done);
   if(img.complete) go(); else { img.addEventListener("load", go); img.addEventListener("error", done); }
