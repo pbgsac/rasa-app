@@ -26,19 +26,27 @@ window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); window
 <link rel="stylesheet" href="css/refs.css">
 </head>
 <body>
-<!-- Opening animation: the crest drops in and bounces like a ball, then the splash fades away (tap to skip). -->
+<!-- Opening animation: the crest sits in the middle (where the phone's own start-up screen leaves it),
+     then rolls off to the side like a ball and the app shows through (tap to skip). -->
 <div id="splash" aria-hidden="true">
   <div class="sp-stage">
-    <div class="sp-drop"><img class="sp-ball" src="logo.svg" alt="" width="180" height="180"></div>
-    <div class="sp-shadow"></div>
+    <div class="sp-roll"><img class="sp-ball" src="logo.svg" alt="" width="180" height="180"><div class="sp-shadow"></div></div>
   </div>
 </div>
 <script>
 (function(){
   var s = document.getElementById("splash"), img = s.querySelector("img"), gone = false;
   var still = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
-  function done(){ if(gone) return; gone = true; s.classList.add("out"); setTimeout(function(){ s.remove(); }, 450); }
-  function go(){ if(s.classList.contains("go")) return; s.classList.add("go"); setTimeout(done, still ? 500 : 1700); }
+  function done(){ if(gone) return; gone = true; s.classList.add("out"); setTimeout(function(){ s.remove(); }, 500); }
+  function go(){
+    if(s.classList.contains("go")) return;
+    // roll distance: from the middle to just past the right edge; turn exactly as far as a ball that size would
+    var size = img.getBoundingClientRect().width || 180, dist = window.innerWidth / 2 + size / 2 + 24;
+    s.style.setProperty("--roll-x", dist + "px");
+    s.style.setProperty("--roll-deg", (dist / (Math.PI * size) * 360) + "deg");
+    s.classList.add("go");
+    setTimeout(done, still ? 400 : 1250);
+  }
   s.addEventListener("click", done);
   if(img.complete) go(); else { img.addEventListener("load", go); img.addEventListener("error", done); }
   setTimeout(function(){ if(!s.classList.contains("go")) done(); }, 1500);   // logo slow to load: skip the show
