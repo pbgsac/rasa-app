@@ -26,6 +26,24 @@ window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); window
 <link rel="stylesheet" href="css/refs.css">
 </head>
 <body>
+<!-- Opening animation: the crest drops in and bounces like a ball, then the splash fades away (tap to skip). -->
+<div id="splash" aria-hidden="true">
+  <div class="sp-stage">
+    <div class="sp-drop"><img class="sp-ball" src="logo.svg" alt="" width="180" height="180"></div>
+    <div class="sp-shadow"></div>
+  </div>
+</div>
+<script>
+(function(){
+  var s = document.getElementById("splash"), img = s.querySelector("img"), gone = false;
+  var still = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function done(){ if(gone) return; gone = true; s.classList.add("out"); setTimeout(function(){ s.remove(); }, 450); }
+  function go(){ if(s.classList.contains("go")) return; s.classList.add("go"); setTimeout(done, still ? 500 : 1700); }
+  s.addEventListener("click", done);
+  if(img.complete) go(); else { img.addEventListener("load", go); img.addEventListener("error", done); }
+  setTimeout(function(){ if(!s.classList.contains("go")) done(); }, 1500);   // logo slow to load: skip the show
+})();
+</script>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <clipPath id="jerseyClip"><path d="M6 1 L1 4 L2.5 8 L5 7 V17 H15 V7 L17.5 8 L19 4 L14 1 C13 3 7 3 6 1 Z"/></clipPath>
