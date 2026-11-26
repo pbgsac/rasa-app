@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-25T02:30:55Z",
+ "updatedAt": "2026-11-26T10:55:11Z",
  "teams": {
   "AC RICHMOND": {
    "name": "AC Richmond",
@@ -574,6 +574,18 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/616731_pic.jpeg"
+    },
+    {
+     "name": "Sim Nijjar",
+     "number": null,
+     "pos": "-",
+     "born": "'88",
+     "gp": 0,
+     "g": 0,
+     "a": 0,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/621178_pic.jpg"
     },
     {
      "name": "Patrick O'Toole",
@@ -7144,6 +7156,18 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/614988_pic.jpg"
+    },
+    {
+     "name": "Elvis Kovacevic",
+     "number": null,
+     "pos": "-",
+     "born": "-",
+     "gp": 0,
+     "g": 0,
+     "a": 0,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/614989_pic.png"
     },
     {
      "name": "Shanald Kumar",
