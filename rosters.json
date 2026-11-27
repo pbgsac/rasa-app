@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-27T04:16:12Z",
+ "updatedAt": "2026-11-27T22:43:54Z",
  "teams": {
   "AC RICHMOND": {
    "name": "AC Richmond",
@@ -234,6 +234,18 @@
      "yc": 0,
      "rc": 0,
      "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/125724_pic.PNG"
+    },
+    {
+     "name": "Erik Favrholdt",
+     "number": null,
+     "pos": "-",
+     "born": "'94",
+     "gp": 0,
+     "g": 0,
+     "a": 0,
+     "yc": 0,
+     "rc": 0,
+     "photo": "https://www.rasasoccer.ca/media/leagues/images/myAccount2/userUploads/profile/621215_pic.jpeg"
     },
     {
      "name": "Talvinder Jagde",
