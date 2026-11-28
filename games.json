@@ -1,7 +1,7 @@
 {
  "source": "https://www.rasasoccer.ca/leagues/schedules.cfm?clientid=6369&leagueID=27680",
  "season": "Winter 2026-27",
- "updatedAt": "2026-11-27T13:58:20Z",
+ "updatedAt": "2026-11-28T07:50:42Z",
  "games": [
   {
    "date": "2026-09-10",
@@ -1836,33 +1836,26 @@
    "number": "d1-12-45",
    "gameId": "2579599",
    "status": "",
-   "officials": []
-  },
-  {
-   "date": "2026-11-29",
-   "time": "11:00",
-   "home": "WEST COAST CUR.",
-   "away": "HAMMERS FC",
-   "venue": "MacNeil North",
-   "homeScore": null,
-   "awayScore": null,
-   "number": "d2-11-41",
-   "gameId": "2579626",
-   "status": "",
-   "officials": []
+   "officials": [
+    "billy Cheng",
+    "Mike Lynch",
+    "Jon Lee"
+   ]
   },
   {
    "date": "2026-11-29",
    "time": "11:00",
    "home": "RUFC GRADUATES",
    "away": "EPFC LIONS",
-   "venue": "MacNeil South",
+   "venue": "MacNeil North",
    "homeScore": null,
    "awayScore": null,
    "number": "d2-11-42",
    "gameId": "2579627",
    "status": "",
-   "officials": []
+   "officials": [
+    "Peter Klausner"
+   ]
   },
   {
    "date": "2026-11-29",
@@ -1875,7 +1868,9 @@
    "number": "d1-12-46",
    "gameId": "2579600",
    "status": "",
-   "officials": []
+   "officials": [
+    "Conor Niemi"
+   ]
   },
   {
    "date": "2026-11-29",
@@ -1888,20 +1883,43 @@
    "number": "d1-12-47",
    "gameId": "2579601",
    "status": "",
-   "officials": []
+   "officials": [
+    "Mike Laing",
+    "Gavin Laing",
+    "Don Taylor"
+   ]
   },
   {
    "date": "2026-11-29",
    "time": "13:00",
    "home": "FREEBIRD FC",
    "away": "UNICORN FC",
-   "venue": "Richmond High",
+   "venue": "Minoru 3",
    "homeScore": null,
    "awayScore": null,
    "number": "d1-12-48",
    "gameId": "2579602",
    "status": "",
-   "officials": []
+   "officials": [
+    "Sean Davies",
+    "Darman Nair",
+    "Dheeran Nair"
+   ]
+  },
+  {
+   "date": "2026-11-29",
+   "time": "13:00",
+   "home": "WEST COAST CUR.",
+   "away": "HAMMERS FC",
+   "venue": "Hugh Boyd - Red",
+   "homeScore": null,
+   "awayScore": null,
+   "number": "d2-11-41",
+   "gameId": "2579626",
+   "status": "",
+   "officials": [
+    "Harry Rahiman"
+   ]
   },
   {
    "date": "2026-11-29",
@@ -1914,20 +1932,24 @@
    "number": "d2-11-43",
    "gameId": "2579628",
    "status": "",
-   "officials": []
+   "officials": [
+    "Emre Ogutcen"
+   ]
   },
   {
    "date": "2026-11-29",
    "time": "13:00",
    "home": "RICHLADS FC",
    "away": "LION ROCK",
-   "venue": "MacNeil South",
+   "venue": "MacNeil North",
    "homeScore": null,
    "awayScore": null,
    "number": "d2-11-44",
    "gameId": "2579629",
    "status": "",
-   "officials": []
+   "officials": [
+    "Ernesto De Marco"
+   ]
   },
   {
    "date": "2026-12-03",
